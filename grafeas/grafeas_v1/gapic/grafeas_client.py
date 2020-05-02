@@ -44,21 +44,12 @@ _GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("grafeas",).version
 
 class GrafeasClient(object):
     """
-    `Grafeas <https://grafeas.io>`__ API.
-
-    Retrieves analysis results of Cloud components such as Docker container
-    images.
-
-    Analysis results are stored as a series of occurrences. An
-    ``Occurrence`` contains information about a specific analysis instance
-    on a resource. An occurrence refers to a ``Note``. A note contains
-    details describing the analysis and is generally stored in a separate
-    project, called a ``Provider``. Multiple occurrences can refer to the
-    same note.
-
-    For example, an SSL vulnerability could affect multiple images. In this
-    case, there would be one note for the vulnerability and an occurrence
-    for each image with the vulnerability referring to that note.
+    If set true, then the Java code generator will generate a separate
+    .java file for each top-level message, enum, and service defined in the
+    .proto file. Thus, these types will *not* be nested inside the outer
+    class named by java_outer_classname. However, the outer class will still
+    be generated to contain the file's getDescriptor() method as well as any
+    top-level extensions defined in the file.
     """
 
     # The name of the interface for this client. This is the key used to
@@ -172,8 +163,10 @@ class GrafeasClient(object):
             >>> client.delete_occurrence(name)
 
         Args:
-            name (str): The name of the occurrence in the form of
-                ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
+            name (str): An Upgrade Note represents a potential upgrade of a package to a
+                given version. For each package version combination (i.e. bash 4.0, bash
+                4.1, bash 4.1.2), there will be an Upgrade Note. For Windows,
+                windows_update field represents the information related to the update.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -243,8 +236,9 @@ class GrafeasClient(object):
             >>> client.delete_note(name)
 
         Args:
-            name (str): The name of the note in the form of
-                ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
+            name (str): The next pagination token in the list response. It should be used as
+                ``page_token`` for the following request. An empty value means no more
+                results.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -314,8 +308,9 @@ class GrafeasClient(object):
             >>> response = client.get_occurrence(name)
 
         Args:
-            name (str): The name of the occurrence in the form of
-                ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
+            name (str): Required. Immutable. The analysis note associated with this
+                occurrence, in the form of ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
+                This field can be used as a filter in list requests.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -402,8 +397,39 @@ class GrafeasClient(object):
             ...         pass
 
         Args:
-            parent (str): The name of the project to list occurrences for in the form of
-                ``projects/[PROJECT_ID]``.
+            parent (str): A definition of a client library method signature.
+
+                In client libraries, each proto RPC corresponds to one or more methods
+                which the end user is able to call, and calls the underlying RPC.
+                Normally, this method receives a single argument (a struct or instance
+                corresponding to the RPC request object). Defining this field will add
+                one or more overloads providing flattened or simpler method signatures
+                in some languages.
+
+                The fields on the method signature are provided as a comma-separated
+                string.
+
+                For example, the proto RPC and annotation:
+
+                rpc CreateSubscription(CreateSubscriptionRequest) returns (Subscription)
+                { option (google.api.method_signature) = "name,topic"; }
+
+                Would add the following Java overload (in addition to the method
+                accepting the request object):
+
+                public final Subscription createSubscription(String name, String topic)
+
+                The following backwards-compatibility guidelines apply:
+
+                -  Adding this annotation to an unannotated method is backwards
+                   compatible.
+                -  Adding this annotation to a method which already has existing method
+                   signature annotations is backwards compatible if and only if the new
+                   method signature annotation is last in the sequence.
+                -  Modifying or removing an existing method signature annotation is a
+                   breaking change.
+                -  Re-ordering existing method signature annotations is a breaking
+                   change.
             filter_ (str): The filter expression.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
@@ -502,8 +528,8 @@ class GrafeasClient(object):
             >>> response = client.create_occurrence(parent, occurrence)
 
         Args:
-            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``, under
-                which the occurrence is to be created.
+            parent (str): Not ZigZag encoded. Negative numbers take 10 bytes. Use TYPE_SINT64
+                if negative values are likely.
             occurrence (Union[dict, ~grafeas.grafeas_v1.types.Occurrence]): The occurrence to create.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -586,8 +612,20 @@ class GrafeasClient(object):
             >>> response = client.batch_create_occurrences(parent, occurrences)
 
         Args:
-            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``, under
-                which the occurrences are to be created.
+            parent (str): OAuth scopes needed for the client.
+
+                Example:
+
+                | service Foo { option (google.api.oauth_scopes) =
+                | "https://www.googleapis.com/auth/cloud-platform"; ... }
+
+                If there is more than one scope, use a comma-separated string:
+
+                Example:
+
+                | service Foo { option (google.api.oauth_scopes) =
+                | "https://www.googleapis.com/auth/cloud-platform,"
+                  "https://www.googleapis.com/auth/monitoring"; ... }
             occurrences (list[Union[dict, ~grafeas.grafeas_v1.types.Occurrence]]): The occurrences to create. Max allowed length is 1000.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -671,8 +709,32 @@ class GrafeasClient(object):
             >>> response = client.update_occurrence(name, occurrence)
 
         Args:
-            name (str): The name of the occurrence in the form of
-                ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
+            name (str): A URL/resource name that uniquely identifies the type of the
+                serialized protocol buffer message. This string must contain at least
+                one "/" character. The last segment of the URL's path must represent the
+                fully qualified name of the type (as in
+                ``path/google.protobuf.Duration``). The name should be in a canonical
+                form (e.g., leading "." is not accepted).
+
+                In practice, teams usually precompile into the binary all types that
+                they expect it to use in the context of Any. However, for URLs which use
+                the scheme ``http``, ``https``, or no scheme, one can optionally set up
+                a type server that maps type URLs to message definitions as follows:
+
+                -  If no scheme is provided, ``https`` is assumed.
+                -  An HTTP GET on the URL must yield a ``google.protobuf.Type`` value in
+                   binary format, or produce an error.
+                -  Applications are allowed to cache lookup results based on the URL, or
+                   have them precompiled into a binary to avoid any lookup. Therefore,
+                   binary compatibility needs to be preserved on changes to types. (Use
+                   versioned type names to manage breaking changes.)
+
+                Note: this functionality is not currently available in the official
+                protobuf release, and it is not used for type URLs beginning with
+                type.googleapis.com.
+
+                Schemes other than ``http``, ``https`` (or the empty scheme) might be
+                used with implementation specific semantics.
             occurrence (Union[dict, ~grafeas.grafeas_v1.types.Occurrence]): The updated occurrence.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -756,8 +818,8 @@ class GrafeasClient(object):
             >>> response = client.get_occurrence_note(name)
 
         Args:
-            name (str): The name of the occurrence in the form of
-                ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
+            name (str): Optional unique identifier for this command, used in wait_for to
+                reference this command as a dependency.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -830,8 +892,9 @@ class GrafeasClient(object):
             >>> response = client.get_note(name)
 
         Args:
-            name (str): The name of the note in the form of
-                ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
+            name (str): Defines the HTTP configuration for an API service. It contains a
+                list of ``HttpRule``, each specifying the mapping of an RPC method to
+                one or more HTTP REST API methods.
             retry (Optional[google.api_core.retry.Retry]):  A retry object used
                 to retry requests. If ``None`` is specified, requests will
                 be retried using a default configuration.
@@ -918,8 +981,10 @@ class GrafeasClient(object):
             ...         pass
 
         Args:
-            parent (str): The name of the project to list notes for in the form of
-                ``projects/[PROJECT_ID]``.
+            parent (str): A list of HTTP configuration rules that apply to individual API
+                methods.
+
+                **NOTE:** All service configuration rules follow "last one wins" order.
             filter_ (str): The filter expression.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
@@ -1022,8 +1087,13 @@ class GrafeasClient(object):
             >>> response = client.create_note(parent, note_id, note)
 
         Args:
-            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``, under
-                which the note is to be created.
+            parent (str): The hostname for this service. This should be specified with no
+                prefix or protocol.
+
+                Example:
+
+                service Foo { option (google.api.default_host) = "foo.googleapi.com";
+                ... }
             note_id (str): The ID to use for this note.
             note (Union[dict, ~grafeas.grafeas_v1.types.Note]): The note to create.
 
@@ -1107,8 +1177,19 @@ class GrafeasClient(object):
             >>> response = client.batch_create_notes(parent, notes)
 
         Args:
-            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``, under
-                which the notes are to be created.
+            parent (str): The resource type of a child collection that the annotated field
+                references. This is useful for annotating the ``parent`` field that
+                doesn't have a fixed resource type.
+
+                Example:
+
+                ::
+
+                    message ListLogEntriesRequest {
+                      string parent = 1 [(google.api.resource_reference) = {
+                        child_type: "logging.googleapis.com/LogEntry"
+                      };
+                    }
             notes (dict[str -> Union[dict, ~grafeas.grafeas_v1.types.Note]]): The notes to create. Max allowed length is 1000.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -1290,8 +1371,8 @@ class GrafeasClient(object):
             ...         pass
 
         Args:
-            name (str): The name of the note to list occurrences for in the form of
-                ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
+            name (str): Not ZigZag encoded. Negative numbers take 10 bytes. Use TYPE_SINT32
+                if negative values are likely.
             filter_ (str): The filter expression.
             page_size (int): The maximum number of resources contained in the
                 underlying API response. If page streaming is performed per-
