@@ -288,11 +288,9 @@ DiscoveryNote = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _DISCOVERYNOTE,
         "__module__": "grafeas.grafeas_v1.proto.discovery_pb2",
-        "__doc__": """A note that indicates a type of analysis a provider would
-  perform. This note exists in a provider’s project. A ``Discovery``
-  occurrence is created in a consumer’s project at the start of analysis.
-  
-  
+        "__doc__": """A note that indicates a type of analysis a provider would perform.
+  This note exists in a provider’s project. A ``Discovery`` occurrence
+  is created in a consumer’s project at the start of analysis.
   Attributes:
       analysis_kind:
           Required. Immutable. The kind of analysis that is handled by
@@ -309,10 +307,8 @@ DiscoveryOccurrence = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _DISCOVERYOCCURRENCE,
         "__module__": "grafeas.grafeas_v1.proto.discovery_pb2",
-        "__doc__": """Provides information about the analysis status of a
-  discovered resource.
-  
-  
+        "__doc__": """Provides information about the analysis status of a discovered
+  resource.
   Attributes:
       continuous_analysis:
           Whether the resource is continuously analyzed.

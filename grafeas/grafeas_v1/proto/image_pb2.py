@@ -317,10 +317,7 @@ Layer = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _LAYER,
         "__module__": "grafeas.grafeas_v1.proto.image_pb2",
-        "__doc__": """Layer holds metadata specific to a layer of a Docker
-  image.
-  
-  
+        "__doc__": """Layer holds metadata specific to a layer of a Docker image.
   Attributes:
       directive:
           Required. The recovered Dockerfile directive used to construct
@@ -341,10 +338,7 @@ Fingerprint = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _FINGERPRINT,
         "__module__": "grafeas.grafeas_v1.proto.image_pb2",
-        "__doc__": """A set of properties that uniquely identify a given Docker
-  image.
-  
-  
+        "__doc__": """A set of properties that uniquely identify a given Docker image.
   Attributes:
       v1_name:
           Required. The layer ID of the final layer in the Docker
@@ -368,12 +362,10 @@ ImageNote = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _IMAGENOTE,
         "__module__": "grafeas.grafeas_v1.proto.image_pb2",
-        "__doc__": """Basis describes the base image portion (Note) of the
-  DockerImage relationship. Linked occurrences are derived from this or an
+        "__doc__": """Basis describes the base image portion (Note) of the DockerImage
+  relationship. Linked occurrences are derived from this or an
   equivalent image via: FROM <Basis.resource_url> Or an equivalent
   reference, e.g., a tag of the resource_url.
-  
-  
   Attributes:
       resource_url:
           Required. Immutable. The resource_url for the resource
@@ -392,11 +384,9 @@ ImageOccurrence = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _IMAGEOCCURRENCE,
         "__module__": "grafeas.grafeas_v1.proto.image_pb2",
-        "__doc__": """Details of the derived image portion of the DockerImage
-  relationship. This image would be produced from a Dockerfile with FROM
+        "__doc__": """Details of the derived image portion of the DockerImage relationship.
+  This image would be produced from a Dockerfile with FROM
   <DockerImage.Basis in attached Note>.
-  
-  
   Attributes:
       fingerprint:
           Required. The fingerprint of the derived image.
