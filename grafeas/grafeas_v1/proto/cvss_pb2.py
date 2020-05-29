@@ -17,6 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="grafeas.v1",
     syntax="proto3",
     serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n#grafeas/grafeas_v1/proto/cvss.proto\x12\ngrafeas.v1"\xc5\t\n\x06\x43VSSv3\x12\x12\n\nbase_score\x18\x01 \x01(\x02\x12\x1c\n\x14\x65xploitability_score\x18\x02 \x01(\x02\x12\x14\n\x0cimpact_score\x18\x03 \x01(\x02\x12\x36\n\rattack_vector\x18\x05 \x01(\x0e\x32\x1f.grafeas.v1.CVSSv3.AttackVector\x12>\n\x11\x61ttack_complexity\x18\x06 \x01(\x0e\x32#.grafeas.v1.CVSSv3.AttackComplexity\x12\x42\n\x13privileges_required\x18\x07 \x01(\x0e\x32%.grafeas.v1.CVSSv3.PrivilegesRequired\x12<\n\x10user_interaction\x18\x08 \x01(\x0e\x32".grafeas.v1.CVSSv3.UserInteraction\x12\'\n\x05scope\x18\t \x01(\x0e\x32\x18.grafeas.v1.CVSSv3.Scope\x12\x39\n\x16\x63onfidentiality_impact\x18\n \x01(\x0e\x32\x19.grafeas.v1.CVSSv3.Impact\x12\x33\n\x10integrity_impact\x18\x0b \x01(\x0e\x32\x19.grafeas.v1.CVSSv3.Impact\x12\x36\n\x13\x61vailability_impact\x18\x0c \x01(\x0e\x32\x19.grafeas.v1.CVSSv3.Impact"\x99\x01\n\x0c\x41ttackVector\x12\x1d\n\x19\x41TTACK_VECTOR_UNSPECIFIED\x10\x00\x12\x19\n\x15\x41TTACK_VECTOR_NETWORK\x10\x01\x12\x1a\n\x16\x41TTACK_VECTOR_ADJACENT\x10\x02\x12\x17\n\x13\x41TTACK_VECTOR_LOCAL\x10\x03\x12\x1a\n\x16\x41TTACK_VECTOR_PHYSICAL\x10\x04"l\n\x10\x41ttackComplexity\x12!\n\x1d\x41TTACK_COMPLEXITY_UNSPECIFIED\x10\x00\x12\x19\n\x15\x41TTACK_COMPLEXITY_LOW\x10\x01\x12\x1a\n\x16\x41TTACK_COMPLEXITY_HIGH\x10\x02"\x92\x01\n\x12PrivilegesRequired\x12#\n\x1fPRIVILEGES_REQUIRED_UNSPECIFIED\x10\x00\x12\x1c\n\x18PRIVILEGES_REQUIRED_NONE\x10\x01\x12\x1b\n\x17PRIVILEGES_REQUIRED_LOW\x10\x02\x12\x1c\n\x18PRIVILEGES_REQUIRED_HIGH\x10\x03"m\n\x0fUserInteraction\x12 \n\x1cUSER_INTERACTION_UNSPECIFIED\x10\x00\x12\x19\n\x15USER_INTERACTION_NONE\x10\x01\x12\x1d\n\x19USER_INTERACTION_REQUIRED\x10\x02"F\n\x05Scope\x12\x15\n\x11SCOPE_UNSPECIFIED\x10\x00\x12\x13\n\x0fSCOPE_UNCHANGED\x10\x01\x12\x11\n\rSCOPE_CHANGED\x10\x02"R\n\x06Impact\x12\x16\n\x12IMPACT_UNSPECIFIED\x10\x00\x12\x0f\n\x0bIMPACT_HIGH\x10\x01\x12\x0e\n\nIMPACT_LOW\x10\x02\x12\x0f\n\x0bIMPACT_NONE\x10\x03\x42_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3',
 )
 
@@ -26,6 +27,7 @@ _CVSSV3_ATTACKVECTOR = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.CVSSv3.AttackVector",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="ATTACK_VECTOR_UNSPECIFIED",
@@ -33,6 +35,7 @@ _CVSSV3_ATTACKVECTOR = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="ATTACK_VECTOR_NETWORK",
@@ -40,6 +43,7 @@ _CVSSV3_ATTACKVECTOR = _descriptor.EnumDescriptor(
             number=1,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="ATTACK_VECTOR_ADJACENT",
@@ -47,6 +51,7 @@ _CVSSV3_ATTACKVECTOR = _descriptor.EnumDescriptor(
             number=2,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="ATTACK_VECTOR_LOCAL",
@@ -54,6 +59,7 @@ _CVSSV3_ATTACKVECTOR = _descriptor.EnumDescriptor(
             number=3,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="ATTACK_VECTOR_PHYSICAL",
@@ -61,6 +67,7 @@ _CVSSV3_ATTACKVECTOR = _descriptor.EnumDescriptor(
             number=4,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -75,6 +82,7 @@ _CVSSV3_ATTACKCOMPLEXITY = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.CVSSv3.AttackComplexity",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="ATTACK_COMPLEXITY_UNSPECIFIED",
@@ -82,6 +90,7 @@ _CVSSV3_ATTACKCOMPLEXITY = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="ATTACK_COMPLEXITY_LOW",
@@ -89,6 +98,7 @@ _CVSSV3_ATTACKCOMPLEXITY = _descriptor.EnumDescriptor(
             number=1,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="ATTACK_COMPLEXITY_HIGH",
@@ -96,6 +106,7 @@ _CVSSV3_ATTACKCOMPLEXITY = _descriptor.EnumDescriptor(
             number=2,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -110,6 +121,7 @@ _CVSSV3_PRIVILEGESREQUIRED = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.CVSSv3.PrivilegesRequired",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="PRIVILEGES_REQUIRED_UNSPECIFIED",
@@ -117,6 +129,7 @@ _CVSSV3_PRIVILEGESREQUIRED = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="PRIVILEGES_REQUIRED_NONE",
@@ -124,6 +137,7 @@ _CVSSV3_PRIVILEGESREQUIRED = _descriptor.EnumDescriptor(
             number=1,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="PRIVILEGES_REQUIRED_LOW",
@@ -131,6 +145,7 @@ _CVSSV3_PRIVILEGESREQUIRED = _descriptor.EnumDescriptor(
             number=2,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="PRIVILEGES_REQUIRED_HIGH",
@@ -138,6 +153,7 @@ _CVSSV3_PRIVILEGESREQUIRED = _descriptor.EnumDescriptor(
             number=3,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -152,6 +168,7 @@ _CVSSV3_USERINTERACTION = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.CVSSv3.UserInteraction",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="USER_INTERACTION_UNSPECIFIED",
@@ -159,6 +176,7 @@ _CVSSV3_USERINTERACTION = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="USER_INTERACTION_NONE",
@@ -166,6 +184,7 @@ _CVSSV3_USERINTERACTION = _descriptor.EnumDescriptor(
             number=1,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="USER_INTERACTION_REQUIRED",
@@ -173,6 +192,7 @@ _CVSSV3_USERINTERACTION = _descriptor.EnumDescriptor(
             number=2,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -187,6 +207,7 @@ _CVSSV3_SCOPE = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.CVSSv3.Scope",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="SCOPE_UNSPECIFIED",
@@ -194,6 +215,7 @@ _CVSSV3_SCOPE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="SCOPE_UNCHANGED",
@@ -201,9 +223,15 @@ _CVSSV3_SCOPE = _descriptor.EnumDescriptor(
             number=1,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="SCOPE_CHANGED", index=2, number=2, serialized_options=None, type=None
+            name="SCOPE_CHANGED",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -218,6 +246,7 @@ _CVSSV3_IMPACT = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.CVSSv3.Impact",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="IMPACT_UNSPECIFIED",
@@ -225,15 +254,31 @@ _CVSSV3_IMPACT = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="IMPACT_HIGH", index=1, number=1, serialized_options=None, type=None
+            name="IMPACT_HIGH",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="IMPACT_LOW", index=2, number=2, serialized_options=None, type=None
+            name="IMPACT_LOW",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="IMPACT_NONE", index=3, number=3, serialized_options=None, type=None
+            name="IMPACT_NONE",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -250,6 +295,7 @@ _CVSSV3 = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="base_score",
@@ -268,6 +314,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="exploitability_score",
@@ -286,6 +333,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="impact_score",
@@ -304,6 +352,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="attack_vector",
@@ -322,6 +371,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="attack_complexity",
@@ -340,6 +390,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="privileges_required",
@@ -358,6 +409,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="user_interaction",
@@ -376,6 +428,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="scope",
@@ -394,6 +447,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="confidentiality_impact",
@@ -412,6 +466,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="integrity_impact",
@@ -430,6 +485,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="availability_impact",
@@ -448,6 +504,7 @@ _CVSSV3 = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

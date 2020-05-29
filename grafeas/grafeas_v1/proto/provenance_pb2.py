@@ -20,6 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="grafeas.v1",
     syntax="proto3",
     serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n)grafeas/grafeas_v1/proto/provenance.proto\x12\ngrafeas.v1\x1a\x1fgoogle/protobuf/timestamp.proto"\x90\x04\n\x0f\x42uildProvenance\x12\n\n\x02id\x18\x01 \x01(\t\x12\x12\n\nproject_id\x18\x02 \x01(\t\x12%\n\x08\x63ommands\x18\x03 \x03(\x0b\x32\x13.grafeas.v1.Command\x12-\n\x0f\x62uilt_artifacts\x18\x04 \x03(\x0b\x32\x14.grafeas.v1.Artifact\x12/\n\x0b\x63reate_time\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12.\n\nstart_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12,\n\x08\x65nd_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0f\n\x07\x63reator\x18\x08 \x01(\t\x12\x10\n\x08logs_uri\x18\t \x01(\t\x12-\n\x11source_provenance\x18\n \x01(\x0b\x32\x12.grafeas.v1.Source\x12\x12\n\ntrigger_id\x18\x0b \x01(\t\x12\x44\n\rbuild_options\x18\x0c \x03(\x0b\x32-.grafeas.v1.BuildProvenance.BuildOptionsEntry\x12\x17\n\x0f\x62uilder_version\x18\r \x01(\t\x1a\x33\n\x11\x42uildOptionsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01"\x95\x02\n\x06Source\x12#\n\x1b\x61rtifact_storage_source_uri\x18\x01 \x01(\t\x12\x37\n\x0b\x66ile_hashes\x18\x02 \x03(\x0b\x32".grafeas.v1.Source.FileHashesEntry\x12*\n\x07\x63ontext\x18\x03 \x01(\x0b\x32\x19.grafeas.v1.SourceContext\x12\x36\n\x13\x61\x64\x64itional_contexts\x18\x04 \x03(\x0b\x32\x19.grafeas.v1.SourceContext\x1aI\n\x0f\x46ileHashesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12%\n\x05value\x18\x02 \x01(\x0b\x32\x16.grafeas.v1.FileHashes:\x02\x38\x01"1\n\nFileHashes\x12#\n\tfile_hash\x18\x01 \x03(\x0b\x32\x10.grafeas.v1.Hash"#\n\x04Hash\x12\x0c\n\x04type\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\x0c"]\n\x07\x43ommand\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x0b\n\x03\x65nv\x18\x02 \x03(\t\x12\x0c\n\x04\x61rgs\x18\x03 \x03(\t\x12\x0b\n\x03\x64ir\x18\x04 \x01(\t\x12\n\n\x02id\x18\x05 \x01(\t\x12\x10\n\x08wait_for\x18\x06 \x03(\t"7\n\x08\x41rtifact\x12\x10\n\x08\x63hecksum\x18\x01 \x01(\t\x12\n\n\x02id\x18\x02 \x01(\t\x12\r\n\x05names\x18\x03 \x03(\t"\x9a\x02\n\rSourceContext\x12\x38\n\ncloud_repo\x18\x01 \x01(\x0b\x32".grafeas.v1.CloudRepoSourceContextH\x00\x12\x31\n\x06gerrit\x18\x02 \x01(\x0b\x32\x1f.grafeas.v1.GerritSourceContextH\x00\x12+\n\x03git\x18\x03 \x01(\x0b\x32\x1c.grafeas.v1.GitSourceContextH\x00\x12\x35\n\x06labels\x18\x04 \x03(\x0b\x32%.grafeas.v1.SourceContext.LabelsEntry\x1a-\n\x0bLabelsEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\r\n\x05value\x18\x02 \x01(\t:\x02\x38\x01\x42\t\n\x07\x63ontext"\x8a\x01\n\x0c\x41liasContext\x12+\n\x04kind\x18\x01 \x01(\x0e\x32\x1d.grafeas.v1.AliasContext.Kind\x12\x0c\n\x04name\x18\x02 \x01(\t"?\n\x04Kind\x12\x14\n\x10KIND_UNSPECIFIED\x10\x00\x12\t\n\x05\x46IXED\x10\x01\x12\x0b\n\x07MOVABLE\x10\x02\x12\t\n\x05OTHER\x10\x04"\x93\x01\n\x16\x43loudRepoSourceContext\x12#\n\x07repo_id\x18\x01 \x01(\x0b\x32\x12.grafeas.v1.RepoId\x12\x15\n\x0brevision_id\x18\x02 \x01(\tH\x00\x12\x31\n\ralias_context\x18\x03 \x01(\x0b\x32\x18.grafeas.v1.AliasContextH\x00\x42\n\n\x08revision"\x95\x01\n\x13GerritSourceContext\x12\x10\n\x08host_uri\x18\x01 \x01(\t\x12\x16\n\x0egerrit_project\x18\x02 \x01(\t\x12\x15\n\x0brevision_id\x18\x03 \x01(\tH\x00\x12\x31\n\ralias_context\x18\x04 \x01(\x0b\x32\x18.grafeas.v1.AliasContextH\x00\x42\n\n\x08revision"4\n\x10GitSourceContext\x12\x0b\n\x03url\x18\x01 \x01(\t\x12\x13\n\x0brevision_id\x18\x02 \x01(\t"S\n\x06RepoId\x12\x34\n\x0fproject_repo_id\x18\x01 \x01(\x0b\x32\x19.grafeas.v1.ProjectRepoIdH\x00\x12\r\n\x03uid\x18\x02 \x01(\tH\x00\x42\x04\n\x02id"6\n\rProjectRepoId\x12\x12\n\nproject_id\x18\x01 \x01(\t\x12\x11\n\trepo_name\x18\x02 \x01(\tB_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3',
     dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,],
 )
@@ -30,6 +31,7 @@ _ALIASCONTEXT_KIND = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.AliasContext.Kind",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="KIND_UNSPECIFIED",
@@ -37,15 +39,31 @@ _ALIASCONTEXT_KIND = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="FIXED", index=1, number=1, serialized_options=None, type=None
+            name="FIXED",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="MOVABLE", index=2, number=2, serialized_options=None, type=None
+            name="MOVABLE",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="OTHER", index=3, number=4, serialized_options=None, type=None
+            name="OTHER",
+            index=3,
+            number=4,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -62,6 +80,7 @@ _BUILDPROVENANCE_BUILDOPTIONSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -80,6 +99,7 @@ _BUILDPROVENANCE_BUILDOPTIONSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -98,6 +118,7 @@ _BUILDPROVENANCE_BUILDOPTIONSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -118,6 +139,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="id",
@@ -136,6 +158,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="project_id",
@@ -154,6 +177,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="commands",
@@ -172,6 +196,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="built_artifacts",
@@ -190,6 +215,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="create_time",
@@ -208,6 +234,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="start_time",
@@ -226,6 +253,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="end_time",
@@ -244,6 +272,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="creator",
@@ -262,6 +291,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="logs_uri",
@@ -280,6 +310,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="source_provenance",
@@ -298,6 +329,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="trigger_id",
@@ -316,6 +348,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="build_options",
@@ -334,6 +367,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="builder_version",
@@ -352,6 +386,7 @@ _BUILDPROVENANCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -373,6 +408,7 @@ _SOURCE_FILEHASHESENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -391,6 +427,7 @@ _SOURCE_FILEHASHESENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -409,6 +446,7 @@ _SOURCE_FILEHASHESENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -429,6 +467,7 @@ _SOURCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="artifact_storage_source_uri",
@@ -447,6 +486,7 @@ _SOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="file_hashes",
@@ -465,6 +505,7 @@ _SOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="context",
@@ -483,6 +524,7 @@ _SOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="additional_contexts",
@@ -501,6 +543,7 @@ _SOURCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -522,6 +565,7 @@ _FILEHASHES = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="file_hash",
@@ -540,6 +584,7 @@ _FILEHASHES = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -561,6 +606,7 @@ _HASH = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="type",
@@ -579,6 +625,7 @@ _HASH = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -597,6 +644,7 @@ _HASH = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -618,6 +666,7 @@ _COMMAND = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -636,6 +685,7 @@ _COMMAND = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="env",
@@ -654,6 +704,7 @@ _COMMAND = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="args",
@@ -672,6 +723,7 @@ _COMMAND = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="dir",
@@ -690,6 +742,7 @@ _COMMAND = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="id",
@@ -708,6 +761,7 @@ _COMMAND = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="wait_for",
@@ -726,6 +780,7 @@ _COMMAND = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -747,6 +802,7 @@ _ARTIFACT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="checksum",
@@ -765,6 +821,7 @@ _ARTIFACT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="id",
@@ -783,6 +840,7 @@ _ARTIFACT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="names",
@@ -801,6 +859,7 @@ _ARTIFACT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -822,6 +881,7 @@ _SOURCECONTEXT_LABELSENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -840,6 +900,7 @@ _SOURCECONTEXT_LABELSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -858,6 +919,7 @@ _SOURCECONTEXT_LABELSENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -878,6 +940,7 @@ _SOURCECONTEXT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="cloud_repo",
@@ -896,6 +959,7 @@ _SOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="gerrit",
@@ -914,6 +978,7 @@ _SOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="git",
@@ -932,6 +997,7 @@ _SOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="labels",
@@ -950,6 +1016,7 @@ _SOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -965,6 +1032,7 @@ _SOURCECONTEXT = _descriptor.Descriptor(
             full_name="grafeas.v1.SourceContext.context",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -979,6 +1047,7 @@ _ALIASCONTEXT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="kind",
@@ -997,6 +1066,7 @@ _ALIASCONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="name",
@@ -1015,6 +1085,7 @@ _ALIASCONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1036,6 +1107,7 @@ _CLOUDREPOSOURCECONTEXT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="repo_id",
@@ -1054,6 +1126,7 @@ _CLOUDREPOSOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="revision_id",
@@ -1072,6 +1145,7 @@ _CLOUDREPOSOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="alias_context",
@@ -1090,6 +1164,7 @@ _CLOUDREPOSOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1105,6 +1180,7 @@ _CLOUDREPOSOURCECONTEXT = _descriptor.Descriptor(
             full_name="grafeas.v1.CloudRepoSourceContext.revision",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -1119,6 +1195,7 @@ _GERRITSOURCECONTEXT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="host_uri",
@@ -1137,6 +1214,7 @@ _GERRITSOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="gerrit_project",
@@ -1155,6 +1233,7 @@ _GERRITSOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="revision_id",
@@ -1173,6 +1252,7 @@ _GERRITSOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="alias_context",
@@ -1191,6 +1271,7 @@ _GERRITSOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1206,6 +1287,7 @@ _GERRITSOURCECONTEXT = _descriptor.Descriptor(
             full_name="grafeas.v1.GerritSourceContext.revision",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -1220,6 +1302,7 @@ _GITSOURCECONTEXT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="url",
@@ -1238,6 +1321,7 @@ _GITSOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="revision_id",
@@ -1256,6 +1340,7 @@ _GITSOURCECONTEXT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1277,6 +1362,7 @@ _REPOID = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="project_repo_id",
@@ -1295,6 +1381,7 @@ _REPOID = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="uid",
@@ -1313,6 +1400,7 @@ _REPOID = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1328,6 +1416,7 @@ _REPOID = _descriptor.Descriptor(
             full_name="grafeas.v1.RepoId.id",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -1342,6 +1431,7 @@ _PROJECTREPOID = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="project_id",
@@ -1360,6 +1450,7 @@ _PROJECTREPOID = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="repo_name",
@@ -1378,6 +1469,7 @@ _PROJECTREPOID = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

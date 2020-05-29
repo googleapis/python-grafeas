@@ -20,6 +20,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="grafeas.v1",
     syntax="proto3",
     serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n)grafeas/grafeas_v1/proto/deployment.proto\x12\ngrafeas.v1\x1a\x1fgoogle/protobuf/timestamp.proto"&\n\x0e\x44\x65ploymentNote\x12\x14\n\x0cresource_uri\x18\x01 \x03(\t"\xc7\x02\n\x14\x44\x65ploymentOccurrence\x12\x12\n\nuser_email\x18\x01 \x01(\t\x12/\n\x0b\x64\x65ploy_time\x18\x02 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x31\n\rundeploy_time\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x0e\n\x06\x63onfig\x18\x04 \x01(\t\x12\x0f\n\x07\x61\x64\x64ress\x18\x05 \x01(\t\x12\x14\n\x0cresource_uri\x18\x06 \x03(\t\x12;\n\x08platform\x18\x07 \x01(\x0e\x32).grafeas.v1.DeploymentOccurrence.Platform"C\n\x08Platform\x12\x18\n\x14PLATFORM_UNSPECIFIED\x10\x00\x12\x07\n\x03GKE\x10\x01\x12\x08\n\x04\x46LEX\x10\x02\x12\n\n\x06\x43USTOM\x10\x03\x42_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3',
     dependencies=[google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,],
 )
@@ -30,6 +31,7 @@ _DEPLOYMENTOCCURRENCE_PLATFORM = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.DeploymentOccurrence.Platform",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="PLATFORM_UNSPECIFIED",
@@ -37,15 +39,31 @@ _DEPLOYMENTOCCURRENCE_PLATFORM = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="GKE", index=1, number=1, serialized_options=None, type=None
+            name="GKE",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="FLEX", index=2, number=2, serialized_options=None, type=None
+            name="FLEX",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="CUSTOM", index=3, number=3, serialized_options=None, type=None
+            name="CUSTOM",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -62,6 +80,7 @@ _DEPLOYMENTNOTE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="resource_uri",
@@ -80,6 +99,7 @@ _DEPLOYMENTNOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -101,6 +121,7 @@ _DEPLOYMENTOCCURRENCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="user_email",
@@ -119,6 +140,7 @@ _DEPLOYMENTOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="deploy_time",
@@ -137,6 +159,7 @@ _DEPLOYMENTOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="undeploy_time",
@@ -155,6 +178,7 @@ _DEPLOYMENTOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="config",
@@ -173,6 +197,7 @@ _DEPLOYMENTOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="address",
@@ -191,6 +216,7 @@ _DEPLOYMENTOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="resource_uri",
@@ -209,6 +235,7 @@ _DEPLOYMENTOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="platform",
@@ -227,6 +254,7 @@ _DEPLOYMENTOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

@@ -17,6 +17,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="grafeas.v1",
     syntax="proto3",
     serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n$grafeas/grafeas_v1/proto/image.proto\x12\ngrafeas.v1"-\n\x05Layer\x12\x11\n\tdirective\x18\x01 \x01(\t\x12\x11\n\targuments\x18\x02 \x01(\t"@\n\x0b\x46ingerprint\x12\x0f\n\x07v1_name\x18\x01 \x01(\t\x12\x0f\n\x07v2_blob\x18\x02 \x03(\t\x12\x0f\n\x07v2_name\x18\x03 \x01(\t"O\n\tImageNote\x12\x14\n\x0cresource_url\x18\x01 \x01(\t\x12,\n\x0b\x66ingerprint\x18\x02 \x01(\x0b\x32\x17.grafeas.v1.Fingerprint"\x93\x01\n\x0fImageOccurrence\x12,\n\x0b\x66ingerprint\x18\x01 \x01(\x0b\x32\x17.grafeas.v1.Fingerprint\x12\x10\n\x08\x64istance\x18\x02 \x01(\x05\x12%\n\nlayer_info\x18\x03 \x03(\x0b\x32\x11.grafeas.v1.Layer\x12\x19\n\x11\x62\x61se_resource_url\x18\x04 \x01(\tB_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3',
 )
 
@@ -27,6 +28,7 @@ _LAYER = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="directive",
@@ -45,6 +47,7 @@ _LAYER = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="arguments",
@@ -63,6 +66,7 @@ _LAYER = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -84,6 +88,7 @@ _FINGERPRINT = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="v1_name",
@@ -102,6 +107,7 @@ _FINGERPRINT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="v2_blob",
@@ -120,6 +126,7 @@ _FINGERPRINT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="v2_name",
@@ -138,6 +145,7 @@ _FINGERPRINT = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -159,6 +167,7 @@ _IMAGENOTE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="resource_url",
@@ -177,6 +186,7 @@ _IMAGENOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="fingerprint",
@@ -195,6 +205,7 @@ _IMAGENOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -216,6 +227,7 @@ _IMAGEOCCURRENCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="fingerprint",
@@ -234,6 +246,7 @@ _IMAGEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="distance",
@@ -252,6 +265,7 @@ _IMAGEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="layer_info",
@@ -270,6 +284,7 @@ _IMAGEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="base_resource_url",
@@ -288,6 +303,7 @@ _IMAGEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

@@ -24,6 +24,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="grafeas.v1",
     syntax="proto3",
     serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n(grafeas/grafeas_v1/proto/discovery.proto\x12\ngrafeas.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a\x17google/rpc/status.proto\x1a%grafeas/grafeas_v1/proto/common.proto"<\n\rDiscoveryNote\x12+\n\ranalysis_kind\x18\x01 \x01(\x0e\x32\x14.grafeas.v1.NoteKind"\x8c\x04\n\x13\x44iscoveryOccurrence\x12O\n\x13\x63ontinuous_analysis\x18\x01 \x01(\x0e\x32\x32.grafeas.v1.DiscoveryOccurrence.ContinuousAnalysis\x12G\n\x0f\x61nalysis_status\x18\x02 \x01(\x0e\x32..grafeas.v1.DiscoveryOccurrence.AnalysisStatus\x12\x31\n\x15\x61nalysis_status_error\x18\x03 \x01(\x0b\x32\x12.google.rpc.Status\x12\x0b\n\x03\x63pe\x18\x04 \x01(\t\x12\x32\n\x0elast_scan_time\x18\x05 \x01(\x0b\x32\x1a.google.protobuf.Timestamp"S\n\x12\x43ontinuousAnalysis\x12#\n\x1f\x43ONTINUOUS_ANALYSIS_UNSPECIFIED\x10\x00\x12\n\n\x06\x41\x43TIVE\x10\x01\x12\x0c\n\x08INACTIVE\x10\x02"\x91\x01\n\x0e\x41nalysisStatus\x12\x1f\n\x1b\x41NALYSIS_STATUS_UNSPECIFIED\x10\x00\x12\x0b\n\x07PENDING\x10\x01\x12\x0c\n\x08SCANNING\x10\x02\x12\x14\n\x10\x46INISHED_SUCCESS\x10\x03\x12\x13\n\x0f\x46INISHED_FAILED\x10\x04\x12\x18\n\x14\x46INISHED_UNSUPPORTED\x10\x05\x42_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3',
     dependencies=[
         google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,
@@ -38,6 +39,7 @@ _DISCOVERYOCCURRENCE_CONTINUOUSANALYSIS = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.DiscoveryOccurrence.ContinuousAnalysis",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="CONTINUOUS_ANALYSIS_UNSPECIFIED",
@@ -45,12 +47,23 @@ _DISCOVERYOCCURRENCE_CONTINUOUSANALYSIS = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="ACTIVE", index=1, number=1, serialized_options=None, type=None
+            name="ACTIVE",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="INACTIVE", index=2, number=2, serialized_options=None, type=None
+            name="INACTIVE",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -65,6 +78,7 @@ _DISCOVERYOCCURRENCE_ANALYSISSTATUS = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.DiscoveryOccurrence.AnalysisStatus",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="ANALYSIS_STATUS_UNSPECIFIED",
@@ -72,12 +86,23 @@ _DISCOVERYOCCURRENCE_ANALYSISSTATUS = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="PENDING", index=1, number=1, serialized_options=None, type=None
+            name="PENDING",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="SCANNING", index=2, number=2, serialized_options=None, type=None
+            name="SCANNING",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="FINISHED_SUCCESS",
@@ -85,6 +110,7 @@ _DISCOVERYOCCURRENCE_ANALYSISSTATUS = _descriptor.EnumDescriptor(
             number=3,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="FINISHED_FAILED",
@@ -92,6 +118,7 @@ _DISCOVERYOCCURRENCE_ANALYSISSTATUS = _descriptor.EnumDescriptor(
             number=4,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
             name="FINISHED_UNSUPPORTED",
@@ -99,6 +126,7 @@ _DISCOVERYOCCURRENCE_ANALYSISSTATUS = _descriptor.EnumDescriptor(
             number=5,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -115,6 +143,7 @@ _DISCOVERYNOTE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="analysis_kind",
@@ -133,6 +162,7 @@ _DISCOVERYNOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -154,6 +184,7 @@ _DISCOVERYOCCURRENCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="continuous_analysis",
@@ -172,6 +203,7 @@ _DISCOVERYOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="analysis_status",
@@ -190,6 +222,7 @@ _DISCOVERYOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="analysis_status_error",
@@ -208,6 +241,7 @@ _DISCOVERYOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="cpe",
@@ -226,6 +260,7 @@ _DISCOVERYOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="last_scan_time",
@@ -244,6 +279,7 @@ _DISCOVERYOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
