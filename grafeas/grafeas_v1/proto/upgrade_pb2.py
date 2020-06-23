@@ -23,6 +23,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="grafeas.v1",
     syntax="proto3",
     serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n&grafeas/grafeas_v1/proto/upgrade.proto\x12\ngrafeas.v1\x1a\x1fgoogle/protobuf/timestamp.proto\x1a&grafeas/grafeas_v1/proto/package.proto"\xaf\x01\n\x0bUpgradeNote\x12\x0f\n\x07package\x18\x01 \x01(\t\x12$\n\x07version\x18\x02 \x01(\x0b\x32\x13.grafeas.v1.Version\x12\x36\n\rdistributions\x18\x03 \x03(\x0b\x32\x1f.grafeas.v1.UpgradeDistribution\x12\x31\n\x0ewindows_update\x18\x04 \x01(\x0b\x32\x19.grafeas.v1.WindowsUpdate"]\n\x13UpgradeDistribution\x12\x0f\n\x07\x63pe_uri\x18\x01 \x01(\t\x12\x16\n\x0e\x63lassification\x18\x02 \x01(\t\x12\x10\n\x08severity\x18\x03 \x01(\t\x12\x0b\n\x03\x63ve\x18\x04 \x03(\t"\xec\x02\n\rWindowsUpdate\x12\x34\n\x08identity\x18\x01 \x01(\x0b\x32".grafeas.v1.WindowsUpdate.Identity\x12\r\n\x05title\x18\x02 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x03 \x01(\t\x12\x36\n\ncategories\x18\x04 \x03(\x0b\x32".grafeas.v1.WindowsUpdate.Category\x12\x16\n\x0ekb_article_ids\x18\x05 \x03(\t\x12\x13\n\x0bsupport_url\x18\x06 \x01(\t\x12<\n\x18last_published_timestamp\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x1a/\n\x08Identity\x12\x11\n\tupdate_id\x18\x01 \x01(\t\x12\x10\n\x08revision\x18\x02 \x01(\x05\x1a-\n\x08\x43\x61tegory\x12\x13\n\x0b\x63\x61tegory_id\x18\x01 \x01(\t\x12\x0c\n\x04name\x18\x02 \x01(\t"\xbb\x01\n\x11UpgradeOccurrence\x12\x0f\n\x07package\x18\x01 \x01(\t\x12+\n\x0eparsed_version\x18\x03 \x01(\x0b\x32\x13.grafeas.v1.Version\x12\x35\n\x0c\x64istribution\x18\x04 \x01(\x0b\x32\x1f.grafeas.v1.UpgradeDistribution\x12\x31\n\x0ewindows_update\x18\x05 \x01(\x0b\x32\x19.grafeas.v1.WindowsUpdateB_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3',
     dependencies=[
         google_dot_protobuf_dot_timestamp__pb2.DESCRIPTOR,
@@ -37,6 +38,7 @@ _UPGRADENOTE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="package",
@@ -55,6 +57,7 @@ _UPGRADENOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="version",
@@ -73,6 +76,7 @@ _UPGRADENOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="distributions",
@@ -91,6 +95,7 @@ _UPGRADENOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="windows_update",
@@ -109,6 +114,7 @@ _UPGRADENOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -130,6 +136,7 @@ _UPGRADEDISTRIBUTION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="cpe_uri",
@@ -148,6 +155,7 @@ _UPGRADEDISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="classification",
@@ -166,6 +174,7 @@ _UPGRADEDISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="severity",
@@ -184,6 +193,7 @@ _UPGRADEDISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="cve",
@@ -202,6 +212,7 @@ _UPGRADEDISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -223,6 +234,7 @@ _WINDOWSUPDATE_IDENTITY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="update_id",
@@ -241,6 +253,7 @@ _WINDOWSUPDATE_IDENTITY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="revision",
@@ -259,6 +272,7 @@ _WINDOWSUPDATE_IDENTITY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -279,6 +293,7 @@ _WINDOWSUPDATE_CATEGORY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="category_id",
@@ -297,6 +312,7 @@ _WINDOWSUPDATE_CATEGORY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="name",
@@ -315,6 +331,7 @@ _WINDOWSUPDATE_CATEGORY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -335,6 +352,7 @@ _WINDOWSUPDATE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="identity",
@@ -353,6 +371,7 @@ _WINDOWSUPDATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="title",
@@ -371,6 +390,7 @@ _WINDOWSUPDATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="description",
@@ -389,6 +409,7 @@ _WINDOWSUPDATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="categories",
@@ -407,6 +428,7 @@ _WINDOWSUPDATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="kb_article_ids",
@@ -425,6 +447,7 @@ _WINDOWSUPDATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="support_url",
@@ -443,6 +466,7 @@ _WINDOWSUPDATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="last_published_timestamp",
@@ -461,6 +485,7 @@ _WINDOWSUPDATE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -482,6 +507,7 @@ _UPGRADEOCCURRENCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="package",
@@ -500,6 +526,7 @@ _UPGRADEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="parsed_version",
@@ -518,6 +545,7 @@ _UPGRADEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="distribution",
@@ -536,6 +564,7 @@ _UPGRADEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="windows_update",
@@ -554,6 +583,7 @@ _UPGRADEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

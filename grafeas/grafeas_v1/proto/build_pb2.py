@@ -22,6 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="grafeas.v1",
     syntax="proto3",
     serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n$grafeas/grafeas_v1/proto/build.proto\x12\ngrafeas.v1\x1a)grafeas/grafeas_v1/proto/provenance.proto"$\n\tBuildNote\x12\x17\n\x0f\x62uilder_version\x18\x01 \x01(\t"\\\n\x0f\x42uildOccurrence\x12/\n\nprovenance\x18\x01 \x01(\x0b\x32\x1b.grafeas.v1.BuildProvenance\x12\x18\n\x10provenance_bytes\x18\x02 \x01(\tB_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3',
     dependencies=[grafeas_dot_grafeas__v1_dot_proto_dot_provenance__pb2.DESCRIPTOR,],
 )
@@ -33,6 +34,7 @@ _BUILDNOTE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="builder_version",
@@ -51,6 +53,7 @@ _BUILDNOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -72,6 +75,7 @@ _BUILDOCCURRENCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="provenance",
@@ -90,6 +94,7 @@ _BUILDOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="provenance_bytes",
@@ -108,6 +113,7 @@ _BUILDOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],

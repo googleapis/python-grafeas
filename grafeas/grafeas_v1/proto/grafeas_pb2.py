@@ -53,6 +53,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="grafeas.v1",
     syntax="proto3",
     serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA\352A(\n\022grafeas.io/Project\022\022projects/{project}",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n&grafeas/grafeas_v1/proto/grafeas.proto\x12\ngrafeas.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x17google/api/client.proto\x1a\x1fgoogle/api/field_behavior.proto\x1a\x19google/api/resource.proto\x1a\x1bgoogle/protobuf/empty.proto\x1a google/protobuf/field_mask.proto\x1a\x1fgoogle/protobuf/timestamp.proto\x1a*grafeas/grafeas_v1/proto/attestation.proto\x1a$grafeas/grafeas_v1/proto/build.proto\x1a%grafeas/grafeas_v1/proto/common.proto\x1a)grafeas/grafeas_v1/proto/deployment.proto\x1a(grafeas/grafeas_v1/proto/discovery.proto\x1a$grafeas/grafeas_v1/proto/image.proto\x1a&grafeas/grafeas_v1/proto/package.proto\x1a&grafeas/grafeas_v1/proto/upgrade.proto\x1a,grafeas/grafeas_v1/proto/vulnerability.proto"\xd8\x05\n\nOccurrence\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x14\n\x0cresource_uri\x18\x02 \x01(\t\x12\x11\n\tnote_name\x18\x03 \x01(\t\x12"\n\x04kind\x18\x04 \x01(\x0e\x32\x14.grafeas.v1.NoteKind\x12\x13\n\x0bremediation\x18\x05 \x01(\t\x12/\n\x0b\x63reate_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12<\n\rvulnerability\x18\x08 \x01(\x0b\x32#.grafeas.v1.VulnerabilityOccurrenceH\x00\x12,\n\x05\x62uild\x18\t \x01(\x0b\x32\x1b.grafeas.v1.BuildOccurrenceH\x00\x12,\n\x05image\x18\n \x01(\x0b\x32\x1b.grafeas.v1.ImageOccurrenceH\x00\x12\x30\n\x07package\x18\x0b \x01(\x0b\x32\x1d.grafeas.v1.PackageOccurrenceH\x00\x12\x36\n\ndeployment\x18\x0c \x01(\x0b\x32 .grafeas.v1.DeploymentOccurrenceH\x00\x12\x34\n\tdiscovery\x18\r \x01(\x0b\x32\x1f.grafeas.v1.DiscoveryOccurrenceH\x00\x12\x38\n\x0b\x61ttestation\x18\x0e \x01(\x0b\x32!.grafeas.v1.AttestationOccurrenceH\x00\x12\x30\n\x07upgrade\x18\x0f \x01(\x0b\x32\x1d.grafeas.v1.UpgradeOccurrenceH\x00:G\xea\x41\x44\n\x15grafeas.io/Occurrence\x12+projects/{project}/occurrences/{occurrence}B\t\n\x07\x64\x65tails"\x82\x06\n\x04Note\x12\x0c\n\x04name\x18\x01 \x01(\t\x12\x19\n\x11short_description\x18\x02 \x01(\t\x12\x18\n\x10long_description\x18\x03 \x01(\t\x12"\n\x04kind\x18\x04 \x01(\x0e\x32\x14.grafeas.v1.NoteKind\x12+\n\x0brelated_url\x18\x05 \x03(\x0b\x32\x16.grafeas.v1.RelatedUrl\x12\x33\n\x0f\x65xpiration_time\x18\x06 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0b\x63reate_time\x18\x07 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12/\n\x0bupdate_time\x18\x08 \x01(\x0b\x32\x1a.google.protobuf.Timestamp\x12\x1a\n\x12related_note_names\x18\t \x03(\t\x12\x36\n\rvulnerability\x18\n \x01(\x0b\x32\x1d.grafeas.v1.VulnerabilityNoteH\x00\x12&\n\x05\x62uild\x18\x0b \x01(\x0b\x32\x15.grafeas.v1.BuildNoteH\x00\x12&\n\x05image\x18\x0c \x01(\x0b\x32\x15.grafeas.v1.ImageNoteH\x00\x12*\n\x07package\x18\r \x01(\x0b\x32\x17.grafeas.v1.PackageNoteH\x00\x12\x30\n\ndeployment\x18\x0e \x01(\x0b\x32\x1a.grafeas.v1.DeploymentNoteH\x00\x12.\n\tdiscovery\x18\x0f \x01(\x0b\x32\x19.grafeas.v1.DiscoveryNoteH\x00\x12\x32\n\x0b\x61ttestation\x18\x10 \x01(\x0b\x32\x1b.grafeas.v1.AttestationNoteH\x00\x12*\n\x07upgrade\x18\x11 \x01(\x0b\x32\x17.grafeas.v1.UpgradeNoteH\x00:5\xea\x41\x32\n\x0fgrafeas.io/Note\x12\x1fprojects/{project}/notes/{note}B\x06\n\x04type"C\n\x14GetOccurrenceRequest\x12+\n\x04name\x18\x01 \x01(\tB\x1d\xe0\x41\x02\xfa\x41\x17\n\x15grafeas.io/Occurrence"{\n\x16ListOccurrencesRequest\x12*\n\x06parent\x18\x01 \x01(\tB\x1a\xe0\x41\x02\xfa\x41\x14\n\x12grafeas.io/Project\x12\x0e\n\x06\x66ilter\x18\x02 \x01(\t\x12\x11\n\tpage_size\x18\x03 \x01(\x05\x12\x12\n\npage_token\x18\x04 \x01(\t"_\n\x17ListOccurrencesResponse\x12+\n\x0boccurrences\x18\x01 \x03(\x0b\x32\x16.grafeas.v1.Occurrence\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"F\n\x17\x44\x65leteOccurrenceRequest\x12+\n\x04name\x18\x01 \x01(\tB\x1d\xe0\x41\x02\xfa\x41\x17\n\x15grafeas.io/Occurrence"v\n\x17\x43reateOccurrenceRequest\x12*\n\x06parent\x18\x01 \x01(\tB\x1a\xe0\x41\x02\xfa\x41\x14\n\x12grafeas.io/Project\x12/\n\noccurrence\x18\x02 \x01(\x0b\x32\x16.grafeas.v1.OccurrenceB\x03\xe0\x41\x02"\xa8\x01\n\x17UpdateOccurrenceRequest\x12+\n\x04name\x18\x01 \x01(\tB\x1d\xe0\x41\x02\xfa\x41\x17\n\x15grafeas.io/Occurrence\x12/\n\noccurrence\x18\x02 \x01(\x0b\x32\x16.grafeas.v1.OccurrenceB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"7\n\x0eGetNoteRequest\x12%\n\x04name\x18\x01 \x01(\tB\x17\xe0\x41\x02\xfa\x41\x11\n\x0fgrafeas.io/Note"G\n\x18GetOccurrenceNoteRequest\x12+\n\x04name\x18\x01 \x01(\tB\x1d\xe0\x41\x02\xfa\x41\x17\n\x15grafeas.io/Occurrence"u\n\x10ListNotesRequest\x12*\n\x06parent\x18\x01 \x01(\tB\x1a\xe0\x41\x02\xfa\x41\x14\n\x12grafeas.io/Project\x12\x0e\n\x06\x66ilter\x18\x02 \x01(\t\x12\x11\n\tpage_size\x18\x03 \x01(\x05\x12\x12\n\npage_token\x18\x04 \x01(\t"M\n\x11ListNotesResponse\x12\x1f\n\x05notes\x18\x01 \x03(\x0b\x32\x10.grafeas.v1.Note\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t":\n\x11\x44\x65leteNoteRequest\x12%\n\x04name\x18\x01 \x01(\tB\x17\xe0\x41\x02\xfa\x41\x11\n\x0fgrafeas.io/Note"z\n\x11\x43reateNoteRequest\x12*\n\x06parent\x18\x01 \x01(\tB\x1a\xe0\x41\x02\xfa\x41\x14\n\x12grafeas.io/Project\x12\x14\n\x07note_id\x18\x02 \x01(\tB\x03\xe0\x41\x02\x12#\n\x04note\x18\x03 \x01(\x0b\x32\x10.grafeas.v1.NoteB\x03\xe0\x41\x02"\x90\x01\n\x11UpdateNoteRequest\x12%\n\x04name\x18\x01 \x01(\tB\x17\xe0\x41\x02\xfa\x41\x11\n\x0fgrafeas.io/Note\x12#\n\x04note\x18\x02 \x01(\x0b\x32\x10.grafeas.v1.NoteB\x03\xe0\x41\x02\x12/\n\x0bupdate_mask\x18\x03 \x01(\x0b\x32\x1a.google.protobuf.FieldMask"z\n\x1aListNoteOccurrencesRequest\x12%\n\x04name\x18\x01 \x01(\tB\x17\xe0\x41\x02\xfa\x41\x11\n\x0fgrafeas.io/Note\x12\x0e\n\x06\x66ilter\x18\x02 \x01(\t\x12\x11\n\tpage_size\x18\x03 \x01(\x05\x12\x12\n\npage_token\x18\x04 \x01(\t"c\n\x1bListNoteOccurrencesResponse\x12+\n\x0boccurrences\x18\x01 \x03(\x0b\x32\x16.grafeas.v1.Occurrence\x12\x17\n\x0fnext_page_token\x18\x02 \x01(\t"\xc9\x01\n\x17\x42\x61tchCreateNotesRequest\x12*\n\x06parent\x18\x01 \x01(\tB\x1a\xe0\x41\x02\xfa\x41\x14\n\x12grafeas.io/Project\x12\x42\n\x05notes\x18\x02 \x03(\x0b\x32..grafeas.v1.BatchCreateNotesRequest.NotesEntryB\x03\xe0\x41\x02\x1a>\n\nNotesEntry\x12\x0b\n\x03key\x18\x01 \x01(\t\x12\x1f\n\x05value\x18\x02 \x01(\x0b\x32\x10.grafeas.v1.Note:\x02\x38\x01";\n\x18\x42\x61tchCreateNotesResponse\x12\x1f\n\x05notes\x18\x01 \x03(\x0b\x32\x10.grafeas.v1.Note"}\n\x1d\x42\x61tchCreateOccurrencesRequest\x12*\n\x06parent\x18\x01 \x01(\tB\x1a\xe0\x41\x02\xfa\x41\x14\n\x12grafeas.io/Project\x12\x30\n\x0boccurrences\x18\x02 \x03(\x0b\x32\x16.grafeas.v1.OccurrenceB\x03\xe0\x41\x02"M\n\x1e\x42\x61tchCreateOccurrencesResponse\x12+\n\x0boccurrences\x18\x01 \x03(\x0b\x32\x16.grafeas.v1.Occurrence2\x92\x10\n\x07Grafeas\x12}\n\rGetOccurrence\x12 .grafeas.v1.GetOccurrenceRequest\x1a\x16.grafeas.v1.Occurrence"2\x82\xd3\xe4\x93\x02%\x12#/v1/{name=projects/*/occurrences/*}\xda\x41\x04name\x12\x97\x01\n\x0fListOccurrences\x12".grafeas.v1.ListOccurrencesRequest\x1a#.grafeas.v1.ListOccurrencesResponse";\x82\xd3\xe4\x93\x02%\x12#/v1/{parent=projects/*}/occurrences\xda\x41\rparent,filter\x12\x83\x01\n\x10\x44\x65leteOccurrence\x12#.grafeas.v1.DeleteOccurrenceRequest\x1a\x16.google.protobuf.Empty"2\x82\xd3\xe4\x93\x02%*#/v1/{name=projects/*/occurrences/*}\xda\x41\x04name\x12\x9c\x01\n\x10\x43reateOccurrence\x12#.grafeas.v1.CreateOccurrenceRequest\x1a\x16.grafeas.v1.Occurrence"K\x82\xd3\xe4\x93\x02\x31"#/v1/{parent=projects/*}/occurrences:\noccurrence\xda\x41\x11parent,occurrence\x12\xc0\x01\n\x16\x42\x61tchCreateOccurrences\x12).grafeas.v1.BatchCreateOccurrencesRequest\x1a*.grafeas.v1.BatchCreateOccurrencesResponse"O\x82\xd3\xe4\x93\x02\x34"//v1/{parent=projects/*}/occurrences:batchCreate:\x01*\xda\x41\x12parent,occurrences\x12\xa6\x01\n\x10UpdateOccurrence\x12#.grafeas.v1.UpdateOccurrenceRequest\x1a\x16.grafeas.v1.Occurrence"U\x82\xd3\xe4\x93\x02\x31\x32#/v1/{name=projects/*/occurrences/*}:\noccurrence\xda\x41\x1bname,occurrence,update_mask\x12\x85\x01\n\x11GetOccurrenceNote\x12$.grafeas.v1.GetOccurrenceNoteRequest\x1a\x10.grafeas.v1.Note"8\x82\xd3\xe4\x93\x02+\x12)/v1/{name=projects/*/occurrences/*}/notes\xda\x41\x04name\x12\x65\n\x07GetNote\x12\x1a.grafeas.v1.GetNoteRequest\x1a\x10.grafeas.v1.Note",\x82\xd3\xe4\x93\x02\x1f\x12\x1d/v1/{name=projects/*/notes/*}\xda\x41\x04name\x12\x7f\n\tListNotes\x12\x1c.grafeas.v1.ListNotesRequest\x1a\x1d.grafeas.v1.ListNotesResponse"5\x82\xd3\xe4\x93\x02\x1f\x12\x1d/v1/{parent=projects/*}/notes\xda\x41\rparent,filter\x12q\n\nDeleteNote\x12\x1d.grafeas.v1.DeleteNoteRequest\x1a\x16.google.protobuf.Empty",\x82\xd3\xe4\x93\x02\x1f*\x1d/v1/{name=projects/*/notes/*}\xda\x41\x04name\x12\x80\x01\n\nCreateNote\x12\x1d.grafeas.v1.CreateNoteRequest\x1a\x10.grafeas.v1.Note"A\x82\xd3\xe4\x93\x02%"\x1d/v1/{parent=projects/*}/notes:\x04note\xda\x41\x13parent,note_id,note\x12\xa2\x01\n\x10\x42\x61tchCreateNotes\x12#.grafeas.v1.BatchCreateNotesRequest\x1a$.grafeas.v1.BatchCreateNotesResponse"C\x82\xd3\xe4\x93\x02.")/v1/{parent=projects/*}/notes:batchCreate:\x01*\xda\x41\x0cparent,notes\x12\x82\x01\n\nUpdateNote\x12\x1d.grafeas.v1.UpdateNoteRequest\x1a\x10.grafeas.v1.Note"C\x82\xd3\xe4\x93\x02%2\x1d/v1/{name=projects/*/notes/*}:\x04note\xda\x41\x15name,note,update_mask\x12\xa7\x01\n\x13ListNoteOccurrences\x12&.grafeas.v1.ListNoteOccurrencesRequest\x1a\'.grafeas.v1.ListNoteOccurrencesResponse"?\x82\xd3\xe4\x93\x02+\x12)/v1/{name=projects/*/notes/*}/occurrences\xda\x41\x0bname,filter\x1a#\xca\x41 containeranalysis.googleapis.comB\x8a\x01\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRA\xea\x41(\n\x12grafeas.io/Project\x12\x12projects/{project}b\x06proto3',
     dependencies=[
         google_dot_api_dot_annotations__pb2.DESCRIPTOR,
@@ -81,6 +82,7 @@ _OCCURRENCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -99,6 +101,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="resource_uri",
@@ -117,6 +120,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="note_name",
@@ -135,6 +139,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="kind",
@@ -153,6 +158,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="remediation",
@@ -171,6 +177,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="create_time",
@@ -189,6 +196,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_time",
@@ -207,6 +215,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="vulnerability",
@@ -225,6 +234,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="build",
@@ -243,6 +253,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="image",
@@ -261,6 +272,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="package",
@@ -279,6 +291,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="deployment",
@@ -297,6 +310,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="discovery",
@@ -315,6 +329,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="attestation",
@@ -333,6 +348,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="upgrade",
@@ -351,6 +367,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -366,6 +383,7 @@ _OCCURRENCE = _descriptor.Descriptor(
             full_name="grafeas.v1.Occurrence.details",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -380,6 +398,7 @@ _NOTE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -398,6 +417,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="short_description",
@@ -416,6 +436,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="long_description",
@@ -434,6 +455,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="kind",
@@ -452,6 +474,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="related_url",
@@ -470,6 +493,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="expiration_time",
@@ -488,6 +512,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="create_time",
@@ -506,6 +531,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_time",
@@ -524,6 +550,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="related_note_names",
@@ -542,6 +569,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="vulnerability",
@@ -560,6 +588,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="build",
@@ -578,6 +607,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="image",
@@ -596,6 +626,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="package",
@@ -614,6 +645,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="deployment",
@@ -632,6 +664,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="discovery",
@@ -650,6 +683,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="attestation",
@@ -668,6 +702,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="upgrade",
@@ -686,6 +721,7 @@ _NOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -701,6 +737,7 @@ _NOTE = _descriptor.Descriptor(
             full_name="grafeas.v1.Note.type",
             index=0,
             containing_type=None,
+            create_key=_descriptor._internal_create_key,
             fields=[],
         ),
     ],
@@ -715,6 +752,7 @@ _GETOCCURRENCEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -733,6 +771,7 @@ _GETOCCURRENCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\027\n\025grafeas.io/Occurrence",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -754,6 +793,7 @@ _LISTOCCURRENCESREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -772,6 +812,7 @@ _LISTOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\024\n\022grafeas.io/Project",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -790,6 +831,7 @@ _LISTOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -808,6 +850,7 @@ _LISTOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -826,6 +869,7 @@ _LISTOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -847,6 +891,7 @@ _LISTOCCURRENCESRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="occurrences",
@@ -865,6 +910,7 @@ _LISTOCCURRENCESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -883,6 +929,7 @@ _LISTOCCURRENCESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -904,6 +951,7 @@ _DELETEOCCURRENCEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -922,6 +970,7 @@ _DELETEOCCURRENCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\027\n\025grafeas.io/Occurrence",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -943,6 +992,7 @@ _CREATEOCCURRENCEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -961,6 +1011,7 @@ _CREATEOCCURRENCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\024\n\022grafeas.io/Project",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="occurrence",
@@ -979,6 +1030,7 @@ _CREATEOCCURRENCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1000,6 +1052,7 @@ _UPDATEOCCURRENCEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1018,6 +1071,7 @@ _UPDATEOCCURRENCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\027\n\025grafeas.io/Occurrence",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="occurrence",
@@ -1036,6 +1090,7 @@ _UPDATEOCCURRENCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_mask",
@@ -1054,6 +1109,7 @@ _UPDATEOCCURRENCEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1075,6 +1131,7 @@ _GETNOTEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1093,6 +1150,7 @@ _GETNOTEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\021\n\017grafeas.io/Note",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1114,6 +1172,7 @@ _GETOCCURRENCENOTEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1132,6 +1191,7 @@ _GETOCCURRENCENOTEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\027\n\025grafeas.io/Occurrence",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1153,6 +1213,7 @@ _LISTNOTESREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -1171,6 +1232,7 @@ _LISTNOTESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\024\n\022grafeas.io/Project",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -1189,6 +1251,7 @@ _LISTNOTESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -1207,6 +1270,7 @@ _LISTNOTESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -1225,6 +1289,7 @@ _LISTNOTESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1246,6 +1311,7 @@ _LISTNOTESRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="notes",
@@ -1264,6 +1330,7 @@ _LISTNOTESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -1282,6 +1349,7 @@ _LISTNOTESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1303,6 +1371,7 @@ _DELETENOTEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1321,6 +1390,7 @@ _DELETENOTEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\021\n\017grafeas.io/Note",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1342,6 +1412,7 @@ _CREATENOTEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -1360,6 +1431,7 @@ _CREATENOTEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\024\n\022grafeas.io/Project",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="note_id",
@@ -1378,6 +1450,7 @@ _CREATENOTEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="note",
@@ -1396,6 +1469,7 @@ _CREATENOTEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1417,6 +1491,7 @@ _UPDATENOTEREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1435,6 +1510,7 @@ _UPDATENOTEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\021\n\017grafeas.io/Note",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="note",
@@ -1453,6 +1529,7 @@ _UPDATENOTEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="update_mask",
@@ -1471,6 +1548,7 @@ _UPDATENOTEREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1492,6 +1570,7 @@ _LISTNOTEOCCURRENCESREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -1510,6 +1589,7 @@ _LISTNOTEOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\021\n\017grafeas.io/Note",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="filter",
@@ -1528,6 +1608,7 @@ _LISTNOTEOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_size",
@@ -1546,6 +1627,7 @@ _LISTNOTEOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="page_token",
@@ -1564,6 +1646,7 @@ _LISTNOTEOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1585,6 +1668,7 @@ _LISTNOTEOCCURRENCESRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="occurrences",
@@ -1603,6 +1687,7 @@ _LISTNOTEOCCURRENCESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="next_page_token",
@@ -1621,6 +1706,7 @@ _LISTNOTEOCCURRENCESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1642,6 +1728,7 @@ _BATCHCREATENOTESREQUEST_NOTESENTRY = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="key",
@@ -1660,6 +1747,7 @@ _BATCHCREATENOTESREQUEST_NOTESENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="value",
@@ -1678,6 +1766,7 @@ _BATCHCREATENOTESREQUEST_NOTESENTRY = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1698,6 +1787,7 @@ _BATCHCREATENOTESREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -1716,6 +1806,7 @@ _BATCHCREATENOTESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\024\n\022grafeas.io/Project",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="notes",
@@ -1734,6 +1825,7 @@ _BATCHCREATENOTESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1755,6 +1847,7 @@ _BATCHCREATENOTESRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="notes",
@@ -1773,6 +1866,7 @@ _BATCHCREATENOTESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1794,6 +1888,7 @@ _BATCHCREATEOCCURRENCESREQUEST = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="parent",
@@ -1812,6 +1907,7 @@ _BATCHCREATEOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002\372A\024\n\022grafeas.io/Project",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="occurrences",
@@ -1830,6 +1926,7 @@ _BATCHCREATEOCCURRENCESREQUEST = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=b"\340A\002",
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -1851,6 +1948,7 @@ _BATCHCREATEOCCURRENCESRESPONSE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="occurrences",
@@ -1869,6 +1967,7 @@ _BATCHCREATEOCCURRENCESRESPONSE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -2607,6 +2706,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
     file=DESCRIPTOR,
     index=0,
     serialized_options=b"\312A containeranalysis.googleapis.com",
+    create_key=_descriptor._internal_create_key,
     serialized_start=4149,
     serialized_end=6215,
     methods=[
@@ -2618,6 +2718,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_GETOCCURRENCEREQUEST,
             output_type=_OCCURRENCE,
             serialized_options=b"\202\323\344\223\002%\022#/v1/{name=projects/*/occurrences/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListOccurrences",
@@ -2627,6 +2728,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_LISTOCCURRENCESREQUEST,
             output_type=_LISTOCCURRENCESRESPONSE,
             serialized_options=b"\202\323\344\223\002%\022#/v1/{parent=projects/*}/occurrences\332A\rparent,filter",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="DeleteOccurrence",
@@ -2636,6 +2738,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_DELETEOCCURRENCEREQUEST,
             output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
             serialized_options=b"\202\323\344\223\002%*#/v1/{name=projects/*/occurrences/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="CreateOccurrence",
@@ -2645,6 +2748,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_CREATEOCCURRENCEREQUEST,
             output_type=_OCCURRENCE,
             serialized_options=b'\202\323\344\223\0021"#/v1/{parent=projects/*}/occurrences:\noccurrence\332A\021parent,occurrence',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="BatchCreateOccurrences",
@@ -2654,6 +2758,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_BATCHCREATEOCCURRENCESREQUEST,
             output_type=_BATCHCREATEOCCURRENCESRESPONSE,
             serialized_options=b'\202\323\344\223\0024"//v1/{parent=projects/*}/occurrences:batchCreate:\001*\332A\022parent,occurrences',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UpdateOccurrence",
@@ -2663,6 +2768,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_UPDATEOCCURRENCEREQUEST,
             output_type=_OCCURRENCE,
             serialized_options=b"\202\323\344\223\00212#/v1/{name=projects/*/occurrences/*}:\noccurrence\332A\033name,occurrence,update_mask",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetOccurrenceNote",
@@ -2672,6 +2778,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_GETOCCURRENCENOTEREQUEST,
             output_type=_NOTE,
             serialized_options=b"\202\323\344\223\002+\022)/v1/{name=projects/*/occurrences/*}/notes\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="GetNote",
@@ -2681,6 +2788,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_GETNOTEREQUEST,
             output_type=_NOTE,
             serialized_options=b"\202\323\344\223\002\037\022\035/v1/{name=projects/*/notes/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListNotes",
@@ -2690,6 +2798,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_LISTNOTESREQUEST,
             output_type=_LISTNOTESRESPONSE,
             serialized_options=b"\202\323\344\223\002\037\022\035/v1/{parent=projects/*}/notes\332A\rparent,filter",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="DeleteNote",
@@ -2699,6 +2808,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_DELETENOTEREQUEST,
             output_type=google_dot_protobuf_dot_empty__pb2._EMPTY,
             serialized_options=b"\202\323\344\223\002\037*\035/v1/{name=projects/*/notes/*}\332A\004name",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="CreateNote",
@@ -2708,6 +2818,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_CREATENOTEREQUEST,
             output_type=_NOTE,
             serialized_options=b'\202\323\344\223\002%"\035/v1/{parent=projects/*}/notes:\004note\332A\023parent,note_id,note',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="BatchCreateNotes",
@@ -2717,6 +2828,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_BATCHCREATENOTESREQUEST,
             output_type=_BATCHCREATENOTESRESPONSE,
             serialized_options=b'\202\323\344\223\002.")/v1/{parent=projects/*}/notes:batchCreate:\001*\332A\014parent,notes',
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="UpdateNote",
@@ -2726,6 +2838,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_UPDATENOTEREQUEST,
             output_type=_NOTE,
             serialized_options=b"\202\323\344\223\002%2\035/v1/{name=projects/*/notes/*}:\004note\332A\025name,note,update_mask",
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.MethodDescriptor(
             name="ListNoteOccurrences",
@@ -2735,6 +2848,7 @@ _GRAFEAS = _descriptor.ServiceDescriptor(
             input_type=_LISTNOTEOCCURRENCESREQUEST,
             output_type=_LISTNOTEOCCURRENCESRESPONSE,
             serialized_options=b"\202\323\344\223\002+\022)/v1/{name=projects/*/notes/*}/occurrences\332A\013name,filter",
+            create_key=_descriptor._internal_create_key,
         ),
     ],
 )

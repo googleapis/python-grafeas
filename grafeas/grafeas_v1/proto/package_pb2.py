@@ -18,6 +18,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
     package="grafeas.v1",
     syntax="proto3",
     serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA",
+    create_key=_descriptor._internal_create_key,
     serialized_pb=b'\n&grafeas/grafeas_v1/proto/package.proto\x12\ngrafeas.v1"\xb2\x01\n\x0c\x44istribution\x12\x0f\n\x07\x63pe_uri\x18\x01 \x01(\t\x12.\n\x0c\x61rchitecture\x18\x02 \x01(\x0e\x32\x18.grafeas.v1.Architecture\x12+\n\x0elatest_version\x18\x03 \x01(\x0b\x32\x13.grafeas.v1.Version\x12\x12\n\nmaintainer\x18\x04 \x01(\t\x12\x0b\n\x03url\x18\x05 \x01(\t\x12\x13\n\x0b\x64\x65scription\x18\x06 \x01(\t"O\n\x08Location\x12\x0f\n\x07\x63pe_uri\x18\x01 \x01(\t\x12$\n\x07version\x18\x02 \x01(\x0b\x32\x13.grafeas.v1.Version\x12\x0c\n\x04path\x18\x03 \x01(\t"K\n\x0bPackageNote\x12\x0c\n\x04name\x18\x01 \x01(\t\x12.\n\x0c\x64istribution\x18\n \x03(\x0b\x32\x18.grafeas.v1.Distribution"I\n\x11PackageOccurrence\x12\x0c\n\x04name\x18\x01 \x01(\t\x12&\n\x08location\x18\x02 \x03(\x0b\x32\x14.grafeas.v1.Location"\xcd\x01\n\x07Version\x12\r\n\x05\x65poch\x18\x01 \x01(\x05\x12\x0c\n\x04name\x18\x02 \x01(\t\x12\x10\n\x08revision\x18\x03 \x01(\t\x12-\n\x04kind\x18\x04 \x01(\x0e\x32\x1f.grafeas.v1.Version.VersionKind\x12\x11\n\tfull_name\x18\x05 \x01(\t"Q\n\x0bVersionKind\x12\x1c\n\x18VERSION_KIND_UNSPECIFIED\x10\x00\x12\n\n\x06NORMAL\x10\x01\x12\x0b\n\x07MINIMUM\x10\x02\x12\x0b\n\x07MAXIMUM\x10\x03*>\n\x0c\x41rchitecture\x12\x1c\n\x18\x41RCHITECTURE_UNSPECIFIED\x10\x00\x12\x07\n\x03X86\x10\x01\x12\x07\n\x03X64\x10\x02\x42_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3',
 )
 
@@ -26,6 +27,7 @@ _ARCHITECTURE = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.Architecture",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="ARCHITECTURE_UNSPECIFIED",
@@ -33,12 +35,23 @@ _ARCHITECTURE = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="X86", index=1, number=1, serialized_options=None, type=None
+            name="X86",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="X64", index=2, number=2, serialized_options=None, type=None
+            name="X64",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -59,6 +72,7 @@ _VERSION_VERSIONKIND = _descriptor.EnumDescriptor(
     full_name="grafeas.v1.Version.VersionKind",
     filename=None,
     file=DESCRIPTOR,
+    create_key=_descriptor._internal_create_key,
     values=[
         _descriptor.EnumValueDescriptor(
             name="VERSION_KIND_UNSPECIFIED",
@@ -66,15 +80,31 @@ _VERSION_VERSIONKIND = _descriptor.EnumDescriptor(
             number=0,
             serialized_options=None,
             type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="NORMAL", index=1, number=1, serialized_options=None, type=None
+            name="NORMAL",
+            index=1,
+            number=1,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="MINIMUM", index=2, number=2, serialized_options=None, type=None
+            name="MINIMUM",
+            index=2,
+            number=2,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.EnumValueDescriptor(
-            name="MAXIMUM", index=3, number=3, serialized_options=None, type=None
+            name="MAXIMUM",
+            index=3,
+            number=3,
+            serialized_options=None,
+            type=None,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     containing_type=None,
@@ -91,6 +121,7 @@ _DISTRIBUTION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="cpe_uri",
@@ -109,6 +140,7 @@ _DISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="architecture",
@@ -127,6 +159,7 @@ _DISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="latest_version",
@@ -145,6 +178,7 @@ _DISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="maintainer",
@@ -163,6 +197,7 @@ _DISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="url",
@@ -181,6 +216,7 @@ _DISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="description",
@@ -199,6 +235,7 @@ _DISTRIBUTION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -220,6 +257,7 @@ _LOCATION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="cpe_uri",
@@ -238,6 +276,7 @@ _LOCATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="version",
@@ -256,6 +295,7 @@ _LOCATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="path",
@@ -274,6 +314,7 @@ _LOCATION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -295,6 +336,7 @@ _PACKAGENOTE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -313,6 +355,7 @@ _PACKAGENOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="distribution",
@@ -331,6 +374,7 @@ _PACKAGENOTE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -352,6 +396,7 @@ _PACKAGEOCCURRENCE = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="name",
@@ -370,6 +415,7 @@ _PACKAGEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="location",
@@ -388,6 +434,7 @@ _PACKAGEOCCURRENCE = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
@@ -409,6 +456,7 @@ _VERSION = _descriptor.Descriptor(
     filename=None,
     file=DESCRIPTOR,
     containing_type=None,
+    create_key=_descriptor._internal_create_key,
     fields=[
         _descriptor.FieldDescriptor(
             name="epoch",
@@ -427,6 +475,7 @@ _VERSION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="name",
@@ -445,6 +494,7 @@ _VERSION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="revision",
@@ -463,6 +513,7 @@ _VERSION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="kind",
@@ -481,6 +532,7 @@ _VERSION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
         _descriptor.FieldDescriptor(
             name="full_name",
@@ -499,6 +551,7 @@ _VERSION = _descriptor.Descriptor(
             extension_scope=None,
             serialized_options=None,
             file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
         ),
     ],
     extensions=[],
