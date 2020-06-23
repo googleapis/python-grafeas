@@ -502,8 +502,8 @@ class GrafeasClient(object):
             >>> response = client.create_occurrence(parent, occurrence)
 
         Args:
-            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``, under
-                which the occurrence is to be created.
+            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``,
+                under which the occurrence is to be created.
             occurrence (Union[dict, ~grafeas.grafeas_v1.types.Occurrence]): The occurrence to create.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -586,8 +586,8 @@ class GrafeasClient(object):
             >>> response = client.batch_create_occurrences(parent, occurrences)
 
         Args:
-            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``, under
-                which the occurrences are to be created.
+            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``,
+                under which the occurrences are to be created.
             occurrences (list[Union[dict, ~grafeas.grafeas_v1.types.Occurrence]]): The occurrences to create. Max allowed length is 1000.
 
                 If a dict is provided, it must be of the same form as the protobuf
@@ -1022,8 +1022,8 @@ class GrafeasClient(object):
             >>> response = client.create_note(parent, note_id, note)
 
         Args:
-            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``, under
-                which the note is to be created.
+            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``,
+                under which the note is to be created.
             note_id (str): The ID to use for this note.
             note (Union[dict, ~grafeas.grafeas_v1.types.Note]): The note to create.
 
@@ -1107,8 +1107,8 @@ class GrafeasClient(object):
             >>> response = client.batch_create_notes(parent, notes)
 
         Args:
-            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``, under
-                which the notes are to be created.
+            parent (str): The name of the project in the form of ``projects/[PROJECT_ID]``,
+                under which the notes are to be created.
             notes (dict[str -> Union[dict, ~grafeas.grafeas_v1.types.Note]]): The notes to create. Max allowed length is 1000.
 
                 If a dict is provided, it must be of the same form as the protobuf
