@@ -252,6 +252,7 @@ RelatedUrl = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _RELATEDURL,
         "__module__": "grafeas.grafeas_v1.proto.common_pb2",
         "__doc__": """Metadata for any related URL information.
+  
   Attributes:
       url:
           Specific URL associated with the resource.
@@ -289,6 +290,7 @@ Signature = _reflection.GeneratedProtocolMessageType(
   (e.g. a ``payload`` field on the proto message that holds this
   Signature, or the canonical serialization of the proto message that
   holds this signature).
+  
   Attributes:
       signature:
           The content of the signature, an opaque bytestring. The

@@ -631,6 +631,7 @@ UpgradeNote = _reflection.GeneratedProtocolMessageType(
   version. For each package version combination (i.e. bash 4.0, bash
   4.1, bash 4.1.2), there will be an Upgrade Note. For Windows,
   windows_update field represents the information related to the update.
+  
   Attributes:
       package:
           Required for non-Windows OS. The package this Upgrade is for.
@@ -658,6 +659,7 @@ UpgradeDistribution = _reflection.GeneratedProtocolMessageType(
   each operating system (CPE). Some distributions have additional
   metadata around updates, classifying them into various categories and
   severities.
+  
   Attributes:
       cpe_uri:
           Required - The specific operating system this metadata applies
@@ -689,6 +691,7 @@ WindowsUpdate = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _WINDOWSUPDATE_IDENTITY,
                 "__module__": "grafeas.grafeas_v1.proto.upgrade_pb2",
                 "__doc__": """The unique identifier of the update.
+    
     Attributes:
         update_id:
             The revision independent identifier of the update.
@@ -705,6 +708,7 @@ WindowsUpdate = _reflection.GeneratedProtocolMessageType(
                 "DESCRIPTOR": _WINDOWSUPDATE_CATEGORY,
                 "__module__": "grafeas.grafeas_v1.proto.upgrade_pb2",
                 "__doc__": """The category to which the update belongs.
+    
     Attributes:
         category_id:
             The identifier of the category.
@@ -720,6 +724,7 @@ WindowsUpdate = _reflection.GeneratedProtocolMessageType(
   Windows operating system. The fields in this message come from the
   Windows Update API documented at https://docs.microsoft.com/en-
   us/windows/win32/api/wuapi/nn-wuapi-iupdate.
+  
   Attributes:
       identity:
           Required - The unique identifier for the update.
@@ -755,6 +760,7 @@ UpgradeOccurrence = _reflection.GeneratedProtocolMessageType(
   sources (i.e. it is present in the mirror and the running system has
   noticed its availability). For Windows, both distribution and
   windows_update contain information for the Windows update.
+  
   Attributes:
       package:
           Required for non-Windows OS. The package this Upgrade is for.

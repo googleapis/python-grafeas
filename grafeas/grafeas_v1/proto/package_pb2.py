@@ -589,6 +589,7 @@ Distribution = _reflection.GeneratedProtocolMessageType(
         "__module__": "grafeas.grafeas_v1.proto.package_pb2",
         "__doc__": """This represents a particular channel of distribution for a given
   package. E.g., Debian’s jessie-backports dpkg mirror.
+  
   Attributes:
       cpe_uri:
           Required. The cpe_uri in `CPE format
@@ -621,6 +622,7 @@ Location = _reflection.GeneratedProtocolMessageType(
         "__doc__": """An occurrence of a particular package installation found within a
   system’s filesystem. E.g., glibc was found in
   ``/var/lib/dpkg/status``.
+  
   Attributes:
       cpe_uri:
           Required. The CPE URI in `CPE format
@@ -646,6 +648,7 @@ PackageNote = _reflection.GeneratedProtocolMessageType(
         "__doc__": """This represents a particular package that is distributed over various
   channels. E.g., glibc (aka libc6) is distributed by many, at various
   versions.
+  
   Attributes:
       name:
           Required. Immutable. The name of the package.
@@ -665,6 +668,7 @@ PackageOccurrence = _reflection.GeneratedProtocolMessageType(
         "__module__": "grafeas.grafeas_v1.proto.package_pb2",
         "__doc__": """Details on how a particular software package was installed on a
   system.
+  
   Attributes:
       name:
           Output only. The name of the installed package.
@@ -685,6 +689,7 @@ Version = _reflection.GeneratedProtocolMessageType(
         "__module__": "grafeas.grafeas_v1.proto.package_pb2",
         "__doc__": """Version contains structured information about the version of a
   package.
+  
   Attributes:
       epoch:
           Used to correct mistakes in the version numbering scheme.

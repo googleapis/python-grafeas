@@ -143,6 +143,7 @@ BuildNote = _reflection.GeneratedProtocolMessageType(
         "__module__": "grafeas.grafeas_v1.proto.build_pb2",
         "__doc__": """Note holding the version of the provider’s builder and the signature
   of the provenance message in the build details occurrence.
+  
   Attributes:
       builder_version:
           Required. Immutable. Version of the builder which produced
@@ -160,6 +161,7 @@ BuildOccurrence = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _BUILDOCCURRENCE,
         "__module__": "grafeas.grafeas_v1.proto.build_pb2",
         "__doc__": """Details of a build occurrence.
+  
   Attributes:
       provenance:
           Required. The actual provenance for the build.

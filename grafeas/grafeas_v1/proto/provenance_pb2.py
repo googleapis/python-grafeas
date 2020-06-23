@@ -1597,6 +1597,7 @@ BuildProvenance = _reflection.GeneratedProtocolMessageType(
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """Provenance of a build. Contains all information needed to verify the
   full details about the build from source to completion.
+  
   Attributes:
       id:
           Required. Unique identifier of the build.
@@ -1654,6 +1655,7 @@ Source = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _SOURCE,
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """Source describes the location of the source used for the build.
+  
   Attributes:
       artifact_storage_source_uri:
           If provided, the input binary artifacts for the build came
@@ -1689,6 +1691,7 @@ FileHashes = _reflection.GeneratedProtocolMessageType(
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """Container message for hashes of byte content of files, used in source
   messages to verify integrity of source input to the build.
+  
   Attributes:
       file_hash:
           Required. Collection of file hashes.
@@ -1705,6 +1708,7 @@ Hash = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _HASH,
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """Container message for hash values.
+  
   Attributes:
       type:
           Required. The type of hash that was performed, e.g. “SHA-256”.
@@ -1723,6 +1727,7 @@ Command = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _COMMAND,
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """Command describes a step performed as part of the build pipeline.
+  
   Attributes:
       name:
           Required. Name of the command, as presented on the command
@@ -1753,6 +1758,7 @@ Artifact = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _ARTIFACT,
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """Artifact describes a build product.
+  
   Attributes:
       checksum:
           Hash or checksum value of a binary, or Docker Registry 2.0
@@ -1791,6 +1797,7 @@ SourceContext = _reflection.GeneratedProtocolMessageType(
         "__doc__": """A SourceContext is a reference to a tree of files. A SourceContext
   together with a path point to a unique revision of a single file or
   directory.
+  
   Attributes:
       context:
           A SourceContext can refer any one of the following types of
@@ -1819,6 +1826,7 @@ AliasContext = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _ALIASCONTEXT,
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """An alias to a repo revision.
+  
   Attributes:
       kind:
           The alias kind.
@@ -1838,6 +1846,7 @@ CloudRepoSourceContext = _reflection.GeneratedProtocolMessageType(
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """A CloudRepoSourceContext denotes a particular revision in a Google
   Cloud Source Repo.
+  
   Attributes:
       repo_id:
           The ID of the repo.
@@ -1861,6 +1870,7 @@ GerritSourceContext = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GERRITSOURCECONTEXT,
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """A SourceContext referring to a Gerrit project.
+  
   Attributes:
       host_uri:
           The URI of a running Gerrit instance.
@@ -1889,6 +1899,7 @@ GitSourceContext = _reflection.GeneratedProtocolMessageType(
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """A GitSourceContext denotes a particular revision in a third party Git
   repository (e.g., GitHub).
+  
   Attributes:
       url:
           Git repository URL.
@@ -1907,6 +1918,7 @@ RepoId = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _REPOID,
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """A unique identifier for a Cloud Repo.
+  
   Attributes:
       id:
           A cloud repo can be identified by either its project ID and
@@ -1930,6 +1942,7 @@ ProjectRepoId = _reflection.GeneratedProtocolMessageType(
         "__module__": "grafeas.grafeas_v1.proto.provenance_pb2",
         "__doc__": """Selects a repo using a Google Cloud Platform project ID (e.g., winged-
   cargo-31) and a repo name within that project.
+  
   Attributes:
       project_id:
           The ID of the project.

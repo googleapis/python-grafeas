@@ -194,6 +194,7 @@ AttestationNote = _reflection.GeneratedProtocolMessageType(
     suitable for debug output. Note that these hints should not be used to
     look up authorities in security sensitive contexts, such as when
     looking up attestations to verify.
+    
     Attributes:
         human_readable_name:
             Required. The human readable name of this attestation
@@ -213,6 +214,7 @@ AttestationNote = _reflection.GeneratedProtocolMessageType(
   also provides a single point of lookup to find all attached
   attestation occurrences, even if they don’t all live in the same
   project.
+  
   Attributes:
       hint:
           Hint hints at the purpose of the attestation authority.
@@ -237,6 +239,7 @@ AttestationOccurrence = _reflection.GeneratedProtocolMessageType(
   for lookup (how to find this attestation if you already know the
   authority and artifact to be verified) and intent (for which authority
   this attestation was intended to sign.
+  
   Attributes:
       serialized_payload:
           Required. The serialized payload that is verified by one or
