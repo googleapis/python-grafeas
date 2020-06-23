@@ -2083,10 +2083,7 @@ Occurrence = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _OCCURRENCE,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
-        "__doc__": """An instance of an analysis type that has been found on a
-  resource.
-  
-  
+        "__doc__": """An instance of an analysis type that has been found on a resource.
   Attributes:
       name:
           Output only. The name of the occurrence in the form of
@@ -2145,8 +2142,6 @@ Note = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _NOTE,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """A type of analysis that can be done for a resource.
-  
-  
   Attributes:
       name:
           Output only. The name of the note in the form of
@@ -2204,8 +2199,6 @@ GetOccurrenceRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GETOCCURRENCEREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to get an occurrence.
-  
-  
   Attributes:
       name:
           The name of the occurrence in the form of
@@ -2223,8 +2216,6 @@ ListOccurrencesRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTOCCURRENCESREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to list occurrences.
-  
-  
   Attributes:
       parent:
           The name of the project to list occurrences for in the form of
@@ -2250,8 +2241,6 @@ ListOccurrencesResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTOCCURRENCESRESPONSE,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Response for listing occurrences.
-  
-  
   Attributes:
       occurrences:
           The occurrences requested.
@@ -2272,8 +2261,6 @@ DeleteOccurrenceRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _DELETEOCCURRENCEREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to delete an occurrence.
-  
-  
   Attributes:
       name:
           The name of the occurrence in the form of
@@ -2291,8 +2278,6 @@ CreateOccurrenceRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _CREATEOCCURRENCEREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to create a new occurrence.
-  
-  
   Attributes:
       parent:
           The name of the project in the form of
@@ -2313,8 +2298,6 @@ UpdateOccurrenceRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _UPDATEOCCURRENCEREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to update an occurrence.
-  
-  
   Attributes:
       name:
           The name of the occurrence in the form of
@@ -2336,8 +2319,6 @@ GetNoteRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _GETNOTEREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to get a note.
-  
-  
   Attributes:
       name:
           The name of the note in the form of
@@ -2354,10 +2335,7 @@ GetOccurrenceNoteRequest = _reflection.GeneratedProtocolMessageType(
     {
         "DESCRIPTOR": _GETOCCURRENCENOTEREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
-        "__doc__": """Request to get the note to which the specified occurrence
-  is attached.
-  
-  
+        "__doc__": """Request to get the note to which the specified occurrence is attached.
   Attributes:
       name:
           The name of the occurrence in the form of
@@ -2375,8 +2353,6 @@ ListNotesRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTNOTESREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to list notes.
-  
-  
   Attributes:
       parent:
           The name of the project to list notes for in the form of
@@ -2402,8 +2378,6 @@ ListNotesResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTNOTESRESPONSE,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Response for listing notes.
-  
-  
   Attributes:
       notes:
           The notes requested.
@@ -2424,8 +2398,6 @@ DeleteNoteRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _DELETENOTEREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to delete a note.
-  
-  
   Attributes:
       name:
           The name of the note in the form of
@@ -2443,8 +2415,6 @@ CreateNoteRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _CREATENOTEREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to create a new note.
-  
-  
   Attributes:
       parent:
           The name of the project in the form of
@@ -2467,8 +2437,6 @@ UpdateNoteRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _UPDATENOTEREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to update a note.
-  
-  
   Attributes:
       name:
           The name of the note in the form of
@@ -2490,8 +2458,6 @@ ListNoteOccurrencesRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTNOTEOCCURRENCESREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to list occurrences for a note.
-  
-  
   Attributes:
       name:
           The name of the note to list occurrences for in the form of
@@ -2515,8 +2481,6 @@ ListNoteOccurrencesResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _LISTNOTEOCCURRENCESRESPONSE,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Response for listing occurrences for a note.
-  
-  
   Attributes:
       occurrences:
           The occurrences attached to the specified note.
@@ -2544,8 +2508,6 @@ BatchCreateNotesRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _BATCHCREATENOTESREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to create notes in batch.
-  
-  
   Attributes:
       parent:
           The name of the project in the form of
@@ -2567,8 +2529,6 @@ BatchCreateNotesResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _BATCHCREATENOTESRESPONSE,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Response for creating notes in batch.
-  
-  
   Attributes:
       notes:
           The notes that were created.
@@ -2585,8 +2545,6 @@ BatchCreateOccurrencesRequest = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _BATCHCREATEOCCURRENCESREQUEST,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Request to create occurrences in batch.
-  
-  
   Attributes:
       parent:
           The name of the project in the form of
@@ -2607,8 +2565,6 @@ BatchCreateOccurrencesResponse = _reflection.GeneratedProtocolMessageType(
         "DESCRIPTOR": _BATCHCREATEOCCURRENCESRESPONSE,
         "__module__": "grafeas.grafeas_v1.proto.grafeas_pb2",
         "__doc__": """Response for creating occurrences in batch.
-  
-  
   Attributes:
       occurrences:
           The occurrences that were created.
