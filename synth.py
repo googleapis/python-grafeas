@@ -72,8 +72,8 @@ s.replace(
 # Fix docstrings with no summary lines
 s.replace(
     "grafeas/grafeas_v1/proto/vulnerability_pb2.py",
-    r"""(\s+)__doc__ = \"\"\"Attributes:""",
-    """\g<1>__doc__=\"\"\"
+    r"""(\s+)["']__doc__["']: \"\"\"Attributes:""",
+    """\g<1>"__doc__": \"\"\"
     Attributes:""",
 )
 
@@ -353,12 +353,6 @@ s.replace(
 \g<1>client=grafeas_v1.GrafeasClient(transport)""",
 )
 
-# Escape '_' at the end of the line in pb2 docstrings
-s.replace(
-"google/cloud/**/*_pb2.py",
-"""\_$""",
-"""\_""",
-)
 
 # ----------------------------------------------------------------------------
 # Add templated files
