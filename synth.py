@@ -365,5 +365,10 @@ s.replace("noxfile.py", """['"]sphinx['"]""", '"sphinx<3.0.0"')
 
 # Library code is in "grafeas" instead of "google"
 s.replace("noxfile.py", """['"]google['"]""", '''"grafeas"''')
+s.replace("noxfile.py",
+    '''"--cov=google.cloud.grafeas",
+    \s+"--cov=google.cloud",''',
+    '''"--cov=grafeas",'''
+)
 
 s.shell.run(["nox", "-s", "blacken"], hide_output=False)

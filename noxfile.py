@@ -77,8 +77,7 @@ def default(session):
     session.run(
         "py.test",
         "--quiet",
-        "--cov=google.cloud.grafeas",
-        "--cov=google.cloud",
+        "--cov=grafeas",
         "--cov=tests.unit",
         "--cov-append",
         "--cov-config=.coveragerc",
