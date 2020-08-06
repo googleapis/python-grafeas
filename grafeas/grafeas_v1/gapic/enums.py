@@ -28,7 +28,6 @@ class Architecture(enum.IntEnum):
       X86 (int): X86 architecture.
       X64 (int): X64 architecture.
     """
-
     ARCHITECTURE_UNSPECIFIED = 0
     X86 = 1
     X64 = 2
@@ -49,7 +48,6 @@ class NoteKind(enum.IntEnum):
       ATTESTATION (int): This represents a logical "role" that can attest to artifacts.
       UPGRADE (int): This represents an available package upgrade.
     """
-
     NOTE_KIND_UNSPECIFIED = 0
     VULNERABILITY = 1
     BUILD = 2
@@ -73,7 +71,6 @@ class Severity(enum.IntEnum):
       HIGH (int): High severity.
       CRITICAL (int): Critical severity.
     """
-
     SEVERITY_UNSPECIFIED = 0
     MINIMAL = 1
     LOW = 2
@@ -94,7 +91,6 @@ class AliasContext(object):
           OTHER (int): Used to specify non-standard aliases. For example, if a Git repo has a
           ref named "refs/foo/bar".
         """
-
         KIND_UNSPECIFIED = 0
         FIXED = 1
         MOVABLE = 2
@@ -109,10 +105,10 @@ class CVSSv3(object):
           ATTACK_COMPLEXITY_LOW (int)
           ATTACK_COMPLEXITY_HIGH (int)
         """
-
         ATTACK_COMPLEXITY_UNSPECIFIED = 0
         ATTACK_COMPLEXITY_LOW = 1
         ATTACK_COMPLEXITY_HIGH = 2
+
 
     class AttackVector(enum.IntEnum):
         """
@@ -123,12 +119,12 @@ class CVSSv3(object):
           ATTACK_VECTOR_LOCAL (int)
           ATTACK_VECTOR_PHYSICAL (int)
         """
-
         ATTACK_VECTOR_UNSPECIFIED = 0
         ATTACK_VECTOR_NETWORK = 1
         ATTACK_VECTOR_ADJACENT = 2
         ATTACK_VECTOR_LOCAL = 3
         ATTACK_VECTOR_PHYSICAL = 4
+
 
     class Impact(enum.IntEnum):
         """
@@ -138,11 +134,11 @@ class CVSSv3(object):
           IMPACT_LOW (int)
           IMPACT_NONE (int)
         """
-
         IMPACT_UNSPECIFIED = 0
         IMPACT_HIGH = 1
         IMPACT_LOW = 2
         IMPACT_NONE = 3
+
 
     class PrivilegesRequired(enum.IntEnum):
         """
@@ -152,11 +148,11 @@ class CVSSv3(object):
           PRIVILEGES_REQUIRED_LOW (int)
           PRIVILEGES_REQUIRED_HIGH (int)
         """
-
         PRIVILEGES_REQUIRED_UNSPECIFIED = 0
         PRIVILEGES_REQUIRED_NONE = 1
         PRIVILEGES_REQUIRED_LOW = 2
         PRIVILEGES_REQUIRED_HIGH = 3
+
 
     class Scope(enum.IntEnum):
         """
@@ -165,10 +161,10 @@ class CVSSv3(object):
           SCOPE_UNCHANGED (int)
           SCOPE_CHANGED (int)
         """
-
         SCOPE_UNSPECIFIED = 0
         SCOPE_UNCHANGED = 1
         SCOPE_CHANGED = 2
+
 
     class UserInteraction(enum.IntEnum):
         """
@@ -177,7 +173,6 @@ class CVSSv3(object):
           USER_INTERACTION_NONE (int)
           USER_INTERACTION_REQUIRED (int)
         """
-
         USER_INTERACTION_UNSPECIFIED = 0
         USER_INTERACTION_NONE = 1
         USER_INTERACTION_REQUIRED = 2
@@ -194,7 +189,6 @@ class DeploymentOccurrence(object):
           FLEX (int): Google App Engine: Flexible Environment.
           CUSTOM (int): Custom user-defined platform.
         """
-
         PLATFORM_UNSPECIFIED = 0
         GKE = 1
         FLEX = 2
@@ -216,13 +210,13 @@ class DiscoveryOccurrence(object):
           state.
           FINISHED_UNSUPPORTED (int): The resource is known not to be supported
         """
-
         ANALYSIS_STATUS_UNSPECIFIED = 0
         PENDING = 1
         SCANNING = 2
         FINISHED_SUCCESS = 3
         FINISHED_FAILED = 4
         FINISHED_UNSUPPORTED = 5
+
 
     class ContinuousAnalysis(enum.IntEnum):
         """
@@ -233,7 +227,6 @@ class DiscoveryOccurrence(object):
           ACTIVE (int): The resource is continuously analyzed.
           INACTIVE (int): The resource is ignored for continuous analysis.
         """
-
         CONTINUOUS_ANALYSIS_UNSPECIFIED = 0
         ACTIVE = 1
         INACTIVE = 2
@@ -250,8 +243,8 @@ class Version(object):
           MINIMUM (int): A special version representing negative infinity.
           MAXIMUM (int): A special version representing positive infinity.
         """
-
         VERSION_KIND_UNSPECIFIED = 0
         NORMAL = 1
         MINIMUM = 2
         MAXIMUM = 3
+    
