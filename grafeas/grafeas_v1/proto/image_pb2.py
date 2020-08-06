@@ -6,215 +6,334 @@ from google.protobuf import descriptor as _descriptor
 from google.protobuf import message as _message
 from google.protobuf import reflection as _reflection
 from google.protobuf import symbol_database as _symbol_database
+
 # @@protoc_insertion_point(imports)
 
 _sym_db = _symbol_database.Default()
 
 
-
-
 DESCRIPTOR = _descriptor.FileDescriptor(
-  name='grafeas/grafeas_v1/proto/image.proto',
-  package='grafeas.v1',
-  syntax='proto3',
-  serialized_options=b'\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA',
-  create_key=_descriptor._internal_create_key,
-  serialized_pb=b'\n$grafeas/grafeas_v1/proto/image.proto\x12\ngrafeas.v1\"-\n\x05Layer\x12\x11\n\tdirective\x18\x01 \x01(\t\x12\x11\n\targuments\x18\x02 \x01(\t\"@\n\x0b\x46ingerprint\x12\x0f\n\x07v1_name\x18\x01 \x01(\t\x12\x0f\n\x07v2_blob\x18\x02 \x03(\t\x12\x0f\n\x07v2_name\x18\x03 \x01(\t\"O\n\tImageNote\x12\x14\n\x0cresource_url\x18\x01 \x01(\t\x12,\n\x0b\x66ingerprint\x18\x02 \x01(\x0b\x32\x17.grafeas.v1.Fingerprint\"\x93\x01\n\x0fImageOccurrence\x12,\n\x0b\x66ingerprint\x18\x01 \x01(\x0b\x32\x17.grafeas.v1.Fingerprint\x12\x10\n\x08\x64istance\x18\x02 \x01(\x05\x12%\n\nlayer_info\x18\x03 \x03(\x0b\x32\x11.grafeas.v1.Layer\x12\x19\n\x11\x62\x61se_resource_url\x18\x04 \x01(\tB_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3'
+    name="grafeas/grafeas_v1/proto/image.proto",
+    package="grafeas.v1",
+    syntax="proto3",
+    serialized_options=b"\n\rio.grafeas.v1P\001ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\242\002\003GRA",
+    create_key=_descriptor._internal_create_key,
+    serialized_pb=b'\n$grafeas/grafeas_v1/proto/image.proto\x12\ngrafeas.v1"-\n\x05Layer\x12\x11\n\tdirective\x18\x01 \x01(\t\x12\x11\n\targuments\x18\x02 \x01(\t"@\n\x0b\x46ingerprint\x12\x0f\n\x07v1_name\x18\x01 \x01(\t\x12\x0f\n\x07v2_blob\x18\x02 \x03(\t\x12\x0f\n\x07v2_name\x18\x03 \x01(\t"O\n\tImageNote\x12\x14\n\x0cresource_url\x18\x01 \x01(\t\x12,\n\x0b\x66ingerprint\x18\x02 \x01(\x0b\x32\x17.grafeas.v1.Fingerprint"\x93\x01\n\x0fImageOccurrence\x12,\n\x0b\x66ingerprint\x18\x01 \x01(\x0b\x32\x17.grafeas.v1.Fingerprint\x12\x10\n\x08\x64istance\x18\x02 \x01(\x05\x12%\n\nlayer_info\x18\x03 \x03(\x0b\x32\x11.grafeas.v1.Layer\x12\x19\n\x11\x62\x61se_resource_url\x18\x04 \x01(\tB_\n\rio.grafeas.v1P\x01ZFgoogle.golang.org/genproto/googleapis/grafeas/grafeas_v1/proto;grafeas\xa2\x02\x03GRAb\x06proto3',
 )
 
 
-
-
 _LAYER = _descriptor.Descriptor(
-  name='Layer',
-  full_name='grafeas.v1.Layer',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='directive', full_name='grafeas.v1.Layer.directive', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='arguments', full_name='grafeas.v1.Layer.arguments', index=1,
-      number=2, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=52,
-  serialized_end=97,
+    name="Layer",
+    full_name="grafeas.v1.Layer",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="directive",
+            full_name="grafeas.v1.Layer.directive",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="arguments",
+            full_name="grafeas.v1.Layer.arguments",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=52,
+    serialized_end=97,
 )
 
 
 _FINGERPRINT = _descriptor.Descriptor(
-  name='Fingerprint',
-  full_name='grafeas.v1.Fingerprint',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='v1_name', full_name='grafeas.v1.Fingerprint.v1_name', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='v2_blob', full_name='grafeas.v1.Fingerprint.v2_blob', index=1,
-      number=2, type=9, cpp_type=9, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='v2_name', full_name='grafeas.v1.Fingerprint.v2_name', index=2,
-      number=3, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=99,
-  serialized_end=163,
+    name="Fingerprint",
+    full_name="grafeas.v1.Fingerprint",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="v1_name",
+            full_name="grafeas.v1.Fingerprint.v1_name",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="v2_blob",
+            full_name="grafeas.v1.Fingerprint.v2_blob",
+            index=1,
+            number=2,
+            type=9,
+            cpp_type=9,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="v2_name",
+            full_name="grafeas.v1.Fingerprint.v2_name",
+            index=2,
+            number=3,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=99,
+    serialized_end=163,
 )
 
 
 _IMAGENOTE = _descriptor.Descriptor(
-  name='ImageNote',
-  full_name='grafeas.v1.ImageNote',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='resource_url', full_name='grafeas.v1.ImageNote.resource_url', index=0,
-      number=1, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='fingerprint', full_name='grafeas.v1.ImageNote.fingerprint', index=1,
-      number=2, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=165,
-  serialized_end=244,
+    name="ImageNote",
+    full_name="grafeas.v1.ImageNote",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="resource_url",
+            full_name="grafeas.v1.ImageNote.resource_url",
+            index=0,
+            number=1,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="fingerprint",
+            full_name="grafeas.v1.ImageNote.fingerprint",
+            index=1,
+            number=2,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=165,
+    serialized_end=244,
 )
 
 
 _IMAGEOCCURRENCE = _descriptor.Descriptor(
-  name='ImageOccurrence',
-  full_name='grafeas.v1.ImageOccurrence',
-  filename=None,
-  file=DESCRIPTOR,
-  containing_type=None,
-  create_key=_descriptor._internal_create_key,
-  fields=[
-    _descriptor.FieldDescriptor(
-      name='fingerprint', full_name='grafeas.v1.ImageOccurrence.fingerprint', index=0,
-      number=1, type=11, cpp_type=10, label=1,
-      has_default_value=False, default_value=None,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='distance', full_name='grafeas.v1.ImageOccurrence.distance', index=1,
-      number=2, type=5, cpp_type=1, label=1,
-      has_default_value=False, default_value=0,
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='layer_info', full_name='grafeas.v1.ImageOccurrence.layer_info', index=2,
-      number=3, type=11, cpp_type=10, label=3,
-      has_default_value=False, default_value=[],
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-    _descriptor.FieldDescriptor(
-      name='base_resource_url', full_name='grafeas.v1.ImageOccurrence.base_resource_url', index=3,
-      number=4, type=9, cpp_type=9, label=1,
-      has_default_value=False, default_value=b"".decode('utf-8'),
-      message_type=None, enum_type=None, containing_type=None,
-      is_extension=False, extension_scope=None,
-      serialized_options=None, file=DESCRIPTOR,  create_key=_descriptor._internal_create_key),
-  ],
-  extensions=[
-  ],
-  nested_types=[],
-  enum_types=[
-  ],
-  serialized_options=None,
-  is_extendable=False,
-  syntax='proto3',
-  extension_ranges=[],
-  oneofs=[
-  ],
-  serialized_start=247,
-  serialized_end=394,
+    name="ImageOccurrence",
+    full_name="grafeas.v1.ImageOccurrence",
+    filename=None,
+    file=DESCRIPTOR,
+    containing_type=None,
+    create_key=_descriptor._internal_create_key,
+    fields=[
+        _descriptor.FieldDescriptor(
+            name="fingerprint",
+            full_name="grafeas.v1.ImageOccurrence.fingerprint",
+            index=0,
+            number=1,
+            type=11,
+            cpp_type=10,
+            label=1,
+            has_default_value=False,
+            default_value=None,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="distance",
+            full_name="grafeas.v1.ImageOccurrence.distance",
+            index=1,
+            number=2,
+            type=5,
+            cpp_type=1,
+            label=1,
+            has_default_value=False,
+            default_value=0,
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="layer_info",
+            full_name="grafeas.v1.ImageOccurrence.layer_info",
+            index=2,
+            number=3,
+            type=11,
+            cpp_type=10,
+            label=3,
+            has_default_value=False,
+            default_value=[],
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+        _descriptor.FieldDescriptor(
+            name="base_resource_url",
+            full_name="grafeas.v1.ImageOccurrence.base_resource_url",
+            index=3,
+            number=4,
+            type=9,
+            cpp_type=9,
+            label=1,
+            has_default_value=False,
+            default_value=b"".decode("utf-8"),
+            message_type=None,
+            enum_type=None,
+            containing_type=None,
+            is_extension=False,
+            extension_scope=None,
+            serialized_options=None,
+            file=DESCRIPTOR,
+            create_key=_descriptor._internal_create_key,
+        ),
+    ],
+    extensions=[],
+    nested_types=[],
+    enum_types=[],
+    serialized_options=None,
+    is_extendable=False,
+    syntax="proto3",
+    extension_ranges=[],
+    oneofs=[],
+    serialized_start=247,
+    serialized_end=394,
 )
 
-_IMAGENOTE.fields_by_name['fingerprint'].message_type = _FINGERPRINT
-_IMAGEOCCURRENCE.fields_by_name['fingerprint'].message_type = _FINGERPRINT
-_IMAGEOCCURRENCE.fields_by_name['layer_info'].message_type = _LAYER
-DESCRIPTOR.message_types_by_name['Layer'] = _LAYER
-DESCRIPTOR.message_types_by_name['Fingerprint'] = _FINGERPRINT
-DESCRIPTOR.message_types_by_name['ImageNote'] = _IMAGENOTE
-DESCRIPTOR.message_types_by_name['ImageOccurrence'] = _IMAGEOCCURRENCE
+_IMAGENOTE.fields_by_name["fingerprint"].message_type = _FINGERPRINT
+_IMAGEOCCURRENCE.fields_by_name["fingerprint"].message_type = _FINGERPRINT
+_IMAGEOCCURRENCE.fields_by_name["layer_info"].message_type = _LAYER
+DESCRIPTOR.message_types_by_name["Layer"] = _LAYER
+DESCRIPTOR.message_types_by_name["Fingerprint"] = _FINGERPRINT
+DESCRIPTOR.message_types_by_name["ImageNote"] = _IMAGENOTE
+DESCRIPTOR.message_types_by_name["ImageOccurrence"] = _IMAGEOCCURRENCE
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
-Layer = _reflection.GeneratedProtocolMessageType('Layer', (_message.Message,), {
-  'DESCRIPTOR' : _LAYER,
-  '__module__' : 'grafeas.grafeas_v1.proto.image_pb2'
-  ,
-  '__doc__': """Layer holds metadata specific to a layer of a Docker image.
+Layer = _reflection.GeneratedProtocolMessageType(
+    "Layer",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _LAYER,
+        "__module__": "grafeas.grafeas_v1.proto.image_pb2",
+        "__doc__": """Layer holds metadata specific to a layer of a Docker image.
   
   Attributes:
       directive:
@@ -225,15 +344,18 @@ Layer = _reflection.GeneratedProtocolMessageType('Layer', (_message.Message,), {
       arguments:
           The recovered arguments to the Dockerfile directive.
   """,
-  # @@protoc_insertion_point(class_scope:grafeas.v1.Layer)
-  })
+        # @@protoc_insertion_point(class_scope:grafeas.v1.Layer)
+    },
+)
 _sym_db.RegisterMessage(Layer)
 
-Fingerprint = _reflection.GeneratedProtocolMessageType('Fingerprint', (_message.Message,), {
-  'DESCRIPTOR' : _FINGERPRINT,
-  '__module__' : 'grafeas.grafeas_v1.proto.image_pb2'
-  ,
-  '__doc__': """A set of properties that uniquely identify a given Docker image.
+Fingerprint = _reflection.GeneratedProtocolMessageType(
+    "Fingerprint",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _FINGERPRINT,
+        "__module__": "grafeas.grafeas_v1.proto.image_pb2",
+        "__doc__": """A set of properties that uniquely identify a given Docker image.
   
   Attributes:
       v1_name:
@@ -247,15 +369,18 @@ Fingerprint = _reflection.GeneratedProtocolMessageType('Fingerprint', (_message.
           [bottom] := v2_blob[bottom] [N] := sha256(v2_blob[N] + " " +
           v2_name[N+1]) Only the name of the final blob is kept.
   """,
-  # @@protoc_insertion_point(class_scope:grafeas.v1.Fingerprint)
-  })
+        # @@protoc_insertion_point(class_scope:grafeas.v1.Fingerprint)
+    },
+)
 _sym_db.RegisterMessage(Fingerprint)
 
-ImageNote = _reflection.GeneratedProtocolMessageType('ImageNote', (_message.Message,), {
-  'DESCRIPTOR' : _IMAGENOTE,
-  '__module__' : 'grafeas.grafeas_v1.proto.image_pb2'
-  ,
-  '__doc__': """Basis describes the base image portion (Note) of the DockerImage
+ImageNote = _reflection.GeneratedProtocolMessageType(
+    "ImageNote",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _IMAGENOTE,
+        "__module__": "grafeas.grafeas_v1.proto.image_pb2",
+        "__doc__": """Basis describes the base image portion (Note) of the DockerImage
   relationship. Linked occurrences are derived from this or an
   equivalent image via: FROM <Basis.resource_url> Or an equivalent
   reference, e.g., a tag of the resource_url.
@@ -267,15 +392,18 @@ ImageNote = _reflection.GeneratedProtocolMessageType('ImageNote', (_message.Mess
       fingerprint:
           Required. Immutable. The fingerprint of the base image.
   """,
-  # @@protoc_insertion_point(class_scope:grafeas.v1.ImageNote)
-  })
+        # @@protoc_insertion_point(class_scope:grafeas.v1.ImageNote)
+    },
+)
 _sym_db.RegisterMessage(ImageNote)
 
-ImageOccurrence = _reflection.GeneratedProtocolMessageType('ImageOccurrence', (_message.Message,), {
-  'DESCRIPTOR' : _IMAGEOCCURRENCE,
-  '__module__' : 'grafeas.grafeas_v1.proto.image_pb2'
-  ,
-  '__doc__': """Details of the derived image portion of the DockerImage relationship.
+ImageOccurrence = _reflection.GeneratedProtocolMessageType(
+    "ImageOccurrence",
+    (_message.Message,),
+    {
+        "DESCRIPTOR": _IMAGEOCCURRENCE,
+        "__module__": "grafeas.grafeas_v1.proto.image_pb2",
+        "__doc__": """Details of the derived image portion of the DockerImage relationship.
   This image would be produced from a Dockerfile with FROM
   <DockerImage.Basis in attached Note>.
   
@@ -294,8 +422,9 @@ ImageOccurrence = _reflection.GeneratedProtocolMessageType('ImageOccurrence', (_
           Output only. This contains the base image URL for the derived
           image occurrence.
   """,
-  # @@protoc_insertion_point(class_scope:grafeas.v1.ImageOccurrence)
-  })
+        # @@protoc_insertion_point(class_scope:grafeas.v1.ImageOccurrence)
+    },
+)
 _sym_db.RegisterMessage(ImageOccurrence)
 
 

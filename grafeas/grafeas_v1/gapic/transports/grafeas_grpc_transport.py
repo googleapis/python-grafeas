@@ -29,7 +29,6 @@ class GrafeasGrpcTransport(object):
     features of gRPC.
     """
 
-
     def __init__(self, address, scopes, channel=None, credentials=None):
         """Instantiate the transport class.
 
@@ -50,8 +49,7 @@ class GrafeasGrpcTransport(object):
         # exception (channels come with credentials baked in already).
         if channel is not None and credentials is not None:
             raise ValueError(
-                'The `channel` and `credentials` arguments are mutually '
-                'exclusive.',
+                "The `channel` and `credentials` arguments are mutually " "exclusive.",
             )
 
         # Create the channel.
@@ -61,8 +59,8 @@ class GrafeasGrpcTransport(object):
                 scopes,
                 credentials=credentials,
                 options={
-                    'grpc.max_send_message_length': -1,
-                    'grpc.max_receive_message_length': -1,
+                    "grpc.max_send_message_length": -1,
+                    "grpc.max_receive_message_length": -1,
                 }.items(),
             )
 
@@ -71,17 +69,11 @@ class GrafeasGrpcTransport(object):
         # gRPC uses objects called "stubs" that are bound to the
         # channel and provide a basic method for each RPC.
         self._stubs = {
-            'grafeas_stub': grafeas_pb2_grpc.GrafeasStub(channel),
+            "grafeas_stub": grafeas_pb2_grpc.GrafeasStub(channel),
         }
 
-
     @classmethod
-    def create_channel(
-                cls,
-                address,
-                scopes,
-                credentials=None,
-                **kwargs):
+    def create_channel(cls, address, scopes, credentials=None, **kwargs):
         """Create and return a gRPC channel object.
 
         Args:
@@ -99,10 +91,7 @@ class GrafeasGrpcTransport(object):
             grpc.Channel: A gRPC channel object.
         """
         return google.api_core.grpc_helpers.create_channel(
-            address,
-            credentials=credentials,
-            scopes=scopes,
-            **kwargs
+            address, credentials=credentials, scopes=scopes, **kwargs
         )
 
     @property
@@ -125,7 +114,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].GetOccurrence
+        return self._stubs["grafeas_stub"].GetOccurrence
 
     @property
     def list_occurrences(self):
@@ -138,7 +127,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].ListOccurrences
+        return self._stubs["grafeas_stub"].ListOccurrences
 
     @property
     def delete_occurrence(self):
@@ -153,7 +142,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].DeleteOccurrence
+        return self._stubs["grafeas_stub"].DeleteOccurrence
 
     @property
     def create_occurrence(self):
@@ -166,7 +155,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].CreateOccurrence
+        return self._stubs["grafeas_stub"].CreateOccurrence
 
     @property
     def batch_create_occurrences(self):
@@ -179,7 +168,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].BatchCreateOccurrences
+        return self._stubs["grafeas_stub"].BatchCreateOccurrences
 
     @property
     def update_occurrence(self):
@@ -192,7 +181,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].UpdateOccurrence
+        return self._stubs["grafeas_stub"].UpdateOccurrence
 
     @property
     def get_occurrence_note(self):
@@ -206,7 +195,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].GetOccurrenceNote
+        return self._stubs["grafeas_stub"].GetOccurrenceNote
 
     @property
     def get_note(self):
@@ -219,7 +208,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].GetNote
+        return self._stubs["grafeas_stub"].GetNote
 
     @property
     def list_notes(self):
@@ -232,7 +221,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].ListNotes
+        return self._stubs["grafeas_stub"].ListNotes
 
     @property
     def delete_note(self):
@@ -245,7 +234,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].DeleteNote
+        return self._stubs["grafeas_stub"].DeleteNote
 
     @property
     def create_note(self):
@@ -258,7 +247,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].CreateNote
+        return self._stubs["grafeas_stub"].CreateNote
 
     @property
     def batch_create_notes(self):
@@ -271,7 +260,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].BatchCreateNotes
+        return self._stubs["grafeas_stub"].BatchCreateNotes
 
     @property
     def update_note(self):
@@ -284,7 +273,7 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].UpdateNote
+        return self._stubs["grafeas_stub"].UpdateNote
 
     @property
     def list_note_occurrences(self):
@@ -299,4 +288,4 @@ class GrafeasGrpcTransport(object):
                 deserialized request object and returns a
                 deserialized response object.
         """
-        return self._stubs['grafeas_stub'].ListNoteOccurrences
+        return self._stubs["grafeas_stub"].ListNoteOccurrences

@@ -3,7 +3,9 @@
 import grpc
 
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
-from grafeas.grafeas_v1.proto import grafeas_pb2 as grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2
+from grafeas.grafeas_v1.proto import (
+    grafeas_pb2 as grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2,
+)
 
 
 class GrafeasStub(object):
@@ -30,75 +32,75 @@ class GrafeasStub(object):
             channel: A grpc.Channel.
         """
         self.GetOccurrence = channel.unary_unary(
-                '/grafeas.v1.Grafeas/GetOccurrence',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.FromString,
-                )
+            "/grafeas.v1.Grafeas/GetOccurrence",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.FromString,
+        )
         self.ListOccurrences = channel.unary_unary(
-                '/grafeas.v1.Grafeas/ListOccurrences',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesResponse.FromString,
-                )
+            "/grafeas.v1.Grafeas/ListOccurrences",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesResponse.FromString,
+        )
         self.DeleteOccurrence = channel.unary_unary(
-                '/grafeas.v1.Grafeas/DeleteOccurrence',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteOccurrenceRequest.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
+            "/grafeas.v1.Grafeas/DeleteOccurrence",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteOccurrenceRequest.SerializeToString,
+            response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
         self.CreateOccurrence = channel.unary_unary(
-                '/grafeas.v1.Grafeas/CreateOccurrence',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateOccurrenceRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.FromString,
-                )
+            "/grafeas.v1.Grafeas/CreateOccurrence",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateOccurrenceRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.FromString,
+        )
         self.BatchCreateOccurrences = channel.unary_unary(
-                '/grafeas.v1.Grafeas/BatchCreateOccurrences',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesResponse.FromString,
-                )
+            "/grafeas.v1.Grafeas/BatchCreateOccurrences",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesResponse.FromString,
+        )
         self.UpdateOccurrence = channel.unary_unary(
-                '/grafeas.v1.Grafeas/UpdateOccurrence',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateOccurrenceRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.FromString,
-                )
+            "/grafeas.v1.Grafeas/UpdateOccurrence",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateOccurrenceRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.FromString,
+        )
         self.GetOccurrenceNote = channel.unary_unary(
-                '/grafeas.v1.Grafeas/GetOccurrenceNote',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceNoteRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
-                )
+            "/grafeas.v1.Grafeas/GetOccurrenceNote",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceNoteRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
+        )
         self.GetNote = channel.unary_unary(
-                '/grafeas.v1.Grafeas/GetNote',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetNoteRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
-                )
+            "/grafeas.v1.Grafeas/GetNote",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetNoteRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
+        )
         self.ListNotes = channel.unary_unary(
-                '/grafeas.v1.Grafeas/ListNotes',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesResponse.FromString,
-                )
+            "/grafeas.v1.Grafeas/ListNotes",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesResponse.FromString,
+        )
         self.DeleteNote = channel.unary_unary(
-                '/grafeas.v1.Grafeas/DeleteNote',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteNoteRequest.SerializeToString,
-                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-                )
+            "/grafeas.v1.Grafeas/DeleteNote",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteNoteRequest.SerializeToString,
+            response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
+        )
         self.CreateNote = channel.unary_unary(
-                '/grafeas.v1.Grafeas/CreateNote',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateNoteRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
-                )
+            "/grafeas.v1.Grafeas/CreateNote",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateNoteRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
+        )
         self.BatchCreateNotes = channel.unary_unary(
-                '/grafeas.v1.Grafeas/BatchCreateNotes',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesResponse.FromString,
-                )
+            "/grafeas.v1.Grafeas/BatchCreateNotes",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesResponse.FromString,
+        )
         self.UpdateNote = channel.unary_unary(
-                '/grafeas.v1.Grafeas/UpdateNote',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateNoteRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
-                )
+            "/grafeas.v1.Grafeas/UpdateNote",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateNoteRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
+        )
         self.ListNoteOccurrences = channel.unary_unary(
-                '/grafeas.v1.Grafeas/ListNoteOccurrences',
-                request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesRequest.SerializeToString,
-                response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesResponse.FromString,
-                )
+            "/grafeas.v1.Grafeas/ListNoteOccurrences",
+            request_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesRequest.SerializeToString,
+            response_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesResponse.FromString,
+        )
 
 
 class GrafeasServicer(object):
@@ -122,15 +124,15 @@ class GrafeasServicer(object):
         """Gets the specified occurrence.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ListOccurrences(self, request, context):
         """Lists occurrences for the specified project.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def DeleteOccurrence(self, request, context):
         """Deletes the specified occurrence. For example, use this method to delete an
@@ -138,79 +140,79 @@ class GrafeasServicer(object):
         resource.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CreateOccurrence(self, request, context):
         """Creates a new occurrence.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def BatchCreateOccurrences(self, request, context):
         """Creates new occurrences in batch.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def UpdateOccurrence(self, request, context):
         """Updates the specified occurrence.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetOccurrenceNote(self, request, context):
         """Gets the note attached to the specified occurrence. Consumer projects can
         use this method to get a note that belongs to a provider project.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def GetNote(self, request, context):
         """Gets the specified note.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ListNotes(self, request, context):
         """Lists notes for the specified project.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def DeleteNote(self, request, context):
         """Deletes the specified note.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def CreateNote(self, request, context):
         """Creates a new note.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def BatchCreateNotes(self, request, context):
         """Creates new notes in batch.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def UpdateNote(self, request, context):
         """Updates the specified note.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
     def ListNoteOccurrences(self, request, context):
         """Lists occurrences referencing the specified note. Provider projects can use
@@ -218,89 +220,90 @@ class GrafeasServicer(object):
         specified note.
         """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
-        context.set_details('Method not implemented!')
-        raise NotImplementedError('Method not implemented!')
+        context.set_details("Method not implemented!")
+        raise NotImplementedError("Method not implemented!")
 
 
 def add_GrafeasServicer_to_server(servicer, server):
     rpc_method_handlers = {
-            'GetOccurrence': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetOccurrence,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.SerializeToString,
-            ),
-            'ListOccurrences': grpc.unary_unary_rpc_method_handler(
-                    servicer.ListOccurrences,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesResponse.SerializeToString,
-            ),
-            'DeleteOccurrence': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeleteOccurrence,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteOccurrenceRequest.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            ),
-            'CreateOccurrence': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateOccurrence,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateOccurrenceRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.SerializeToString,
-            ),
-            'BatchCreateOccurrences': grpc.unary_unary_rpc_method_handler(
-                    servicer.BatchCreateOccurrences,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesResponse.SerializeToString,
-            ),
-            'UpdateOccurrence': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateOccurrence,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateOccurrenceRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.SerializeToString,
-            ),
-            'GetOccurrenceNote': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetOccurrenceNote,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceNoteRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.SerializeToString,
-            ),
-            'GetNote': grpc.unary_unary_rpc_method_handler(
-                    servicer.GetNote,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetNoteRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.SerializeToString,
-            ),
-            'ListNotes': grpc.unary_unary_rpc_method_handler(
-                    servicer.ListNotes,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesResponse.SerializeToString,
-            ),
-            'DeleteNote': grpc.unary_unary_rpc_method_handler(
-                    servicer.DeleteNote,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteNoteRequest.FromString,
-                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
-            ),
-            'CreateNote': grpc.unary_unary_rpc_method_handler(
-                    servicer.CreateNote,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateNoteRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.SerializeToString,
-            ),
-            'BatchCreateNotes': grpc.unary_unary_rpc_method_handler(
-                    servicer.BatchCreateNotes,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesResponse.SerializeToString,
-            ),
-            'UpdateNote': grpc.unary_unary_rpc_method_handler(
-                    servicer.UpdateNote,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateNoteRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.SerializeToString,
-            ),
-            'ListNoteOccurrences': grpc.unary_unary_rpc_method_handler(
-                    servicer.ListNoteOccurrences,
-                    request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesRequest.FromString,
-                    response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesResponse.SerializeToString,
-            ),
+        "GetOccurrence": grpc.unary_unary_rpc_method_handler(
+            servicer.GetOccurrence,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.SerializeToString,
+        ),
+        "ListOccurrences": grpc.unary_unary_rpc_method_handler(
+            servicer.ListOccurrences,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesResponse.SerializeToString,
+        ),
+        "DeleteOccurrence": grpc.unary_unary_rpc_method_handler(
+            servicer.DeleteOccurrence,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteOccurrenceRequest.FromString,
+            response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+        ),
+        "CreateOccurrence": grpc.unary_unary_rpc_method_handler(
+            servicer.CreateOccurrence,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateOccurrenceRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.SerializeToString,
+        ),
+        "BatchCreateOccurrences": grpc.unary_unary_rpc_method_handler(
+            servicer.BatchCreateOccurrences,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesResponse.SerializeToString,
+        ),
+        "UpdateOccurrence": grpc.unary_unary_rpc_method_handler(
+            servicer.UpdateOccurrence,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateOccurrenceRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.SerializeToString,
+        ),
+        "GetOccurrenceNote": grpc.unary_unary_rpc_method_handler(
+            servicer.GetOccurrenceNote,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceNoteRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.SerializeToString,
+        ),
+        "GetNote": grpc.unary_unary_rpc_method_handler(
+            servicer.GetNote,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetNoteRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.SerializeToString,
+        ),
+        "ListNotes": grpc.unary_unary_rpc_method_handler(
+            servicer.ListNotes,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesResponse.SerializeToString,
+        ),
+        "DeleteNote": grpc.unary_unary_rpc_method_handler(
+            servicer.DeleteNote,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteNoteRequest.FromString,
+            response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
+        ),
+        "CreateNote": grpc.unary_unary_rpc_method_handler(
+            servicer.CreateNote,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateNoteRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.SerializeToString,
+        ),
+        "BatchCreateNotes": grpc.unary_unary_rpc_method_handler(
+            servicer.BatchCreateNotes,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesResponse.SerializeToString,
+        ),
+        "UpdateNote": grpc.unary_unary_rpc_method_handler(
+            servicer.UpdateNote,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateNoteRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.SerializeToString,
+        ),
+        "ListNoteOccurrences": grpc.unary_unary_rpc_method_handler(
+            servicer.ListNoteOccurrences,
+            request_deserializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesRequest.FromString,
+            response_serializer=grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesResponse.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-            'grafeas.v1.Grafeas', rpc_method_handlers)
+        "grafeas.v1.Grafeas", rpc_method_handlers
+    )
     server.add_generic_rpc_handlers((generic_handler,))
 
 
- # This class is part of an EXPERIMENTAL API.
+# This class is part of an EXPERIMENTAL API.
 class Grafeas(object):
     """[Grafeas](https://grafeas.io) API.
 
@@ -319,225 +322,379 @@ class Grafeas(object):
     """
 
     @staticmethod
-    def GetOccurrence(request,
+    def GetOccurrence(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/GetOccurrence',
+            "/grafeas.v1.Grafeas/GetOccurrence",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ListOccurrences(request,
+    def ListOccurrences(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/ListOccurrences',
+            "/grafeas.v1.Grafeas/ListOccurrences",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListOccurrencesResponse.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def DeleteOccurrence(request,
+    def DeleteOccurrence(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/DeleteOccurrence',
+            "/grafeas.v1.Grafeas/DeleteOccurrence",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteOccurrenceRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CreateOccurrence(request,
+    def CreateOccurrence(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/CreateOccurrence',
+            "/grafeas.v1.Grafeas/CreateOccurrence",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateOccurrenceRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def BatchCreateOccurrences(request,
+    def BatchCreateOccurrences(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/BatchCreateOccurrences',
+            "/grafeas.v1.Grafeas/BatchCreateOccurrences",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateOccurrencesResponse.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def UpdateOccurrence(request,
+    def UpdateOccurrence(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/UpdateOccurrence',
+            "/grafeas.v1.Grafeas/UpdateOccurrence",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateOccurrenceRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Occurrence.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetOccurrenceNote(request,
+    def GetOccurrenceNote(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/GetOccurrenceNote',
+            "/grafeas.v1.Grafeas/GetOccurrenceNote",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceNoteRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def GetNote(request,
+    def GetNote(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/GetNote',
+            "/grafeas.v1.Grafeas/GetNote",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.GetNoteRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ListNotes(request,
+    def ListNotes(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/ListNotes',
+            "/grafeas.v1.Grafeas/ListNotes",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNotesResponse.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def DeleteNote(request,
+    def DeleteNote(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/DeleteNote',
+            "/grafeas.v1.Grafeas/DeleteNote",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.DeleteNoteRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def CreateNote(request,
+    def CreateNote(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/CreateNote',
+            "/grafeas.v1.Grafeas/CreateNote",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.CreateNoteRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def BatchCreateNotes(request,
+    def BatchCreateNotes(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/BatchCreateNotes',
+            "/grafeas.v1.Grafeas/BatchCreateNotes",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.BatchCreateNotesResponse.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def UpdateNote(request,
+    def UpdateNote(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/UpdateNote',
+            "/grafeas.v1.Grafeas/UpdateNote",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.UpdateNoteRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.Note.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
 
     @staticmethod
-    def ListNoteOccurrences(request,
+    def ListNoteOccurrences(
+        request,
+        target,
+        options=(),
+        channel_credentials=None,
+        call_credentials=None,
+        compression=None,
+        wait_for_ready=None,
+        timeout=None,
+        metadata=None,
+    ):
+        return grpc.experimental.unary_unary(
+            request,
             target,
-            options=(),
-            channel_credentials=None,
-            call_credentials=None,
-            compression=None,
-            wait_for_ready=None,
-            timeout=None,
-            metadata=None):
-        return grpc.experimental.unary_unary(request, target, '/grafeas.v1.Grafeas/ListNoteOccurrences',
+            "/grafeas.v1.Grafeas/ListNoteOccurrences",
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesRequest.SerializeToString,
             grafeas_dot_grafeas__v1_dot_proto_dot_grafeas__pb2.ListNoteOccurrencesResponse.FromString,
-            options, channel_credentials,
-            call_credentials, compression, wait_for_ready, timeout, metadata)
+            options,
+            channel_credentials,
+            call_credentials,
+            compression,
+            wait_for_ready,
+            timeout,
+            metadata,
+        )
