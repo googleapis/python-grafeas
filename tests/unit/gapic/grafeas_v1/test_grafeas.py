@@ -57,10 +57,6 @@ from grafeas.grafeas_v1.types import upgrade
 from grafeas.grafeas_v1.types import vulnerability
 
 
-def client_cert_source_callback():
-    return b"cert bytes", b"key bytes"
-
-
 def test_get_occurrence(transport: str = 'grpc', request_type=grafeas.GetOccurrenceRequest):
     client = GrafeasClient(
         

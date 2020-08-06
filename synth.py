@@ -32,7 +32,7 @@ library = gapic.py_library(
     version="v1",
     bazel_target="//grafeas/v1:grafeas-v1-py",
     proto_output_path="grafeas/grafeas_v1/proto",
-    include_protos=True
+    include_protos=True,
 )
 
 excludes = ["README.rst", "setup.py", "docs/index.rst"]
@@ -40,11 +40,8 @@ excludes = ["README.rst", "setup.py", "docs/index.rst"]
 s.move(library, excludes=excludes)
 
 
-
 # Make package name 'grafeas'
-s.replace(
-    "grafeas/**/*.py", "grafeas-grafeas", "grafeas"
-)
+s.replace("grafeas/**/*.py", "grafeas-grafeas", "grafeas")
 
 # ----------------------------------------------------------------------------
 # Remove google-specific portions of library
@@ -68,9 +65,7 @@ s.replace(
 )
 
 s.replace(
-    "grafeas/**/transports/*.py",
-    r"""'containeranalysis\.googleapis\.com'""",
-    """''""",
+    "grafeas/**/transports/*.py", r"""'containeranalysis\.googleapis\.com'""", """''""",
 )
 
 
@@ -81,14 +76,14 @@ s.replace(
     def from_service_account_file.*
     from_service_account_json = from_service_account_file""",
     "",
-    flags=re.MULTILINE | re.DOTALL
+    flags=re.MULTILINE | re.DOTALL,
 )
 
 s.replace(
     "grafeas/**/async_client.py",
     """\s+from_service_account_file = GrafeasClient\.from_service_account_file
 \s+from_service_account_json = from_service_account_file""",
-""
+    "",
 )
 
 # Remove credentials and client options from the service celint
@@ -146,42 +141,64 @@ s.replace(
 )
 
 
- 
- # Fix generated unit tests
+# Changes tests
 
 # remove use of credentials
-s.replace("tests/**/test_grafeas.py",
-"""credentials=credentials.*?,""",
-"")
+s.replace("tests/**/test_grafeas.py", """credentials=credentials.*?,""", "")
 
 # remove client_options
+s.replace("tests/**/test_grafeas.py", """client_options=\{.*?\},""", "")
+s.replace("tests/**/test_grafeas.py", """client_options=options,""", "")
+s.replace(
+    "tests/**/test_grafeas.py",
+    """client_options=client_options.ClientOptions(.*?),""",
+    "",
+)
+
+# Delete irrelevant tests
+
+# client options tests
 s.replace("tests/**/test_grafeas.py",
-"""client_options=\{.*?\},""",
-"")
+"""def client_cert_source_callback.*?def test_get_occurrence""",
+"""def test_get_occurrence""",
+flags=re.MULTILINE | re.DOTALL,)
+
+# default endpoint test
 s.replace("tests/**/test_grafeas.py",
-"""client_options=options,""",
-"")
+"""def test_grafeas_host_no_port.*?def test_grafeas_grpc_transport_channel""",
+"""def test_grafeas_grpc_transport_channel""",
+flags=re.MULTILINE | re.DOTALL,)
+
+# duplicate credentials tests
 s.replace("tests/**/test_grafeas.py",
-"""client_options=client_options.ClientOptions(.*?),""",
-"")
+"""def test_credentials_transport_error.*?def test_transport_instance""",
+"""def test_transport_instance""",
+flags=re.MULTILINE | re.DOTALL,)
+
+s.replace("tests/**/test_grafeas.py",
+"""def test_grafeas_base_transport_error.*?def test_grafeas_base_transport""",
+"""def test_grafeas_base_transport""",
+flags=re.MULTILINE | re.DOTALL,)
 
 # ----------------------------------------------------------------------------
 # Add templated files
 # ----------------------------------------------------------------------------
 templated_files = common.py_library(
-    samples=False,  # set to True only if there are samples
-    microgenerator=True,
+    samples=False, microgenerator=True,  # set to True only if there are samples
 )
 
-s.move(templated_files, excludes=[".coveragerc"])  # microgenerator has a good .coveragerc file
+s.move(
+    templated_files, excludes=[".coveragerc"]
+)  # microgenerator has a good .coveragerc file
 
 
 # Library code is in "grafeas" instead of "google"
 s.replace("noxfile.py", """['"]google['"]""", '''"grafeas"''')
-s.replace("noxfile.py",
-    '''"--cov=google.cloud.grafeas",
-    \s+"--cov=google.cloud",''',
-    '''"--cov=grafeas",'''
+s.replace(
+    "noxfile.py",
+    """"--cov=google.cloud.grafeas",
+    \s+"--cov=google.cloud",""",
+    """"--cov=grafeas",""",
 )
 
-#s.shell.run(["nox", "-s", "blacken"], hide_output=False)
+# s.shell.run(["nox", "-s", "blacken"], hide_output=False)
