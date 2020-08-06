@@ -3505,7 +3505,6 @@ def test_grafeas_grpc_asyncio_transport_channel():
     assert not callback.called
 
 
-
 def test_occurrence_path():
     project = "squid"
     occurrence = "clam"
