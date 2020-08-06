@@ -22,11 +22,7 @@ from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package='grafeas.v1',
-    manifest={
-        'DeploymentNote',
-        'DeploymentOccurrence',
-    },
+    package="grafeas.v1", manifest={"DeploymentNote", "DeploymentOccurrence",},
 )
 
 
@@ -67,6 +63,7 @@ class DeploymentOccurrence(proto.Message):
         platform (~.deployment.DeploymentOccurrence.Platform):
             Platform hosting this deployment.
     """
+
     class Platform(proto.Enum):
         r"""Types of platforms."""
         PLATFORM_UNSPECIFIED = 0
@@ -76,13 +73,9 @@ class DeploymentOccurrence(proto.Message):
 
     user_email = proto.Field(proto.STRING, number=1)
 
-    deploy_time = proto.Field(proto.MESSAGE, number=2,
-        message=timestamp.Timestamp,
-    )
+    deploy_time = proto.Field(proto.MESSAGE, number=2, message=timestamp.Timestamp,)
 
-    undeploy_time = proto.Field(proto.MESSAGE, number=3,
-        message=timestamp.Timestamp,
-    )
+    undeploy_time = proto.Field(proto.MESSAGE, number=3, message=timestamp.Timestamp,)
 
     config = proto.Field(proto.STRING, number=4)
 
@@ -90,9 +83,7 @@ class DeploymentOccurrence(proto.Message):
 
     resource_uri = proto.RepeatedField(proto.STRING, number=6)
 
-    platform = proto.Field(proto.ENUM, number=7,
-        enum=Platform,
-    )
+    platform = proto.Field(proto.ENUM, number=7, enum=Platform,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

@@ -26,7 +26,7 @@ release_status = "Development Status :: 3 - Alpha"
 dependencies = [
     "google-api-core[grpc] >= 1.21.0, < 2.0.0dev",
     "proto-plus >= 1.4.0",
-    "libcst >= 0.2.5"
+    "libcst >= 0.2.5",
 ]
 
 package_root = os.path.abspath(os.path.dirname(__file__))
@@ -36,7 +36,9 @@ with io.open(readme_filename, encoding="utf-8") as readme_file:
     readme = readme_file.read()
 
 packages = [
-    package for package in setuptools.PEP420PackageFinder.find() if package.startswith("grafeas")
+    package
+    for package in setuptools.PEP420PackageFinder.find()
+    if package.startswith("grafeas")
 ]
 
 namespaces = ["grafeas"]

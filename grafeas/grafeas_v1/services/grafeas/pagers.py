@@ -37,12 +37,15 @@ class ListOccurrencesPager:
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
-    def __init__(self,
-            method: Callable[..., grafeas.ListOccurrencesResponse],
-            request: grafeas.ListOccurrencesRequest,
-            response: grafeas.ListOccurrencesResponse,
-            *,
-            metadata: Sequence[Tuple[str, str]] = ()):
+
+    def __init__(
+        self,
+        method: Callable[..., grafeas.ListOccurrencesResponse],
+        request: grafeas.ListOccurrencesRequest,
+        response: grafeas.ListOccurrencesResponse,
+        *,
+        metadata: Sequence[Tuple[str, str]] = ()
+    ):
         """Instantiate the pager.
 
         Args:
@@ -76,7 +79,7 @@ class ListOccurrencesPager:
             yield from page.occurrences
 
     def __repr__(self) -> str:
-        return '{0}<{1!r}>'.format(self.__class__.__name__, self._response)
+        return "{0}<{1!r}>".format(self.__class__.__name__, self._response)
 
 
 class ListOccurrencesAsyncPager:
@@ -96,12 +99,15 @@ class ListOccurrencesAsyncPager:
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
-    def __init__(self,
-            method: Callable[..., Awaitable[grafeas.ListOccurrencesResponse]],
-            request: grafeas.ListOccurrencesRequest,
-            response: grafeas.ListOccurrencesResponse,
-            *,
-            metadata: Sequence[Tuple[str, str]] = ()):
+
+    def __init__(
+        self,
+        method: Callable[..., Awaitable[grafeas.ListOccurrencesResponse]],
+        request: grafeas.ListOccurrencesRequest,
+        response: grafeas.ListOccurrencesResponse,
+        *,
+        metadata: Sequence[Tuple[str, str]] = ()
+    ):
         """Instantiate the pager.
 
         Args:
@@ -139,7 +145,7 @@ class ListOccurrencesAsyncPager:
         return async_generator()
 
     def __repr__(self) -> str:
-        return '{0}<{1!r}>'.format(self.__class__.__name__, self._response)
+        return "{0}<{1!r}>".format(self.__class__.__name__, self._response)
 
 
 class ListNotesPager:
@@ -159,12 +165,15 @@ class ListNotesPager:
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
-    def __init__(self,
-            method: Callable[..., grafeas.ListNotesResponse],
-            request: grafeas.ListNotesRequest,
-            response: grafeas.ListNotesResponse,
-            *,
-            metadata: Sequence[Tuple[str, str]] = ()):
+
+    def __init__(
+        self,
+        method: Callable[..., grafeas.ListNotesResponse],
+        request: grafeas.ListNotesRequest,
+        response: grafeas.ListNotesResponse,
+        *,
+        metadata: Sequence[Tuple[str, str]] = ()
+    ):
         """Instantiate the pager.
 
         Args:
@@ -198,7 +207,7 @@ class ListNotesPager:
             yield from page.notes
 
     def __repr__(self) -> str:
-        return '{0}<{1!r}>'.format(self.__class__.__name__, self._response)
+        return "{0}<{1!r}>".format(self.__class__.__name__, self._response)
 
 
 class ListNotesAsyncPager:
@@ -218,12 +227,15 @@ class ListNotesAsyncPager:
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
-    def __init__(self,
-            method: Callable[..., Awaitable[grafeas.ListNotesResponse]],
-            request: grafeas.ListNotesRequest,
-            response: grafeas.ListNotesResponse,
-            *,
-            metadata: Sequence[Tuple[str, str]] = ()):
+
+    def __init__(
+        self,
+        method: Callable[..., Awaitable[grafeas.ListNotesResponse]],
+        request: grafeas.ListNotesRequest,
+        response: grafeas.ListNotesResponse,
+        *,
+        metadata: Sequence[Tuple[str, str]] = ()
+    ):
         """Instantiate the pager.
 
         Args:
@@ -261,7 +273,7 @@ class ListNotesAsyncPager:
         return async_generator()
 
     def __repr__(self) -> str:
-        return '{0}<{1!r}>'.format(self.__class__.__name__, self._response)
+        return "{0}<{1!r}>".format(self.__class__.__name__, self._response)
 
 
 class ListNoteOccurrencesPager:
@@ -281,12 +293,15 @@ class ListNoteOccurrencesPager:
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
-    def __init__(self,
-            method: Callable[..., grafeas.ListNoteOccurrencesResponse],
-            request: grafeas.ListNoteOccurrencesRequest,
-            response: grafeas.ListNoteOccurrencesResponse,
-            *,
-            metadata: Sequence[Tuple[str, str]] = ()):
+
+    def __init__(
+        self,
+        method: Callable[..., grafeas.ListNoteOccurrencesResponse],
+        request: grafeas.ListNoteOccurrencesRequest,
+        response: grafeas.ListNoteOccurrencesResponse,
+        *,
+        metadata: Sequence[Tuple[str, str]] = ()
+    ):
         """Instantiate the pager.
 
         Args:
@@ -320,7 +335,7 @@ class ListNoteOccurrencesPager:
             yield from page.occurrences
 
     def __repr__(self) -> str:
-        return '{0}<{1!r}>'.format(self.__class__.__name__, self._response)
+        return "{0}<{1!r}>".format(self.__class__.__name__, self._response)
 
 
 class ListNoteOccurrencesAsyncPager:
@@ -340,12 +355,15 @@ class ListNoteOccurrencesAsyncPager:
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
-    def __init__(self,
-            method: Callable[..., Awaitable[grafeas.ListNoteOccurrencesResponse]],
-            request: grafeas.ListNoteOccurrencesRequest,
-            response: grafeas.ListNoteOccurrencesResponse,
-            *,
-            metadata: Sequence[Tuple[str, str]] = ()):
+
+    def __init__(
+        self,
+        method: Callable[..., Awaitable[grafeas.ListNoteOccurrencesResponse]],
+        request: grafeas.ListNoteOccurrencesRequest,
+        response: grafeas.ListNoteOccurrencesResponse,
+        *,
+        metadata: Sequence[Tuple[str, str]] = ()
+    ):
         """Instantiate the pager.
 
         Args:
@@ -383,4 +401,4 @@ class ListNoteOccurrencesAsyncPager:
         return async_generator()
 
     def __repr__(self) -> str:
-        return '{0}<{1!r}>'.format(self.__class__.__name__, self._response)
+        return "{0}<{1!r}>".format(self.__class__.__name__, self._response)

@@ -24,11 +24,7 @@ from grafeas.grafeas_v1.types import common
 
 
 __protobuf__ = proto.module(
-    package='grafeas.v1',
-    manifest={
-        'DiscoveryNote',
-        'DiscoveryOccurrence',
-    },
+    package="grafeas.v1", manifest={"DiscoveryNote", "DiscoveryOccurrence",},
 )
 
 
@@ -43,9 +39,7 @@ class DiscoveryNote(proto.Message):
             that is handled by this discovery.
     """
 
-    analysis_kind = proto.Field(proto.ENUM, number=1,
-        enum=common.NoteKind,
-    )
+    analysis_kind = proto.Field(proto.ENUM, number=1, enum=common.NoteKind,)
 
 
 class DiscoveryOccurrence(proto.Message):
@@ -68,6 +62,7 @@ class DiscoveryOccurrence(proto.Message):
         last_scan_time (~.timestamp.Timestamp):
             The last time this resource was scanned.
     """
+
     class ContinuousAnalysis(proto.Enum):
         r"""Whether the resource is continuously analyzed."""
         CONTINUOUS_ANALYSIS_UNSPECIFIED = 0
@@ -85,23 +80,15 @@ class DiscoveryOccurrence(proto.Message):
         FINISHED_FAILED = 4
         FINISHED_UNSUPPORTED = 5
 
-    continuous_analysis = proto.Field(proto.ENUM, number=1,
-        enum=ContinuousAnalysis,
-    )
+    continuous_analysis = proto.Field(proto.ENUM, number=1, enum=ContinuousAnalysis,)
 
-    analysis_status = proto.Field(proto.ENUM, number=2,
-        enum=AnalysisStatus,
-    )
+    analysis_status = proto.Field(proto.ENUM, number=2, enum=AnalysisStatus,)
 
-    analysis_status_error = proto.Field(proto.MESSAGE, number=3,
-        message=status.Status,
-    )
+    analysis_status_error = proto.Field(proto.MESSAGE, number=3, message=status.Status,)
 
     cpe = proto.Field(proto.STRING, number=4)
 
-    last_scan_time = proto.Field(proto.MESSAGE, number=5,
-        message=timestamp.Timestamp,
-    )
+    last_scan_time = proto.Field(proto.MESSAGE, number=5, message=timestamp.Timestamp,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

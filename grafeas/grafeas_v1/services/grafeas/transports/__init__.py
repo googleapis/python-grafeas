@@ -25,12 +25,12 @@ from .grpc_asyncio import GrafeasGrpcAsyncIOTransport
 
 # Compile a registry of transports.
 _transport_registry = OrderedDict()  # type: Dict[str, Type[GrafeasTransport]]
-_transport_registry['grpc'] = GrafeasGrpcTransport
-_transport_registry['grpc_asyncio'] = GrafeasGrpcAsyncIOTransport
+_transport_registry["grpc"] = GrafeasGrpcTransport
+_transport_registry["grpc_asyncio"] = GrafeasGrpcAsyncIOTransport
 
 
 __all__ = (
-    'GrafeasTransport',
-    'GrafeasGrpcTransport',
-    'GrafeasGrpcAsyncIOTransport',
+    "GrafeasTransport",
+    "GrafeasGrpcTransport",
+    "GrafeasGrpcAsyncIOTransport",
 )

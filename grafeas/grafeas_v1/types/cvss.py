@@ -18,12 +18,7 @@
 import proto  # type: ignore
 
 
-__protobuf__ = proto.module(
-    package='grafeas.v1',
-    manifest={
-        'CVSSv3',
-    },
-)
+__protobuf__ = proto.module(package="grafeas.v1", manifest={"CVSSv3",},)
 
 
 class CVSSv3(proto.Message):
@@ -59,6 +54,7 @@ class CVSSv3(proto.Message):
         availability_impact (~.cvss.CVSSv3.Impact):
 
     """
+
     class AttackVector(proto.Enum):
         r""""""
         ATTACK_VECTOR_UNSPECIFIED = 0
@@ -105,37 +101,21 @@ class CVSSv3(proto.Message):
 
     impact_score = proto.Field(proto.FLOAT, number=3)
 
-    attack_vector = proto.Field(proto.ENUM, number=5,
-        enum=AttackVector,
-    )
+    attack_vector = proto.Field(proto.ENUM, number=5, enum=AttackVector,)
 
-    attack_complexity = proto.Field(proto.ENUM, number=6,
-        enum=AttackComplexity,
-    )
+    attack_complexity = proto.Field(proto.ENUM, number=6, enum=AttackComplexity,)
 
-    privileges_required = proto.Field(proto.ENUM, number=7,
-        enum=PrivilegesRequired,
-    )
+    privileges_required = proto.Field(proto.ENUM, number=7, enum=PrivilegesRequired,)
 
-    user_interaction = proto.Field(proto.ENUM, number=8,
-        enum=UserInteraction,
-    )
+    user_interaction = proto.Field(proto.ENUM, number=8, enum=UserInteraction,)
 
-    scope = proto.Field(proto.ENUM, number=9,
-        enum=Scope,
-    )
+    scope = proto.Field(proto.ENUM, number=9, enum=Scope,)
 
-    confidentiality_impact = proto.Field(proto.ENUM, number=10,
-        enum=Impact,
-    )
+    confidentiality_impact = proto.Field(proto.ENUM, number=10, enum=Impact,)
 
-    integrity_impact = proto.Field(proto.ENUM, number=11,
-        enum=Impact,
-    )
+    integrity_impact = proto.Field(proto.ENUM, number=11, enum=Impact,)
 
-    availability_impact = proto.Field(proto.ENUM, number=12,
-        enum=Impact,
-    )
+    availability_impact = proto.Field(proto.ENUM, number=12, enum=Impact,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

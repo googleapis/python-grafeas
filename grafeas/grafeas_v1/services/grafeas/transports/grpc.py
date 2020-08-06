@@ -17,9 +17,9 @@
 
 from typing import Callable, Dict, Optional, Sequence, Tuple
 
-from google.api_core import grpc_helpers   # type: ignore
-from google import auth                    # type: ignore
-from google.auth import credentials        # type: ignore
+from google.api_core import grpc_helpers  # type: ignore
+from google import auth  # type: ignore
+from google.auth import credentials  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
 
 
@@ -58,17 +58,21 @@ class GrafeasGrpcTransport(GrafeasTransport):
     It sends protocol buffers over the wire using gRPC (which is built on
     top of HTTP/2); the ``grpcio`` package must be installed.
     """
+
     _stubs: Dict[str, Callable]
 
-    def __init__(self, *,
-            host: str = '',
-            credentials: credentials.Credentials = None,
-            credentials_file: str = None,
-            scopes: Sequence[str] = None,
-            channel: grpc.Channel = None,
-            api_mtls_endpoint: str = None,
-            client_cert_source: Callable[[], Tuple[bytes, bytes]] = None,
-            quota_project_id: Optional[str] = None) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "",
+        credentials: credentials.Credentials = None,
+        credentials_file: str = None,
+        scopes: Sequence[str] = None,
+        channel: grpc.Channel = None,
+        api_mtls_endpoint: str = None,
+        client_cert_source: Callable[[], Tuple[bytes, bytes]] = None,
+        quota_project_id: Optional[str] = None
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -111,10 +115,16 @@ class GrafeasGrpcTransport(GrafeasTransport):
             # If a channel was explicitly provided, set it.
             self._grpc_channel = channel
         elif api_mtls_endpoint:
-            host = api_mtls_endpoint if ":" in api_mtls_endpoint else api_mtls_endpoint + ":443"
+            host = (
+                api_mtls_endpoint
+                if ":" in api_mtls_endpoint
+                else api_mtls_endpoint + ":443"
+            )
 
             if credentials is None:
-                credentials, _ = auth.default(scopes=self.AUTH_SCOPES, quota_project_id=quota_project_id)
+                credentials, _ = auth.default(
+                    scopes=self.AUTH_SCOPES, quota_project_id=quota_project_id
+                )
 
             # Create SSL credentials with client_cert_source or application
             # default SSL credentials.
@@ -148,13 +158,15 @@ class GrafeasGrpcTransport(GrafeasTransport):
         )
 
     @classmethod
-    def create_channel(cls,
-                       host: str = '',
-                       credentials: credentials.Credentials = None,
-                       credentials_file: str = None,
-                       scopes: Optional[Sequence[str]] = None,
-                       quota_project_id: Optional[str] = None,
-                       **kwargs) -> grpc.Channel:
+    def create_channel(
+        cls,
+        host: str = "",
+        credentials: credentials.Credentials = None,
+        credentials_file: str = None,
+        scopes: Optional[Sequence[str]] = None,
+        quota_project_id: Optional[str] = None,
+        **kwargs
+    ) -> grpc.Channel:
         """Create and return a gRPC channel object.
         Args:
             address (Optionsl[str]): The host for the channel to use.
@@ -199,19 +211,18 @@ class GrafeasGrpcTransport(GrafeasTransport):
         """
         # Sanity check: Only create a new channel if we do not already
         # have one.
-        if not hasattr(self, '_grpc_channel'):
+        if not hasattr(self, "_grpc_channel"):
             self._grpc_channel = self.create_channel(
-                self._host,
-                credentials=self._credentials,
+                self._host, credentials=self._credentials,
             )
 
         # Return the channel from cache.
         return self._grpc_channel
 
     @property
-    def get_occurrence(self) -> Callable[
-            [grafeas.GetOccurrenceRequest],
-            grafeas.Occurrence]:
+    def get_occurrence(
+        self,
+    ) -> Callable[[grafeas.GetOccurrenceRequest], grafeas.Occurrence]:
         r"""Return a callable for the get occurrence method over gRPC.
 
         Gets the specified occurrence.
@@ -226,18 +237,18 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'get_occurrence' not in self._stubs:
-            self._stubs['get_occurrence'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/GetOccurrence',
+        if "get_occurrence" not in self._stubs:
+            self._stubs["get_occurrence"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/GetOccurrence",
                 request_serializer=grafeas.GetOccurrenceRequest.serialize,
                 response_deserializer=grafeas.Occurrence.deserialize,
             )
-        return self._stubs['get_occurrence']
+        return self._stubs["get_occurrence"]
 
     @property
-    def list_occurrences(self) -> Callable[
-            [grafeas.ListOccurrencesRequest],
-            grafeas.ListOccurrencesResponse]:
+    def list_occurrences(
+        self,
+    ) -> Callable[[grafeas.ListOccurrencesRequest], grafeas.ListOccurrencesResponse]:
         r"""Return a callable for the list occurrences method over gRPC.
 
         Lists occurrences for the specified project.
@@ -252,18 +263,18 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'list_occurrences' not in self._stubs:
-            self._stubs['list_occurrences'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/ListOccurrences',
+        if "list_occurrences" not in self._stubs:
+            self._stubs["list_occurrences"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/ListOccurrences",
                 request_serializer=grafeas.ListOccurrencesRequest.serialize,
                 response_deserializer=grafeas.ListOccurrencesResponse.deserialize,
             )
-        return self._stubs['list_occurrences']
+        return self._stubs["list_occurrences"]
 
     @property
-    def delete_occurrence(self) -> Callable[
-            [grafeas.DeleteOccurrenceRequest],
-            empty.Empty]:
+    def delete_occurrence(
+        self,
+    ) -> Callable[[grafeas.DeleteOccurrenceRequest], empty.Empty]:
         r"""Return a callable for the delete occurrence method over gRPC.
 
         Deletes the specified occurrence. For example, use
@@ -280,18 +291,18 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'delete_occurrence' not in self._stubs:
-            self._stubs['delete_occurrence'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/DeleteOccurrence',
+        if "delete_occurrence" not in self._stubs:
+            self._stubs["delete_occurrence"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/DeleteOccurrence",
                 request_serializer=grafeas.DeleteOccurrenceRequest.serialize,
                 response_deserializer=empty.Empty.FromString,
             )
-        return self._stubs['delete_occurrence']
+        return self._stubs["delete_occurrence"]
 
     @property
-    def create_occurrence(self) -> Callable[
-            [grafeas.CreateOccurrenceRequest],
-            grafeas.Occurrence]:
+    def create_occurrence(
+        self,
+    ) -> Callable[[grafeas.CreateOccurrenceRequest], grafeas.Occurrence]:
         r"""Return a callable for the create occurrence method over gRPC.
 
         Creates a new occurrence.
@@ -306,18 +317,20 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'create_occurrence' not in self._stubs:
-            self._stubs['create_occurrence'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/CreateOccurrence',
+        if "create_occurrence" not in self._stubs:
+            self._stubs["create_occurrence"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/CreateOccurrence",
                 request_serializer=grafeas.CreateOccurrenceRequest.serialize,
                 response_deserializer=grafeas.Occurrence.deserialize,
             )
-        return self._stubs['create_occurrence']
+        return self._stubs["create_occurrence"]
 
     @property
-    def batch_create_occurrences(self) -> Callable[
-            [grafeas.BatchCreateOccurrencesRequest],
-            grafeas.BatchCreateOccurrencesResponse]:
+    def batch_create_occurrences(
+        self,
+    ) -> Callable[
+        [grafeas.BatchCreateOccurrencesRequest], grafeas.BatchCreateOccurrencesResponse
+    ]:
         r"""Return a callable for the batch create occurrences method over gRPC.
 
         Creates new occurrences in batch.
@@ -332,18 +345,18 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'batch_create_occurrences' not in self._stubs:
-            self._stubs['batch_create_occurrences'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/BatchCreateOccurrences',
+        if "batch_create_occurrences" not in self._stubs:
+            self._stubs["batch_create_occurrences"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/BatchCreateOccurrences",
                 request_serializer=grafeas.BatchCreateOccurrencesRequest.serialize,
                 response_deserializer=grafeas.BatchCreateOccurrencesResponse.deserialize,
             )
-        return self._stubs['batch_create_occurrences']
+        return self._stubs["batch_create_occurrences"]
 
     @property
-    def update_occurrence(self) -> Callable[
-            [grafeas.UpdateOccurrenceRequest],
-            grafeas.Occurrence]:
+    def update_occurrence(
+        self,
+    ) -> Callable[[grafeas.UpdateOccurrenceRequest], grafeas.Occurrence]:
         r"""Return a callable for the update occurrence method over gRPC.
 
         Updates the specified occurrence.
@@ -358,18 +371,18 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'update_occurrence' not in self._stubs:
-            self._stubs['update_occurrence'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/UpdateOccurrence',
+        if "update_occurrence" not in self._stubs:
+            self._stubs["update_occurrence"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/UpdateOccurrence",
                 request_serializer=grafeas.UpdateOccurrenceRequest.serialize,
                 response_deserializer=grafeas.Occurrence.deserialize,
             )
-        return self._stubs['update_occurrence']
+        return self._stubs["update_occurrence"]
 
     @property
-    def get_occurrence_note(self) -> Callable[
-            [grafeas.GetOccurrenceNoteRequest],
-            grafeas.Note]:
+    def get_occurrence_note(
+        self,
+    ) -> Callable[[grafeas.GetOccurrenceNoteRequest], grafeas.Note]:
         r"""Return a callable for the get occurrence note method over gRPC.
 
         Gets the note attached to the specified occurrence.
@@ -386,18 +399,16 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'get_occurrence_note' not in self._stubs:
-            self._stubs['get_occurrence_note'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/GetOccurrenceNote',
+        if "get_occurrence_note" not in self._stubs:
+            self._stubs["get_occurrence_note"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/GetOccurrenceNote",
                 request_serializer=grafeas.GetOccurrenceNoteRequest.serialize,
                 response_deserializer=grafeas.Note.deserialize,
             )
-        return self._stubs['get_occurrence_note']
+        return self._stubs["get_occurrence_note"]
 
     @property
-    def get_note(self) -> Callable[
-            [grafeas.GetNoteRequest],
-            grafeas.Note]:
+    def get_note(self) -> Callable[[grafeas.GetNoteRequest], grafeas.Note]:
         r"""Return a callable for the get note method over gRPC.
 
         Gets the specified note.
@@ -412,18 +423,18 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'get_note' not in self._stubs:
-            self._stubs['get_note'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/GetNote',
+        if "get_note" not in self._stubs:
+            self._stubs["get_note"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/GetNote",
                 request_serializer=grafeas.GetNoteRequest.serialize,
                 response_deserializer=grafeas.Note.deserialize,
             )
-        return self._stubs['get_note']
+        return self._stubs["get_note"]
 
     @property
-    def list_notes(self) -> Callable[
-            [grafeas.ListNotesRequest],
-            grafeas.ListNotesResponse]:
+    def list_notes(
+        self,
+    ) -> Callable[[grafeas.ListNotesRequest], grafeas.ListNotesResponse]:
         r"""Return a callable for the list notes method over gRPC.
 
         Lists notes for the specified project.
@@ -438,18 +449,16 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'list_notes' not in self._stubs:
-            self._stubs['list_notes'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/ListNotes',
+        if "list_notes" not in self._stubs:
+            self._stubs["list_notes"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/ListNotes",
                 request_serializer=grafeas.ListNotesRequest.serialize,
                 response_deserializer=grafeas.ListNotesResponse.deserialize,
             )
-        return self._stubs['list_notes']
+        return self._stubs["list_notes"]
 
     @property
-    def delete_note(self) -> Callable[
-            [grafeas.DeleteNoteRequest],
-            empty.Empty]:
+    def delete_note(self) -> Callable[[grafeas.DeleteNoteRequest], empty.Empty]:
         r"""Return a callable for the delete note method over gRPC.
 
         Deletes the specified note.
@@ -464,18 +473,16 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'delete_note' not in self._stubs:
-            self._stubs['delete_note'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/DeleteNote',
+        if "delete_note" not in self._stubs:
+            self._stubs["delete_note"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/DeleteNote",
                 request_serializer=grafeas.DeleteNoteRequest.serialize,
                 response_deserializer=empty.Empty.FromString,
             )
-        return self._stubs['delete_note']
+        return self._stubs["delete_note"]
 
     @property
-    def create_note(self) -> Callable[
-            [grafeas.CreateNoteRequest],
-            grafeas.Note]:
+    def create_note(self) -> Callable[[grafeas.CreateNoteRequest], grafeas.Note]:
         r"""Return a callable for the create note method over gRPC.
 
         Creates a new note.
@@ -490,18 +497,18 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'create_note' not in self._stubs:
-            self._stubs['create_note'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/CreateNote',
+        if "create_note" not in self._stubs:
+            self._stubs["create_note"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/CreateNote",
                 request_serializer=grafeas.CreateNoteRequest.serialize,
                 response_deserializer=grafeas.Note.deserialize,
             )
-        return self._stubs['create_note']
+        return self._stubs["create_note"]
 
     @property
-    def batch_create_notes(self) -> Callable[
-            [grafeas.BatchCreateNotesRequest],
-            grafeas.BatchCreateNotesResponse]:
+    def batch_create_notes(
+        self,
+    ) -> Callable[[grafeas.BatchCreateNotesRequest], grafeas.BatchCreateNotesResponse]:
         r"""Return a callable for the batch create notes method over gRPC.
 
         Creates new notes in batch.
@@ -516,18 +523,16 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'batch_create_notes' not in self._stubs:
-            self._stubs['batch_create_notes'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/BatchCreateNotes',
+        if "batch_create_notes" not in self._stubs:
+            self._stubs["batch_create_notes"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/BatchCreateNotes",
                 request_serializer=grafeas.BatchCreateNotesRequest.serialize,
                 response_deserializer=grafeas.BatchCreateNotesResponse.deserialize,
             )
-        return self._stubs['batch_create_notes']
+        return self._stubs["batch_create_notes"]
 
     @property
-    def update_note(self) -> Callable[
-            [grafeas.UpdateNoteRequest],
-            grafeas.Note]:
+    def update_note(self) -> Callable[[grafeas.UpdateNoteRequest], grafeas.Note]:
         r"""Return a callable for the update note method over gRPC.
 
         Updates the specified note.
@@ -542,18 +547,20 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'update_note' not in self._stubs:
-            self._stubs['update_note'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/UpdateNote',
+        if "update_note" not in self._stubs:
+            self._stubs["update_note"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/UpdateNote",
                 request_serializer=grafeas.UpdateNoteRequest.serialize,
                 response_deserializer=grafeas.Note.deserialize,
             )
-        return self._stubs['update_note']
+        return self._stubs["update_note"]
 
     @property
-    def list_note_occurrences(self) -> Callable[
-            [grafeas.ListNoteOccurrencesRequest],
-            grafeas.ListNoteOccurrencesResponse]:
+    def list_note_occurrences(
+        self,
+    ) -> Callable[
+        [grafeas.ListNoteOccurrencesRequest], grafeas.ListNoteOccurrencesResponse
+    ]:
         r"""Return a callable for the list note occurrences method over gRPC.
 
         Lists occurrences referencing the specified note.
@@ -571,15 +578,13 @@ class GrafeasGrpcTransport(GrafeasTransport):
         # the request.
         # gRPC handles serialization and deserialization, so we just need
         # to pass in the functions for each.
-        if 'list_note_occurrences' not in self._stubs:
-            self._stubs['list_note_occurrences'] = self.grpc_channel.unary_unary(
-                '/grafeas.v1.Grafeas/ListNoteOccurrences',
+        if "list_note_occurrences" not in self._stubs:
+            self._stubs["list_note_occurrences"] = self.grpc_channel.unary_unary(
+                "/grafeas.v1.Grafeas/ListNoteOccurrences",
                 request_serializer=grafeas.ListNoteOccurrencesRequest.serialize,
                 response_deserializer=grafeas.ListNoteOccurrencesResponse.deserialize,
             )
-        return self._stubs['list_note_occurrences']
+        return self._stubs["list_note_occurrences"]
 
 
-__all__ = (
-    'GrafeasGrpcTransport',
-)
+__all__ = ("GrafeasGrpcTransport",)

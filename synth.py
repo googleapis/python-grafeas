@@ -158,27 +158,35 @@ s.replace(
 # Delete irrelevant tests
 
 # client options tests
-s.replace("tests/**/test_grafeas.py",
-"""def client_cert_source_callback.*?def test_get_occurrence""",
-"""def test_get_occurrence""",
-flags=re.MULTILINE | re.DOTALL,)
+s.replace(
+    "tests/**/test_grafeas.py",
+    """def client_cert_source_callback.*?def test_get_occurrence""",
+    """def test_get_occurrence""",
+    flags=re.MULTILINE | re.DOTALL,
+)
 
 # default endpoint test
-s.replace("tests/**/test_grafeas.py",
-"""def test_grafeas_host_no_port.*?def test_grafeas_grpc_transport_channel""",
-"""def test_grafeas_grpc_transport_channel""",
-flags=re.MULTILINE | re.DOTALL,)
+s.replace(
+    "tests/**/test_grafeas.py",
+    """def test_grafeas_host_no_port.*?def test_grafeas_grpc_transport_channel""",
+    """def test_grafeas_grpc_transport_channel""",
+    flags=re.MULTILINE | re.DOTALL,
+)
 
 # duplicate credentials tests
-s.replace("tests/**/test_grafeas.py",
-"""def test_credentials_transport_error.*?def test_transport_instance""",
-"""def test_transport_instance""",
-flags=re.MULTILINE | re.DOTALL,)
+s.replace(
+    "tests/**/test_grafeas.py",
+    """def test_credentials_transport_error.*?def test_transport_instance""",
+    """def test_transport_instance""",
+    flags=re.MULTILINE | re.DOTALL,
+)
 
-s.replace("tests/**/test_grafeas.py",
-"""def test_grafeas_base_transport_error.*?def test_grafeas_base_transport""",
-"""def test_grafeas_base_transport""",
-flags=re.MULTILINE | re.DOTALL,)
+s.replace(
+    "tests/**/test_grafeas.py",
+    """def test_grafeas_base_transport_error.*?def test_grafeas_base_transport""",
+    """def test_grafeas_base_transport""",
+    flags=re.MULTILINE | re.DOTALL,
+)
 
 # ----------------------------------------------------------------------------
 # Add templated files
