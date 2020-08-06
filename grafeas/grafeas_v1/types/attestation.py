@@ -22,7 +22,11 @@ from grafeas.grafeas_v1.types import common
 
 
 __protobuf__ = proto.module(
-    package="grafeas.v1", manifest={"AttestationNote", "AttestationOccurrence",},
+    package='grafeas.v1',
+    manifest={
+        'AttestationNote',
+        'AttestationOccurrence',
+    },
 )
 
 
@@ -42,7 +46,6 @@ class AttestationNote(proto.Message):
             Hint hints at the purpose of the attestation
             authority.
     """
-
     class Hint(proto.Message):
         r"""This submessage provides human-readable hints about the
         purpose of the authority. Because the name of a note acts as its
@@ -61,7 +64,9 @@ class AttestationNote(proto.Message):
 
         human_readable_name = proto.Field(proto.STRING, number=1)
 
-    hint = proto.Field(proto.MESSAGE, number=1, message=Hint,)
+    hint = proto.Field(proto.MESSAGE, number=1,
+        message=Hint,
+    )
 
 
 class AttestationOccurrence(proto.Message):
@@ -89,7 +94,9 @@ class AttestationOccurrence(proto.Message):
 
     serialized_payload = proto.Field(proto.BYTES, number=1)
 
-    signatures = proto.RepeatedField(proto.MESSAGE, number=2, message=common.Signature,)
+    signatures = proto.RepeatedField(proto.MESSAGE, number=2,
+        message=common.Signature,
+    )
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

@@ -19,6 +19,6 @@ from .client import GrafeasClient
 from .async_client import GrafeasAsyncClient
 
 __all__ = (
-    "GrafeasClient",
-    "GrafeasAsyncClient",
+    'GrafeasClient',
+    'GrafeasAsyncClient',
 )

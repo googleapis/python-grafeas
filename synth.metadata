@@ -4,14 +4,22 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:googleapis/python-grafeas",
-        "sha": "8eac6101e9cf3af0de347495254c4bf9f50e079e"
+        "sha": "847bd3e5b5460d65429ab8006c6ddbfbb5e64cc8"
+      }
+    },
+    {
+      "git": {
+        "name": "googleapis",
+        "remote": "https://github.com/googleapis/googleapis.git",
+        "sha": "96ef637adf148d54236ad83fefa30c7f75f29737",
+        "internalRef": "325052820"
       }
     },
     {
       "git": {
         "name": "synthtool",
         "remote": "https://github.com/googleapis/synthtool.git",
-        "sha": "f1d8e6619ca2b9ebbc68c13af4ec5dba2803fc44"
+        "sha": "4530cc6ff080ef8aca258c1ec92c4db10a1bbfb4"
       }
     }
   ],

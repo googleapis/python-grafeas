@@ -19,14 +19,14 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package="grafeas.v1",
+    package='grafeas.v1',
     manifest={
-        "Architecture",
-        "Distribution",
-        "Location",
-        "PackageNote",
-        "PackageOccurrence",
-        "Version",
+        'Architecture',
+        'Distribution',
+        'Location',
+        'PackageNote',
+        'PackageOccurrence',
+        'Version',
     },
 )
 
@@ -68,9 +68,13 @@ class Distribution(proto.Message):
 
     cpe_uri = proto.Field(proto.STRING, number=1)
 
-    architecture = proto.Field(proto.ENUM, number=2, enum="Architecture",)
+    architecture = proto.Field(proto.ENUM, number=2,
+        enum='Architecture',
+    )
 
-    latest_version = proto.Field(proto.MESSAGE, number=3, message="Version",)
+    latest_version = proto.Field(proto.MESSAGE, number=3,
+        message='Version',
+    )
 
     maintainer = proto.Field(proto.STRING, number=4)
 
@@ -98,7 +102,9 @@ class Location(proto.Message):
 
     cpe_uri = proto.Field(proto.STRING, number=1)
 
-    version = proto.Field(proto.MESSAGE, number=2, message="Version",)
+    version = proto.Field(proto.MESSAGE, number=2,
+        message='Version',
+    )
 
     path = proto.Field(proto.STRING, number=3)
 
@@ -118,7 +124,9 @@ class PackageNote(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    distribution = proto.RepeatedField(proto.MESSAGE, number=10, message=Distribution,)
+    distribution = proto.RepeatedField(proto.MESSAGE, number=10,
+        message=Distribution,
+    )
 
 
 class PackageOccurrence(proto.Message):
@@ -137,7 +145,9 @@ class PackageOccurrence(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    location = proto.RepeatedField(proto.MESSAGE, number=2, message=Location,)
+    location = proto.RepeatedField(proto.MESSAGE, number=2,
+        message=Location,
+    )
 
 
 class Version(proto.Message):
@@ -162,7 +172,6 @@ class Version(proto.Message):
             of the form <epoch>:<name>-<revision> and is
             only set when kind is NORMAL.
     """
-
     class VersionKind(proto.Enum):
         r"""Whether this is an ordinary package version or a sentinel
         MIN/MAX version.
@@ -178,7 +187,9 @@ class Version(proto.Message):
 
     revision = proto.Field(proto.STRING, number=3)
 
-    kind = proto.Field(proto.ENUM, number=4, enum=VersionKind,)
+    kind = proto.Field(proto.ENUM, number=4,
+        enum=VersionKind,
+    )
 
     full_name = proto.Field(proto.STRING, number=5)
 

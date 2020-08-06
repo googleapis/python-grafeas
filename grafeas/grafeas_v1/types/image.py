@@ -19,8 +19,13 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package="grafeas.v1",
-    manifest={"Layer", "Fingerprint", "ImageNote", "ImageOccurrence",},
+    package='grafeas.v1',
+    manifest={
+        'Layer',
+        'Fingerprint',
+        'ImageNote',
+        'ImageOccurrence',
+    },
 )
 
 
@@ -84,7 +89,9 @@ class ImageNote(proto.Message):
 
     resource_url = proto.Field(proto.STRING, number=1)
 
-    fingerprint = proto.Field(proto.MESSAGE, number=2, message=Fingerprint,)
+    fingerprint = proto.Field(proto.MESSAGE, number=2,
+        message=Fingerprint,
+    )
 
 
 class ImageOccurrence(proto.Message):
@@ -110,11 +117,15 @@ class ImageOccurrence(proto.Message):
             for the derived image occurrence.
     """
 
-    fingerprint = proto.Field(proto.MESSAGE, number=1, message=Fingerprint,)
+    fingerprint = proto.Field(proto.MESSAGE, number=1,
+        message=Fingerprint,
+    )
 
     distance = proto.Field(proto.INT32, number=2)
 
-    layer_info = proto.RepeatedField(proto.MESSAGE, number=3, message=Layer,)
+    layer_info = proto.RepeatedField(proto.MESSAGE, number=3,
+        message=Layer,
+    )
 
     base_resource_url = proto.Field(proto.STRING, number=4)
 

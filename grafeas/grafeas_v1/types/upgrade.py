@@ -23,12 +23,12 @@ from grafeas.grafeas_v1.types import package as g_package
 
 
 __protobuf__ = proto.module(
-    package="grafeas.v1",
+    package='grafeas.v1',
     manifest={
-        "UpgradeNote",
-        "UpgradeDistribution",
-        "WindowsUpdate",
-        "UpgradeOccurrence",
+        'UpgradeNote',
+        'UpgradeDistribution',
+        'WindowsUpdate',
+        'UpgradeOccurrence',
     },
 )
 
@@ -57,13 +57,17 @@ class UpgradeNote(proto.Message):
 
     package = proto.Field(proto.STRING, number=1)
 
-    version = proto.Field(proto.MESSAGE, number=2, message=g_package.Version,)
-
-    distributions = proto.RepeatedField(
-        proto.MESSAGE, number=3, message="UpgradeDistribution",
+    version = proto.Field(proto.MESSAGE, number=2,
+        message=g_package.Version,
     )
 
-    windows_update = proto.Field(proto.MESSAGE, number=4, message="WindowsUpdate",)
+    distributions = proto.RepeatedField(proto.MESSAGE, number=3,
+        message='UpgradeDistribution',
+    )
+
+    windows_update = proto.Field(proto.MESSAGE, number=4,
+        message='WindowsUpdate',
+    )
 
 
 class UpgradeDistribution(proto.Message):
@@ -126,7 +130,6 @@ class WindowsUpdate(proto.Message):
         last_published_timestamp (~.timestamp.Timestamp):
             The last published timestamp of the update.
     """
-
     class Identity(proto.Message):
         r"""The unique identifier of the update.
 
@@ -156,20 +159,24 @@ class WindowsUpdate(proto.Message):
 
         name = proto.Field(proto.STRING, number=2)
 
-    identity = proto.Field(proto.MESSAGE, number=1, message=Identity,)
+    identity = proto.Field(proto.MESSAGE, number=1,
+        message=Identity,
+    )
 
     title = proto.Field(proto.STRING, number=2)
 
     description = proto.Field(proto.STRING, number=3)
 
-    categories = proto.RepeatedField(proto.MESSAGE, number=4, message=Category,)
+    categories = proto.RepeatedField(proto.MESSAGE, number=4,
+        message=Category,
+    )
 
     kb_article_ids = proto.RepeatedField(proto.STRING, number=5)
 
     support_url = proto.Field(proto.STRING, number=6)
 
-    last_published_timestamp = proto.Field(
-        proto.MESSAGE, number=7, message=timestamp.Timestamp,
+    last_published_timestamp = proto.Field(proto.MESSAGE, number=7,
+        message=timestamp.Timestamp,
     )
 
 
@@ -199,11 +206,17 @@ class UpgradeOccurrence(proto.Message):
 
     package = proto.Field(proto.STRING, number=1)
 
-    parsed_version = proto.Field(proto.MESSAGE, number=3, message=g_package.Version,)
+    parsed_version = proto.Field(proto.MESSAGE, number=3,
+        message=g_package.Version,
+    )
 
-    distribution = proto.Field(proto.MESSAGE, number=4, message=UpgradeDistribution,)
+    distribution = proto.Field(proto.MESSAGE, number=4,
+        message=UpgradeDistribution,
+    )
 
-    windows_update = proto.Field(proto.MESSAGE, number=5, message=WindowsUpdate,)
+    windows_update = proto.Field(proto.MESSAGE, number=5,
+        message=WindowsUpdate,
+    )
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

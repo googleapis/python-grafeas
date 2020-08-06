@@ -21,7 +21,7 @@ import pkg_resources
 
 from google import auth
 from google.api_core import exceptions  # type: ignore
-from google.api_core import gapic_v1  # type: ignore
+from google.api_core import gapic_v1    # type: ignore
 from google.api_core import retry as retries  # type: ignore
 from google.auth import credentials  # type: ignore
 
@@ -31,27 +31,28 @@ from grafeas.grafeas_v1.types import grafeas
 
 try:
     _client_info = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution("grafeas-grafeas",).version,
+        gapic_version=pkg_resources.get_distribution(
+            'grafeas',
+        ).version,
     )
 except pkg_resources.DistributionNotFound:
     _client_info = gapic_v1.client_info.ClientInfo()
 
-
 class GrafeasTransport(abc.ABC):
     """Abstract transport class for Grafeas."""
 
-    AUTH_SCOPES = ()
+    AUTH_SCOPES = (
+    )
 
     def __init__(
-        self,
-        *,
-        host: str = "containeranalysis.googleapis.com",
-        credentials: credentials.Credentials = None,
-        credentials_file: typing.Optional[str] = None,
-        scopes: typing.Optional[typing.Sequence[str]] = AUTH_SCOPES,
-        quota_project_id: typing.Optional[str] = None,
-        **kwargs,
-    ) -> None:
+            self, *,
+            host: str = '',
+            credentials: credentials.Credentials = None,
+            credentials_file: typing.Optional[str] = None,
+            scopes: typing.Optional[typing.Sequence[str]] = AUTH_SCOPES,
+            quota_project_id: typing.Optional[str] = None,
+            **kwargs,
+            ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -69,26 +70,24 @@ class GrafeasTransport(abc.ABC):
                 and quota.
         """
         # Save the hostname. Default to port 443 (HTTPS) if none is specified.
-        if ":" not in host:
-            host += ":443"
+        if ':' not in host:
+            host += ':443'
         self._host = host
 
         # If no credentials are provided, then determine the appropriate
         # defaults.
         if credentials and credentials_file:
-            raise exceptions.DuplicateCredentialArgs(
-                "'credentials_file' and 'credentials' are mutually exclusive"
-            )
+            raise exceptions.DuplicateCredentialArgs("'credentials_file' and 'credentials' are mutually exclusive")
 
         if credentials_file is not None:
             credentials, _ = auth.load_credentials_from_file(
-                credentials_file, scopes=scopes, quota_project_id=quota_project_id
-            )
+                                credentials_file,
+                                scopes=scopes,
+                                quota_project_id=quota_project_id
+                            )
 
         elif credentials is None:
-            credentials, _ = auth.default(
-                scopes=scopes, quota_project_id=quota_project_id
-            )
+            credentials, _ = auth.default(scopes=scopes, quota_project_id=quota_project_id)
 
         # Save the credentials.
         self._credentials = credentials
@@ -106,7 +105,8 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                        exceptions.DeadlineExceeded,
+exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
@@ -119,7 +119,8 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                        exceptions.DeadlineExceeded,
+exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
@@ -132,14 +133,17 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                        exceptions.DeadlineExceeded,
+exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
                 client_info=_client_info,
             ),
             self.create_occurrence: gapic_v1.method.wrap_method(
-                self.create_occurrence, default_timeout=30.0, client_info=_client_info,
+                self.create_occurrence,
+                default_timeout=30.0,
+                client_info=_client_info,
             ),
             self.batch_create_occurrences: gapic_v1.method.wrap_method(
                 self.batch_create_occurrences,
@@ -147,7 +151,9 @@ class GrafeasTransport(abc.ABC):
                 client_info=_client_info,
             ),
             self.update_occurrence: gapic_v1.method.wrap_method(
-                self.update_occurrence, default_timeout=30.0, client_info=_client_info,
+                self.update_occurrence,
+                default_timeout=30.0,
+                client_info=_client_info,
             ),
             self.get_occurrence_note: gapic_v1.method.wrap_method(
                 self.get_occurrence_note,
@@ -156,7 +162,8 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                        exceptions.DeadlineExceeded,
+exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
@@ -169,7 +176,8 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                        exceptions.DeadlineExceeded,
+exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
@@ -182,7 +190,8 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                        exceptions.DeadlineExceeded,
+exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
@@ -195,20 +204,27 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                        exceptions.DeadlineExceeded,
+exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
                 client_info=_client_info,
             ),
             self.create_note: gapic_v1.method.wrap_method(
-                self.create_note, default_timeout=30.0, client_info=_client_info,
+                self.create_note,
+                default_timeout=30.0,
+                client_info=_client_info,
             ),
             self.batch_create_notes: gapic_v1.method.wrap_method(
-                self.batch_create_notes, default_timeout=30.0, client_info=_client_info,
+                self.batch_create_notes,
+                default_timeout=30.0,
+                client_info=_client_info,
             ),
             self.update_note: gapic_v1.method.wrap_method(
-                self.update_note, default_timeout=30.0, client_info=_client_info,
+                self.update_note,
+                default_timeout=30.0,
+                client_info=_client_info,
             ),
             self.list_note_occurrences: gapic_v1.method.wrap_method(
                 self.list_note_occurrences,
@@ -217,153 +233,143 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
+                        exceptions.DeadlineExceeded,
+exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
                 client_info=_client_info,
             ),
+
         }
 
     @property
-    def get_occurrence(
-        self,
-    ) -> typing.Callable[
-        [grafeas.GetOccurrenceRequest],
-        typing.Union[grafeas.Occurrence, typing.Awaitable[grafeas.Occurrence]],
-    ]:
+    def get_occurrence(self) -> typing.Callable[
+            [grafeas.GetOccurrenceRequest],
+            typing.Union[
+                grafeas.Occurrence,
+                typing.Awaitable[grafeas.Occurrence]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def list_occurrences(
-        self,
-    ) -> typing.Callable[
-        [grafeas.ListOccurrencesRequest],
-        typing.Union[
-            grafeas.ListOccurrencesResponse,
-            typing.Awaitable[grafeas.ListOccurrencesResponse],
-        ],
-    ]:
+    def list_occurrences(self) -> typing.Callable[
+            [grafeas.ListOccurrencesRequest],
+            typing.Union[
+                grafeas.ListOccurrencesResponse,
+                typing.Awaitable[grafeas.ListOccurrencesResponse]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def delete_occurrence(
-        self,
-    ) -> typing.Callable[
-        [grafeas.DeleteOccurrenceRequest],
-        typing.Union[empty.Empty, typing.Awaitable[empty.Empty]],
-    ]:
+    def delete_occurrence(self) -> typing.Callable[
+            [grafeas.DeleteOccurrenceRequest],
+            typing.Union[
+                empty.Empty,
+                typing.Awaitable[empty.Empty]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def create_occurrence(
-        self,
-    ) -> typing.Callable[
-        [grafeas.CreateOccurrenceRequest],
-        typing.Union[grafeas.Occurrence, typing.Awaitable[grafeas.Occurrence]],
-    ]:
+    def create_occurrence(self) -> typing.Callable[
+            [grafeas.CreateOccurrenceRequest],
+            typing.Union[
+                grafeas.Occurrence,
+                typing.Awaitable[grafeas.Occurrence]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def batch_create_occurrences(
-        self,
-    ) -> typing.Callable[
-        [grafeas.BatchCreateOccurrencesRequest],
-        typing.Union[
-            grafeas.BatchCreateOccurrencesResponse,
-            typing.Awaitable[grafeas.BatchCreateOccurrencesResponse],
-        ],
-    ]:
+    def batch_create_occurrences(self) -> typing.Callable[
+            [grafeas.BatchCreateOccurrencesRequest],
+            typing.Union[
+                grafeas.BatchCreateOccurrencesResponse,
+                typing.Awaitable[grafeas.BatchCreateOccurrencesResponse]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def update_occurrence(
-        self,
-    ) -> typing.Callable[
-        [grafeas.UpdateOccurrenceRequest],
-        typing.Union[grafeas.Occurrence, typing.Awaitable[grafeas.Occurrence]],
-    ]:
+    def update_occurrence(self) -> typing.Callable[
+            [grafeas.UpdateOccurrenceRequest],
+            typing.Union[
+                grafeas.Occurrence,
+                typing.Awaitable[grafeas.Occurrence]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def get_occurrence_note(
-        self,
-    ) -> typing.Callable[
-        [grafeas.GetOccurrenceNoteRequest],
-        typing.Union[grafeas.Note, typing.Awaitable[grafeas.Note]],
-    ]:
+    def get_occurrence_note(self) -> typing.Callable[
+            [grafeas.GetOccurrenceNoteRequest],
+            typing.Union[
+                grafeas.Note,
+                typing.Awaitable[grafeas.Note]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def get_note(
-        self,
-    ) -> typing.Callable[
-        [grafeas.GetNoteRequest],
-        typing.Union[grafeas.Note, typing.Awaitable[grafeas.Note]],
-    ]:
+    def get_note(self) -> typing.Callable[
+            [grafeas.GetNoteRequest],
+            typing.Union[
+                grafeas.Note,
+                typing.Awaitable[grafeas.Note]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def list_notes(
-        self,
-    ) -> typing.Callable[
-        [grafeas.ListNotesRequest],
-        typing.Union[
-            grafeas.ListNotesResponse, typing.Awaitable[grafeas.ListNotesResponse]
-        ],
-    ]:
+    def list_notes(self) -> typing.Callable[
+            [grafeas.ListNotesRequest],
+            typing.Union[
+                grafeas.ListNotesResponse,
+                typing.Awaitable[grafeas.ListNotesResponse]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def delete_note(
-        self,
-    ) -> typing.Callable[
-        [grafeas.DeleteNoteRequest],
-        typing.Union[empty.Empty, typing.Awaitable[empty.Empty]],
-    ]:
+    def delete_note(self) -> typing.Callable[
+            [grafeas.DeleteNoteRequest],
+            typing.Union[
+                empty.Empty,
+                typing.Awaitable[empty.Empty]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def create_note(
-        self,
-    ) -> typing.Callable[
-        [grafeas.CreateNoteRequest],
-        typing.Union[grafeas.Note, typing.Awaitable[grafeas.Note]],
-    ]:
+    def create_note(self) -> typing.Callable[
+            [grafeas.CreateNoteRequest],
+            typing.Union[
+                grafeas.Note,
+                typing.Awaitable[grafeas.Note]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def batch_create_notes(
-        self,
-    ) -> typing.Callable[
-        [grafeas.BatchCreateNotesRequest],
-        typing.Union[
-            grafeas.BatchCreateNotesResponse,
-            typing.Awaitable[grafeas.BatchCreateNotesResponse],
-        ],
-    ]:
+    def batch_create_notes(self) -> typing.Callable[
+            [grafeas.BatchCreateNotesRequest],
+            typing.Union[
+                grafeas.BatchCreateNotesResponse,
+                typing.Awaitable[grafeas.BatchCreateNotesResponse]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def update_note(
-        self,
-    ) -> typing.Callable[
-        [grafeas.UpdateNoteRequest],
-        typing.Union[grafeas.Note, typing.Awaitable[grafeas.Note]],
-    ]:
+    def update_note(self) -> typing.Callable[
+            [grafeas.UpdateNoteRequest],
+            typing.Union[
+                grafeas.Note,
+                typing.Awaitable[grafeas.Note]
+            ]]:
         raise NotImplementedError()
 
     @property
-    def list_note_occurrences(
-        self,
-    ) -> typing.Callable[
-        [grafeas.ListNoteOccurrencesRequest],
-        typing.Union[
-            grafeas.ListNoteOccurrencesResponse,
-            typing.Awaitable[grafeas.ListNoteOccurrencesResponse],
-        ],
-    ]:
+    def list_note_occurrences(self) -> typing.Callable[
+            [grafeas.ListNoteOccurrencesRequest],
+            typing.Union[
+                grafeas.ListNoteOccurrencesResponse,
+                typing.Awaitable[grafeas.ListNoteOccurrencesResponse]
+            ]]:
         raise NotImplementedError()
 
 
-__all__ = ("GrafeasTransport",)
+__all__ = (
+    'GrafeasTransport',
+)

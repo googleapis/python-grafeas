@@ -19,7 +19,12 @@ import proto  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package="grafeas.v1", manifest={"NoteKind", "RelatedUrl", "Signature",},
+    package='grafeas.v1',
+    manifest={
+        'NoteKind',
+        'RelatedUrl',
+        'Signature',
+    },
 )
 
 

@@ -22,21 +22,21 @@ from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package="grafeas.v1",
+    package='grafeas.v1',
     manifest={
-        "BuildProvenance",
-        "Source",
-        "FileHashes",
-        "Hash",
-        "Command",
-        "Artifact",
-        "SourceContext",
-        "AliasContext",
-        "CloudRepoSourceContext",
-        "GerritSourceContext",
-        "GitSourceContext",
-        "RepoId",
-        "ProjectRepoId",
+        'BuildProvenance',
+        'Source',
+        'FileHashes',
+        'Hash',
+        'Command',
+        'Artifact',
+        'SourceContext',
+        'AliasContext',
+        'CloudRepoSourceContext',
+        'GerritSourceContext',
+        'GitSourceContext',
+        'RepoId',
+        'ProjectRepoId',
     },
 )
 
@@ -90,21 +90,33 @@ class BuildProvenance(proto.Message):
 
     project_id = proto.Field(proto.STRING, number=2)
 
-    commands = proto.RepeatedField(proto.MESSAGE, number=3, message="Command",)
+    commands = proto.RepeatedField(proto.MESSAGE, number=3,
+        message='Command',
+    )
 
-    built_artifacts = proto.RepeatedField(proto.MESSAGE, number=4, message="Artifact",)
+    built_artifacts = proto.RepeatedField(proto.MESSAGE, number=4,
+        message='Artifact',
+    )
 
-    create_time = proto.Field(proto.MESSAGE, number=5, message=timestamp.Timestamp,)
+    create_time = proto.Field(proto.MESSAGE, number=5,
+        message=timestamp.Timestamp,
+    )
 
-    start_time = proto.Field(proto.MESSAGE, number=6, message=timestamp.Timestamp,)
+    start_time = proto.Field(proto.MESSAGE, number=6,
+        message=timestamp.Timestamp,
+    )
 
-    end_time = proto.Field(proto.MESSAGE, number=7, message=timestamp.Timestamp,)
+    end_time = proto.Field(proto.MESSAGE, number=7,
+        message=timestamp.Timestamp,
+    )
 
     creator = proto.Field(proto.STRING, number=8)
 
     logs_uri = proto.Field(proto.STRING, number=9)
 
-    source_provenance = proto.Field(proto.MESSAGE, number=10, message="Source",)
+    source_provenance = proto.Field(proto.MESSAGE, number=10,
+        message='Source',
+    )
 
     trigger_id = proto.Field(proto.STRING, number=11)
 
@@ -147,14 +159,16 @@ class Source(proto.Message):
 
     artifact_storage_source_uri = proto.Field(proto.STRING, number=1)
 
-    file_hashes = proto.MapField(
-        proto.STRING, proto.MESSAGE, number=2, message="FileHashes",
+    file_hashes = proto.MapField(proto.STRING, proto.MESSAGE, number=2,
+        message='FileHashes',
     )
 
-    context = proto.Field(proto.MESSAGE, number=3, message="SourceContext",)
+    context = proto.Field(proto.MESSAGE, number=3,
+        message='SourceContext',
+    )
 
-    additional_contexts = proto.RepeatedField(
-        proto.MESSAGE, number=4, message="SourceContext",
+    additional_contexts = proto.RepeatedField(proto.MESSAGE, number=4,
+        message='SourceContext',
     )
 
 
@@ -168,7 +182,9 @@ class FileHashes(proto.Message):
             Required. Collection of file hashes.
     """
 
-    file_hash = proto.RepeatedField(proto.MESSAGE, number=1, message="Hash",)
+    file_hash = proto.RepeatedField(proto.MESSAGE, number=1,
+        message='Hash',
+    )
 
 
 class Hash(proto.Message):
@@ -272,16 +288,16 @@ class SourceContext(proto.Message):
             Labels with user defined metadata.
     """
 
-    cloud_repo = proto.Field(
-        proto.MESSAGE, number=1, oneof="context", message="CloudRepoSourceContext",
+    cloud_repo = proto.Field(proto.MESSAGE, number=1, oneof='context',
+        message='CloudRepoSourceContext',
     )
 
-    gerrit = proto.Field(
-        proto.MESSAGE, number=2, oneof="context", message="GerritSourceContext",
+    gerrit = proto.Field(proto.MESSAGE, number=2, oneof='context',
+        message='GerritSourceContext',
     )
 
-    git = proto.Field(
-        proto.MESSAGE, number=3, oneof="context", message="GitSourceContext",
+    git = proto.Field(proto.MESSAGE, number=3, oneof='context',
+        message='GitSourceContext',
     )
 
     labels = proto.MapField(proto.STRING, proto.STRING, number=4)
@@ -296,7 +312,6 @@ class AliasContext(proto.Message):
         name (str):
             The alias name.
     """
-
     class Kind(proto.Enum):
         r"""The type of an alias."""
         KIND_UNSPECIFIED = 0
@@ -304,7 +319,9 @@ class AliasContext(proto.Message):
         MOVABLE = 2
         OTHER = 4
 
-    kind = proto.Field(proto.ENUM, number=1, enum=Kind,)
+    kind = proto.Field(proto.ENUM, number=1,
+        enum=Kind,
+    )
 
     name = proto.Field(proto.STRING, number=2)
 
@@ -322,12 +339,14 @@ class CloudRepoSourceContext(proto.Message):
             An alias, which may be a branch or tag.
     """
 
-    repo_id = proto.Field(proto.MESSAGE, number=1, message="RepoId",)
+    repo_id = proto.Field(proto.MESSAGE, number=1,
+        message='RepoId',
+    )
 
-    revision_id = proto.Field(proto.STRING, number=2, oneof="revision")
+    revision_id = proto.Field(proto.STRING, number=2, oneof='revision')
 
-    alias_context = proto.Field(
-        proto.MESSAGE, number=3, oneof="revision", message=AliasContext,
+    alias_context = proto.Field(proto.MESSAGE, number=3, oneof='revision',
+        message=AliasContext,
     )
 
 
@@ -352,10 +371,10 @@ class GerritSourceContext(proto.Message):
 
     gerrit_project = proto.Field(proto.STRING, number=2)
 
-    revision_id = proto.Field(proto.STRING, number=3, oneof="revision")
+    revision_id = proto.Field(proto.STRING, number=3, oneof='revision')
 
-    alias_context = proto.Field(
-        proto.MESSAGE, number=4, oneof="revision", message=AliasContext,
+    alias_context = proto.Field(proto.MESSAGE, number=4, oneof='revision',
+        message=AliasContext,
     )
 
 
@@ -387,11 +406,11 @@ class RepoId(proto.Message):
             identifier.
     """
 
-    project_repo_id = proto.Field(
-        proto.MESSAGE, number=1, oneof="id", message="ProjectRepoId",
+    project_repo_id = proto.Field(proto.MESSAGE, number=1, oneof='id',
+        message='ProjectRepoId',
     )
 
-    uid = proto.Field(proto.STRING, number=2, oneof="id")
+    uid = proto.Field(proto.STRING, number=2, oneof='id')
 
 
 class ProjectRepoId(proto.Message):

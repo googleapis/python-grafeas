@@ -22,7 +22,11 @@ from grafeas.grafeas_v1.types import provenance as g_provenance
 
 
 __protobuf__ = proto.module(
-    package="grafeas.v1", manifest={"BuildNote", "BuildOccurrence",},
+    package='grafeas.v1',
+    manifest={
+        'BuildNote',
+        'BuildOccurrence',
+    },
 )
 
 
@@ -62,8 +66,8 @@ class BuildOccurrence(proto.Message):
             incompatibilities with future changes.
     """
 
-    provenance = proto.Field(
-        proto.MESSAGE, number=1, message=g_provenance.BuildProvenance,
+    provenance = proto.Field(proto.MESSAGE, number=1,
+        message=g_provenance.BuildProvenance,
     )
 
     provenance_bytes = proto.Field(proto.STRING, number=2)

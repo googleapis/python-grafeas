@@ -32,29 +32,29 @@ from grafeas.grafeas_v1.types import vulnerability as g_vulnerability
 
 
 __protobuf__ = proto.module(
-    package="grafeas.v1",
+    package='grafeas.v1',
     manifest={
-        "Occurrence",
-        "Note",
-        "GetOccurrenceRequest",
-        "ListOccurrencesRequest",
-        "ListOccurrencesResponse",
-        "DeleteOccurrenceRequest",
-        "CreateOccurrenceRequest",
-        "UpdateOccurrenceRequest",
-        "GetNoteRequest",
-        "GetOccurrenceNoteRequest",
-        "ListNotesRequest",
-        "ListNotesResponse",
-        "DeleteNoteRequest",
-        "CreateNoteRequest",
-        "UpdateNoteRequest",
-        "ListNoteOccurrencesRequest",
-        "ListNoteOccurrencesResponse",
-        "BatchCreateNotesRequest",
-        "BatchCreateNotesResponse",
-        "BatchCreateOccurrencesRequest",
-        "BatchCreateOccurrencesResponse",
+        'Occurrence',
+        'Note',
+        'GetOccurrenceRequest',
+        'ListOccurrencesRequest',
+        'ListOccurrencesResponse',
+        'DeleteOccurrenceRequest',
+        'CreateOccurrenceRequest',
+        'UpdateOccurrenceRequest',
+        'GetNoteRequest',
+        'GetOccurrenceNoteRequest',
+        'ListNotesRequest',
+        'ListNotesResponse',
+        'DeleteNoteRequest',
+        'CreateNoteRequest',
+        'UpdateNoteRequest',
+        'ListNoteOccurrencesRequest',
+        'ListNoteOccurrencesResponse',
+        'BatchCreateNotesRequest',
+        'BatchCreateNotesResponse',
+        'BatchCreateOccurrencesRequest',
+        'BatchCreateOccurrencesResponse',
     },
 )
 
@@ -118,56 +118,50 @@ class Occurrence(proto.Message):
 
     note_name = proto.Field(proto.STRING, number=3)
 
-    kind = proto.Field(proto.ENUM, number=4, enum=common.NoteKind,)
+    kind = proto.Field(proto.ENUM, number=4,
+        enum=common.NoteKind,
+    )
 
     remediation = proto.Field(proto.STRING, number=5)
 
-    create_time = proto.Field(proto.MESSAGE, number=6, message=timestamp.Timestamp,)
+    create_time = proto.Field(proto.MESSAGE, number=6,
+        message=timestamp.Timestamp,
+    )
 
-    update_time = proto.Field(proto.MESSAGE, number=7, message=timestamp.Timestamp,)
+    update_time = proto.Field(proto.MESSAGE, number=7,
+        message=timestamp.Timestamp,
+    )
 
-    vulnerability = proto.Field(
-        proto.MESSAGE,
-        number=8,
-        oneof="details",
+    vulnerability = proto.Field(proto.MESSAGE, number=8, oneof='details',
         message=g_vulnerability.VulnerabilityOccurrence,
     )
 
-    build = proto.Field(
-        proto.MESSAGE, number=9, oneof="details", message=g_build.BuildOccurrence,
+    build = proto.Field(proto.MESSAGE, number=9, oneof='details',
+        message=g_build.BuildOccurrence,
     )
 
-    image = proto.Field(
-        proto.MESSAGE, number=10, oneof="details", message=g_image.ImageOccurrence,
+    image = proto.Field(proto.MESSAGE, number=10, oneof='details',
+        message=g_image.ImageOccurrence,
     )
 
-    package = proto.Field(
-        proto.MESSAGE, number=11, oneof="details", message=g_package.PackageOccurrence,
+    package = proto.Field(proto.MESSAGE, number=11, oneof='details',
+        message=g_package.PackageOccurrence,
     )
 
-    deployment = proto.Field(
-        proto.MESSAGE,
-        number=12,
-        oneof="details",
+    deployment = proto.Field(proto.MESSAGE, number=12, oneof='details',
         message=g_deployment.DeploymentOccurrence,
     )
 
-    discovery = proto.Field(
-        proto.MESSAGE,
-        number=13,
-        oneof="details",
+    discovery = proto.Field(proto.MESSAGE, number=13, oneof='details',
         message=g_discovery.DiscoveryOccurrence,
     )
 
-    attestation = proto.Field(
-        proto.MESSAGE,
-        number=14,
-        oneof="details",
+    attestation = proto.Field(proto.MESSAGE, number=14, oneof='details',
         message=g_attestation.AttestationOccurrence,
     )
 
-    upgrade = proto.Field(
-        proto.MESSAGE, number=15, oneof="details", message=g_upgrade.UpgradeOccurrence,
+    upgrade = proto.Field(proto.MESSAGE, number=15, oneof='details',
+        message=g_upgrade.UpgradeOccurrence,
     )
 
 
@@ -228,53 +222,58 @@ class Note(proto.Message):
 
     long_description = proto.Field(proto.STRING, number=3)
 
-    kind = proto.Field(proto.ENUM, number=4, enum=common.NoteKind,)
-
-    related_url = proto.RepeatedField(
-        proto.MESSAGE, number=5, message=common.RelatedUrl,
+    kind = proto.Field(proto.ENUM, number=4,
+        enum=common.NoteKind,
     )
 
-    expiration_time = proto.Field(proto.MESSAGE, number=6, message=timestamp.Timestamp,)
+    related_url = proto.RepeatedField(proto.MESSAGE, number=5,
+        message=common.RelatedUrl,
+    )
 
-    create_time = proto.Field(proto.MESSAGE, number=7, message=timestamp.Timestamp,)
+    expiration_time = proto.Field(proto.MESSAGE, number=6,
+        message=timestamp.Timestamp,
+    )
 
-    update_time = proto.Field(proto.MESSAGE, number=8, message=timestamp.Timestamp,)
+    create_time = proto.Field(proto.MESSAGE, number=7,
+        message=timestamp.Timestamp,
+    )
+
+    update_time = proto.Field(proto.MESSAGE, number=8,
+        message=timestamp.Timestamp,
+    )
 
     related_note_names = proto.RepeatedField(proto.STRING, number=9)
 
-    vulnerability = proto.Field(
-        proto.MESSAGE,
-        number=10,
-        oneof="type",
+    vulnerability = proto.Field(proto.MESSAGE, number=10, oneof='type',
         message=g_vulnerability.VulnerabilityNote,
     )
 
-    build = proto.Field(
-        proto.MESSAGE, number=11, oneof="type", message=g_build.BuildNote,
+    build = proto.Field(proto.MESSAGE, number=11, oneof='type',
+        message=g_build.BuildNote,
     )
 
-    image = proto.Field(
-        proto.MESSAGE, number=12, oneof="type", message=g_image.ImageNote,
+    image = proto.Field(proto.MESSAGE, number=12, oneof='type',
+        message=g_image.ImageNote,
     )
 
-    package = proto.Field(
-        proto.MESSAGE, number=13, oneof="type", message=g_package.PackageNote,
+    package = proto.Field(proto.MESSAGE, number=13, oneof='type',
+        message=g_package.PackageNote,
     )
 
-    deployment = proto.Field(
-        proto.MESSAGE, number=14, oneof="type", message=g_deployment.DeploymentNote,
+    deployment = proto.Field(proto.MESSAGE, number=14, oneof='type',
+        message=g_deployment.DeploymentNote,
     )
 
-    discovery = proto.Field(
-        proto.MESSAGE, number=15, oneof="type", message=g_discovery.DiscoveryNote,
+    discovery = proto.Field(proto.MESSAGE, number=15, oneof='type',
+        message=g_discovery.DiscoveryNote,
     )
 
-    attestation = proto.Field(
-        proto.MESSAGE, number=16, oneof="type", message=g_attestation.AttestationNote,
+    attestation = proto.Field(proto.MESSAGE, number=16, oneof='type',
+        message=g_attestation.AttestationNote,
     )
 
-    upgrade = proto.Field(
-        proto.MESSAGE, number=17, oneof="type", message=g_upgrade.UpgradeNote,
+    upgrade = proto.Field(proto.MESSAGE, number=17, oneof='type',
+        message=g_upgrade.UpgradeNote,
     )
 
 
@@ -333,7 +332,9 @@ class ListOccurrencesResponse(proto.Message):
     def raw_page(self):
         return self
 
-    occurrences = proto.RepeatedField(proto.MESSAGE, number=1, message=Occurrence,)
+    occurrences = proto.RepeatedField(proto.MESSAGE, number=1,
+        message=Occurrence,
+    )
 
     next_page_token = proto.Field(proto.STRING, number=2)
 
@@ -364,7 +365,9 @@ class CreateOccurrenceRequest(proto.Message):
 
     parent = proto.Field(proto.STRING, number=1)
 
-    occurrence = proto.Field(proto.MESSAGE, number=2, message=Occurrence,)
+    occurrence = proto.Field(proto.MESSAGE, number=2,
+        message=Occurrence,
+    )
 
 
 class UpdateOccurrenceRequest(proto.Message):
@@ -382,9 +385,13 @@ class UpdateOccurrenceRequest(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    occurrence = proto.Field(proto.MESSAGE, number=2, message=Occurrence,)
+    occurrence = proto.Field(proto.MESSAGE, number=2,
+        message=Occurrence,
+    )
 
-    update_mask = proto.Field(proto.MESSAGE, number=3, message=field_mask.FieldMask,)
+    update_mask = proto.Field(proto.MESSAGE, number=3,
+        message=field_mask.FieldMask,
+    )
 
 
 class GetNoteRequest(proto.Message):
@@ -455,7 +462,9 @@ class ListNotesResponse(proto.Message):
     def raw_page(self):
         return self
 
-    notes = proto.RepeatedField(proto.MESSAGE, number=1, message=Note,)
+    notes = proto.RepeatedField(proto.MESSAGE, number=1,
+        message=Note,
+    )
 
     next_page_token = proto.Field(proto.STRING, number=2)
 
@@ -490,7 +499,9 @@ class CreateNoteRequest(proto.Message):
 
     note_id = proto.Field(proto.STRING, number=2)
 
-    note = proto.Field(proto.MESSAGE, number=3, message=Note,)
+    note = proto.Field(proto.MESSAGE, number=3,
+        message=Note,
+    )
 
 
 class UpdateNoteRequest(proto.Message):
@@ -508,9 +519,13 @@ class UpdateNoteRequest(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    note = proto.Field(proto.MESSAGE, number=2, message=Note,)
+    note = proto.Field(proto.MESSAGE, number=2,
+        message=Note,
+    )
 
-    update_mask = proto.Field(proto.MESSAGE, number=3, message=field_mask.FieldMask,)
+    update_mask = proto.Field(proto.MESSAGE, number=3,
+        message=field_mask.FieldMask,
+    )
 
 
 class ListNoteOccurrencesRequest(proto.Message):
@@ -554,7 +569,9 @@ class ListNoteOccurrencesResponse(proto.Message):
     def raw_page(self):
         return self
 
-    occurrences = proto.RepeatedField(proto.MESSAGE, number=1, message=Occurrence,)
+    occurrences = proto.RepeatedField(proto.MESSAGE, number=1,
+        message=Occurrence,
+    )
 
     next_page_token = proto.Field(proto.STRING, number=2)
 
@@ -574,7 +591,9 @@ class BatchCreateNotesRequest(proto.Message):
 
     parent = proto.Field(proto.STRING, number=1)
 
-    notes = proto.MapField(proto.STRING, proto.MESSAGE, number=2, message=Note,)
+    notes = proto.MapField(proto.STRING, proto.MESSAGE, number=2,
+        message=Note,
+    )
 
 
 class BatchCreateNotesResponse(proto.Message):
@@ -585,7 +604,9 @@ class BatchCreateNotesResponse(proto.Message):
             The notes that were created.
     """
 
-    notes = proto.RepeatedField(proto.MESSAGE, number=1, message=Note,)
+    notes = proto.RepeatedField(proto.MESSAGE, number=1,
+        message=Note,
+    )
 
 
 class BatchCreateOccurrencesRequest(proto.Message):
@@ -603,7 +624,9 @@ class BatchCreateOccurrencesRequest(proto.Message):
 
     parent = proto.Field(proto.STRING, number=1)
 
-    occurrences = proto.RepeatedField(proto.MESSAGE, number=2, message=Occurrence,)
+    occurrences = proto.RepeatedField(proto.MESSAGE, number=2,
+        message=Occurrence,
+    )
 
 
 class BatchCreateOccurrencesResponse(proto.Message):
@@ -614,7 +637,9 @@ class BatchCreateOccurrencesResponse(proto.Message):
             The occurrences that were created.
     """
 
-    occurrences = proto.RepeatedField(proto.MESSAGE, number=1, message=Occurrence,)
+    occurrences = proto.RepeatedField(proto.MESSAGE, number=1,
+        message=Occurrence,
+    )
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
