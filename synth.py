@@ -193,6 +193,7 @@ s.replace(
 # ----------------------------------------------------------------------------
 templated_files = common.py_library(
     samples=False, microgenerator=True,  # set to True only if there are samples
+    cov_level=90  #  some coverage is missing due to manual alterations
 )
 
 s.move(
@@ -209,4 +210,4 @@ s.replace(
     """"--cov=grafeas",""",
 )
 
-# s.shell.run(["nox", "-s", "blacken"], hide_output=False)
+s.shell.run(["nox", "-s", "blacken"], hide_output=False)

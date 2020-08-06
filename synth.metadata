@@ -4,7 +4,7 @@
       "git": {
         "name": ".",
         "remote": "git@github.com:googleapis/python-grafeas",
-        "sha": "635c0ac12e157c24f9df7e1484071462359e13ac"
+        "sha": "fb7debad7a8793929b91d38f999941b2708d84bd"
       }
     },
     {
