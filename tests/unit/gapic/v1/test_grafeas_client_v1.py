@@ -23,6 +23,7 @@ from google.protobuf import empty_pb2
 from grafeas import grafeas_v1
 from grafeas.grafeas_v1.proto import grafeas_pb2
 from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
+from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
 
 
 class MultiCallableStub(object):
