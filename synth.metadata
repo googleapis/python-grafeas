@@ -3,8 +3,8 @@
     {
       "git": {
         "name": ".",
-        "remote": "git@github.com:googleapis/python-grafeas",
-        "sha": "fb7debad7a8793929b91d38f999941b2708d84bd"
+        "remote": "https://github.com/googleapis/python-grafeas.git",
+        "sha": "aed68fe9a83f041097d8a34f95eb89a1042b7b14"
       }
     },
     {

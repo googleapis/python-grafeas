@@ -3505,27 +3505,148 @@ def test_grafeas_grpc_asyncio_transport_channel():
     assert not callback.called
 
 
-def test_occurrence_path():
-    project = "squid"
-    occurrence = "clam"
+@mock.patch("grpc.ssl_channel_credentials", autospec=True)
+@mock.patch("google.api_core.grpc_helpers.create_channel", autospec=True)
+def test_grafeas_grpc_transport_channel_mtls_with_client_cert_source(
+    grpc_create_channel, grpc_ssl_channel_cred
+):
+    # Check that if channel is None, but api_mtls_endpoint and client_cert_source
+    # are provided, then a mTLS channel will be created.
+    mock_cred = mock.Mock()
 
-    expected = "projects/{project}/occurrences/{occurrence}".format(
-        project=project, occurrence=occurrence,
+    mock_ssl_cred = mock.Mock()
+    grpc_ssl_channel_cred.return_value = mock_ssl_cred
+
+    mock_grpc_channel = mock.Mock()
+    grpc_create_channel.return_value = mock_grpc_channel
+
+    transport = transports.GrafeasGrpcTransport(
+        host="squid.clam.whelk",
+        credentials=mock_cred,
+        api_mtls_endpoint="mtls.squid.clam.whelk",
+        client_cert_source=client_cert_source_callback,
     )
-    actual = GrafeasClient.occurrence_path(project, occurrence)
-    assert expected == actual
+    grpc_ssl_channel_cred.assert_called_once_with(
+        certificate_chain=b"cert bytes", private_key=b"key bytes"
+    )
+    grpc_create_channel.assert_called_once_with(
+        "mtls.squid.clam.whelk:443",
+        credentials=mock_cred,
+        credentials_file=None,
+        scopes=(),
+        ssl_credentials=mock_ssl_cred,
+        quota_project_id=None,
+    )
+    assert transport.grpc_channel == mock_grpc_channel
 
 
-def test_parse_occurrence_path():
-    expected = {
-        "project": "whelk",
-        "occurrence": "octopus",
-    }
-    path = GrafeasClient.occurrence_path(**expected)
+@mock.patch("grpc.ssl_channel_credentials", autospec=True)
+@mock.patch("google.api_core.grpc_helpers_async.create_channel", autospec=True)
+def test_grafeas_grpc_asyncio_transport_channel_mtls_with_client_cert_source(
+    grpc_create_channel, grpc_ssl_channel_cred
+):
+    # Check that if channel is None, but api_mtls_endpoint and client_cert_source
+    # are provided, then a mTLS channel will be created.
+    mock_cred = mock.Mock()
 
-    # Check that the path construction is reversible.
-    actual = GrafeasClient.parse_occurrence_path(path)
-    assert expected == actual
+    mock_ssl_cred = mock.Mock()
+    grpc_ssl_channel_cred.return_value = mock_ssl_cred
+
+    mock_grpc_channel = mock.Mock()
+    grpc_create_channel.return_value = mock_grpc_channel
+
+    transport = transports.GrafeasGrpcAsyncIOTransport(
+        host="squid.clam.whelk",
+        credentials=mock_cred,
+        api_mtls_endpoint="mtls.squid.clam.whelk",
+        client_cert_source=client_cert_source_callback,
+    )
+    grpc_ssl_channel_cred.assert_called_once_with(
+        certificate_chain=b"cert bytes", private_key=b"key bytes"
+    )
+    grpc_create_channel.assert_called_once_with(
+        "mtls.squid.clam.whelk:443",
+        credentials=mock_cred,
+        credentials_file=None,
+        scopes=(),
+        ssl_credentials=mock_ssl_cred,
+        quota_project_id=None,
+    )
+    assert transport.grpc_channel == mock_grpc_channel
+
+
+@pytest.mark.parametrize(
+    "api_mtls_endpoint", ["mtls.squid.clam.whelk", "mtls.squid.clam.whelk:443"]
+)
+@mock.patch("google.api_core.grpc_helpers.create_channel", autospec=True)
+def test_grafeas_grpc_transport_channel_mtls_with_adc(
+    grpc_create_channel, api_mtls_endpoint
+):
+    # Check that if channel and client_cert_source are None, but api_mtls_endpoint
+    # is provided, then a mTLS channel will be created with SSL ADC.
+    mock_grpc_channel = mock.Mock()
+    grpc_create_channel.return_value = mock_grpc_channel
+
+    # Mock google.auth.transport.grpc.SslCredentials class.
+    mock_ssl_cred = mock.Mock()
+    with mock.patch.multiple(
+        "google.auth.transport.grpc.SslCredentials",
+        __init__=mock.Mock(return_value=None),
+        ssl_credentials=mock.PropertyMock(return_value=mock_ssl_cred),
+    ):
+        mock_cred = mock.Mock()
+        transport = transports.GrafeasGrpcTransport(
+            host="squid.clam.whelk",
+            credentials=mock_cred,
+            api_mtls_endpoint=api_mtls_endpoint,
+            client_cert_source=None,
+        )
+        grpc_create_channel.assert_called_once_with(
+            "mtls.squid.clam.whelk:443",
+            credentials=mock_cred,
+            credentials_file=None,
+            scopes=(),
+            ssl_credentials=mock_ssl_cred,
+            quota_project_id=None,
+        )
+        assert transport.grpc_channel == mock_grpc_channel
+
+
+@pytest.mark.parametrize(
+    "api_mtls_endpoint", ["mtls.squid.clam.whelk", "mtls.squid.clam.whelk:443"]
+)
+@mock.patch("google.api_core.grpc_helpers_async.create_channel", autospec=True)
+def test_grafeas_grpc_asyncio_transport_channel_mtls_with_adc(
+    grpc_create_channel, api_mtls_endpoint
+):
+    # Check that if channel and client_cert_source are None, but api_mtls_endpoint
+    # is provided, then a mTLS channel will be created with SSL ADC.
+    mock_grpc_channel = mock.Mock()
+    grpc_create_channel.return_value = mock_grpc_channel
+
+    # Mock google.auth.transport.grpc.SslCredentials class.
+    mock_ssl_cred = mock.Mock()
+    with mock.patch.multiple(
+        "google.auth.transport.grpc.SslCredentials",
+        __init__=mock.Mock(return_value=None),
+        ssl_credentials=mock.PropertyMock(return_value=mock_ssl_cred),
+    ):
+        mock_cred = mock.Mock()
+        transport = transports.GrafeasGrpcAsyncIOTransport(
+            host="squid.clam.whelk",
+            credentials=mock_cred,
+            api_mtls_endpoint=api_mtls_endpoint,
+            client_cert_source=None,
+        )
+        grpc_create_channel.assert_called_once_with(
+            "mtls.squid.clam.whelk:443",
+            credentials=mock_cred,
+            credentials_file=None,
+            scopes=(),
+            ssl_credentials=mock_ssl_cred,
+            quota_project_id=None,
+        )
+        assert transport.grpc_channel == mock_grpc_channel
 
 
 def test_note_path():
@@ -3546,4 +3667,27 @@ def test_parse_note_path():
 
     # Check that the path construction is reversible.
     actual = GrafeasClient.parse_note_path(path)
+    assert expected == actual
+
+
+def test_occurrence_path():
+    project = "squid"
+    occurrence = "clam"
+
+    expected = "projects/{project}/occurrences/{occurrence}".format(
+        project=project, occurrence=occurrence,
+    )
+    actual = GrafeasClient.occurrence_path(project, occurrence)
+    assert expected == actual
+
+
+def test_parse_occurrence_path():
+    expected = {
+        "project": "whelk",
+        "occurrence": "octopus",
+    }
+    path = GrafeasClient.occurrence_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = GrafeasClient.parse_occurrence_path(path)
     assert expected == actual

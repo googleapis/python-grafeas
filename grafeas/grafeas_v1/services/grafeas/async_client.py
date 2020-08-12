@@ -71,9 +71,9 @@ class GrafeasAsyncClient:
     DEFAULT_ENDPOINT = GrafeasClient.DEFAULT_ENDPOINT
     DEFAULT_MTLS_ENDPOINT = GrafeasClient.DEFAULT_MTLS_ENDPOINT
 
-    occurrence_path = staticmethod(GrafeasClient.occurrence_path)
-
     note_path = staticmethod(GrafeasClient.note_path)
+
+    occurrence_path = staticmethod(GrafeasClient.occurrence_path)
 
     get_transport_class = functools.partial(
         type(GrafeasClient).get_transport_class, type(GrafeasClient)
