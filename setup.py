@@ -24,7 +24,7 @@ description = "Grafeas API client library"
 version = "1.0.0"
 release_status = "Development Status :: 3 - Alpha"
 dependencies = [
-    "google-api-core[grpc] >= 1.21.0, < 2.0.0dev",
+    "google-api-core[grpc] >= 1.22.0, < 2.0.0dev",
     "proto-plus >= 1.4.0",
     "libcst >= 0.2.5",
 ]

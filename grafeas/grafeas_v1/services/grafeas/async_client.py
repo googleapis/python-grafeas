@@ -42,7 +42,7 @@ from grafeas.grafeas_v1.types import package
 from grafeas.grafeas_v1.types import upgrade
 from grafeas.grafeas_v1.types import vulnerability
 
-from .transports.base import GrafeasTransport
+from .transports.base import GrafeasTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import GrafeasGrpcAsyncIOTransport
 from .client import GrafeasClient
 
@@ -72,8 +72,41 @@ class GrafeasAsyncClient:
     DEFAULT_MTLS_ENDPOINT = GrafeasClient.DEFAULT_MTLS_ENDPOINT
 
     note_path = staticmethod(GrafeasClient.note_path)
-
+    parse_note_path = staticmethod(GrafeasClient.parse_note_path)
     occurrence_path = staticmethod(GrafeasClient.occurrence_path)
+    parse_occurrence_path = staticmethod(GrafeasClient.parse_occurrence_path)
+    project_path = staticmethod(GrafeasClient.project_path)
+    parse_project_path = staticmethod(GrafeasClient.parse_project_path)
+
+    common_billing_account_path = staticmethod(
+        GrafeasClient.common_billing_account_path
+    )
+    parse_common_billing_account_path = staticmethod(
+        GrafeasClient.parse_common_billing_account_path
+    )
+
+    common_folder_path = staticmethod(GrafeasClient.common_folder_path)
+    parse_common_folder_path = staticmethod(GrafeasClient.parse_common_folder_path)
+
+    common_organization_path = staticmethod(GrafeasClient.common_organization_path)
+    parse_common_organization_path = staticmethod(
+        GrafeasClient.parse_common_organization_path
+    )
+
+    common_project_path = staticmethod(GrafeasClient.common_project_path)
+    parse_common_project_path = staticmethod(GrafeasClient.parse_common_project_path)
+
+    common_location_path = staticmethod(GrafeasClient.common_location_path)
+    parse_common_location_path = staticmethod(GrafeasClient.parse_common_location_path)
+
+    @property
+    def transport(self) -> GrafeasTransport:
+        """Return the transport used by the client instance.
+
+        Returns:
+            GrafeasTransport: The transport used by the client instance.
+        """
+        return self._client.transport
 
     get_transport_class = functools.partial(
         type(GrafeasClient).get_transport_class, type(GrafeasClient)
@@ -131,7 +164,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name]):
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -158,7 +192,7 @@ class GrafeasAsyncClient:
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -217,7 +251,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, filter]):
+        has_flattened_params = any([parent, filter])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -246,7 +281,7 @@ class GrafeasAsyncClient:
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -299,7 +334,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name]):
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -326,7 +362,7 @@ class GrafeasAsyncClient:
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -383,7 +419,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, occurrence]):
+        has_flattened_params = any([parent, occurrence])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -404,7 +441,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.create_occurrence,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -464,7 +501,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, occurrences]):
+        has_flattened_params = any([parent, occurrences])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -477,15 +515,16 @@ class GrafeasAsyncClient:
 
         if parent is not None:
             request.parent = parent
-        if occurrences is not None:
-            request.occurrences = occurrences
+
+        if occurrences:
+            request.occurrences.extend(occurrences)
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.batch_create_occurrences,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -548,7 +587,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name, occurrence, update_mask]):
+        has_flattened_params = any([name, occurrence, update_mask])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -571,7 +611,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.update_occurrence,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -625,7 +665,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name]):
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -652,7 +693,7 @@ class GrafeasAsyncClient:
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -703,7 +744,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name]):
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -730,7 +772,7 @@ class GrafeasAsyncClient:
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -789,7 +831,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, filter]):
+        has_flattened_params = any([parent, filter])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -818,7 +861,7 @@ class GrafeasAsyncClient:
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -869,7 +912,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name]):
+        has_flattened_params = any([name])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -896,7 +940,7 @@ class GrafeasAsyncClient:
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -959,7 +1003,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, note_id, note]):
+        has_flattened_params = any([parent, note_id, note])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -982,7 +1027,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.create_note,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1039,7 +1084,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([parent, notes]):
+        has_flattened_params = any([parent, notes])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1052,15 +1098,16 @@ class GrafeasAsyncClient:
 
         if parent is not None:
             request.parent = parent
-        if notes is not None:
-            request.notes = notes
+
+        if notes:
+            request.notes.update(notes)
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.batch_create_notes,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1123,7 +1170,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name, note, update_mask]):
+        has_flattened_params = any([name, note, update_mask])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1146,7 +1194,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.update_note,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1210,7 +1258,8 @@ class GrafeasAsyncClient:
         # Create or coerce a protobuf request object.
         # Sanity check: If we got a request object, we should *not* have
         # gotten any keyword arguments that map to the request.
-        if request is not None and any([name, filter]):
+        has_flattened_params = any([name, filter])
+        if request is not None and has_flattened_params:
             raise ValueError(
                 "If the `request` argument is set, then none of "
                 "the individual field arguments should be set."
@@ -1239,7 +1288,7 @@ class GrafeasAsyncClient:
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1262,11 +1311,11 @@ class GrafeasAsyncClient:
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("grafeas",).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("GrafeasAsyncClient",)
