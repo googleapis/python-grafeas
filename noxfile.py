@@ -79,7 +79,7 @@ def default(session):
     session.run(
         "py.test",
         "--quiet",
-        f"--junitxml=system_{session.python}_sponge_log.xml",
+        f"--junitxml=unit_{session.python}_sponge_log.xml",
         "--cov=grafeas",
         "--cov=tests.unit",
         "--cov-append",
