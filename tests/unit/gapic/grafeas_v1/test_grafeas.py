@@ -60,8 +60,7 @@ from grafeas.grafeas_v1.types import vulnerability
 def test_get_occurrence(
     transport: str = "grpc", request_type=grafeas.GetOccurrenceRequest
 ):
-
-    client = GraeasClient(transport=transport,)
+    client = GrafeasClient(transport=transport,)
 
     # Everything is optional in proto3 as far as the runtime is concerned,
     # and we are mocking out the actual API, so just send an empty request.
