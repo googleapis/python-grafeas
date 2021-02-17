@@ -43,3 +43,10 @@ if [[ -n "${NOX_SESSION:-}" ]]; then
 else
     python3.6 -m nox
 fi
+
+# If this is a continuous build, send the test log to the FlakyBot.
+# See https://github.com/googleapis/repo-automation-bots/tree/master/packages/flakybot.
+if [[ $KOKORO_BUILD_ARTIFACTS_SUBDIR = *"continuous"* ]]; then
+    chmod +x $KOKORO_GFILE_DIR/linux_amd64/flakybot
+    $KOKORO_GFILE_DIR/linux_amd64/flakybot
+fi
