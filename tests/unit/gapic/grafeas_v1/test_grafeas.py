@@ -60,7 +60,7 @@ from grafeas.grafeas_v1.types import vulnerability
 def test_get_occurrence(
     transport: str = "grpc", request_type=grafeas.GetOccurrenceRequest
 ):
-    # Remove this typo
+
     client = GraeasClient(transport=transport,)
 
     # Everything is optional in proto3 as far as the runtime is concerned,
