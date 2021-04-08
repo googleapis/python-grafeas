@@ -34,24 +34,24 @@ class CVSSv3(proto.Message):
 
         impact_score (float):
 
-        attack_vector (grafeas.grafeas_v1.types.CVSSv3.AttackVector):
+        attack_vector (~.cvss.CVSSv3.AttackVector):
             Base Metrics
             Represents the intrinsic characteristics of a
             vulnerability that are constant over time and
             across user environments.
-        attack_complexity (grafeas.grafeas_v1.types.CVSSv3.AttackComplexity):
+        attack_complexity (~.cvss.CVSSv3.AttackComplexity):
 
-        privileges_required (grafeas.grafeas_v1.types.CVSSv3.PrivilegesRequired):
+        privileges_required (~.cvss.CVSSv3.PrivilegesRequired):
 
-        user_interaction (grafeas.grafeas_v1.types.CVSSv3.UserInteraction):
+        user_interaction (~.cvss.CVSSv3.UserInteraction):
 
-        scope (grafeas.grafeas_v1.types.CVSSv3.Scope):
+        scope (~.cvss.CVSSv3.Scope):
 
-        confidentiality_impact (grafeas.grafeas_v1.types.CVSSv3.Impact):
+        confidentiality_impact (~.cvss.CVSSv3.Impact):
 
-        integrity_impact (grafeas.grafeas_v1.types.CVSSv3.Impact):
+        integrity_impact (~.cvss.CVSSv3.Impact):
 
-        availability_impact (grafeas.grafeas_v1.types.CVSSv3.Impact):
+        availability_impact (~.cvss.CVSSv3.Impact):
 
     """
 

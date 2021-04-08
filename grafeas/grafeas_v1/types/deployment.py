@@ -46,10 +46,10 @@ class DeploymentOccurrence(proto.Message):
         user_email (str):
             Identity of the user that triggered this
             deployment.
-        deploy_time (google.protobuf.timestamp_pb2.Timestamp):
+        deploy_time (~.timestamp.Timestamp):
             Required. Beginning of the lifetime of this
             deployment.
-        undeploy_time (google.protobuf.timestamp_pb2.Timestamp):
+        undeploy_time (~.timestamp.Timestamp):
             End of the lifetime of this deployment.
         config (str):
             Configuration used to create this deployment.
@@ -60,7 +60,7 @@ class DeploymentOccurrence(proto.Message):
             Output only. Resource URI for the artifact
             being deployed taken from the deployable field
             with the same name.
-        platform (grafeas.grafeas_v1.types.DeploymentOccurrence.Platform):
+        platform (~.deployment.DeploymentOccurrence.Platform):
             Platform hosting this deployment.
     """
 

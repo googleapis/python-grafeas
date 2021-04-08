@@ -16,19 +16,17 @@
 #
 
 from collections import OrderedDict
-from distutils import util
 import os
 import re
-from typing import Callable, Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Callable, Dict, Sequence, Tuple, Type, Union
 import pkg_resources
 
-from google.api_core import client_options as client_options_lib  # type: ignore
+import google.api_core.client_options as ClientOptions  # type: ignore
 from google.api_core import exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
 from google.auth import credentials  # type: ignore
 from google.auth.transport import mtls  # type: ignore
-from google.auth.transport.grpc import SslCredentials  # type: ignore
 from google.auth.exceptions import MutualTLSChannelError  # type: ignore
 from google.oauth2 import service_account  # type: ignore
 
@@ -46,7 +44,7 @@ from grafeas.grafeas_v1.types import package
 from grafeas.grafeas_v1.types import upgrade
 from grafeas.grafeas_v1.types import vulnerability
 
-from .transports.base import GrafeasTransport, DEFAULT_CLIENT_INFO
+from .transports.base import GrafeasTransport
 from .transports.grpc import GrafeasGrpcTransport
 from .transports.grpc_asyncio import GrafeasGrpcAsyncIOTransport
 
@@ -135,31 +133,6 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         DEFAULT_ENDPOINT
     )
 
-    @classmethod
-    def from_service_account_info(cls, info: dict, *args, **kwargs):
-        """Creates an instance of this client using the provided credentials info.
-
-        Args:
-            info (dict): The service account private key info.
-            args: Additional arguments to pass to the constructor.
-            kwargs: Additional arguments to pass to the constructor.
-
-        Returns:
-            GrafeasClient: The constructed client.
-        """
-        credentials = service_account.Credentials.from_service_account_info(info)
-        kwargs["credentials"] = credentials
-        return cls(*args, **kwargs)
-
-    @property
-    def transport(self) -> GrafeasTransport:
-        """Return the transport used by the client instance.
-
-        Returns:
-            GrafeasTransport: The transport used by the client instance.
-        """
-        return self._transport
-
     @staticmethod
     def note_path(project: str, note: str,) -> str:
         """Return a fully-qualified note string."""
@@ -184,76 +157,6 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         m = re.match(
             r"^projects/(?P<project>.+?)/occurrences/(?P<occurrence>.+?)$", path
         )
-        return m.groupdict() if m else {}
-
-    @staticmethod
-    def project_path(project: str,) -> str:
-        """Return a fully-qualified project string."""
-        return "projects/{project}".format(project=project,)
-
-    @staticmethod
-    def parse_project_path(path: str) -> Dict[str, str]:
-        """Parse a project path into its component segments."""
-        m = re.match(r"^projects/(?P<project>.+?)$", path)
-        return m.groupdict() if m else {}
-
-    @staticmethod
-    def common_billing_account_path(billing_account: str,) -> str:
-        """Return a fully-qualified billing_account string."""
-        return "billingAccounts/{billing_account}".format(
-            billing_account=billing_account,
-        )
-
-    @staticmethod
-    def parse_common_billing_account_path(path: str) -> Dict[str, str]:
-        """Parse a billing_account path into its component segments."""
-        m = re.match(r"^billingAccounts/(?P<billing_account>.+?)$", path)
-        return m.groupdict() if m else {}
-
-    @staticmethod
-    def common_folder_path(folder: str,) -> str:
-        """Return a fully-qualified folder string."""
-        return "folders/{folder}".format(folder=folder,)
-
-    @staticmethod
-    def parse_common_folder_path(path: str) -> Dict[str, str]:
-        """Parse a folder path into its component segments."""
-        m = re.match(r"^folders/(?P<folder>.+?)$", path)
-        return m.groupdict() if m else {}
-
-    @staticmethod
-    def common_organization_path(organization: str,) -> str:
-        """Return a fully-qualified organization string."""
-        return "organizations/{organization}".format(organization=organization,)
-
-    @staticmethod
-    def parse_common_organization_path(path: str) -> Dict[str, str]:
-        """Parse a organization path into its component segments."""
-        m = re.match(r"^organizations/(?P<organization>.+?)$", path)
-        return m.groupdict() if m else {}
-
-    @staticmethod
-    def common_project_path(project: str,) -> str:
-        """Return a fully-qualified project string."""
-        return "projects/{project}".format(project=project,)
-
-    @staticmethod
-    def parse_common_project_path(path: str) -> Dict[str, str]:
-        """Parse a project path into its component segments."""
-        m = re.match(r"^projects/(?P<project>.+?)$", path)
-        return m.groupdict() if m else {}
-
-    @staticmethod
-    def common_location_path(project: str, location: str,) -> str:
-        """Return a fully-qualified location string."""
-        return "projects/{project}/locations/{location}".format(
-            project=project, location=location,
-        )
-
-    @staticmethod
-    def parse_common_location_path(path: str) -> Dict[str, str]:
-        """Parse a location path into its component segments."""
-        m = re.match(r"^projects/(?P<project>.+?)/locations/(?P<location>.+?)$", path)
         return m.groupdict() if m else {}
 
     def __init__(self, *, transport: Union[str, GrafeasTransport] = None,) -> None:
@@ -287,12 +190,11 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Gets the specified occurrence.
 
         Args:
-            request (grafeas.grafeas_v1.types.GetOccurrenceRequest):
+            request (:class:`~.grafeas.GetOccurrenceRequest`):
                 The request object. Request to get an occurrence.
-            name (str):
+            name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -304,7 +206,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.types.Occurrence:
+            ~.grafeas.Occurrence:
                 An instance of an analysis type that
                 has been found on a resource.
 
@@ -361,16 +263,15 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Lists occurrences for the specified project.
 
         Args:
-            request (grafeas.grafeas_v1.types.ListOccurrencesRequest):
+            request (:class:`~.grafeas.ListOccurrencesRequest`):
                 The request object. Request to list occurrences.
-            parent (str):
+            parent (:class:`str`):
                 The name of the project to list occurrences for in the
                 form of ``projects/[PROJECT_ID]``.
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            filter (str):
+            filter (:class:`str`):
                 The filter expression.
                 This corresponds to the ``filter`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -383,7 +284,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.services.grafeas.pagers.ListOccurrencesPager:
+            ~.pagers.ListOccurrencesPager:
                 Response for listing occurrences.
                 Iterating over this object will yield
                 results and resolve additional pages
@@ -451,12 +352,11 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         is no longer applicable for the given resource.
 
         Args:
-            request (grafeas.grafeas_v1.types.DeleteOccurrenceRequest):
+            request (:class:`~.grafeas.DeleteOccurrenceRequest`):
                 The request object. Request to delete an occurrence.
-            name (str):
+            name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -518,17 +418,16 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Creates a new occurrence.
 
         Args:
-            request (grafeas.grafeas_v1.types.CreateOccurrenceRequest):
+            request (:class:`~.grafeas.CreateOccurrenceRequest`):
                 The request object. Request to create a new occurrence.
-            parent (str):
+            parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the occurrence is
                 to be created.
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            occurrence (grafeas.grafeas_v1.types.Occurrence):
+            occurrence (:class:`~.grafeas.Occurrence`):
                 The occurrence to create.
                 This corresponds to the ``occurrence`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -541,7 +440,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.types.Occurrence:
+            ~.grafeas.Occurrence:
                 An instance of an analysis type that
                 has been found on a resource.
 
@@ -600,21 +499,19 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Creates new occurrences in batch.
 
         Args:
-            request (grafeas.grafeas_v1.types.BatchCreateOccurrencesRequest):
+            request (:class:`~.grafeas.BatchCreateOccurrencesRequest`):
                 The request object. Request to create occurrences in
                 batch.
-            parent (str):
+            parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the occurrences
                 are to be created.
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            occurrences (Sequence[grafeas.grafeas_v1.types.Occurrence]):
+            occurrences (:class:`Sequence[~.grafeas.Occurrence]`):
                 The occurrences to create. Max
                 allowed length is 1000.
-
                 This corresponds to the ``occurrences`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -626,7 +523,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.types.BatchCreateOccurrencesResponse:
+            ~.grafeas.BatchCreateOccurrencesResponse:
                 Response for creating occurrences in
                 batch.
 
@@ -653,9 +550,8 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
             if parent is not None:
                 request.parent = parent
-
-            if occurrences:
-                request.occurrences.extend(occurrences)
+            if occurrences is not None:
+                request.occurrences = occurrences
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -687,21 +583,20 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Updates the specified occurrence.
 
         Args:
-            request (grafeas.grafeas_v1.types.UpdateOccurrenceRequest):
+            request (:class:`~.grafeas.UpdateOccurrenceRequest`):
                 The request object. Request to update an occurrence.
-            name (str):
+            name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            occurrence (grafeas.grafeas_v1.types.Occurrence):
+            occurrence (:class:`~.grafeas.Occurrence`):
                 The updated occurrence.
                 This corresponds to the ``occurrence`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (google.protobuf.field_mask_pb2.FieldMask):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The fields to update.
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -714,7 +609,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.types.Occurrence:
+            ~.grafeas.Occurrence:
                 An instance of an analysis type that
                 has been found on a resource.
 
@@ -776,13 +671,12 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         belongs to a provider project.
 
         Args:
-            request (grafeas.grafeas_v1.types.GetOccurrenceNoteRequest):
+            request (:class:`~.grafeas.GetOccurrenceNoteRequest`):
                 The request object. Request to get the note to which the
                 specified occurrence is attached.
-            name (str):
+            name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -794,7 +688,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.types.Note:
+            ~.grafeas.Note:
                 A type of analysis that can be done
                 for a resource.
 
@@ -850,12 +744,11 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Gets the specified note.
 
         Args:
-            request (grafeas.grafeas_v1.types.GetNoteRequest):
+            request (:class:`~.grafeas.GetNoteRequest`):
                 The request object. Request to get a note.
-            name (str):
+            name (:class:`str`):
                 The name of the note in the form of
                 ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -867,7 +760,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.types.Note:
+            ~.grafeas.Note:
                 A type of analysis that can be done
                 for a resource.
 
@@ -924,16 +817,15 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Lists notes for the specified project.
 
         Args:
-            request (grafeas.grafeas_v1.types.ListNotesRequest):
+            request (:class:`~.grafeas.ListNotesRequest`):
                 The request object. Request to list notes.
-            parent (str):
+            parent (:class:`str`):
                 The name of the project to list notes for in the form of
                 ``projects/[PROJECT_ID]``.
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            filter (str):
+            filter (:class:`str`):
                 The filter expression.
                 This corresponds to the ``filter`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -946,7 +838,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.services.grafeas.pagers.ListNotesPager:
+            ~.pagers.ListNotesPager:
                 Response for listing notes.
                 Iterating over this object will yield
                 results and resolve additional pages
@@ -1012,12 +904,11 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Deletes the specified note.
 
         Args:
-            request (grafeas.grafeas_v1.types.DeleteNoteRequest):
+            request (:class:`~.grafeas.DeleteNoteRequest`):
                 The request object. Request to delete a note.
-            name (str):
+            name (:class:`str`):
                 The name of the note in the form of
                 ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1080,22 +971,21 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Creates a new note.
 
         Args:
-            request (grafeas.grafeas_v1.types.CreateNoteRequest):
+            request (:class:`~.grafeas.CreateNoteRequest`):
                 The request object. Request to create a new note.
-            parent (str):
+            parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the note is to be
                 created.
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            note_id (str):
+            note_id (:class:`str`):
                 The ID to use for this note.
                 This corresponds to the ``note_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            note (grafeas.grafeas_v1.types.Note):
+            note (:class:`~.grafeas.Note`):
                 The note to create.
                 This corresponds to the ``note`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -1108,7 +998,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.types.Note:
+            ~.grafeas.Note:
                 A type of analysis that can be done
                 for a resource.
 
@@ -1169,20 +1059,18 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Creates new notes in batch.
 
         Args:
-            request (grafeas.grafeas_v1.types.BatchCreateNotesRequest):
+            request (:class:`~.grafeas.BatchCreateNotesRequest`):
                 The request object. Request to create notes in batch.
-            parent (str):
+            parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the notes are to
                 be created.
-
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            notes (Sequence[grafeas.grafeas_v1.types.BatchCreateNotesRequest.NotesEntry]):
+            notes (:class:`Sequence[~.grafeas.BatchCreateNotesRequest.NotesEntry]`):
                 The notes to create. Max allowed
                 length is 1000.
-
                 This corresponds to the ``notes`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1194,7 +1082,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.types.BatchCreateNotesResponse:
+            ~.grafeas.BatchCreateNotesResponse:
                 Response for creating notes in batch.
         """
         # Create or coerce a protobuf request object.
@@ -1219,9 +1107,8 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
             if parent is not None:
                 request.parent = parent
-
-            if notes:
-                request.notes.update(notes)
+            if notes is not None:
+                request.notes = notes
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1253,21 +1140,20 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         r"""Updates the specified note.
 
         Args:
-            request (grafeas.grafeas_v1.types.UpdateNoteRequest):
+            request (:class:`~.grafeas.UpdateNoteRequest`):
                 The request object. Request to update a note.
-            name (str):
+            name (:class:`str`):
                 The name of the note in the form of
                 ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            note (grafeas.grafeas_v1.types.Note):
+            note (:class:`~.grafeas.Note`):
                 The updated note.
                 This corresponds to the ``note`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (google.protobuf.field_mask_pb2.FieldMask):
+            update_mask (:class:`~.field_mask.FieldMask`):
                 The fields to update.
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -1280,7 +1166,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.types.Note:
+            ~.grafeas.Note:
                 A type of analysis that can be done
                 for a resource.
 
@@ -1344,17 +1230,16 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         specified note.
 
         Args:
-            request (grafeas.grafeas_v1.types.ListNoteOccurrencesRequest):
+            request (:class:`~.grafeas.ListNoteOccurrencesRequest`):
                 The request object. Request to list occurrences for a
                 note.
-            name (str):
+            name (:class:`str`):
                 The name of the note to list occurrences for in the form
                 of ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
-
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            filter (str):
+            filter (:class:`str`):
                 The filter expression.
                 This corresponds to the ``filter`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -1367,7 +1252,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 sent along with the request as metadata.
 
         Returns:
-            grafeas.grafeas_v1.services.grafeas.pagers.ListNoteOccurrencesPager:
+            ~.pagers.ListNoteOccurrencesPager:
                 Response for listing occurrences for
                 a note.
                 Iterating over this object will yield
@@ -1424,11 +1309,11 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
 
 try:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
+    _client_info = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("grafeas",).version,
     )
 except pkg_resources.DistributionNotFound:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
+    _client_info = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("GrafeasClient",)

@@ -1,6 +1,6 @@
 Services for Grafeas Grafeas v1 API
 ===================================
-.. toctree::
-    :maxdepth: 2
 
-    grafeas
+.. automodule:: grafeas.grafeas_v1.services.grafeas
+    :members:
+    :inherited-members:

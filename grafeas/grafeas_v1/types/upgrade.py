@@ -44,13 +44,13 @@ class UpgradeNote(proto.Message):
         package (str):
             Required for non-Windows OS. The package this
             Upgrade is for.
-        version (grafeas.grafeas_v1.types.Version):
+        version (~.g_package.Version):
             Required for non-Windows OS. The version of
             the package in machine + human readable form.
-        distributions (Sequence[grafeas.grafeas_v1.types.UpgradeDistribution]):
+        distributions (Sequence[~.upgrade.UpgradeDistribution]):
             Metadata about the upgrade for each specific
             operating system.
-        windows_update (grafeas.grafeas_v1.types.WindowsUpdate):
+        windows_update (~.upgrade.WindowsUpdate):
             Required for Windows OS. Represents the
             metadata about the Windows update.
     """
@@ -107,14 +107,14 @@ class WindowsUpdate(proto.Message):
     wuapi-iupdate.
 
     Attributes:
-        identity (grafeas.grafeas_v1.types.WindowsUpdate.Identity):
+        identity (~.upgrade.WindowsUpdate.Identity):
             Required - The unique identifier for the
             update.
         title (str):
             The localized title of the update.
         description (str):
             The localized description of the update.
-        categories (Sequence[grafeas.grafeas_v1.types.WindowsUpdate.Category]):
+        categories (Sequence[~.upgrade.WindowsUpdate.Category]):
             The list of categories to which the update
             belongs.
         kb_article_ids (Sequence[str]):
@@ -123,7 +123,7 @@ class WindowsUpdate(proto.Message):
         support_url (str):
             The hyperlink to the support information for
             the update.
-        last_published_timestamp (google.protobuf.timestamp_pb2.Timestamp):
+        last_published_timestamp (~.timestamp.Timestamp):
             The last published timestamp of the update.
     """
 
@@ -184,15 +184,15 @@ class UpgradeOccurrence(proto.Message):
         package (str):
             Required for non-Windows OS. The package this
             Upgrade is for.
-        parsed_version (grafeas.grafeas_v1.types.Version):
+        parsed_version (~.g_package.Version):
             Required for non-Windows OS. The version of
             the package in a machine + human readable form.
-        distribution (grafeas.grafeas_v1.types.UpgradeDistribution):
+        distribution (~.upgrade.UpgradeDistribution):
             Metadata about the upgrade for available for the specific
             operating system for the resource_url. This allows efficient
             filtering, as well as making it easier to use the
             occurrence.
-        windows_update (grafeas.grafeas_v1.types.WindowsUpdate):
+        windows_update (~.upgrade.WindowsUpdate):
             Required for Windows OS. Represents the
             metadata about the Windows update.
     """
@@ -201,9 +201,9 @@ class UpgradeOccurrence(proto.Message):
 
     parsed_version = proto.Field(proto.MESSAGE, number=3, message=g_package.Version,)
 
-    distribution = proto.Field(proto.MESSAGE, number=4, message="UpgradeDistribution",)
+    distribution = proto.Field(proto.MESSAGE, number=4, message=UpgradeDistribution,)
 
-    windows_update = proto.Field(proto.MESSAGE, number=5, message="WindowsUpdate",)
+    windows_update = proto.Field(proto.MESSAGE, number=5, message=WindowsUpdate,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

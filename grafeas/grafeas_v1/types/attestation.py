@@ -38,7 +38,7 @@ class AttestationNote(proto.Message):
     don't all live in the same project.
 
     Attributes:
-        hint (grafeas.grafeas_v1.types.AttestationNote.Hint):
+        hint (~.attestation.AttestationNote.Hint):
             Hint hints at the purpose of the attestation
             authority.
     """
@@ -79,7 +79,7 @@ class AttestationOccurrence(proto.Message):
         serialized_payload (bytes):
             Required. The serialized payload that is verified by one or
             more ``signatures``.
-        signatures (Sequence[grafeas.grafeas_v1.types.Signature]):
+        signatures (Sequence[~.common.Signature]):
             One or more signatures over ``serialized_payload``. Verifier
             implementations should consider this attestation message
             verified if at least one ``signature`` verifies

@@ -51,16 +51,16 @@ class BuildProvenance(proto.Message):
             Required. Unique identifier of the build.
         project_id (str):
             ID of the project.
-        commands (Sequence[grafeas.grafeas_v1.types.Command]):
+        commands (Sequence[~.provenance.Command]):
             Commands requested by the build.
-        built_artifacts (Sequence[grafeas.grafeas_v1.types.Artifact]):
+        built_artifacts (Sequence[~.provenance.Artifact]):
             Output of the build.
-        create_time (google.protobuf.timestamp_pb2.Timestamp):
+        create_time (~.timestamp.Timestamp):
             Time at which the build was created.
-        start_time (google.protobuf.timestamp_pb2.Timestamp):
+        start_time (~.timestamp.Timestamp):
             Time at which execution of the build was
             started.
-        end_time (google.protobuf.timestamp_pb2.Timestamp):
+        end_time (~.timestamp.Timestamp):
             Time at which execution of the build was
             finished.
         creator (str):
@@ -72,12 +72,12 @@ class BuildProvenance(proto.Message):
         logs_uri (str):
             URI where any logs for this provenance were
             written.
-        source_provenance (grafeas.grafeas_v1.types.Source):
+        source_provenance (~.provenance.Source):
             Details of the Source input to the build.
         trigger_id (str):
             Trigger identifier if the build was triggered
             automatically; empty if not.
-        build_options (Sequence[grafeas.grafeas_v1.types.BuildProvenance.BuildOptionsEntry]):
+        build_options (Sequence[~.provenance.BuildProvenance.BuildOptionsEntry]):
             Special options applied to this build. This
             is a catch-all field where build providers can
             enter any desired additional details.
@@ -121,7 +121,7 @@ class Source(proto.Message):
         artifact_storage_source_uri (str):
             If provided, the input binary artifacts for
             the build came from this location.
-        file_hashes (Sequence[grafeas.grafeas_v1.types.Source.FileHashesEntry]):
+        file_hashes (Sequence[~.provenance.Source.FileHashesEntry]):
             Hash(es) of the build source, which can be
             used to verify that the original source
             integrity was maintained in the build.
@@ -133,10 +133,10 @@ class Source(proto.Message):
             such as a gzipped tarfile (.tar.gz), the
             FileHash will be for the single path to that
             file.
-        context (grafeas.grafeas_v1.types.SourceContext):
+        context (~.provenance.SourceContext):
             If provided, the source code used for the
             build came from this location.
-        additional_contexts (Sequence[grafeas.grafeas_v1.types.SourceContext]):
+        additional_contexts (Sequence[~.provenance.SourceContext]):
             If provided, some of the source code used for
             the build may be found in these locations, in
             the case where the source repository had
@@ -164,7 +164,7 @@ class FileHashes(proto.Message):
     build.
 
     Attributes:
-        file_hash (Sequence[grafeas.grafeas_v1.types.Hash]):
+        file_hash (Sequence[~.provenance.Hash]):
             Required. Collection of file hashes.
     """
 
@@ -175,14 +175,14 @@ class Hash(proto.Message):
     r"""Container message for hash values.
 
     Attributes:
-        type_ (str):
+        type (str):
             Required. The type of hash that was
             performed, e.g. "SHA-256".
         value (bytes):
             Required. The hash value.
     """
 
-    type_ = proto.Field(proto.STRING, number=1)
+    type = proto.Field(proto.STRING, number=1)
 
     value = proto.Field(proto.BYTES, number=2)
 
@@ -202,7 +202,7 @@ class Command(proto.Message):
         args (Sequence[str]):
             Command-line arguments used when executing
             this command.
-        dir_ (str):
+        dir (str):
             Working directory (relative to project source
             root) used when running this command.
         id (str):
@@ -219,7 +219,7 @@ class Command(proto.Message):
 
     args = proto.RepeatedField(proto.STRING, number=3)
 
-    dir_ = proto.Field(proto.STRING, number=4)
+    dir = proto.Field(proto.STRING, number=4)
 
     id = proto.Field(proto.STRING, number=5)
 
@@ -259,16 +259,16 @@ class SourceContext(proto.Message):
     a single file or directory.
 
     Attributes:
-        cloud_repo (grafeas.grafeas_v1.types.CloudRepoSourceContext):
+        cloud_repo (~.provenance.CloudRepoSourceContext):
             A SourceContext referring to a revision in a
             Google Cloud Source Repo.
-        gerrit (grafeas.grafeas_v1.types.GerritSourceContext):
+        gerrit (~.provenance.GerritSourceContext):
             A SourceContext referring to a Gerrit
             project.
-        git (grafeas.grafeas_v1.types.GitSourceContext):
+        git (~.provenance.GitSourceContext):
             A SourceContext referring to any third party
             Git repo (e.g., GitHub).
-        labels (Sequence[grafeas.grafeas_v1.types.SourceContext.LabelsEntry]):
+        labels (Sequence[~.provenance.SourceContext.LabelsEntry]):
             Labels with user defined metadata.
     """
 
@@ -291,7 +291,7 @@ class AliasContext(proto.Message):
     r"""An alias to a repo revision.
 
     Attributes:
-        kind (grafeas.grafeas_v1.types.AliasContext.Kind):
+        kind (~.provenance.AliasContext.Kind):
             The alias kind.
         name (str):
             The alias name.
@@ -314,11 +314,11 @@ class CloudRepoSourceContext(proto.Message):
     Google Cloud Source Repo.
 
     Attributes:
-        repo_id (grafeas.grafeas_v1.types.RepoId):
+        repo_id (~.provenance.RepoId):
             The ID of the repo.
         revision_id (str):
             A revision ID.
-        alias_context (grafeas.grafeas_v1.types.AliasContext):
+        alias_context (~.provenance.AliasContext):
             An alias, which may be a branch or tag.
     """
 
@@ -327,7 +327,7 @@ class CloudRepoSourceContext(proto.Message):
     revision_id = proto.Field(proto.STRING, number=2, oneof="revision")
 
     alias_context = proto.Field(
-        proto.MESSAGE, number=3, oneof="revision", message="AliasContext",
+        proto.MESSAGE, number=3, oneof="revision", message=AliasContext,
     )
 
 
@@ -344,7 +344,7 @@ class GerritSourceContext(proto.Message):
             hostURI/project.
         revision_id (str):
             A revision (commit) ID.
-        alias_context (grafeas.grafeas_v1.types.AliasContext):
+        alias_context (~.provenance.AliasContext):
             An alias, which may be a branch or tag.
     """
 
@@ -355,7 +355,7 @@ class GerritSourceContext(proto.Message):
     revision_id = proto.Field(proto.STRING, number=3, oneof="revision")
 
     alias_context = proto.Field(
-        proto.MESSAGE, number=4, oneof="revision", message="AliasContext",
+        proto.MESSAGE, number=4, oneof="revision", message=AliasContext,
     )
 
 
@@ -379,7 +379,7 @@ class RepoId(proto.Message):
     r"""A unique identifier for a Cloud Repo.
 
     Attributes:
-        project_repo_id (grafeas.grafeas_v1.types.ProjectRepoId):
+        project_repo_id (~.provenance.ProjectRepoId):
             A combination of a project ID and a repo
             name.
         uid (str):

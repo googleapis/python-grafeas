@@ -18,7 +18,6 @@
 from .common import (
     RelatedUrl,
     Signature,
-    NoteKind,
 )
 from .attestation import (
     AttestationNote,
@@ -64,7 +63,6 @@ from .package import (
     PackageNote,
     PackageOccurrence,
     Version,
-    Architecture,
 )
 from .upgrade import (
     UpgradeNote,
@@ -75,7 +73,6 @@ from .upgrade import (
 from .vulnerability import (
     VulnerabilityNote,
     VulnerabilityOccurrence,
-    Severity,
 )
 from .grafeas import (
     Occurrence,
@@ -101,10 +98,10 @@ from .grafeas import (
     BatchCreateOccurrencesResponse,
 )
 
+
 __all__ = (
     "RelatedUrl",
     "Signature",
-    "NoteKind",
     "AttestationNote",
     "AttestationOccurrence",
     "BuildProvenance",
@@ -136,14 +133,12 @@ __all__ = (
     "PackageNote",
     "PackageOccurrence",
     "Version",
-    "Architecture",
     "UpgradeNote",
     "UpgradeDistribution",
     "WindowsUpdate",
     "UpgradeOccurrence",
     "VulnerabilityNote",
     "VulnerabilityOccurrence",
-    "Severity",
     "Occurrence",
     "Note",
     "GetOccurrenceRequest",

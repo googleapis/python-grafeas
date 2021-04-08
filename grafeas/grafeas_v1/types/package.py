@@ -49,10 +49,10 @@ class Distribution(proto.Message):
             Required. The cpe_uri in `CPE
             format <https://cpe.mitre.org/specification/>`__ denoting
             the package manager version distributing a package.
-        architecture (grafeas.grafeas_v1.types.Architecture):
+        architecture (~.package.Architecture):
             The CPU architecture for which packages in
             this distribution channel were built.
-        latest_version (grafeas.grafeas_v1.types.Version):
+        latest_version (~.package.Version):
             The latest available version of this package
             in this distribution channel.
         maintainer (str):
@@ -89,7 +89,7 @@ class Location(proto.Message):
             Required. The CPE URI in `CPE
             format <https://cpe.mitre.org/specification/>`__ denoting
             the package manager version distributing a package.
-        version (grafeas.grafeas_v1.types.Version):
+        version (~.package.Version):
             The version installed at this location.
         path (str):
             The path from which we gathered that this
@@ -111,16 +111,14 @@ class PackageNote(proto.Message):
     Attributes:
         name (str):
             Required. Immutable. The name of the package.
-        distribution (Sequence[grafeas.grafeas_v1.types.Distribution]):
+        distribution (Sequence[~.package.Distribution]):
             The various channels by which a package is
             distributed.
     """
 
     name = proto.Field(proto.STRING, number=1)
 
-    distribution = proto.RepeatedField(
-        proto.MESSAGE, number=10, message="Distribution",
-    )
+    distribution = proto.RepeatedField(proto.MESSAGE, number=10, message=Distribution,)
 
 
 class PackageOccurrence(proto.Message):
@@ -131,7 +129,7 @@ class PackageOccurrence(proto.Message):
         name (str):
             Output only. The name of the installed
             package.
-        location (Sequence[grafeas.grafeas_v1.types.Location]):
+        location (Sequence[~.package.Location]):
             Required. All of the places within the
             filesystem versions of this package have been
             found.
@@ -139,7 +137,7 @@ class PackageOccurrence(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    location = proto.RepeatedField(proto.MESSAGE, number=2, message="Location",)
+    location = proto.RepeatedField(proto.MESSAGE, number=2, message=Location,)
 
 
 class Version(proto.Message):
@@ -156,7 +154,7 @@ class Version(proto.Message):
         revision (str):
             The iteration of the package build from the
             above version.
-        kind (grafeas.grafeas_v1.types.Version.VersionKind):
+        kind (~.package.Version.VersionKind):
             Required. Distinguishes between sentinel
             MIN/MAX versions and normal versions.
         full_name (str):
