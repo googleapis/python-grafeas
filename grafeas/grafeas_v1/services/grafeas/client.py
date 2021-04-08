@@ -44,7 +44,7 @@ from grafeas.grafeas_v1.types import package
 from grafeas.grafeas_v1.types import upgrade
 from grafeas.grafeas_v1.types import vulnerability
 
-from .transports.base import GrafeasTransport
+from .transports.base import GrafeasTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import GrafeasGrpcTransport
 from .transports.grpc_asyncio import GrafeasGrpcAsyncIOTransport
 
@@ -1309,11 +1309,11 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("grafeas",).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("GrafeasClient",)

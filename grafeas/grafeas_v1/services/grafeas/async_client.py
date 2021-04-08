@@ -42,7 +42,7 @@ from grafeas.grafeas_v1.types import package
 from grafeas.grafeas_v1.types import upgrade
 from grafeas.grafeas_v1.types import vulnerability
 
-from .transports.base import GrafeasTransport
+from .transports.base import GrafeasTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import GrafeasGrpcAsyncIOTransport
 from .client import GrafeasClient
 
@@ -154,11 +154,11 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -242,11 +242,11 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -322,11 +322,11 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -404,7 +404,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.create_occurrence,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -485,7 +485,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.batch_create_occurrences,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -571,7 +571,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.update_occurrence,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -648,11 +648,11 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -726,11 +726,11 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -814,11 +814,11 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -892,11 +892,11 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -982,7 +982,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.create_note,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1060,7 +1060,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.batch_create_notes,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1146,7 +1146,7 @@ class GrafeasAsyncClient:
         rpc = gapic_v1.method_async.wrap_method(
             self._client._transport.update_note,
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1235,11 +1235,11 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                    exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                 ),
             ),
             default_timeout=30.0,
-            client_info=_client_info,
+            client_info=DEFAULT_CLIENT_INFO,
         )
 
         # Certain fields should be provided within the metadata header;
@@ -1262,11 +1262,11 @@ class GrafeasAsyncClient:
 
 
 try:
-    _client_info = gapic_v1.client_info.ClientInfo(
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("grafeas",).version,
     )
 except pkg_resources.DistributionNotFound:
-    _client_info = gapic_v1.client_info.ClientInfo()
+    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
 
 
 __all__ = ("GrafeasAsyncClient",)
