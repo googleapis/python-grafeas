@@ -175,14 +175,14 @@ class Hash(proto.Message):
     r"""Container message for hash values.
 
     Attributes:
-        type_ (str):
+        type (str):
             Required. The type of hash that was
             performed, e.g. "SHA-256".
         value (bytes):
             Required. The hash value.
     """
 
-    type_ = proto.Field(proto.STRING, number=1)
+    type = proto.Field(proto.STRING, number=1)
 
     value = proto.Field(proto.BYTES, number=2)
 
@@ -202,7 +202,7 @@ class Command(proto.Message):
         args (Sequence[str]):
             Command-line arguments used when executing
             this command.
-        dir_ (str):
+        dir (str):
             Working directory (relative to project source
             root) used when running this command.
         id (str):
@@ -219,7 +219,7 @@ class Command(proto.Message):
 
     args = proto.RepeatedField(proto.STRING, number=3)
 
-    dir_ = proto.Field(proto.STRING, number=4)
+    dir = proto.Field(proto.STRING, number=4)
 
     id = proto.Field(proto.STRING, number=5)
 

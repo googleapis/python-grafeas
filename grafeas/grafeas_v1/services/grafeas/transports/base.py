@@ -19,7 +19,7 @@ import abc
 import typing
 import pkg_resources
 
-from google import auth  # type: ignore
+from google import auth
 from google.api_core import exceptions  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
@@ -30,11 +30,11 @@ from grafeas.grafeas_v1.types import grafeas
 
 
 try:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
+    _client_info = gapic_v1.client_info.ClientInfo(
         gapic_version=pkg_resources.get_distribution("grafeas",).version,
     )
 except pkg_resources.DistributionNotFound:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
+    _client_info = gapic_v1.client_info.ClientInfo()
 
 
 class GrafeasTransport(abc.ABC):
@@ -50,7 +50,6 @@ class GrafeasTransport(abc.ABC):
         credentials_file: typing.Optional[str] = None,
         scopes: typing.Optional[typing.Sequence[str]] = AUTH_SCOPES,
         quota_project_id: typing.Optional[str] = None,
-        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
         **kwargs,
     ) -> None:
         """Instantiate the transport.
@@ -68,11 +67,6 @@ class GrafeasTransport(abc.ABC):
             scope (Optional[Sequence[str]]): A list of scopes.
             quota_project_id (Optional[str]): An optional project to use for billing
                 and quota.
-            client_info (google.api_core.gapic_v1.client_info.ClientInfo):	
-                The client info used to send a user-agent string along with	
-                API requests. If ``None``, then default info will be used.	
-                Generally, you only need to set this if you're developing	
-                your own client library.
         """
         # Save the hostname. Default to port 443 (HTTPS) if none is specified.
         if ":" not in host:
@@ -100,9 +94,9 @@ class GrafeasTransport(abc.ABC):
         self._credentials = credentials
 
         # Lifted into its own function so it can be stubbed out during tests.
-        self._prep_wrapped_messages(client_info)
+        self._prep_wrapped_messages()
 
-    def _prep_wrapped_messages(self, client_info):
+    def _prep_wrapped_messages(self):
         # Precompute the wrapped methods.
         self._wrapped_methods = {
             self.get_occurrence: gapic_v1.method.wrap_method(
@@ -112,11 +106,11 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
-                client_info=client_info,
+                client_info=_client_info,
             ),
             self.list_occurrences: gapic_v1.method.wrap_method(
                 self.list_occurrences,
@@ -125,11 +119,11 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
-                client_info=client_info,
+                client_info=_client_info,
             ),
             self.delete_occurrence: gapic_v1.method.wrap_method(
                 self.delete_occurrence,
@@ -138,22 +132,22 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
-                client_info=client_info,
+                client_info=_client_info,
             ),
             self.create_occurrence: gapic_v1.method.wrap_method(
-                self.create_occurrence, default_timeout=30.0, client_info=client_info,
+                self.create_occurrence, default_timeout=30.0, client_info=_client_info,
             ),
             self.batch_create_occurrences: gapic_v1.method.wrap_method(
                 self.batch_create_occurrences,
                 default_timeout=30.0,
-                client_info=client_info,
+                client_info=_client_info,
             ),
             self.update_occurrence: gapic_v1.method.wrap_method(
-                self.update_occurrence, default_timeout=30.0, client_info=client_info,
+                self.update_occurrence, default_timeout=30.0, client_info=_client_info,
             ),
             self.get_occurrence_note: gapic_v1.method.wrap_method(
                 self.get_occurrence_note,
@@ -162,11 +156,11 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
-                client_info=client_info,
+                client_info=_client_info,
             ),
             self.get_note: gapic_v1.method.wrap_method(
                 self.get_note,
@@ -175,11 +169,11 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
-                client_info=client_info,
+                client_info=_client_info,
             ),
             self.list_notes: gapic_v1.method.wrap_method(
                 self.list_notes,
@@ -188,11 +182,11 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
-                client_info=client_info,
+                client_info=_client_info,
             ),
             self.delete_note: gapic_v1.method.wrap_method(
                 self.delete_note,
@@ -201,20 +195,20 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
-                client_info=client_info,
+                client_info=_client_info,
             ),
             self.create_note: gapic_v1.method.wrap_method(
-                self.create_note, default_timeout=30.0, client_info=client_info,
+                self.create_note, default_timeout=30.0, client_info=_client_info,
             ),
             self.batch_create_notes: gapic_v1.method.wrap_method(
-                self.batch_create_notes, default_timeout=30.0, client_info=client_info,
+                self.batch_create_notes, default_timeout=30.0, client_info=_client_info,
             ),
             self.update_note: gapic_v1.method.wrap_method(
-                self.update_note, default_timeout=30.0, client_info=client_info,
+                self.update_note, default_timeout=30.0, client_info=_client_info,
             ),
             self.list_note_occurrences: gapic_v1.method.wrap_method(
                 self.list_note_occurrences,
@@ -223,11 +217,11 @@ class GrafeasTransport(abc.ABC):
                     maximum=60.0,
                     multiplier=1.3,
                     predicate=retries.if_exception_type(
-                        exceptions.ServiceUnavailable, exceptions.DeadlineExceeded,
+                        exceptions.DeadlineExceeded, exceptions.ServiceUnavailable,
                     ),
                 ),
                 default_timeout=30.0,
-                client_info=client_info,
+                client_info=_client_info,
             ),
         }
 
