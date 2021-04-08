@@ -653,9 +653,8 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
             if parent is not None:
                 request.parent = parent
-
-            if occurrences:
-                request.occurrences.extend(occurrences)
+            if occurrences is not None:
+                request.occurrences = occurrences
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
@@ -1219,9 +1218,8 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
             if parent is not None:
                 request.parent = parent
-
-            if notes:
-                request.notes.update(notes)
+            if notes is not None:
+                request.notes = notes
 
         # Wrap the RPC method; this adds retry and timeout information,
         # and friendly error handling.
