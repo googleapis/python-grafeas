@@ -34,7 +34,7 @@ class DiscoveryNote(proto.Message):
     is created in a consumer's project at the start of analysis.
 
     Attributes:
-        analysis_kind (~.common.NoteKind):
+        analysis_kind (grafeas.grafeas_v1.types.NoteKind):
             Required. Immutable. The kind of analysis
             that is handled by this discovery.
     """
@@ -47,19 +47,19 @@ class DiscoveryOccurrence(proto.Message):
     discovered resource.
 
     Attributes:
-        continuous_analysis (~.discovery.DiscoveryOccurrence.ContinuousAnalysis):
+        continuous_analysis (grafeas.grafeas_v1.types.DiscoveryOccurrence.ContinuousAnalysis):
             Whether the resource is continuously
             analyzed.
-        analysis_status (~.discovery.DiscoveryOccurrence.AnalysisStatus):
+        analysis_status (grafeas.grafeas_v1.types.DiscoveryOccurrence.AnalysisStatus):
             The status of discovery for the resource.
-        analysis_status_error (~.status.Status):
+        analysis_status_error (google.rpc.status_pb2.Status):
             When an error is encountered this will
             contain a LocalizedMessage under details to show
             to the user. The LocalizedMessage is output only
             and populated by the API.
         cpe (str):
             The CPE of the resource being scanned.
-        last_scan_time (~.timestamp.Timestamp):
+        last_scan_time (google.protobuf.timestamp_pb2.Timestamp):
             The last time this resource was scanned.
     """
 
