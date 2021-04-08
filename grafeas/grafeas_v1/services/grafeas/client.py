@@ -16,6 +16,7 @@
 #
 
 from collections import OrderedDict
+from distutils import util
 import os
 import re
 from typing import Callable, Dict, Sequence, Tuple, Type, Union
@@ -27,6 +28,7 @@ from google.api_core import gapic_v1  # type: ignore
 from google.api_core import retry as retries  # type: ignore
 from google.auth import credentials  # type: ignore
 from google.auth.transport import mtls  # type: ignore
+from google.auth.transport.grpc import SslCredentials  # type: ignore
 from google.auth.exceptions import MutualTLSChannelError  # type: ignore
 from google.oauth2 import service_account  # type: ignore
 
