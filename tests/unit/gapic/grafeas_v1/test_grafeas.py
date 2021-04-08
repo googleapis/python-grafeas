@@ -33,7 +33,7 @@ from google.api_core import grpc_helpers_async
 from google.auth import credentials
 from google.auth.exceptions import MutualTLSChannelError
 from google.oauth2 import service_account
-from google.protobuf import any_pb2 as any  # type: ignore
+from google.protobuf import any_pb2 as gp_any  # type: ignore
 from google.protobuf import field_mask_pb2 as field_mask  # type: ignore
 from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
 from google.rpc import status_pb2 as status  # type: ignore
@@ -75,7 +75,7 @@ def test_get_occurrence(
             note_name="note_name_value",
             kind=common.NoteKind.VULNERABILITY,
             remediation="remediation_value",
-            vulnerability=vulnerability.VulnerabilityOccurrence(type="type_value"),
+            vulnerability=vulnerability.VulnerabilityOccurrence(type_="type__value"),
         )
 
         response = client.get_occurrence(request)
@@ -819,7 +819,7 @@ def test_create_occurrence(
             note_name="note_name_value",
             kind=common.NoteKind.VULNERABILITY,
             remediation="remediation_value",
-            vulnerability=vulnerability.VulnerabilityOccurrence(type="type_value"),
+            vulnerability=vulnerability.VulnerabilityOccurrence(type_="type__value"),
         )
 
         response = client.create_occurrence(request)
@@ -1246,7 +1246,7 @@ def test_update_occurrence(
             note_name="note_name_value",
             kind=common.NoteKind.VULNERABILITY,
             remediation="remediation_value",
-            vulnerability=vulnerability.VulnerabilityOccurrence(type="type_value"),
+            vulnerability=vulnerability.VulnerabilityOccurrence(type_="type__value"),
         )
 
         response = client.update_occurrence(request)
