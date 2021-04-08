@@ -11,8 +11,8 @@
       "git": {
         "name": "googleapis",
         "remote": "https://github.com/googleapis/googleapis.git",
-        "sha": "18ffeb71f9433cb6f82b2ddccb9e11d553be4cdc",
-        "internalRef": "327261444"
+        "sha": "1d5522ad1056f16a6d593b8f3038d831e64daeea",
+        "internalRef": "327514630"
       }
     },
     {
@@ -87,7 +87,6 @@
     "docs/grafeas_v1/services.rst",
     "docs/grafeas_v1/types.rst",
     "docs/multiprocessing.rst",
-    "grafeas-v1-py.tar.gz",
     "grafeas/grafeas/__init__.py",
     "grafeas/grafeas/py.typed",
     "grafeas/grafeas_v1/__init__.py",
