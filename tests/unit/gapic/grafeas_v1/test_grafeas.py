@@ -539,8 +539,8 @@ def test_list_occurrences_pages():
             RuntimeError,
         )
         pages = list(client.list_occurrences(request={}).pages)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 @pytest.mark.asyncio
@@ -612,10 +612,10 @@ async def test_list_occurrences_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page in (await client.list_occurrences(request={})).pages:
-            pages.append(page)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        async for page_ in (await client.list_occurrences(request={})).pages:
+            pages.append(page_)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 def test_delete_occurrence(
@@ -2128,8 +2128,8 @@ def test_list_notes_pages():
             RuntimeError,
         )
         pages = list(client.list_notes(request={}).pages)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 @pytest.mark.asyncio
@@ -2185,10 +2185,10 @@ async def test_list_notes_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page in (await client.list_notes(request={})).pages:
-            pages.append(page)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        async for page_ in (await client.list_notes(request={})).pages:
+            pages.append(page_)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 def test_delete_note(transport: str = "grpc", request_type=grafeas.DeleteNoteRequest):
@@ -3297,8 +3297,8 @@ def test_list_note_occurrences_pages():
             RuntimeError,
         )
         pages = list(client.list_note_occurrences(request={}).pages)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 @pytest.mark.asyncio
@@ -3370,10 +3370,10 @@ async def test_list_note_occurrences_async_pages():
             RuntimeError,
         )
         pages = []
-        async for page in (await client.list_note_occurrences(request={})).pages:
-            pages.append(page)
-        for page, token in zip(pages, ["abc", "def", "ghi", ""]):
-            assert page.raw_page.next_page_token == token
+        async for page_ in (await client.list_note_occurrences(request={})).pages:
+            pages.append(page_)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
 
 
 def test_transport_instance():
@@ -3392,6 +3392,18 @@ def test_transport_get_channel():
     transport = transports.GrafeasGrpcAsyncIOTransport()
     channel = transport.grpc_channel
     assert channel
+
+
+@pytest.mark.parametrize(
+    "transport_class",
+    [transports.GrafeasGrpcTransport, transports.GrafeasGrpcAsyncIOTransport],
+)
+def test_transport_adc(transport_class):
+    # Test default credentials are used if not provided.
+    with mock.patch.object(auth, "default") as adc:
+        adc.return_value = (credentials.AnonymousCredentials(), None)
+        transport_class()
+        adc.assert_called_once()
 
 
 def test_transport_grpc_default():
@@ -3448,6 +3460,17 @@ def test_grafeas_base_transport_with_credentials_file():
         )
 
 
+def test_grafeas_base_transport_with_adc():
+    # Test the default credentials are used if credentials and credentials_file are None.
+    with mock.patch.object(auth, "default") as adc, mock.patch(
+        "grafeas.grafeas_v1.services.grafeas.transports.GrafeasTransport._prep_wrapped_messages"
+    ) as Transport:
+        Transport.return_value = None
+        adc.return_value = (credentials.AnonymousCredentials(), None)
+        transport = transports.GrafeasTransport()
+        adc.assert_called_once()
+
+
 def test_grafeas_auth_adc():
     # If no credentials are provided, we should use ADC credentials.
     with mock.patch.object(auth, "default") as adc:
@@ -3474,35 +3497,123 @@ def test_grafeas_transport_auth_adc():
 def test_grafeas_grpc_transport_channel():
     channel = grpc.insecure_channel("http://localhost/")
 
-    # Check that if channel is provided, mtls endpoint and client_cert_source
-    # won't be used.
-    callback = mock.MagicMock()
+    # Check that channel is used if provided.
     transport = transports.GrafeasGrpcTransport(
-        host="squid.clam.whelk",
-        channel=channel,
-        api_mtls_endpoint="mtls.squid.clam.whelk",
-        client_cert_source=callback,
+        host="squid.clam.whelk", channel=channel,
     )
     assert transport.grpc_channel == channel
     assert transport._host == "squid.clam.whelk:443"
-    assert not callback.called
 
 
 def test_grafeas_grpc_asyncio_transport_channel():
     channel = aio.insecure_channel("http://localhost/")
 
-    # Check that if channel is provided, mtls endpoint and client_cert_source
-    # won't be used.
-    callback = mock.MagicMock()
+    # Check that channel is used if provided.
     transport = transports.GrafeasGrpcAsyncIOTransport(
-        host="squid.clam.whelk",
-        channel=channel,
-        api_mtls_endpoint="mtls.squid.clam.whelk",
-        client_cert_source=callback,
+        host="squid.clam.whelk", channel=channel,
     )
     assert transport.grpc_channel == channel
     assert transport._host == "squid.clam.whelk:443"
-    assert not callback.called
+
+
+@pytest.mark.parametrize(
+    "transport_class",
+    [transports.GrafeasGrpcTransport, transports.GrafeasGrpcAsyncIOTransport],
+)
+def test_grafeas_transport_channel_mtls_with_client_cert_source(transport_class):
+    with mock.patch(
+        "grpc.ssl_channel_credentials", autospec=True
+    ) as grpc_ssl_channel_cred:
+        with mock.patch.object(
+            transport_class, "create_channel", autospec=True
+        ) as grpc_create_channel:
+            mock_ssl_cred = mock.Mock()
+            grpc_ssl_channel_cred.return_value = mock_ssl_cred
+
+            mock_grpc_channel = mock.Mock()
+            grpc_create_channel.return_value = mock_grpc_channel
+
+            cred = credentials.AnonymousCredentials()
+            with pytest.warns(DeprecationWarning):
+                with mock.patch.object(auth, "default") as adc:
+                    adc.return_value = (cred, None)
+                    transport = transport_class(
+                        host="squid.clam.whelk",
+                        api_mtls_endpoint="mtls.squid.clam.whelk",
+                        client_cert_source=client_cert_source_callback,
+                    )
+                    adc.assert_called_once()
+
+            grpc_ssl_channel_cred.assert_called_once_with(
+                certificate_chain=b"cert bytes", private_key=b"key bytes"
+            )
+            grpc_create_channel.assert_called_once_with(
+                "mtls.squid.clam.whelk:443",
+                credentials=cred,
+                credentials_file=None,
+                scopes=(),
+                ssl_credentials=mock_ssl_cred,
+                quota_project_id=None,
+            )
+            assert transport.grpc_channel == mock_grpc_channel
+
+
+@pytest.mark.parametrize(
+    "transport_class",
+    [transports.GrafeasGrpcTransport, transports.GrafeasGrpcAsyncIOTransport],
+)
+def test_grafeas_transport_channel_mtls_with_adc(transport_class):
+    mock_ssl_cred = mock.Mock()
+    with mock.patch.multiple(
+        "google.auth.transport.grpc.SslCredentials",
+        __init__=mock.Mock(return_value=None),
+        ssl_credentials=mock.PropertyMock(return_value=mock_ssl_cred),
+    ):
+        with mock.patch.object(
+            transport_class, "create_channel", autospec=True
+        ) as grpc_create_channel:
+            mock_grpc_channel = mock.Mock()
+            grpc_create_channel.return_value = mock_grpc_channel
+            mock_cred = mock.Mock()
+
+            with pytest.warns(DeprecationWarning):
+                transport = transport_class(
+                    host="squid.clam.whelk",
+                    credentials=mock_cred,
+                    api_mtls_endpoint="mtls.squid.clam.whelk",
+                    client_cert_source=None,
+                )
+
+            grpc_create_channel.assert_called_once_with(
+                "mtls.squid.clam.whelk:443",
+                credentials=mock_cred,
+                credentials_file=None,
+                scopes=(),
+                ssl_credentials=mock_ssl_cred,
+                quota_project_id=None,
+            )
+            assert transport.grpc_channel == mock_grpc_channel
+
+
+def test_note_path():
+    project = "squid"
+    note = "clam"
+
+    expected = "projects/{project}/notes/{note}".format(project=project, note=note,)
+    actual = GrafeasClient.note_path(project, note)
+    assert expected == actual
+
+
+def test_parse_note_path():
+    expected = {
+        "project": "whelk",
+        "note": "octopus",
+    }
+    path = GrafeasClient.note_path(**expected)
+
+    # Check that the path construction is reversible.
+    actual = GrafeasClient.parse_note_path(path)
+    assert expected == actual
 
 
 def test_occurrence_path():
@@ -3528,22 +3639,18 @@ def test_parse_occurrence_path():
     assert expected == actual
 
 
-def test_note_path():
-    project = "squid"
-    note = "clam"
+def test_client_withDEFAULT_CLIENT_INFO():
+    client_info = gapic_v1.client_info.ClientInfo()
 
-    expected = "projects/{project}/notes/{note}".format(project=project, note=note,)
-    actual = GrafeasClient.note_path(project, note)
-    assert expected == actual
+    with mock.patch.object(
+        transports.GrafeasTransport, "_prep_wrapped_messages"
+    ) as prep:
+        client = GrafeasClient(client_info=client_info,)
+        prep.assert_called_once_with(client_info)
 
-
-def test_parse_note_path():
-    expected = {
-        "project": "whelk",
-        "note": "octopus",
-    }
-    path = GrafeasClient.note_path(**expected)
-
-    # Check that the path construction is reversible.
-    actual = GrafeasClient.parse_note_path(path)
-    assert expected == actual
+    with mock.patch.object(
+        transports.GrafeasTransport, "_prep_wrapped_messages"
+    ) as prep:
+        transport_class = GrafeasClient.get_transport_class()
+        transport = transport_class(client_info=client_info,)
+        prep.assert_called_once_with(client_info)
