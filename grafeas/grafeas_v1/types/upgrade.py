@@ -201,9 +201,9 @@ class UpgradeOccurrence(proto.Message):
 
     parsed_version = proto.Field(proto.MESSAGE, number=3, message=g_package.Version,)
 
-    distribution = proto.Field(proto.MESSAGE, number=4, message=UpgradeDistribution,)
+    distribution = proto.Field(proto.MESSAGE, number=4, message="UpgradeDistribution",)
 
-    windows_update = proto.Field(proto.MESSAGE, number=5, message=WindowsUpdate,)
+    windows_update = proto.Field(proto.MESSAGE, number=5, message="WindowsUpdate",)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

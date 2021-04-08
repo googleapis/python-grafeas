@@ -333,7 +333,7 @@ class ListOccurrencesResponse(proto.Message):
     def raw_page(self):
         return self
 
-    occurrences = proto.RepeatedField(proto.MESSAGE, number=1, message=Occurrence,)
+    occurrences = proto.RepeatedField(proto.MESSAGE, number=1, message="Occurrence",)
 
     next_page_token = proto.Field(proto.STRING, number=2)
 
@@ -364,7 +364,7 @@ class CreateOccurrenceRequest(proto.Message):
 
     parent = proto.Field(proto.STRING, number=1)
 
-    occurrence = proto.Field(proto.MESSAGE, number=2, message=Occurrence,)
+    occurrence = proto.Field(proto.MESSAGE, number=2, message="Occurrence",)
 
 
 class UpdateOccurrenceRequest(proto.Message):
@@ -382,7 +382,7 @@ class UpdateOccurrenceRequest(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    occurrence = proto.Field(proto.MESSAGE, number=2, message=Occurrence,)
+    occurrence = proto.Field(proto.MESSAGE, number=2, message="Occurrence",)
 
     update_mask = proto.Field(proto.MESSAGE, number=3, message=field_mask.FieldMask,)
 
@@ -455,7 +455,7 @@ class ListNotesResponse(proto.Message):
     def raw_page(self):
         return self
 
-    notes = proto.RepeatedField(proto.MESSAGE, number=1, message=Note,)
+    notes = proto.RepeatedField(proto.MESSAGE, number=1, message="Note",)
 
     next_page_token = proto.Field(proto.STRING, number=2)
 
@@ -490,7 +490,7 @@ class CreateNoteRequest(proto.Message):
 
     note_id = proto.Field(proto.STRING, number=2)
 
-    note = proto.Field(proto.MESSAGE, number=3, message=Note,)
+    note = proto.Field(proto.MESSAGE, number=3, message="Note",)
 
 
 class UpdateNoteRequest(proto.Message):
@@ -508,7 +508,7 @@ class UpdateNoteRequest(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    note = proto.Field(proto.MESSAGE, number=2, message=Note,)
+    note = proto.Field(proto.MESSAGE, number=2, message="Note",)
 
     update_mask = proto.Field(proto.MESSAGE, number=3, message=field_mask.FieldMask,)
 
@@ -554,7 +554,7 @@ class ListNoteOccurrencesResponse(proto.Message):
     def raw_page(self):
         return self
 
-    occurrences = proto.RepeatedField(proto.MESSAGE, number=1, message=Occurrence,)
+    occurrences = proto.RepeatedField(proto.MESSAGE, number=1, message="Occurrence",)
 
     next_page_token = proto.Field(proto.STRING, number=2)
 
@@ -574,7 +574,7 @@ class BatchCreateNotesRequest(proto.Message):
 
     parent = proto.Field(proto.STRING, number=1)
 
-    notes = proto.MapField(proto.STRING, proto.MESSAGE, number=2, message=Note,)
+    notes = proto.MapField(proto.STRING, proto.MESSAGE, number=2, message="Note",)
 
 
 class BatchCreateNotesResponse(proto.Message):
@@ -585,7 +585,7 @@ class BatchCreateNotesResponse(proto.Message):
             The notes that were created.
     """
 
-    notes = proto.RepeatedField(proto.MESSAGE, number=1, message=Note,)
+    notes = proto.RepeatedField(proto.MESSAGE, number=1, message="Note",)
 
 
 class BatchCreateOccurrencesRequest(proto.Message):
@@ -603,7 +603,7 @@ class BatchCreateOccurrencesRequest(proto.Message):
 
     parent = proto.Field(proto.STRING, number=1)
 
-    occurrences = proto.RepeatedField(proto.MESSAGE, number=2, message=Occurrence,)
+    occurrences = proto.RepeatedField(proto.MESSAGE, number=2, message="Occurrence",)
 
 
 class BatchCreateOccurrencesResponse(proto.Message):
@@ -614,7 +614,7 @@ class BatchCreateOccurrencesResponse(proto.Message):
             The occurrences that were created.
     """
 
-    occurrences = proto.RepeatedField(proto.MESSAGE, number=1, message=Occurrence,)
+    occurrences = proto.RepeatedField(proto.MESSAGE, number=1, message="Occurrence",)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

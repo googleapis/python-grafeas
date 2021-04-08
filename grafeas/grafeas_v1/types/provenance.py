@@ -327,7 +327,7 @@ class CloudRepoSourceContext(proto.Message):
     revision_id = proto.Field(proto.STRING, number=2, oneof="revision")
 
     alias_context = proto.Field(
-        proto.MESSAGE, number=3, oneof="revision", message=AliasContext,
+        proto.MESSAGE, number=3, oneof="revision", message="AliasContext",
     )
 
 
@@ -355,7 +355,7 @@ class GerritSourceContext(proto.Message):
     revision_id = proto.Field(proto.STRING, number=3, oneof="revision")
 
     alias_context = proto.Field(
-        proto.MESSAGE, number=4, oneof="revision", message=AliasContext,
+        proto.MESSAGE, number=4, oneof="revision", message="AliasContext",
     )
 
 

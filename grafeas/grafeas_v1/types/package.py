@@ -118,7 +118,9 @@ class PackageNote(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    distribution = proto.RepeatedField(proto.MESSAGE, number=10, message=Distribution,)
+    distribution = proto.RepeatedField(
+        proto.MESSAGE, number=10, message="Distribution",
+    )
 
 
 class PackageOccurrence(proto.Message):
@@ -137,7 +139,7 @@ class PackageOccurrence(proto.Message):
 
     name = proto.Field(proto.STRING, number=1)
 
-    location = proto.RepeatedField(proto.MESSAGE, number=2, message=Location,)
+    location = proto.RepeatedField(proto.MESSAGE, number=2, message="Location",)
 
 
 class Version(proto.Message):
