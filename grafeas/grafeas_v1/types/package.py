@@ -49,10 +49,10 @@ class Distribution(proto.Message):
             Required. The cpe_uri in `CPE
             format <https://cpe.mitre.org/specification/>`__ denoting
             the package manager version distributing a package.
-        architecture (~.package.Architecture):
+        architecture (grafeas.grafeas_v1.types.Architecture):
             The CPU architecture for which packages in
             this distribution channel were built.
-        latest_version (~.package.Version):
+        latest_version (grafeas.grafeas_v1.types.Version):
             The latest available version of this package
             in this distribution channel.
         maintainer (str):
@@ -89,7 +89,7 @@ class Location(proto.Message):
             Required. The CPE URI in `CPE
             format <https://cpe.mitre.org/specification/>`__ denoting
             the package manager version distributing a package.
-        version (~.package.Version):
+        version (grafeas.grafeas_v1.types.Version):
             The version installed at this location.
         path (str):
             The path from which we gathered that this
@@ -111,7 +111,7 @@ class PackageNote(proto.Message):
     Attributes:
         name (str):
             Required. Immutable. The name of the package.
-        distribution (Sequence[~.package.Distribution]):
+        distribution (Sequence[grafeas.grafeas_v1.types.Distribution]):
             The various channels by which a package is
             distributed.
     """
@@ -131,7 +131,7 @@ class PackageOccurrence(proto.Message):
         name (str):
             Output only. The name of the installed
             package.
-        location (Sequence[~.package.Location]):
+        location (Sequence[grafeas.grafeas_v1.types.Location]):
             Required. All of the places within the
             filesystem versions of this package have been
             found.
@@ -156,7 +156,7 @@ class Version(proto.Message):
         revision (str):
             The iteration of the package build from the
             above version.
-        kind (~.package.Version.VersionKind):
+        kind (grafeas.grafeas_v1.types.Version.VersionKind):
             Required. Distinguishes between sentinel
             MIN/MAX versions and normal versions.
         full_name (str):

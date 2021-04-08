@@ -3444,7 +3444,7 @@ def test_transport_get_channel():
 
 @pytest.mark.parametrize(
     "transport_class",
-    [transports.GrafeasGrpcTransport, transports.GrafeasGrpcAsyncIOTransport],
+    [transports.GrafeasGrpcTransport, transports.GrafeasGrpcAsyncIOTransport,],
 )
 def test_transport_adc(transport_class):
     # Test default credentials are used if not provided.
@@ -3543,7 +3543,7 @@ def test_grafeas_transport_auth_adc():
 
 
 def test_grafeas_grpc_transport_channel():
-    channel = grpc.insecure_channel("http://localhost/")
+    channel = grpc.secure_channel("http://localhost/", grpc.local_channel_credentials())
 
     # Check that channel is used if provided.
     transport = transports.GrafeasGrpcTransport(
@@ -3555,7 +3555,7 @@ def test_grafeas_grpc_transport_channel():
 
 
 def test_grafeas_grpc_asyncio_transport_channel():
-    channel = aio.insecure_channel("http://localhost/")
+    channel = aio.secure_channel("http://localhost/", grpc.local_channel_credentials())
 
     # Check that channel is used if provided.
     transport = transports.GrafeasGrpcAsyncIOTransport(
@@ -3575,7 +3575,7 @@ def test_grafeas_transport_channel_mtls_with_client_cert_source(transport_class)
         "grpc.ssl_channel_credentials", autospec=True
     ) as grpc_ssl_channel_cred:
         with mock.patch.object(
-            transport_class, "create_channel", autospec=True
+            transport_class, "create_channel"
         ) as grpc_create_channel:
             mock_ssl_cred = mock.Mock()
             grpc_ssl_channel_cred.return_value = mock_ssl_cred
@@ -3625,7 +3625,7 @@ def test_grafeas_transport_channel_mtls_with_adc(transport_class):
         ssl_credentials=mock.PropertyMock(return_value=mock_ssl_cred),
     ):
         with mock.patch.object(
-            transport_class, "create_channel", autospec=True
+            transport_class, "create_channel"
         ) as grpc_create_channel:
             mock_grpc_channel = mock.Mock()
             grpc_create_channel.return_value = mock_grpc_channel

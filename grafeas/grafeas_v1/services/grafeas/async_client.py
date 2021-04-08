@@ -99,6 +99,8 @@ class GrafeasAsyncClient:
     common_location_path = staticmethod(GrafeasClient.common_location_path)
     parse_common_location_path = staticmethod(GrafeasClient.parse_common_location_path)
 
+    from_service_account_info = GrafeasClient.from_service_account_info
+
     @property
     def transport(self) -> GrafeasTransport:
         """Return the transport used by the client instance.
@@ -140,11 +142,12 @@ class GrafeasAsyncClient:
         r"""Gets the specified occurrence.
 
         Args:
-            request (:class:`~.grafeas.GetOccurrenceRequest`):
+            request (:class:`grafeas.grafeas_v1.types.GetOccurrenceRequest`):
                 The request object. Request to get an occurrence.
             name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -156,7 +159,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.grafeas.Occurrence:
+            grafeas.grafeas_v1.types.Occurrence:
                 An instance of an analysis type that
                 has been found on a resource.
 
@@ -220,11 +223,12 @@ class GrafeasAsyncClient:
         r"""Lists occurrences for the specified project.
 
         Args:
-            request (:class:`~.grafeas.ListOccurrencesRequest`):
+            request (:class:`grafeas.grafeas_v1.types.ListOccurrencesRequest`):
                 The request object. Request to list occurrences.
             parent (:class:`str`):
                 The name of the project to list occurrences for in the
                 form of ``projects/[PROJECT_ID]``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -241,7 +245,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListOccurrencesAsyncPager:
+            grafeas.grafeas_v1.services.grafeas.pagers.ListOccurrencesAsyncPager:
                 Response for listing occurrences.
                 Iterating over this object will yield
                 results and resolve additional pages
@@ -316,11 +320,12 @@ class GrafeasAsyncClient:
         is no longer applicable for the given resource.
 
         Args:
-            request (:class:`~.grafeas.DeleteOccurrenceRequest`):
+            request (:class:`grafeas.grafeas_v1.types.DeleteOccurrenceRequest`):
                 The request object. Request to delete an occurrence.
             name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -389,16 +394,17 @@ class GrafeasAsyncClient:
         r"""Creates a new occurrence.
 
         Args:
-            request (:class:`~.grafeas.CreateOccurrenceRequest`):
+            request (:class:`grafeas.grafeas_v1.types.CreateOccurrenceRequest`):
                 The request object. Request to create a new occurrence.
             parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the occurrence is
                 to be created.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            occurrence (:class:`~.grafeas.Occurrence`):
+            occurrence (:class:`grafeas.grafeas_v1.types.Occurrence`):
                 The occurrence to create.
                 This corresponds to the ``occurrence`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -411,7 +417,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.grafeas.Occurrence:
+            grafeas.grafeas_v1.types.Occurrence:
                 An instance of an analysis type that
                 has been found on a resource.
 
@@ -469,19 +475,21 @@ class GrafeasAsyncClient:
         r"""Creates new occurrences in batch.
 
         Args:
-            request (:class:`~.grafeas.BatchCreateOccurrencesRequest`):
+            request (:class:`grafeas.grafeas_v1.types.BatchCreateOccurrencesRequest`):
                 The request object. Request to create occurrences in
                 batch.
             parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the occurrences
                 are to be created.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            occurrences (:class:`Sequence[~.grafeas.Occurrence]`):
+            occurrences (:class:`Sequence[grafeas.grafeas_v1.types.Occurrence]`):
                 The occurrences to create. Max
                 allowed length is 1000.
+
                 This corresponds to the ``occurrences`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -493,7 +501,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.grafeas.BatchCreateOccurrencesResponse:
+            grafeas.grafeas_v1.types.BatchCreateOccurrencesResponse:
                 Response for creating occurrences in
                 batch.
 
@@ -553,20 +561,21 @@ class GrafeasAsyncClient:
         r"""Updates the specified occurrence.
 
         Args:
-            request (:class:`~.grafeas.UpdateOccurrenceRequest`):
+            request (:class:`grafeas.grafeas_v1.types.UpdateOccurrenceRequest`):
                 The request object. Request to update an occurrence.
             name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            occurrence (:class:`~.grafeas.Occurrence`):
+            occurrence (:class:`grafeas.grafeas_v1.types.Occurrence`):
                 The updated occurrence.
                 This corresponds to the ``occurrence`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
                 The fields to update.
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -579,7 +588,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.grafeas.Occurrence:
+            grafeas.grafeas_v1.types.Occurrence:
                 An instance of an analysis type that
                 has been found on a resource.
 
@@ -640,12 +649,13 @@ class GrafeasAsyncClient:
         belongs to a provider project.
 
         Args:
-            request (:class:`~.grafeas.GetOccurrenceNoteRequest`):
+            request (:class:`grafeas.grafeas_v1.types.GetOccurrenceNoteRequest`):
                 The request object. Request to get the note to which the
                 specified occurrence is attached.
             name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -657,7 +667,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.grafeas.Note:
+            grafeas.grafeas_v1.types.Note:
                 A type of analysis that can be done
                 for a resource.
 
@@ -720,11 +730,12 @@ class GrafeasAsyncClient:
         r"""Gets the specified note.
 
         Args:
-            request (:class:`~.grafeas.GetNoteRequest`):
+            request (:class:`grafeas.grafeas_v1.types.GetNoteRequest`):
                 The request object. Request to get a note.
             name (:class:`str`):
                 The name of the note in the form of
                 ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -736,7 +747,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.grafeas.Note:
+            grafeas.grafeas_v1.types.Note:
                 A type of analysis that can be done
                 for a resource.
 
@@ -800,11 +811,12 @@ class GrafeasAsyncClient:
         r"""Lists notes for the specified project.
 
         Args:
-            request (:class:`~.grafeas.ListNotesRequest`):
+            request (:class:`grafeas.grafeas_v1.types.ListNotesRequest`):
                 The request object. Request to list notes.
             parent (:class:`str`):
                 The name of the project to list notes for in the form of
                 ``projects/[PROJECT_ID]``.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -821,7 +833,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListNotesAsyncPager:
+            grafeas.grafeas_v1.services.grafeas.pagers.ListNotesAsyncPager:
                 Response for listing notes.
                 Iterating over this object will yield
                 results and resolve additional pages
@@ -894,11 +906,12 @@ class GrafeasAsyncClient:
         r"""Deletes the specified note.
 
         Args:
-            request (:class:`~.grafeas.DeleteNoteRequest`):
+            request (:class:`grafeas.grafeas_v1.types.DeleteNoteRequest`):
                 The request object. Request to delete a note.
             name (:class:`str`):
                 The name of the note in the form of
                 ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -968,12 +981,13 @@ class GrafeasAsyncClient:
         r"""Creates a new note.
 
         Args:
-            request (:class:`~.grafeas.CreateNoteRequest`):
+            request (:class:`grafeas.grafeas_v1.types.CreateNoteRequest`):
                 The request object. Request to create a new note.
             parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the note is to be
                 created.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -982,7 +996,7 @@ class GrafeasAsyncClient:
                 This corresponds to the ``note_id`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            note (:class:`~.grafeas.Note`):
+            note (:class:`grafeas.grafeas_v1.types.Note`):
                 The note to create.
                 This corresponds to the ``note`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -995,7 +1009,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.grafeas.Note:
+            grafeas.grafeas_v1.types.Note:
                 A type of analysis that can be done
                 for a resource.
 
@@ -1055,18 +1069,20 @@ class GrafeasAsyncClient:
         r"""Creates new notes in batch.
 
         Args:
-            request (:class:`~.grafeas.BatchCreateNotesRequest`):
+            request (:class:`grafeas.grafeas_v1.types.BatchCreateNotesRequest`):
                 The request object. Request to create notes in batch.
             parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the notes are to
                 be created.
+
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            notes (:class:`Sequence[~.grafeas.BatchCreateNotesRequest.NotesEntry]`):
+            notes (:class:`Sequence[grafeas.grafeas_v1.types.BatchCreateNotesRequest.NotesEntry]`):
                 The notes to create. Max allowed
                 length is 1000.
+
                 This corresponds to the ``notes`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1078,7 +1094,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.grafeas.BatchCreateNotesResponse:
+            grafeas.grafeas_v1.types.BatchCreateNotesResponse:
                 Response for creating notes in batch.
         """
         # Create or coerce a protobuf request object.
@@ -1136,20 +1152,21 @@ class GrafeasAsyncClient:
         r"""Updates the specified note.
 
         Args:
-            request (:class:`~.grafeas.UpdateNoteRequest`):
+            request (:class:`grafeas.grafeas_v1.types.UpdateNoteRequest`):
                 The request object. Request to update a note.
             name (:class:`str`):
                 The name of the note in the form of
                 ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            note (:class:`~.grafeas.Note`):
+            note (:class:`grafeas.grafeas_v1.types.Note`):
                 The updated note.
                 This corresponds to the ``note`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            update_mask (:class:`~.field_mask.FieldMask`):
+            update_mask (:class:`google.protobuf.field_mask_pb2.FieldMask`):
                 The fields to update.
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
@@ -1162,7 +1179,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.grafeas.Note:
+            grafeas.grafeas_v1.types.Note:
                 A type of analysis that can be done
                 for a resource.
 
@@ -1225,12 +1242,13 @@ class GrafeasAsyncClient:
         specified note.
 
         Args:
-            request (:class:`~.grafeas.ListNoteOccurrencesRequest`):
+            request (:class:`grafeas.grafeas_v1.types.ListNoteOccurrencesRequest`):
                 The request object. Request to list occurrences for a
                 note.
             name (:class:`str`):
                 The name of the note to list occurrences for in the form
                 of ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
+
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
@@ -1247,7 +1265,7 @@ class GrafeasAsyncClient:
                 sent along with the request as metadata.
 
         Returns:
-            ~.pagers.ListNoteOccurrencesAsyncPager:
+            grafeas.grafeas_v1.services.grafeas.pagers.ListNoteOccurrencesAsyncPager:
                 Response for listing occurrences for
                 a note.
                 Iterating over this object will yield

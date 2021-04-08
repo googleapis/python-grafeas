@@ -24,7 +24,7 @@ class ListOccurrencesPager:
     """A pager for iterating through ``list_occurrences`` requests.
 
     This class thinly wraps an initial
-    :class:`~.grafeas.ListOccurrencesResponse` object, and
+    :class:`grafeas.grafeas_v1.types.ListOccurrencesResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``occurrences`` field.
 
@@ -33,7 +33,7 @@ class ListOccurrencesPager:
     through the ``occurrences`` field on the
     corresponding responses.
 
-    All the usual :class:`~.grafeas.ListOccurrencesResponse`
+    All the usual :class:`grafeas.grafeas_v1.types.ListOccurrencesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -51,9 +51,9 @@ class ListOccurrencesPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (:class:`~.grafeas.ListOccurrencesRequest`):
+            request (grafeas.grafeas_v1.types.ListOccurrencesRequest):
                 The initial request object.
-            response (:class:`~.grafeas.ListOccurrencesResponse`):
+            response (grafeas.grafeas_v1.types.ListOccurrencesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -86,7 +86,7 @@ class ListOccurrencesAsyncPager:
     """A pager for iterating through ``list_occurrences`` requests.
 
     This class thinly wraps an initial
-    :class:`~.grafeas.ListOccurrencesResponse` object, and
+    :class:`grafeas.grafeas_v1.types.ListOccurrencesResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``occurrences`` field.
 
@@ -95,7 +95,7 @@ class ListOccurrencesAsyncPager:
     through the ``occurrences`` field on the
     corresponding responses.
 
-    All the usual :class:`~.grafeas.ListOccurrencesResponse`
+    All the usual :class:`grafeas.grafeas_v1.types.ListOccurrencesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -113,9 +113,9 @@ class ListOccurrencesAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (:class:`~.grafeas.ListOccurrencesRequest`):
+            request (grafeas.grafeas_v1.types.ListOccurrencesRequest):
                 The initial request object.
-            response (:class:`~.grafeas.ListOccurrencesResponse`):
+            response (grafeas.grafeas_v1.types.ListOccurrencesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -152,7 +152,7 @@ class ListNotesPager:
     """A pager for iterating through ``list_notes`` requests.
 
     This class thinly wraps an initial
-    :class:`~.grafeas.ListNotesResponse` object, and
+    :class:`grafeas.grafeas_v1.types.ListNotesResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``notes`` field.
 
@@ -161,7 +161,7 @@ class ListNotesPager:
     through the ``notes`` field on the
     corresponding responses.
 
-    All the usual :class:`~.grafeas.ListNotesResponse`
+    All the usual :class:`grafeas.grafeas_v1.types.ListNotesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -179,9 +179,9 @@ class ListNotesPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (:class:`~.grafeas.ListNotesRequest`):
+            request (grafeas.grafeas_v1.types.ListNotesRequest):
                 The initial request object.
-            response (:class:`~.grafeas.ListNotesResponse`):
+            response (grafeas.grafeas_v1.types.ListNotesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -214,7 +214,7 @@ class ListNotesAsyncPager:
     """A pager for iterating through ``list_notes`` requests.
 
     This class thinly wraps an initial
-    :class:`~.grafeas.ListNotesResponse` object, and
+    :class:`grafeas.grafeas_v1.types.ListNotesResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``notes`` field.
 
@@ -223,7 +223,7 @@ class ListNotesAsyncPager:
     through the ``notes`` field on the
     corresponding responses.
 
-    All the usual :class:`~.grafeas.ListNotesResponse`
+    All the usual :class:`grafeas.grafeas_v1.types.ListNotesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -241,9 +241,9 @@ class ListNotesAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (:class:`~.grafeas.ListNotesRequest`):
+            request (grafeas.grafeas_v1.types.ListNotesRequest):
                 The initial request object.
-            response (:class:`~.grafeas.ListNotesResponse`):
+            response (grafeas.grafeas_v1.types.ListNotesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -280,7 +280,7 @@ class ListNoteOccurrencesPager:
     """A pager for iterating through ``list_note_occurrences`` requests.
 
     This class thinly wraps an initial
-    :class:`~.grafeas.ListNoteOccurrencesResponse` object, and
+    :class:`grafeas.grafeas_v1.types.ListNoteOccurrencesResponse` object, and
     provides an ``__iter__`` method to iterate through its
     ``occurrences`` field.
 
@@ -289,7 +289,7 @@ class ListNoteOccurrencesPager:
     through the ``occurrences`` field on the
     corresponding responses.
 
-    All the usual :class:`~.grafeas.ListNoteOccurrencesResponse`
+    All the usual :class:`grafeas.grafeas_v1.types.ListNoteOccurrencesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -307,9 +307,9 @@ class ListNoteOccurrencesPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (:class:`~.grafeas.ListNoteOccurrencesRequest`):
+            request (grafeas.grafeas_v1.types.ListNoteOccurrencesRequest):
                 The initial request object.
-            response (:class:`~.grafeas.ListNoteOccurrencesResponse`):
+            response (grafeas.grafeas_v1.types.ListNoteOccurrencesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
@@ -342,7 +342,7 @@ class ListNoteOccurrencesAsyncPager:
     """A pager for iterating through ``list_note_occurrences`` requests.
 
     This class thinly wraps an initial
-    :class:`~.grafeas.ListNoteOccurrencesResponse` object, and
+    :class:`grafeas.grafeas_v1.types.ListNoteOccurrencesResponse` object, and
     provides an ``__aiter__`` method to iterate through its
     ``occurrences`` field.
 
@@ -351,7 +351,7 @@ class ListNoteOccurrencesAsyncPager:
     through the ``occurrences`` field on the
     corresponding responses.
 
-    All the usual :class:`~.grafeas.ListNoteOccurrencesResponse`
+    All the usual :class:`grafeas.grafeas_v1.types.ListNoteOccurrencesResponse`
     attributes are available on the pager. If multiple requests are made, only
     the most recent response is retained, and thus used for attribute lookup.
     """
@@ -369,9 +369,9 @@ class ListNoteOccurrencesAsyncPager:
         Args:
             method (Callable): The method that was originally called, and
                 which instantiated this pager.
-            request (:class:`~.grafeas.ListNoteOccurrencesRequest`):
+            request (grafeas.grafeas_v1.types.ListNoteOccurrencesRequest):
                 The initial request object.
-            response (:class:`~.grafeas.ListNoteOccurrencesResponse`):
+            response (grafeas.grafeas_v1.types.ListNoteOccurrencesResponse):
                 The initial response object.
             metadata (Sequence[Tuple[str, str]]): Strings which should be
                 sent along with the request as metadata.
