@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,11 +13,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import proto  # type: ignore
 
-
-from google.protobuf import timestamp_pb2 as timestamp  # type: ignore
+from google.protobuf import timestamp_pb2  # type: ignore
 
 
 __protobuf__ = proto.module(
@@ -86,31 +83,19 @@ class BuildProvenance(proto.Message):
             this build was executed.
     """
 
-    id = proto.Field(proto.STRING, number=1)
-
-    project_id = proto.Field(proto.STRING, number=2)
-
+    id = proto.Field(proto.STRING, number=1,)
+    project_id = proto.Field(proto.STRING, number=2,)
     commands = proto.RepeatedField(proto.MESSAGE, number=3, message="Command",)
-
     built_artifacts = proto.RepeatedField(proto.MESSAGE, number=4, message="Artifact",)
-
-    create_time = proto.Field(proto.MESSAGE, number=5, message=timestamp.Timestamp,)
-
-    start_time = proto.Field(proto.MESSAGE, number=6, message=timestamp.Timestamp,)
-
-    end_time = proto.Field(proto.MESSAGE, number=7, message=timestamp.Timestamp,)
-
-    creator = proto.Field(proto.STRING, number=8)
-
-    logs_uri = proto.Field(proto.STRING, number=9)
-
+    create_time = proto.Field(proto.MESSAGE, number=5, message=timestamp_pb2.Timestamp,)
+    start_time = proto.Field(proto.MESSAGE, number=6, message=timestamp_pb2.Timestamp,)
+    end_time = proto.Field(proto.MESSAGE, number=7, message=timestamp_pb2.Timestamp,)
+    creator = proto.Field(proto.STRING, number=8,)
+    logs_uri = proto.Field(proto.STRING, number=9,)
     source_provenance = proto.Field(proto.MESSAGE, number=10, message="Source",)
-
-    trigger_id = proto.Field(proto.STRING, number=11)
-
-    build_options = proto.MapField(proto.STRING, proto.STRING, number=12)
-
-    builder_version = proto.Field(proto.STRING, number=13)
+    trigger_id = proto.Field(proto.STRING, number=11,)
+    build_options = proto.MapField(proto.STRING, proto.STRING, number=12,)
+    builder_version = proto.Field(proto.STRING, number=13,)
 
 
 class Source(proto.Message):
@@ -145,14 +130,11 @@ class Source(proto.Message):
             field.
     """
 
-    artifact_storage_source_uri = proto.Field(proto.STRING, number=1)
-
+    artifact_storage_source_uri = proto.Field(proto.STRING, number=1,)
     file_hashes = proto.MapField(
         proto.STRING, proto.MESSAGE, number=2, message="FileHashes",
     )
-
     context = proto.Field(proto.MESSAGE, number=3, message="SourceContext",)
-
     additional_contexts = proto.RepeatedField(
         proto.MESSAGE, number=4, message="SourceContext",
     )
@@ -173,7 +155,6 @@ class FileHashes(proto.Message):
 
 class Hash(proto.Message):
     r"""Container message for hash values.
-
     Attributes:
         type_ (str):
             Required. The type of hash that was
@@ -182,9 +163,8 @@ class Hash(proto.Message):
             Required. The hash value.
     """
 
-    type_ = proto.Field(proto.STRING, number=1)
-
-    value = proto.Field(proto.BYTES, number=2)
+    type_ = proto.Field(proto.STRING, number=1,)
+    value = proto.Field(proto.BYTES, number=2,)
 
 
 class Command(proto.Message):
@@ -213,22 +193,16 @@ class Command(proto.Message):
             depends on.
     """
 
-    name = proto.Field(proto.STRING, number=1)
-
-    env = proto.RepeatedField(proto.STRING, number=2)
-
-    args = proto.RepeatedField(proto.STRING, number=3)
-
-    dir_ = proto.Field(proto.STRING, number=4)
-
-    id = proto.Field(proto.STRING, number=5)
-
-    wait_for = proto.RepeatedField(proto.STRING, number=6)
+    name = proto.Field(proto.STRING, number=1,)
+    env = proto.RepeatedField(proto.STRING, number=2,)
+    args = proto.RepeatedField(proto.STRING, number=3,)
+    dir_ = proto.Field(proto.STRING, number=4,)
+    id = proto.Field(proto.STRING, number=5,)
+    wait_for = proto.RepeatedField(proto.STRING, number=6,)
 
 
 class Artifact(proto.Message):
     r"""Artifact describes a build product.
-
     Attributes:
         checksum (str):
             Hash or checksum value of a binary, or Docker
@@ -246,11 +220,9 @@ class Artifact(proto.Message):
             to one image.
     """
 
-    checksum = proto.Field(proto.STRING, number=1)
-
-    id = proto.Field(proto.STRING, number=2)
-
-    names = proto.RepeatedField(proto.STRING, number=3)
+    checksum = proto.Field(proto.STRING, number=1,)
+    id = proto.Field(proto.STRING, number=2,)
+    names = proto.RepeatedField(proto.STRING, number=3,)
 
 
 class SourceContext(proto.Message):
@@ -275,21 +247,17 @@ class SourceContext(proto.Message):
     cloud_repo = proto.Field(
         proto.MESSAGE, number=1, oneof="context", message="CloudRepoSourceContext",
     )
-
     gerrit = proto.Field(
         proto.MESSAGE, number=2, oneof="context", message="GerritSourceContext",
     )
-
     git = proto.Field(
         proto.MESSAGE, number=3, oneof="context", message="GitSourceContext",
     )
-
-    labels = proto.MapField(proto.STRING, proto.STRING, number=4)
+    labels = proto.MapField(proto.STRING, proto.STRING, number=4,)
 
 
 class AliasContext(proto.Message):
     r"""An alias to a repo revision.
-
     Attributes:
         kind (grafeas.grafeas_v1.types.AliasContext.Kind):
             The alias kind.
@@ -305,8 +273,7 @@ class AliasContext(proto.Message):
         OTHER = 4
 
     kind = proto.Field(proto.ENUM, number=1, enum=Kind,)
-
-    name = proto.Field(proto.STRING, number=2)
+    name = proto.Field(proto.STRING, number=2,)
 
 
 class CloudRepoSourceContext(proto.Message):
@@ -323,9 +290,7 @@ class CloudRepoSourceContext(proto.Message):
     """
 
     repo_id = proto.Field(proto.MESSAGE, number=1, message="RepoId",)
-
-    revision_id = proto.Field(proto.STRING, number=2, oneof="revision")
-
+    revision_id = proto.Field(proto.STRING, number=2, oneof="revision",)
     alias_context = proto.Field(
         proto.MESSAGE, number=3, oneof="revision", message="AliasContext",
     )
@@ -333,7 +298,6 @@ class CloudRepoSourceContext(proto.Message):
 
 class GerritSourceContext(proto.Message):
     r"""A SourceContext referring to a Gerrit project.
-
     Attributes:
         host_uri (str):
             The URI of a running Gerrit instance.
@@ -348,12 +312,9 @@ class GerritSourceContext(proto.Message):
             An alias, which may be a branch or tag.
     """
 
-    host_uri = proto.Field(proto.STRING, number=1)
-
-    gerrit_project = proto.Field(proto.STRING, number=2)
-
-    revision_id = proto.Field(proto.STRING, number=3, oneof="revision")
-
+    host_uri = proto.Field(proto.STRING, number=1,)
+    gerrit_project = proto.Field(proto.STRING, number=2,)
+    revision_id = proto.Field(proto.STRING, number=3, oneof="revision",)
     alias_context = proto.Field(
         proto.MESSAGE, number=4, oneof="revision", message="AliasContext",
     )
@@ -370,14 +331,12 @@ class GitSourceContext(proto.Message):
             Git commit hash.
     """
 
-    url = proto.Field(proto.STRING, number=1)
-
-    revision_id = proto.Field(proto.STRING, number=2)
+    url = proto.Field(proto.STRING, number=1,)
+    revision_id = proto.Field(proto.STRING, number=2,)
 
 
 class RepoId(proto.Message):
     r"""A unique identifier for a Cloud Repo.
-
     Attributes:
         project_repo_id (grafeas.grafeas_v1.types.ProjectRepoId):
             A combination of a project ID and a repo
@@ -390,8 +349,7 @@ class RepoId(proto.Message):
     project_repo_id = proto.Field(
         proto.MESSAGE, number=1, oneof="id", message="ProjectRepoId",
     )
-
-    uid = proto.Field(proto.STRING, number=2, oneof="id")
+    uid = proto.Field(proto.STRING, number=2, oneof="id",)
 
 
 class ProjectRepoId(proto.Message):
@@ -406,9 +364,8 @@ class ProjectRepoId(proto.Message):
             default repo.
     """
 
-    project_id = proto.Field(proto.STRING, number=1)
-
-    repo_name = proto.Field(proto.STRING, number=2)
+    project_id = proto.Field(proto.STRING, number=1,)
+    repo_name = proto.Field(proto.STRING, number=2,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
