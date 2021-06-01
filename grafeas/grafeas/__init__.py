@@ -14,16 +14,15 @@
 # limitations under the License.
 #
 
-from grafeas.grafeas_v1.services.grafeas.client import GrafeasClient
 from grafeas.grafeas_v1.services.grafeas.async_client import GrafeasAsyncClient
-
+from grafeas.grafeas_v1.services.grafeas.client import GrafeasClient
 from grafeas.grafeas_v1.types.attestation import AttestationNote
 from grafeas.grafeas_v1.types.attestation import AttestationOccurrence
 from grafeas.grafeas_v1.types.build import BuildNote
 from grafeas.grafeas_v1.types.build import BuildOccurrence
+from grafeas.grafeas_v1.types.common import NoteKind
 from grafeas.grafeas_v1.types.common import RelatedUrl
 from grafeas.grafeas_v1.types.common import Signature
-from grafeas.grafeas_v1.types.common import NoteKind
 from grafeas.grafeas_v1.types.cvss import CVSSv3
 from grafeas.grafeas_v1.types.deployment import DeploymentNote
 from grafeas.grafeas_v1.types.deployment import DeploymentOccurrence
@@ -54,12 +53,12 @@ from grafeas.grafeas_v1.types.image import Fingerprint
 from grafeas.grafeas_v1.types.image import ImageNote
 from grafeas.grafeas_v1.types.image import ImageOccurrence
 from grafeas.grafeas_v1.types.image import Layer
+from grafeas.grafeas_v1.types.package import Architecture
 from grafeas.grafeas_v1.types.package import Distribution
 from grafeas.grafeas_v1.types.package import Location
 from grafeas.grafeas_v1.types.package import PackageNote
 from grafeas.grafeas_v1.types.package import PackageOccurrence
 from grafeas.grafeas_v1.types.package import Version
-from grafeas.grafeas_v1.types.package import Architecture
 from grafeas.grafeas_v1.types.provenance import AliasContext
 from grafeas.grafeas_v1.types.provenance import Artifact
 from grafeas.grafeas_v1.types.provenance import BuildProvenance
@@ -77,74 +76,74 @@ from grafeas.grafeas_v1.types.upgrade import UpgradeDistribution
 from grafeas.grafeas_v1.types.upgrade import UpgradeNote
 from grafeas.grafeas_v1.types.upgrade import UpgradeOccurrence
 from grafeas.grafeas_v1.types.upgrade import WindowsUpdate
+from grafeas.grafeas_v1.types.vulnerability import Severity
 from grafeas.grafeas_v1.types.vulnerability import VulnerabilityNote
 from grafeas.grafeas_v1.types.vulnerability import VulnerabilityOccurrence
-from grafeas.grafeas_v1.types.vulnerability import Severity
 
 __all__ = (
-    "GrafeasClient",
-    "GrafeasAsyncClient",
+    "AliasContext",
+    "Architecture",
+    "Artifact",
     "AttestationNote",
     "AttestationOccurrence",
-    "BuildNote",
-    "BuildOccurrence",
-    "RelatedUrl",
-    "Signature",
-    "NoteKind",
-    "CVSSv3",
-    "DeploymentNote",
-    "DeploymentOccurrence",
-    "DiscoveryNote",
-    "DiscoveryOccurrence",
     "BatchCreateNotesRequest",
     "BatchCreateNotesResponse",
     "BatchCreateOccurrencesRequest",
     "BatchCreateOccurrencesResponse",
+    "BuildNote",
+    "BuildOccurrence",
+    "BuildProvenance",
+    "CVSSv3",
+    "CloudRepoSourceContext",
+    "Command",
     "CreateNoteRequest",
     "CreateOccurrenceRequest",
     "DeleteNoteRequest",
     "DeleteOccurrenceRequest",
+    "DeploymentNote",
+    "DeploymentOccurrence",
+    "DiscoveryNote",
+    "DiscoveryOccurrence",
+    "Distribution",
+    "FileHashes",
+    "Fingerprint",
+    "GerritSourceContext",
     "GetNoteRequest",
     "GetOccurrenceNoteRequest",
     "GetOccurrenceRequest",
+    "GitSourceContext",
+    "GrafeasAsyncClient",
+    "GrafeasClient",
+    "Hash",
+    "ImageNote",
+    "ImageOccurrence",
+    "Layer",
     "ListNoteOccurrencesRequest",
     "ListNoteOccurrencesResponse",
     "ListNotesRequest",
     "ListNotesResponse",
     "ListOccurrencesRequest",
     "ListOccurrencesResponse",
-    "Note",
-    "Occurrence",
-    "UpdateNoteRequest",
-    "UpdateOccurrenceRequest",
-    "Fingerprint",
-    "ImageNote",
-    "ImageOccurrence",
-    "Layer",
-    "Distribution",
     "Location",
+    "Note",
+    "NoteKind",
+    "Occurrence",
     "PackageNote",
     "PackageOccurrence",
-    "Version",
-    "Architecture",
-    "AliasContext",
-    "Artifact",
-    "BuildProvenance",
-    "CloudRepoSourceContext",
-    "Command",
-    "FileHashes",
-    "GerritSourceContext",
-    "GitSourceContext",
-    "Hash",
     "ProjectRepoId",
+    "RelatedUrl",
     "RepoId",
+    "Severity",
+    "Signature",
     "Source",
     "SourceContext",
+    "UpdateNoteRequest",
+    "UpdateOccurrenceRequest",
     "UpgradeDistribution",
     "UpgradeNote",
     "UpgradeOccurrence",
-    "WindowsUpdate",
+    "Version",
     "VulnerabilityNote",
     "VulnerabilityOccurrence",
-    "Severity",
+    "WindowsUpdate",
 )

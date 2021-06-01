@@ -20,9 +20,9 @@ from .types.attestation import AttestationNote
 from .types.attestation import AttestationOccurrence
 from .types.build import BuildNote
 from .types.build import BuildOccurrence
+from .types.common import NoteKind
 from .types.common import RelatedUrl
 from .types.common import Signature
-from .types.common import NoteKind
 from .types.cvss import CVSSv3
 from .types.deployment import DeploymentNote
 from .types.deployment import DeploymentOccurrence
@@ -53,12 +53,12 @@ from .types.image import Fingerprint
 from .types.image import ImageNote
 from .types.image import ImageOccurrence
 from .types.image import Layer
+from .types.package import Architecture
 from .types.package import Distribution
 from .types.package import Location
 from .types.package import PackageNote
 from .types.package import PackageOccurrence
 from .types.package import Version
-from .types.package import Architecture
 from .types.provenance import AliasContext
 from .types.provenance import Artifact
 from .types.provenance import BuildProvenance
@@ -76,73 +76,73 @@ from .types.upgrade import UpgradeDistribution
 from .types.upgrade import UpgradeNote
 from .types.upgrade import UpgradeOccurrence
 from .types.upgrade import WindowsUpdate
+from .types.vulnerability import Severity
 from .types.vulnerability import VulnerabilityNote
 from .types.vulnerability import VulnerabilityOccurrence
-from .types.vulnerability import Severity
 
 __all__ = (
-    "GrafeasClient",
+    "AliasContext",
+    "Architecture",
+    "Artifact",
     "AttestationNote",
     "AttestationOccurrence",
-    "BuildNote",
-    "BuildOccurrence",
-    "RelatedUrl",
-    "Signature",
-    "NoteKind",
-    "CVSSv3",
-    "DeploymentNote",
-    "DeploymentOccurrence",
-    "DiscoveryNote",
-    "DiscoveryOccurrence",
     "BatchCreateNotesRequest",
     "BatchCreateNotesResponse",
     "BatchCreateOccurrencesRequest",
     "BatchCreateOccurrencesResponse",
+    "BuildNote",
+    "BuildOccurrence",
+    "BuildProvenance",
+    "CVSSv3",
+    "CloudRepoSourceContext",
+    "Command",
     "CreateNoteRequest",
     "CreateOccurrenceRequest",
     "DeleteNoteRequest",
     "DeleteOccurrenceRequest",
+    "DeploymentNote",
+    "DeploymentOccurrence",
+    "DiscoveryNote",
+    "DiscoveryOccurrence",
+    "Distribution",
+    "FileHashes",
+    "Fingerprint",
+    "GerritSourceContext",
     "GetNoteRequest",
     "GetOccurrenceNoteRequest",
     "GetOccurrenceRequest",
+    "GitSourceContext",
+    "Hash",
+    "ImageNote",
+    "ImageOccurrence",
+    "Layer",
     "ListNoteOccurrencesRequest",
     "ListNoteOccurrencesResponse",
     "ListNotesRequest",
     "ListNotesResponse",
     "ListOccurrencesRequest",
     "ListOccurrencesResponse",
-    "Note",
-    "Occurrence",
-    "UpdateNoteRequest",
-    "UpdateOccurrenceRequest",
-    "Fingerprint",
-    "ImageNote",
-    "ImageOccurrence",
-    "Layer",
-    "Distribution",
     "Location",
+    "Note",
+    "NoteKind",
+    "Occurrence",
     "PackageNote",
     "PackageOccurrence",
-    "Version",
-    "Architecture",
-    "AliasContext",
-    "Artifact",
-    "BuildProvenance",
-    "CloudRepoSourceContext",
-    "Command",
-    "FileHashes",
-    "GerritSourceContext",
-    "GitSourceContext",
-    "Hash",
     "ProjectRepoId",
+    "RelatedUrl",
     "RepoId",
+    "Severity",
+    "Signature",
     "Source",
     "SourceContext",
+    "UpdateNoteRequest",
+    "UpdateOccurrenceRequest",
     "UpgradeDistribution",
     "UpgradeNote",
     "UpgradeOccurrence",
-    "WindowsUpdate",
+    "Version",
     "VulnerabilityNote",
     "VulnerabilityOccurrence",
-    "Severity",
+    "WindowsUpdate",
+    "GrafeasClient",
 )
