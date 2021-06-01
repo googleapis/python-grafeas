@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import proto  # type: ignore
 
 
@@ -66,17 +64,12 @@ class Distribution(proto.Message):
             of this package.
     """
 
-    cpe_uri = proto.Field(proto.STRING, number=1)
-
+    cpe_uri = proto.Field(proto.STRING, number=1,)
     architecture = proto.Field(proto.ENUM, number=2, enum="Architecture",)
-
     latest_version = proto.Field(proto.MESSAGE, number=3, message="Version",)
-
-    maintainer = proto.Field(proto.STRING, number=4)
-
-    url = proto.Field(proto.STRING, number=5)
-
-    description = proto.Field(proto.STRING, number=6)
+    maintainer = proto.Field(proto.STRING, number=4,)
+    url = proto.Field(proto.STRING, number=5,)
+    description = proto.Field(proto.STRING, number=6,)
 
 
 class Location(proto.Message):
@@ -96,11 +89,9 @@ class Location(proto.Message):
             package/version is installed.
     """
 
-    cpe_uri = proto.Field(proto.STRING, number=1)
-
+    cpe_uri = proto.Field(proto.STRING, number=1,)
     version = proto.Field(proto.MESSAGE, number=2, message="Version",)
-
-    path = proto.Field(proto.STRING, number=3)
+    path = proto.Field(proto.STRING, number=3,)
 
 
 class PackageNote(proto.Message):
@@ -116,8 +107,7 @@ class PackageNote(proto.Message):
             distributed.
     """
 
-    name = proto.Field(proto.STRING, number=1)
-
+    name = proto.Field(proto.STRING, number=1,)
     distribution = proto.RepeatedField(
         proto.MESSAGE, number=10, message="Distribution",
     )
@@ -137,8 +127,7 @@ class PackageOccurrence(proto.Message):
             found.
     """
 
-    name = proto.Field(proto.STRING, number=1)
-
+    name = proto.Field(proto.STRING, number=1,)
     location = proto.RepeatedField(proto.MESSAGE, number=2, message="Location",)
 
 
@@ -174,15 +163,11 @@ class Version(proto.Message):
         MINIMUM = 2
         MAXIMUM = 3
 
-    epoch = proto.Field(proto.INT32, number=1)
-
-    name = proto.Field(proto.STRING, number=2)
-
-    revision = proto.Field(proto.STRING, number=3)
-
+    epoch = proto.Field(proto.INT32, number=1,)
+    name = proto.Field(proto.STRING, number=2,)
+    revision = proto.Field(proto.STRING, number=3,)
     kind = proto.Field(proto.ENUM, number=4, enum=VersionKind,)
-
-    full_name = proto.Field(proto.STRING, number=5)
+    full_name = proto.Field(proto.STRING, number=5,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
