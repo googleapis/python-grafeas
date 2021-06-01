@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,6 +15,7 @@
 #
 
 from .services.grafeas import GrafeasClient
+
 from .types.attestation import AttestationNote
 from .types.attestation import AttestationOccurrence
 from .types.build import BuildNote
@@ -79,7 +79,6 @@ from .types.upgrade import WindowsUpdate
 from .types.vulnerability import Severity
 from .types.vulnerability import VulnerabilityNote
 from .types.vulnerability import VulnerabilityOccurrence
-
 
 __all__ = (
     "AliasContext",

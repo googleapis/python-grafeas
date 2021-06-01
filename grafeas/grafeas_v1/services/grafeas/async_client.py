@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,7 +13,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 from collections import OrderedDict
 import functools
 import re
@@ -41,7 +39,6 @@ from grafeas.grafeas_v1.types import image
 from grafeas.grafeas_v1.types import package
 from grafeas.grafeas_v1.types import upgrade
 from grafeas.grafeas_v1.types import vulnerability
-
 from .transports.base import GrafeasTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc_asyncio import GrafeasGrpcAsyncIOTransport
 from .client import GrafeasClient
@@ -77,25 +74,20 @@ class GrafeasAsyncClient:
     parse_occurrence_path = staticmethod(GrafeasClient.parse_occurrence_path)
     project_path = staticmethod(GrafeasClient.project_path)
     parse_project_path = staticmethod(GrafeasClient.parse_project_path)
-
     common_billing_account_path = staticmethod(
         GrafeasClient.common_billing_account_path
     )
     parse_common_billing_account_path = staticmethod(
         GrafeasClient.parse_common_billing_account_path
     )
-
     common_folder_path = staticmethod(GrafeasClient.common_folder_path)
     parse_common_folder_path = staticmethod(GrafeasClient.parse_common_folder_path)
-
     common_organization_path = staticmethod(GrafeasClient.common_organization_path)
     parse_common_organization_path = staticmethod(
         GrafeasClient.parse_common_organization_path
     )
-
     common_project_path = staticmethod(GrafeasClient.common_project_path)
     parse_common_project_path = staticmethod(GrafeasClient.parse_common_project_path)
-
     common_location_path = staticmethod(GrafeasClient.common_location_path)
     parse_common_location_path = staticmethod(GrafeasClient.parse_common_location_path)
 
@@ -155,7 +147,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.GetOccurrenceRequest`):
-                The request object. Request to get an occurrence.
+                The request object.
+                Request to get an occurrence.
             name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
@@ -163,7 +156,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -190,7 +182,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -237,7 +228,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.ListOccurrencesRequest`):
-                The request object. Request to list occurrences.
+                The request object.
+                Request to list occurrences.
             parent (:class:`str`):
                 The name of the project to list occurrences for in the
                 form of ``projects/[PROJECT_ID]``.
@@ -250,7 +242,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``filter`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -279,7 +270,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
         if filter is not None:
@@ -335,7 +325,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.DeleteOccurrenceRequest`):
-                The request object. Request to delete an occurrence.
+                The request object.
+                Request to delete an occurrence.
             name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
@@ -343,7 +334,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -364,7 +354,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -410,7 +399,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.CreateOccurrenceRequest`):
-                The request object. Request to create a new occurrence.
+                The request object.
+                Request to create a new occurrence.
             parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the occurrence is
@@ -424,7 +414,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``occurrence`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -451,7 +440,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
         if occurrence is not None:
@@ -491,7 +479,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.BatchCreateOccurrencesRequest`):
-                The request object. Request to create occurrences in
+                The request object.
+                Request to create occurrences in
                 batch.
             parent (:class:`str`):
                 The name of the project in the form of
@@ -508,7 +497,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``occurrences`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -535,10 +523,8 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
-
         if occurrences:
             request.occurrences.extend(occurrences)
 
@@ -577,7 +563,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.UpdateOccurrenceRequest`):
-                The request object. Request to update an occurrence.
+                The request object.
+                Request to update an occurrence.
             name (:class:`str`):
                 The name of the occurrence in the form of
                 ``projects/[PROJECT_ID]/occurrences/[OCCURRENCE_ID]``.
@@ -595,7 +582,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -622,7 +608,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
         if occurrence is not None:
@@ -665,7 +650,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.GetOccurrenceNoteRequest`):
-                The request object. Request to get the note to which the
+                The request object.
+                Request to get the note to which the
                 specified occurrence is attached.
             name (:class:`str`):
                 The name of the occurrence in the form of
@@ -674,7 +660,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -701,7 +686,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -747,7 +731,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.GetNoteRequest`):
-                The request object. Request to get a note.
+                The request object.
+                Request to get a note.
             name (:class:`str`):
                 The name of the note in the form of
                 ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
@@ -755,7 +740,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -782,7 +766,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -829,7 +812,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.ListNotesRequest`):
-                The request object. Request to list notes.
+                The request object.
+                Request to list notes.
             parent (:class:`str`):
                 The name of the project to list notes for in the form of
                 ``projects/[PROJECT_ID]``.
@@ -842,7 +826,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``filter`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -871,7 +854,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
         if filter is not None:
@@ -925,7 +907,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.DeleteNoteRequest`):
-                The request object. Request to delete a note.
+                The request object.
+                Request to delete a note.
             name (:class:`str`):
                 The name of the note in the form of
                 ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
@@ -933,7 +916,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``name`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -954,7 +936,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
 
@@ -1001,7 +982,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.CreateNoteRequest`):
-                The request object. Request to create a new note.
+                The request object.
+                Request to create a new note.
             parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the note is to be
@@ -1020,7 +1002,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``note`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -1047,7 +1028,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
         if note_id is not None:
@@ -1089,7 +1069,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.BatchCreateNotesRequest`):
-                The request object. Request to create notes in batch.
+                The request object.
+                Request to create notes in batch.
             parent (:class:`str`):
                 The name of the project in the form of
                 ``projects/[PROJECT_ID]``, under which the notes are to
@@ -1105,7 +1086,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``notes`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -1130,7 +1110,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if parent is not None:
             request.parent = parent
 
@@ -1172,7 +1151,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.UpdateNoteRequest`):
-                The request object. Request to update a note.
+                The request object.
+                Request to update a note.
             name (:class:`str`):
                 The name of the note in the form of
                 ``projects/[PROVIDER_ID]/notes/[NOTE_ID]``.
@@ -1190,7 +1170,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``update_mask`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -1217,7 +1196,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
         if note is not None:
@@ -1262,7 +1240,8 @@ class GrafeasAsyncClient:
 
         Args:
             request (:class:`grafeas.grafeas_v1.types.ListNoteOccurrencesRequest`):
-                The request object. Request to list occurrences for a
+                The request object.
+                Request to list occurrences for a
                 note.
             name (:class:`str`):
                 The name of the note to list occurrences for in the form
@@ -1276,7 +1255,6 @@ class GrafeasAsyncClient:
                 This corresponds to the ``filter`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-
             retry (google.api_core.retry.Retry): Designation of what errors, if any,
                 should be retried.
             timeout (float): The timeout for this request.
@@ -1306,7 +1284,6 @@ class GrafeasAsyncClient:
 
         # If we have keyword arguments corresponding to fields on the
         # request, apply these.
-
         if name is not None:
             request.name = name
         if filter is not None:
