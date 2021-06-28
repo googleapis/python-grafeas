@@ -145,12 +145,12 @@ def test_get_occurrence""",
     flags=re.MULTILINE | re.DOTALL,
     )
 
-    # client_info tests
+    # Remove test_client_withDEFAULT_CLIENT_INFO test
     s.replace(
     library / "tests/**/test_grafeas.py",
-    """def test_client_withDEFAULT_CLIENT_INFO.*?transport_class\(client_info=client_info,\)
-        prep.assert_called_once_with\(client_info\)""",
-    """""",
+    """def test_client_withDEFAULT_CLIENT_INFO.*
+        prep\.assert_called_once_with\(client_info\)$""",
+    "",
     flags=re.MULTILINE | re.DOTALL,
     )
 
