@@ -77,14 +77,14 @@ class ImageNote(proto.Message):
         resource_url (str):
             Required. Immutable. The resource_url for the resource
             representing the basis of associated occurrence images.
-        fingerprint (~.image.Fingerprint):
+        fingerprint (grafeas.grafeas_v1.types.Fingerprint):
             Required. Immutable. The fingerprint of the
             base image.
     """
 
     resource_url = proto.Field(proto.STRING, number=1)
 
-    fingerprint = proto.Field(proto.MESSAGE, number=2, message=Fingerprint,)
+    fingerprint = proto.Field(proto.MESSAGE, number=2, message="Fingerprint",)
 
 
 class ImageOccurrence(proto.Message):
@@ -93,14 +93,14 @@ class ImageOccurrence(proto.Message):
     with FROM <DockerImage.Basis in attached Note>.
 
     Attributes:
-        fingerprint (~.image.Fingerprint):
+        fingerprint (grafeas.grafeas_v1.types.Fingerprint):
             Required. The fingerprint of the derived
             image.
         distance (int):
             Output only. The number of layers by which
             this image differs from the associated image
             basis.
-        layer_info (Sequence[~.image.Layer]):
+        layer_info (Sequence[grafeas.grafeas_v1.types.Layer]):
             This contains layer-specific metadata, if populated it has
             length "distance" and is ordered with [distance] being the
             layer immediately following the base image and [1] being the
@@ -110,11 +110,11 @@ class ImageOccurrence(proto.Message):
             for the derived image occurrence.
     """
 
-    fingerprint = proto.Field(proto.MESSAGE, number=1, message=Fingerprint,)
+    fingerprint = proto.Field(proto.MESSAGE, number=1, message="Fingerprint",)
 
     distance = proto.Field(proto.INT32, number=2)
 
-    layer_info = proto.RepeatedField(proto.MESSAGE, number=3, message=Layer,)
+    layer_info = proto.RepeatedField(proto.MESSAGE, number=3, message="Layer",)
 
     base_resource_url = proto.Field(proto.STRING, number=4)
 

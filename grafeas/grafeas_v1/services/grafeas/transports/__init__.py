@@ -28,7 +28,6 @@ _transport_registry = OrderedDict()  # type: Dict[str, Type[GrafeasTransport]]
 _transport_registry["grpc"] = GrafeasGrpcTransport
 _transport_registry["grpc_asyncio"] = GrafeasGrpcAsyncIOTransport
 
-
 __all__ = (
     "GrafeasTransport",
     "GrafeasGrpcTransport",
