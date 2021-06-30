@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import proto  # type: ignore
 
 
@@ -93,16 +95,26 @@ class CVSSv3(proto.Message):
         IMPACT_LOW = 2
         IMPACT_NONE = 3
 
-    base_score = proto.Field(proto.FLOAT, number=1,)
-    exploitability_score = proto.Field(proto.FLOAT, number=2,)
-    impact_score = proto.Field(proto.FLOAT, number=3,)
+    base_score = proto.Field(proto.FLOAT, number=1)
+
+    exploitability_score = proto.Field(proto.FLOAT, number=2)
+
+    impact_score = proto.Field(proto.FLOAT, number=3)
+
     attack_vector = proto.Field(proto.ENUM, number=5, enum=AttackVector,)
+
     attack_complexity = proto.Field(proto.ENUM, number=6, enum=AttackComplexity,)
+
     privileges_required = proto.Field(proto.ENUM, number=7, enum=PrivilegesRequired,)
+
     user_interaction = proto.Field(proto.ENUM, number=8, enum=UserInteraction,)
+
     scope = proto.Field(proto.ENUM, number=9, enum=Scope,)
+
     confidentiality_impact = proto.Field(proto.ENUM, number=10, enum=Impact,)
+
     integrity_impact = proto.Field(proto.ENUM, number=11, enum=Impact,)
+
     availability_impact = proto.Field(proto.ENUM, number=12, enum=Impact,)
 
 
