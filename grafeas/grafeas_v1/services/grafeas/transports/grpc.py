@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,9 +13,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import warnings
-from typing import Callable, Dict, Optional, Sequence, Tuple
+from typing import Callable, Dict, Optional, Sequence, Tuple, Union
 
 from google.api_core import grpc_helpers  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
@@ -28,7 +26,6 @@ import grpc  # type: ignore
 
 from google.protobuf import empty_pb2 as empty  # type: ignore
 from grafeas.grafeas_v1.types import grafeas
-
 from .base import GrafeasTransport, DEFAULT_CLIENT_INFO
 
 
@@ -80,7 +77,8 @@ class GrafeasGrpcTransport(GrafeasTransport):
         """Instantiate the transport.
 
         Args:
-            host (Optional[str]): The hostname to connect to.
+            host (Optional[str]):
+                 The hostname to connect to.
             credentials (Optional[google.auth.credentials.Credentials]): The
                 authorization credentials to attach to requests. These
                 credentials identify the application to the service; if none
@@ -221,13 +219,15 @@ class GrafeasGrpcTransport(GrafeasTransport):
             google.api_core.exceptions.DuplicateCredentialArgs: If both ``credentials``
               and ``credentials_file`` are passed.
         """
-        scopes = scopes or cls.AUTH_SCOPES
+
+        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
+
         return grpc_helpers.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
-            scopes=scopes,
             quota_project_id=quota_project_id,
+            **self_signed_jwt_kwargs,
             **kwargs,
         )
 
@@ -241,7 +241,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     def get_occurrence(
         self,
     ) -> Callable[[grafeas.GetOccurrenceRequest], grafeas.Occurrence]:
-        r"""Return a callable for the get occurrence method over gRPC.
+        r"""Return a callable for the
+        get occurrence
+          method over gRPC.
 
         Gets the specified occurrence.
 
@@ -267,7 +269,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     def list_occurrences(
         self,
     ) -> Callable[[grafeas.ListOccurrencesRequest], grafeas.ListOccurrencesResponse]:
-        r"""Return a callable for the list occurrences method over gRPC.
+        r"""Return a callable for the
+        list occurrences
+          method over gRPC.
 
         Lists occurrences for the specified project.
 
@@ -293,7 +297,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     def delete_occurrence(
         self,
     ) -> Callable[[grafeas.DeleteOccurrenceRequest], empty.Empty]:
-        r"""Return a callable for the delete occurrence method over gRPC.
+        r"""Return a callable for the
+        delete occurrence
+          method over gRPC.
 
         Deletes the specified occurrence. For example, use
         this method to delete an occurrence when the occurrence
@@ -321,7 +327,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     def create_occurrence(
         self,
     ) -> Callable[[grafeas.CreateOccurrenceRequest], grafeas.Occurrence]:
-        r"""Return a callable for the create occurrence method over gRPC.
+        r"""Return a callable for the
+        create occurrence
+          method over gRPC.
 
         Creates a new occurrence.
 
@@ -349,7 +357,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     ) -> Callable[
         [grafeas.BatchCreateOccurrencesRequest], grafeas.BatchCreateOccurrencesResponse
     ]:
-        r"""Return a callable for the batch create occurrences method over gRPC.
+        r"""Return a callable for the
+        batch create occurrences
+          method over gRPC.
 
         Creates new occurrences in batch.
 
@@ -375,7 +385,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     def update_occurrence(
         self,
     ) -> Callable[[grafeas.UpdateOccurrenceRequest], grafeas.Occurrence]:
-        r"""Return a callable for the update occurrence method over gRPC.
+        r"""Return a callable for the
+        update occurrence
+          method over gRPC.
 
         Updates the specified occurrence.
 
@@ -401,7 +413,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     def get_occurrence_note(
         self,
     ) -> Callable[[grafeas.GetOccurrenceNoteRequest], grafeas.Note]:
-        r"""Return a callable for the get occurrence note method over gRPC.
+        r"""Return a callable for the
+        get occurrence note
+          method over gRPC.
 
         Gets the note attached to the specified occurrence.
         Consumer projects can use this method to get a note that
@@ -427,7 +441,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
 
     @property
     def get_note(self) -> Callable[[grafeas.GetNoteRequest], grafeas.Note]:
-        r"""Return a callable for the get note method over gRPC.
+        r"""Return a callable for the
+        get note
+          method over gRPC.
 
         Gets the specified note.
 
@@ -453,7 +469,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     def list_notes(
         self,
     ) -> Callable[[grafeas.ListNotesRequest], grafeas.ListNotesResponse]:
-        r"""Return a callable for the list notes method over gRPC.
+        r"""Return a callable for the
+        list notes
+          method over gRPC.
 
         Lists notes for the specified project.
 
@@ -477,7 +495,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
 
     @property
     def delete_note(self) -> Callable[[grafeas.DeleteNoteRequest], empty.Empty]:
-        r"""Return a callable for the delete note method over gRPC.
+        r"""Return a callable for the
+        delete note
+          method over gRPC.
 
         Deletes the specified note.
 
@@ -501,7 +521,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
 
     @property
     def create_note(self) -> Callable[[grafeas.CreateNoteRequest], grafeas.Note]:
-        r"""Return a callable for the create note method over gRPC.
+        r"""Return a callable for the
+        create note
+          method over gRPC.
 
         Creates a new note.
 
@@ -527,7 +549,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     def batch_create_notes(
         self,
     ) -> Callable[[grafeas.BatchCreateNotesRequest], grafeas.BatchCreateNotesResponse]:
-        r"""Return a callable for the batch create notes method over gRPC.
+        r"""Return a callable for the
+        batch create notes
+          method over gRPC.
 
         Creates new notes in batch.
 
@@ -551,7 +575,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
 
     @property
     def update_note(self) -> Callable[[grafeas.UpdateNoteRequest], grafeas.Note]:
-        r"""Return a callable for the update note method over gRPC.
+        r"""Return a callable for the
+        update note
+          method over gRPC.
 
         Updates the specified note.
 
@@ -579,7 +605,9 @@ class GrafeasGrpcTransport(GrafeasTransport):
     ) -> Callable[
         [grafeas.ListNoteOccurrencesRequest], grafeas.ListNoteOccurrencesResponse
     ]:
-        r"""Return a callable for the list note occurrences method over gRPC.
+        r"""Return a callable for the
+        list note occurrences
+          method over gRPC.
 
         Lists occurrences referencing the specified note.
         Provider projects can use this method to get all
