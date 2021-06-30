@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,21 +13,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-
 import warnings
-from typing import Callable, Dict, Optional, Sequence, Tuple
+from typing import Callable, Dict, Optional, Sequence, Tuple, Union
 
 from google.api_core import grpc_helpers  # type: ignore
 from google.api_core import gapic_v1  # type: ignore
-from google import auth  # type: ignore
-from google.auth import credentials  # type: ignore
+import google.auth  # type: ignore
+from google.auth import credentials as ga_credentials  # type: ignore
 from google.auth.transport.grpc import SslCredentials  # type: ignore
 
 import grpc  # type: ignore
 
-from google.protobuf import empty_pb2 as empty  # type: ignore
+from google.protobuf import empty_pb2  # type: ignore
 from grafeas.grafeas_v1.types import grafeas
-
 from .base import GrafeasTransport, DEFAULT_CLIENT_INFO
 
 
@@ -66,7 +63,7 @@ class GrafeasGrpcTransport(GrafeasTransport):
         self,
         *,
         host: str = "",
-        credentials: credentials.Credentials = None,
+        credentials: ga_credentials.Credentials = None,
         credentials_file: str = None,
         scopes: Sequence[str] = None,
         channel: grpc.Channel = None,
@@ -80,7 +77,8 @@ class GrafeasGrpcTransport(GrafeasTransport):
         """Instantiate the transport.
 
         Args:
-            host (Optional[str]): The hostname to connect to.
+            host (Optional[str]):
+                 The hostname to connect to.
             credentials (Optional[google.auth.credentials.Credentials]): The
                 authorization credentials to attach to requests. These
                 credentials identify the application to the service; if none
@@ -190,7 +188,7 @@ class GrafeasGrpcTransport(GrafeasTransport):
     def create_channel(
         cls,
         host: str = "",
-        credentials: credentials.Credentials = None,
+        credentials: ga_credentials.Credentials = None,
         credentials_file: str = None,
         scopes: Optional[Sequence[str]] = None,
         quota_project_id: Optional[str] = None,
@@ -221,13 +219,15 @@ class GrafeasGrpcTransport(GrafeasTransport):
             google.api_core.exceptions.DuplicateCredentialArgs: If both ``credentials``
               and ``credentials_file`` are passed.
         """
-        scopes = scopes or cls.AUTH_SCOPES
+
+        self_signed_jwt_kwargs = cls._get_self_signed_jwt_kwargs(host, scopes)
+
         return grpc_helpers.create_channel(
             host,
             credentials=credentials,
             credentials_file=credentials_file,
-            scopes=scopes,
             quota_project_id=quota_project_id,
+            **self_signed_jwt_kwargs,
             **kwargs,
         )
 
@@ -292,7 +292,7 @@ class GrafeasGrpcTransport(GrafeasTransport):
     @property
     def delete_occurrence(
         self,
-    ) -> Callable[[grafeas.DeleteOccurrenceRequest], empty.Empty]:
+    ) -> Callable[[grafeas.DeleteOccurrenceRequest], empty_pb2.Empty]:
         r"""Return a callable for the delete occurrence method over gRPC.
 
         Deletes the specified occurrence. For example, use
@@ -313,7 +313,7 @@ class GrafeasGrpcTransport(GrafeasTransport):
             self._stubs["delete_occurrence"] = self.grpc_channel.unary_unary(
                 "/grafeas.v1.Grafeas/DeleteOccurrence",
                 request_serializer=grafeas.DeleteOccurrenceRequest.serialize,
-                response_deserializer=empty.Empty.FromString,
+                response_deserializer=empty_pb2.Empty.FromString,
             )
         return self._stubs["delete_occurrence"]
 
@@ -476,7 +476,7 @@ class GrafeasGrpcTransport(GrafeasTransport):
         return self._stubs["list_notes"]
 
     @property
-    def delete_note(self) -> Callable[[grafeas.DeleteNoteRequest], empty.Empty]:
+    def delete_note(self) -> Callable[[grafeas.DeleteNoteRequest], empty_pb2.Empty]:
         r"""Return a callable for the delete note method over gRPC.
 
         Deletes the specified note.
@@ -495,7 +495,7 @@ class GrafeasGrpcTransport(GrafeasTransport):
             self._stubs["delete_note"] = self.grpc_channel.unary_unary(
                 "/grafeas.v1.Grafeas/DeleteNote",
                 request_serializer=grafeas.DeleteNoteRequest.serialize,
-                response_deserializer=empty.Empty.FromString,
+                response_deserializer=empty_pb2.Empty.FromString,
             )
         return self._stubs["delete_note"]
 
