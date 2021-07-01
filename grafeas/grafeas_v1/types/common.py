@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,6 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import proto  # type: ignore
 
 
@@ -36,6 +38,7 @@ class NoteKind(proto.Enum):
 
 class RelatedUrl(proto.Message):
     r"""Metadata for any related URL information.
+
     Attributes:
         url (str):
             Specific URL associated with the resource.
@@ -43,8 +46,9 @@ class RelatedUrl(proto.Message):
             Label to describe usage of the URL.
     """
 
-    url = proto.Field(proto.STRING, number=1,)
-    label = proto.Field(proto.STRING, number=2,)
+    url = proto.Field(proto.STRING, number=1)
+
+    label = proto.Field(proto.STRING, number=2)
 
 
 class Signature(proto.Message):
@@ -109,8 +113,9 @@ class Signature(proto.Message):
             -  "nih:///sha-256;703f68f42aba2c6de30f488a5ea122fef76324679c9bf89791ba95a1271589a5".
     """
 
-    signature = proto.Field(proto.BYTES, number=1,)
-    public_key_id = proto.Field(proto.STRING, number=2,)
+    signature = proto.Field(proto.BYTES, number=1)
+
+    public_key_id = proto.Field(proto.STRING, number=2)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

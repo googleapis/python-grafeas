@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+
 # Copyright 2020 Google LLC
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
@@ -13,7 +14,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+
 import proto  # type: ignore
+
 
 from grafeas.grafeas_v1.types import common
 
@@ -56,7 +59,7 @@ class AttestationNote(proto.Message):
                 attestation authority, for example "qa".
         """
 
-        human_readable_name = proto.Field(proto.STRING, number=1,)
+        human_readable_name = proto.Field(proto.STRING, number=1)
 
     hint = proto.Field(proto.MESSAGE, number=1, message=Hint,)
 
@@ -84,7 +87,8 @@ class AttestationOccurrence(proto.Message):
             for more details on signature structure and verification.
     """
 
-    serialized_payload = proto.Field(proto.BYTES, number=1,)
+    serialized_payload = proto.Field(proto.BYTES, number=1)
+
     signatures = proto.RepeatedField(proto.MESSAGE, number=2, message=common.Signature,)
 
 
