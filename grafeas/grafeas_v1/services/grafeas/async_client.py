@@ -99,7 +99,19 @@ class GrafeasAsyncClient:
     common_location_path = staticmethod(GrafeasClient.common_location_path)
     parse_common_location_path = staticmethod(GrafeasClient.parse_common_location_path)
 
-    from_service_account_info = GrafeasClient.from_service_account_info
+    @classmethod
+    def from_service_account_info(cls, info: dict, *args, **kwargs):
+        """Creates an instance of this client using the provided credentials info.
+
+        Args:
+            info (dict): The service account private key info.
+            args: Additional arguments to pass to the constructor.
+            kwargs: Additional arguments to pass to the constructor.
+
+        Returns:
+            GrafeasAsyncClient: The constructed client.
+        """
+        return GrafeasClient.from_service_account_info.__func__(GrafeasAsyncClient, info, *args, **kwargs)  # type: ignore
 
     @property
     def transport(self) -> GrafeasTransport:
