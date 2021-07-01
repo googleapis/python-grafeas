@@ -61,7 +61,7 @@ class GrafeasClientMeta(type):
     _transport_registry["grpc_asyncio"] = GrafeasGrpcAsyncIOTransport
 
     def get_transport_class(cls, label: str = None,) -> Type[GrafeasTransport]:
-        """Return an appropriate transport class.
+        """Returns an appropriate transport class.
 
         Args:
             label: The name of the desired transport. If none is
@@ -100,7 +100,8 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
     @staticmethod
     def _get_default_mtls_endpoint(api_endpoint):
-        """Convert api endpoint to mTLS endpoint.
+        """Converts api endpoint to mTLS endpoint.
+
         Convert "*.sandbox.googleapis.com" and "*.googleapis.com" to
         "*.mtls.sandbox.googleapis.com" and "*.mtls.googleapis.com" respectively.
         Args:
@@ -127,14 +128,10 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         return api_endpoint.replace(".googleapis.com", ".mtls.googleapis.com")
 
-    DEFAULT_ENDPOINT = "containeranalysis.googleapis.com"
-    DEFAULT_MTLS_ENDPOINT = _get_default_mtls_endpoint.__func__(  # type: ignore
-        DEFAULT_ENDPOINT
-    )
-
     @classmethod
     def from_service_account_info(cls, info: dict, *args, **kwargs):
-        """Creates an instance of this client using the provided credentials info.
+        """Creates an instance of this client using the provided credentials
+            info.
 
         Args:
             info (dict): The service account private key info.
@@ -150,34 +147,35 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
     @property
     def transport(self) -> GrafeasTransport:
-        """Return the transport used by the client instance.
+        """Returns the transport used by the client instance.
 
         Returns:
-            GrafeasTransport: The transport used by the client instance.
+            GrafeasTransport: The transport used by the client
+                instance.
         """
         return self._transport
 
     @staticmethod
     def note_path(project: str, note: str,) -> str:
-        """Return a fully-qualified note string."""
+        """Returns a fully-qualified note string."""
         return "projects/{project}/notes/{note}".format(project=project, note=note,)
 
     @staticmethod
     def parse_note_path(path: str) -> Dict[str, str]:
-        """Parse a note path into its component segments."""
+        """Parses a note path into its component segments."""
         m = re.match(r"^projects/(?P<project>.+?)/notes/(?P<note>.+?)$", path)
         return m.groupdict() if m else {}
 
     @staticmethod
     def occurrence_path(project: str, occurrence: str,) -> str:
-        """Return a fully-qualified occurrence string."""
+        """Returns a fully-qualified occurrence string."""
         return "projects/{project}/occurrences/{occurrence}".format(
             project=project, occurrence=occurrence,
         )
 
     @staticmethod
     def parse_occurrence_path(path: str) -> Dict[str, str]:
-        """Parse a occurrence path into its component segments."""
+        """Parses a occurrence path into its component segments."""
         m = re.match(
             r"^projects/(?P<project>.+?)/occurrences/(?P<occurrence>.+?)$", path
         )
@@ -185,18 +183,18 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
     @staticmethod
     def project_path(project: str,) -> str:
-        """Return a fully-qualified project string."""
+        """Returns a fully-qualified project string."""
         return "projects/{project}".format(project=project,)
 
     @staticmethod
     def parse_project_path(path: str) -> Dict[str, str]:
-        """Parse a project path into its component segments."""
+        """Parses a project path into its component segments."""
         m = re.match(r"^projects/(?P<project>.+?)$", path)
         return m.groupdict() if m else {}
 
     @staticmethod
     def common_billing_account_path(billing_account: str,) -> str:
-        """Return a fully-qualified billing_account string."""
+        """Returns a fully-qualified billing_account string."""
         return "billingAccounts/{billing_account}".format(
             billing_account=billing_account,
         )
@@ -209,7 +207,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
     @staticmethod
     def common_folder_path(folder: str,) -> str:
-        """Return a fully-qualified folder string."""
+        """Returns a fully-qualified folder string."""
         return "folders/{folder}".format(folder=folder,)
 
     @staticmethod
@@ -220,7 +218,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
     @staticmethod
     def common_organization_path(organization: str,) -> str:
-        """Return a fully-qualified organization string."""
+        """Returns a fully-qualified organization string."""
         return "organizations/{organization}".format(organization=organization,)
 
     @staticmethod
@@ -231,7 +229,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
     @staticmethod
     def common_project_path(project: str,) -> str:
-        """Return a fully-qualified project string."""
+        """Returns a fully-qualified project string."""
         return "projects/{project}".format(project=project,)
 
     @staticmethod
@@ -242,7 +240,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
     @staticmethod
     def common_location_path(project: str, location: str,) -> str:
-        """Return a fully-qualified location string."""
+        """Returns a fully-qualified location string."""
         return "projects/{project}/locations/{location}".format(
             project=project, location=location,
         )
