@@ -82,6 +82,7 @@ from .types.vulnerability import VulnerabilityOccurrence
 from .types.vulnerability import Severity
 
 __all__ = (
+    "GrafeasAsyncClient",
     "AliasContext",
     "Architecture",
     "Artifact",
