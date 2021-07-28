@@ -7,14 +7,14 @@
 ### [1.1.2](https://www.github.com/googleapis/python-grafeas/compare/v1.1.1...v1.1.2) (2021-07-28)
 
 
-### Features
-
-* add Samples section to CONTRIBUTING.rst ([#84](https://www.github.com/googleapis/python-grafeas/issues/84)) ([2849415](https://www.github.com/googleapis/python-grafeas/commit/28494150a4f0f4fbf1d70161e494ad3faf511412))
-
-
 ### Bug Fixes
 
 * enable self signed jwt for grpc ([#88](https://www.github.com/googleapis/python-grafeas/issues/88)) ([81a0635](https://www.github.com/googleapis/python-grafeas/commit/81a06350840a854631ea9997d1c851aa62883d4b))
+
+
+### Documentation
+
+* add Samples section to CONTRIBUTING.rst ([#84](https://www.github.com/googleapis/python-grafeas/issues/84)) ([2849415](https://www.github.com/googleapis/python-grafeas/commit/28494150a4f0f4fbf1d70161e494ad3faf511412))
 
 
 ### Miscellaneous Chores
