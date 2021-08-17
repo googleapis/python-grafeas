@@ -194,6 +194,7 @@ s.remove_staging_dirs()
 # Add templated files
 # ----------------------------------------------------------------------------
 templated_files = common.py_library(
+python.py_samples(skip_readmes=True)
     samples=False, microgenerator=True,  # set to True only if there are samples
     cov_level=90  #  some coverage is missing due to manual alterations
 )
