@@ -19,12 +19,12 @@ from grafeas.grafeas_v1.types import vulnerability
 
 
 __protobuf__ = proto.module(
-    package='grafeas.v1',
+    package="grafeas.v1",
     manifest={
-        'ComplianceNote',
-        'ComplianceVersion',
-        'ComplianceOccurrence',
-        'NonCompliantFile',
+        "ComplianceNote",
+        "ComplianceVersion",
+        "ComplianceOccurrence",
+        "NonCompliantFile",
     },
 )
 
@@ -67,47 +67,18 @@ class ComplianceNote(proto.Message):
 
         """
 
-        profile_level = proto.Field(
-            proto.INT32,
-            number=1,
-        )
-        severity = proto.Field(
-            proto.ENUM,
-            number=2,
-            enum=vulnerability.Severity,
-        )
+        profile_level = proto.Field(proto.INT32, number=1,)
+        severity = proto.Field(proto.ENUM, number=2, enum=vulnerability.Severity,)
 
-    title = proto.Field(
-        proto.STRING,
-        number=1,
-    )
-    description = proto.Field(
-        proto.STRING,
-        number=2,
-    )
-    version = proto.RepeatedField(
-        proto.MESSAGE,
-        number=3,
-        message='ComplianceVersion',
-    )
-    rationale = proto.Field(
-        proto.STRING,
-        number=4,
-    )
-    remediation = proto.Field(
-        proto.STRING,
-        number=5,
-    )
+    title = proto.Field(proto.STRING, number=1,)
+    description = proto.Field(proto.STRING, number=2,)
+    version = proto.RepeatedField(proto.MESSAGE, number=3, message="ComplianceVersion",)
+    rationale = proto.Field(proto.STRING, number=4,)
+    remediation = proto.Field(proto.STRING, number=5,)
     cis_benchmark = proto.Field(
-        proto.MESSAGE,
-        number=6,
-        oneof='compliance_type',
-        message=CisBenchmark,
+        proto.MESSAGE, number=6, oneof="compliance_type", message=CisBenchmark,
     )
-    scan_instructions = proto.Field(
-        proto.BYTES,
-        number=7,
-    )
+    scan_instructions = proto.Field(proto.BYTES, number=7,)
 
 
 class ComplianceVersion(proto.Message):
@@ -125,14 +96,8 @@ class ComplianceVersion(proto.Message):
             benchmark is defined in.
     """
 
-    cpe_uri = proto.Field(
-        proto.STRING,
-        number=1,
-    )
-    version = proto.Field(
-        proto.STRING,
-        number=2,
-    )
+    cpe_uri = proto.Field(proto.STRING, number=1,)
+    version = proto.Field(proto.STRING, number=2,)
 
 
 class ComplianceOccurrence(proto.Message):
@@ -148,14 +113,9 @@ class ComplianceOccurrence(proto.Message):
     """
 
     non_compliant_files = proto.RepeatedField(
-        proto.MESSAGE,
-        number=2,
-        message='NonCompliantFile',
+        proto.MESSAGE, number=2, message="NonCompliantFile",
     )
-    non_compliance_reason = proto.Field(
-        proto.STRING,
-        number=3,
-    )
+    non_compliance_reason = proto.Field(proto.STRING, number=3,)
 
 
 class NonCompliantFile(proto.Message):
@@ -171,18 +131,9 @@ class NonCompliantFile(proto.Message):
             CIS check.
     """
 
-    path = proto.Field(
-        proto.STRING,
-        number=1,
-    )
-    display_command = proto.Field(
-        proto.STRING,
-        number=2,
-    )
-    reason = proto.Field(
-        proto.STRING,
-        number=3,
-    )
+    path = proto.Field(proto.STRING, number=1,)
+    display_command = proto.Field(proto.STRING, number=2,)
+    reason = proto.Field(proto.STRING, number=3,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))

@@ -20,11 +20,7 @@ from grafeas.grafeas_v1.types import slsa_provenance as g_slsa_provenance
 
 
 __protobuf__ = proto.module(
-    package='grafeas.v1',
-    manifest={
-        'InTotoStatement',
-        'Subject',
-    },
+    package="grafeas.v1", manifest={"InTotoStatement", "Subject",},
 )
 
 
@@ -57,29 +53,19 @@ class InTotoStatement(proto.Message):
             This field is a member of `oneof`_ ``predicate``.
     """
 
-    type_ = proto.Field(
-        proto.STRING,
-        number=1,
-    )
-    subject = proto.RepeatedField(
-        proto.MESSAGE,
-        number=2,
-        message='Subject',
-    )
-    predicate_type = proto.Field(
-        proto.STRING,
-        number=3,
-    )
+    type_ = proto.Field(proto.STRING, number=1,)
+    subject = proto.RepeatedField(proto.MESSAGE, number=2, message="Subject",)
+    predicate_type = proto.Field(proto.STRING, number=3,)
     provenance = proto.Field(
         proto.MESSAGE,
         number=4,
-        oneof='predicate',
+        oneof="predicate",
         message=intoto_provenance.InTotoProvenance,
     )
     slsa_provenance = proto.Field(
         proto.MESSAGE,
         number=5,
-        oneof='predicate',
+        oneof="predicate",
         message=g_slsa_provenance.SlsaProvenance,
     )
 
@@ -96,15 +82,8 @@ class Subject(proto.Message):
             https://github.com/in-toto/attestation/blob/main/spec/field_types.md#DigestSet
     """
 
-    name = proto.Field(
-        proto.STRING,
-        number=1,
-    )
-    digest = proto.MapField(
-        proto.STRING,
-        proto.STRING,
-        number=2,
-    )
+    name = proto.Field(proto.STRING, number=1,)
+    digest = proto.MapField(proto.STRING, proto.STRING, number=2,)
 
 
 __all__ = tuple(sorted(__protobuf__.manifest))
