@@ -2,7 +2,7 @@
     "name": "grafeas",
     "name_pretty": "Grafeas",
     "product_documentation": "https://grafeas.io",
-    "client_documentation": "https://cloud.google.com/python/docs/reference/grafeas/latest",
+    "client_documentation": "https://googleapis.dev/python/grafeas/latest",
     "issue_tracker": "",
     "release_level": "stable",
     "language": "python",
