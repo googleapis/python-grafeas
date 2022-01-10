@@ -149,7 +149,7 @@ def test_get_occurrence""",
     # Remove test_client_withDEFAULT_CLIENT_INFO test
     s.replace(
     library / "tests/**/test_grafeas.py",
-    """def test_client_withDEFAULT_CLIENT_INFO.*
+    """def test_client_with_default_client_info.*
         prep\.assert_called_once_with\(client_info\)$""",
     "",
     flags=re.MULTILINE | re.DOTALL,
