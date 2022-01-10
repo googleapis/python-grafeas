@@ -3937,23 +3937,6 @@ def test_parse_common_location_path():
     assert expected == actual
 
 
-def test_client_with_default_client_info():
-    client_info = gapic_v1.client_info.ClientInfo()
-
-    with mock.patch.object(
-        transports.GrafeasTransport, "_prep_wrapped_messages"
-    ) as prep:
-        client = GrafeasClient(client_info=client_info,)
-        prep.assert_called_once_with(client_info)
-
-    with mock.patch.object(
-        transports.GrafeasTransport, "_prep_wrapped_messages"
-    ) as prep:
-        transport_class = GrafeasClient.get_transport_class()
-        transport = transport_class(client_info=client_info,)
-        prep.assert_called_once_with(client_info)
-
-
 @pytest.mark.asyncio
 async def test_transport_close_async():
     client = GrafeasAsyncClient(transport="grpc_asyncio",)
