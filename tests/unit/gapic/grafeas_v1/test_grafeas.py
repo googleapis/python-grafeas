@@ -64,6 +64,7 @@ def client_cert_source_callback():
     return b"cert bytes", b"key bytes"
 
 
+@pytest.mark.parametrize("request_type", [grafeas.GetOccurrenceRequest, dict,])
 def test_get_occurrence(request_type, transport: str = "grpc"):
     client = GrafeasClient(transport=transport,)
 

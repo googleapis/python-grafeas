@@ -142,6 +142,10 @@ for library in s.get_staging_dirs(default_version):
     """def client_cert_source_callback.*?def test_get_occurrence""",
     """def client_cert_source_callback():
     return b"cert bytes", b"key bytes"\n
+@pytest.mark.parametrize("request_type", [
+  grafeas.GetOccurrenceRequest,
+  dict,
+])
 def test_get_occurrence""",
     flags=re.MULTILINE | re.DOTALL,
     )
