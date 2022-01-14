@@ -12,6 +12,5 @@
     "api_id": "",
     "codeowner_team": "@googleapis/aap-dpes",
     "requires_billing": false,
-    "default_version": "v1",
-    "api_shortname": "grafeas"
+    "default_version": "v1"
 }
