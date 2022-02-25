@@ -150,7 +150,7 @@ class GrafeasAsyncClient:
     ) -> grafeas.Occurrence:
         r"""Gets the specified occurrence.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -250,7 +250,7 @@ class GrafeasAsyncClient:
     ) -> pagers.ListOccurrencesAsyncPager:
         r"""Lists occurrences for the specified project.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -368,7 +368,7 @@ class GrafeasAsyncClient:
         is no longer applicable for the given resource.
 
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -458,7 +458,7 @@ class GrafeasAsyncClient:
     ) -> grafeas.Occurrence:
         r"""Creates a new occurrence.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -556,7 +556,7 @@ class GrafeasAsyncClient:
     ) -> grafeas.BatchCreateOccurrencesResponse:
         r"""Creates new occurrences in batch.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -658,7 +658,7 @@ class GrafeasAsyncClient:
     ) -> grafeas.Occurrence:
         r"""Updates the specified occurrence.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -764,7 +764,7 @@ class GrafeasAsyncClient:
         belongs to a provider project.
 
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -864,7 +864,7 @@ class GrafeasAsyncClient:
     ) -> grafeas.Note:
         r"""Gets the specified note.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -964,7 +964,7 @@ class GrafeasAsyncClient:
     ) -> pagers.ListNotesAsyncPager:
         r"""Lists notes for the specified project.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1079,7 +1079,7 @@ class GrafeasAsyncClient:
     ) -> None:
         r"""Deletes the specified note.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1170,7 +1170,7 @@ class GrafeasAsyncClient:
     ) -> grafeas.Note:
         r"""Creates a new note.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1276,7 +1276,7 @@ class GrafeasAsyncClient:
     ) -> grafeas.BatchCreateNotesResponse:
         r"""Creates new notes in batch.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1376,7 +1376,7 @@ class GrafeasAsyncClient:
     ) -> grafeas.Note:
         r"""Updates the specified note.
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1484,7 +1484,7 @@ class GrafeasAsyncClient:
         specified note.
 
 
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 

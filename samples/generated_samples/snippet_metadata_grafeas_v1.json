@@ -10,8 +10,8 @@
           "shortName": "BatchCreateNotes"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_batch_create_notes_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_BatchCreateNotes_async",
+      "file": "containeranalysis_v1_generated_grafeas_batch_create_notes_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_BatchCreateNotes_async",
       "segments": [
         {
           "end": 44,
@@ -54,8 +54,8 @@
           "shortName": "BatchCreateNotes"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_batch_create_notes_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_BatchCreateNotes_sync",
+      "file": "containeranalysis_v1_generated_grafeas_batch_create_notes_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_BatchCreateNotes_sync",
       "segments": [
         {
           "end": 44,
@@ -99,8 +99,8 @@
           "shortName": "BatchCreateOccurrences"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_batch_create_occurrences_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_BatchCreateOccurrences_async",
+      "file": "containeranalysis_v1_generated_grafeas_batch_create_occurrences_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_BatchCreateOccurrences_async",
       "segments": [
         {
           "end": 44,
@@ -143,8 +143,8 @@
           "shortName": "BatchCreateOccurrences"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_batch_create_occurrences_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_BatchCreateOccurrences_sync",
+      "file": "containeranalysis_v1_generated_grafeas_batch_create_occurrences_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_BatchCreateOccurrences_sync",
       "segments": [
         {
           "end": 44,
@@ -188,8 +188,8 @@
           "shortName": "CreateNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_create_note_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_CreateNote_async",
+      "file": "containeranalysis_v1_generated_grafeas_create_note_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_CreateNote_async",
       "segments": [
         {
           "end": 45,
@@ -232,8 +232,8 @@
           "shortName": "CreateNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_create_note_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_CreateNote_sync",
+      "file": "containeranalysis_v1_generated_grafeas_create_note_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_CreateNote_sync",
       "segments": [
         {
           "end": 45,
@@ -277,8 +277,8 @@
           "shortName": "CreateOccurrence"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_create_occurrence_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_CreateOccurrence_async",
+      "file": "containeranalysis_v1_generated_grafeas_create_occurrence_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_CreateOccurrence_async",
       "segments": [
         {
           "end": 44,
@@ -321,8 +321,8 @@
           "shortName": "CreateOccurrence"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_create_occurrence_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_CreateOccurrence_sync",
+      "file": "containeranalysis_v1_generated_grafeas_create_occurrence_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_CreateOccurrence_sync",
       "segments": [
         {
           "end": 44,
@@ -366,8 +366,8 @@
           "shortName": "DeleteNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_delete_note_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_DeleteNote_async",
+      "file": "containeranalysis_v1_generated_grafeas_delete_note_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_DeleteNote_async",
       "segments": [
         {
           "end": 42,
@@ -408,8 +408,8 @@
           "shortName": "DeleteNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_delete_note_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_DeleteNote_sync",
+      "file": "containeranalysis_v1_generated_grafeas_delete_note_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_DeleteNote_sync",
       "segments": [
         {
           "end": 42,
@@ -451,8 +451,8 @@
           "shortName": "DeleteOccurrence"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_delete_occurrence_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_DeleteOccurrence_async",
+      "file": "containeranalysis_v1_generated_grafeas_delete_occurrence_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_DeleteOccurrence_async",
       "segments": [
         {
           "end": 42,
@@ -493,8 +493,8 @@
           "shortName": "DeleteOccurrence"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_delete_occurrence_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_DeleteOccurrence_sync",
+      "file": "containeranalysis_v1_generated_grafeas_delete_occurrence_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_DeleteOccurrence_sync",
       "segments": [
         {
           "end": 42,
@@ -536,8 +536,8 @@
           "shortName": "GetNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_get_note_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_GetNote_async",
+      "file": "containeranalysis_v1_generated_grafeas_get_note_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_GetNote_async",
       "segments": [
         {
           "end": 44,
@@ -580,8 +580,8 @@
           "shortName": "GetNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_get_note_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_GetNote_sync",
+      "file": "containeranalysis_v1_generated_grafeas_get_note_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_GetNote_sync",
       "segments": [
         {
           "end": 44,
@@ -625,8 +625,8 @@
           "shortName": "GetOccurrenceNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_get_occurrence_note_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_GetOccurrenceNote_async",
+      "file": "containeranalysis_v1_generated_grafeas_get_occurrence_note_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_GetOccurrenceNote_async",
       "segments": [
         {
           "end": 44,
@@ -669,8 +669,8 @@
           "shortName": "GetOccurrenceNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_get_occurrence_note_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_GetOccurrenceNote_sync",
+      "file": "containeranalysis_v1_generated_grafeas_get_occurrence_note_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_GetOccurrenceNote_sync",
       "segments": [
         {
           "end": 44,
@@ -714,8 +714,8 @@
           "shortName": "GetOccurrence"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_get_occurrence_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_GetOccurrence_async",
+      "file": "containeranalysis_v1_generated_grafeas_get_occurrence_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_GetOccurrence_async",
       "segments": [
         {
           "end": 44,
@@ -758,8 +758,8 @@
           "shortName": "GetOccurrence"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_get_occurrence_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_GetOccurrence_sync",
+      "file": "containeranalysis_v1_generated_grafeas_get_occurrence_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_GetOccurrence_sync",
       "segments": [
         {
           "end": 44,
@@ -803,8 +803,8 @@
           "shortName": "ListNoteOccurrences"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_list_note_occurrences_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_ListNoteOccurrences_async",
+      "file": "containeranalysis_v1_generated_grafeas_list_note_occurrences_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_ListNoteOccurrences_async",
       "segments": [
         {
           "end": 45,
@@ -847,8 +847,8 @@
           "shortName": "ListNoteOccurrences"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_list_note_occurrences_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_ListNoteOccurrences_sync",
+      "file": "containeranalysis_v1_generated_grafeas_list_note_occurrences_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_ListNoteOccurrences_sync",
       "segments": [
         {
           "end": 45,
@@ -892,8 +892,8 @@
           "shortName": "ListNotes"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_list_notes_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_ListNotes_async",
+      "file": "containeranalysis_v1_generated_grafeas_list_notes_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_ListNotes_async",
       "segments": [
         {
           "end": 45,
@@ -936,8 +936,8 @@
           "shortName": "ListNotes"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_list_notes_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_ListNotes_sync",
+      "file": "containeranalysis_v1_generated_grafeas_list_notes_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_ListNotes_sync",
       "segments": [
         {
           "end": 45,
@@ -981,8 +981,8 @@
           "shortName": "ListOccurrences"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_list_occurrences_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_ListOccurrences_async",
+      "file": "containeranalysis_v1_generated_grafeas_list_occurrences_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_ListOccurrences_async",
       "segments": [
         {
           "end": 45,
@@ -1025,8 +1025,8 @@
           "shortName": "ListOccurrences"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_list_occurrences_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_ListOccurrences_sync",
+      "file": "containeranalysis_v1_generated_grafeas_list_occurrences_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_ListOccurrences_sync",
       "segments": [
         {
           "end": 45,
@@ -1070,8 +1070,8 @@
           "shortName": "UpdateNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_update_note_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_UpdateNote_async",
+      "file": "containeranalysis_v1_generated_grafeas_update_note_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_UpdateNote_async",
       "segments": [
         {
           "end": 44,
@@ -1114,8 +1114,8 @@
           "shortName": "UpdateNote"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_update_note_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_UpdateNote_sync",
+      "file": "containeranalysis_v1_generated_grafeas_update_note_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_UpdateNote_sync",
       "segments": [
         {
           "end": 44,
@@ -1159,8 +1159,8 @@
           "shortName": "UpdateOccurrence"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_update_occurrence_async.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_UpdateOccurrence_async",
+      "file": "containeranalysis_v1_generated_grafeas_update_occurrence_async.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_UpdateOccurrence_async",
       "segments": [
         {
           "end": 44,
@@ -1203,8 +1203,8 @@
           "shortName": "UpdateOccurrence"
         }
       },
-      "file": "containeranalysis_generated_grafeas_v1_grafeas_update_occurrence_sync.py",
-      "regionTag": "containeranalysis_generated_grafeas_v1_Grafeas_UpdateOccurrence_sync",
+      "file": "containeranalysis_v1_generated_grafeas_update_occurrence_sync.py",
+      "regionTag": "containeranalysis_v1_generated_Grafeas_UpdateOccurrence_sync",
       "segments": [
         {
           "end": 44,
