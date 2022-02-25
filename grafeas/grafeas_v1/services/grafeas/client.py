@@ -287,8 +287,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> grafeas.Occurrence:
         r"""Gets the specified occurrence.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -378,8 +377,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> pagers.ListOccurrencesPager:
         r"""Lists occurrences for the specified project.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -487,8 +485,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         is no longer applicable for the given resource.
 
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -568,8 +565,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> grafeas.Occurrence:
         r"""Creates a new occurrence.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -667,8 +663,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> grafeas.BatchCreateOccurrencesResponse:
         r"""Creates new occurrences in batch.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -770,8 +765,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> grafeas.Occurrence:
         r"""Updates the specified occurrence.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -877,8 +871,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         belongs to a provider project.
 
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -968,8 +961,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> grafeas.Note:
         r"""Gets the specified note.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1059,8 +1051,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> pagers.ListNotesPager:
         r"""Lists notes for the specified project.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1165,8 +1156,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> None:
         r"""Deletes the specified note.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1247,8 +1237,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> grafeas.Note:
         r"""Creates a new note.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1354,8 +1343,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> grafeas.BatchCreateNotesResponse:
         r"""Creates new notes in batch.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1454,8 +1442,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
     ) -> grafeas.Note:
         r"""Updates the specified note.
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
@@ -1563,8 +1550,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         specified note.
 
 
-
-        .. code-block::
+        .. code-block:: python
 
             from grafeas import grafeas_v1
 
