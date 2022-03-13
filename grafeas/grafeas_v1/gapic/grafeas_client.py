@@ -39,7 +39,9 @@ from grafeas.grafeas_v1.proto import grafeas_pb2
 from grafeas.grafeas_v1.proto import grafeas_pb2_grpc
 
 
-_GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution("grafeas",).version
+_GAPIC_LIBRARY_VERSION = pkg_resources.get_distribution(
+    "grafeas",
+).version
 
 
 class GrafeasClient(object):
@@ -69,7 +71,9 @@ class GrafeasClient(object):
     def note_path(cls, project, note):
         """Return a fully-qualified note string."""
         return google.api_core.path_template.expand(
-            "projects/{project}/notes/{note}", project=project, note=note,
+            "projects/{project}/notes/{note}",
+            project=project,
+            note=note,
         )
 
     @classmethod
@@ -85,7 +89,8 @@ class GrafeasClient(object):
     def project_path(cls, project):
         """Return a fully-qualified project string."""
         return google.api_core.path_template.expand(
-            "projects/{project}", project=project,
+            "projects/{project}",
+            project=project,
         )
 
     def __init__(self, transport, client_config=None, client_info=None):
@@ -159,7 +164,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -202,7 +207,9 @@ class GrafeasClient(object):
                 client_info=self._client_info,
             )
 
-        request = grafeas_pb2.GetOccurrenceRequest(name=name,)
+        request = grafeas_pb2.GetOccurrenceRequest(
+            name=name,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
@@ -235,7 +242,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -300,7 +307,9 @@ class GrafeasClient(object):
             )
 
         request = grafeas_pb2.ListOccurrencesRequest(
-            parent=parent, filter=filter_, page_size=page_size,
+            parent=parent,
+            filter=filter_,
+            page_size=page_size,
         )
         if metadata is None:
             metadata = []
@@ -345,7 +354,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -385,7 +394,9 @@ class GrafeasClient(object):
                 client_info=self._client_info,
             )
 
-        request = grafeas_pb2.DeleteOccurrenceRequest(name=name,)
+        request = grafeas_pb2.DeleteOccurrenceRequest(
+            name=name,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
@@ -417,7 +428,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -468,7 +479,8 @@ class GrafeasClient(object):
             )
 
         request = grafeas_pb2.CreateOccurrenceRequest(
-            parent=parent, occurrence=occurrence,
+            parent=parent,
+            occurrence=occurrence,
         )
         if metadata is None:
             metadata = []
@@ -501,7 +513,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -552,7 +564,8 @@ class GrafeasClient(object):
             )
 
         request = grafeas_pb2.BatchCreateOccurrencesRequest(
-            parent=parent, occurrences=occurrences,
+            parent=parent,
+            occurrences=occurrences,
         )
         if metadata is None:
             metadata = []
@@ -586,7 +599,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -641,7 +654,9 @@ class GrafeasClient(object):
             )
 
         request = grafeas_pb2.UpdateOccurrenceRequest(
-            name=name, occurrence=occurrence, update_mask=update_mask,
+            name=name,
+            occurrence=occurrence,
+            update_mask=update_mask,
         )
         if metadata is None:
             metadata = []
@@ -674,7 +689,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -717,7 +732,9 @@ class GrafeasClient(object):
                 client_info=self._client_info,
             )
 
-        request = grafeas_pb2.GetOccurrenceNoteRequest(name=name,)
+        request = grafeas_pb2.GetOccurrenceNoteRequest(
+            name=name,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
@@ -748,7 +765,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -791,7 +808,9 @@ class GrafeasClient(object):
                 client_info=self._client_info,
             )
 
-        request = grafeas_pb2.GetNoteRequest(name=name,)
+        request = grafeas_pb2.GetNoteRequest(
+            name=name,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
@@ -824,7 +843,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -889,7 +908,9 @@ class GrafeasClient(object):
             )
 
         request = grafeas_pb2.ListNotesRequest(
-            parent=parent, filter=filter_, page_size=page_size,
+            parent=parent,
+            filter=filter_,
+            page_size=page_size,
         )
         if metadata is None:
             metadata = []
@@ -932,7 +953,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -972,7 +993,9 @@ class GrafeasClient(object):
                 client_info=self._client_info,
             )
 
-        request = grafeas_pb2.DeleteNoteRequest(name=name,)
+        request = grafeas_pb2.DeleteNoteRequest(
+            name=name,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
@@ -1005,7 +1028,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -1060,7 +1083,9 @@ class GrafeasClient(object):
             )
 
         request = grafeas_pb2.CreateNoteRequest(
-            parent=parent, note_id=note_id, note=note,
+            parent=parent,
+            note_id=note_id,
+            note=note,
         )
         if metadata is None:
             metadata = []
@@ -1093,7 +1118,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -1143,7 +1168,10 @@ class GrafeasClient(object):
                 client_info=self._client_info,
             )
 
-        request = grafeas_pb2.BatchCreateNotesRequest(parent=parent, notes=notes,)
+        request = grafeas_pb2.BatchCreateNotesRequest(
+            parent=parent,
+            notes=notes,
+        )
         if metadata is None:
             metadata = []
         metadata = list(metadata)
@@ -1176,7 +1204,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -1231,7 +1259,9 @@ class GrafeasClient(object):
             )
 
         request = grafeas_pb2.UpdateNoteRequest(
-            name=name, note=note, update_mask=update_mask,
+            name=name,
+            note=note,
+            update_mask=update_mask,
         )
         if metadata is None:
             metadata = []
@@ -1267,7 +1297,7 @@ class GrafeasClient(object):
         Example:
             >>> from grafeas import grafeas_v1
             >>> from grafeas.grafeas_v1.gapic.transports import grafeas_grpc_transport
-            >>> 
+            >>>
             >>> address = "[SERVICE_ADDRESS]"
             >>> scopes = ("[SCOPE]")
             >>> transport = grafeas_grpc_transport.GrafeasGrpcTransport(address, scopes)
@@ -1332,7 +1362,9 @@ class GrafeasClient(object):
             )
 
         request = grafeas_pb2.ListNoteOccurrencesRequest(
-            name=name, filter=filter_, page_size=page_size,
+            name=name,
+            filter=filter_,
+            page_size=page_size,
         )
         if metadata is None:
             metadata = []
