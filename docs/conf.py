@@ -65,9 +65,9 @@ source_suffix = [".rst", ".md"]
 master_doc = "index"
 
 # General information about the project.
-project = u"grafeas"
-copyright = u"2019, Google"
-author = u"Google APIs"
+project = "grafeas"
+copyright = "2019, Google"
+author = "Google APIs"
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -258,7 +258,13 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, "grafeas.tex", u"grafeas Documentation", author, "manual",)
+    (
+        master_doc,
+        "grafeas.tex",
+        "grafeas Documentation",
+        author,
+        "manual",
+    )
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
@@ -286,7 +292,15 @@ latex_documents = [
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [(master_doc, "grafeas", u"grafeas Documentation", [author], 1,)]
+man_pages = [
+    (
+        master_doc,
+        "grafeas",
+        "grafeas Documentation",
+        [author],
+        1,
+    )
+]
 
 # If true, show URL addresses after external links.
 # man_show_urls = False
@@ -301,7 +315,7 @@ texinfo_documents = [
     (
         master_doc,
         "grafeas",
-        u"grafeas Documentation",
+        "grafeas Documentation",
         author,
         "grafeas",
         "grafeas Library",
@@ -326,7 +340,10 @@ texinfo_documents = [
 intersphinx_mapping = {
     "python": ("http://python.readthedocs.org/en/latest/", None),
     "google-auth": ("https://google-auth.readthedocs.io/en/stable", None),
-    "google.api_core": ("https://googleapis.dev/python/google-api-core/latest/", None,),
+    "google.api_core": (
+        "https://googleapis.dev/python/google-api-core/latest/",
+        None,
+    ),
     "grpc": ("https://grpc.io/grpc/python/", None),
 }
 

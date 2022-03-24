@@ -1742,7 +1742,9 @@ _BATCHCREATENOTESREQUEST = _descriptor.Descriptor(
         ),
     ],
     extensions=[],
-    nested_types=[_BATCHCREATENOTESREQUEST_NOTESENTRY,],
+    nested_types=[
+        _BATCHCREATENOTESREQUEST_NOTESENTRY,
+    ],
     enum_types=[],
     serialized_options=None,
     is_extendable=False,
