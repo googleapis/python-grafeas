@@ -148,7 +148,6 @@ def cover(session):
 @nox.session(python=DEFAULT_PYTHON_VERSION)
 def docs(session):
     """Build the docs for this library."""
-
     session.install("-e", ".")
     session.install("sphinx<3", "jinja2<3.1", "alabaster", "recommonmark")
 
