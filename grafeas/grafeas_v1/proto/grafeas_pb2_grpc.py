@@ -10,26 +10,26 @@ from grafeas.grafeas_v1.proto import (
 class GrafeasStub(object):
     """[Grafeas](https://grafeas.io) API.
 
-  Retrieves analysis results of Cloud components such as Docker container
-  images.
+    Retrieves analysis results of Cloud components such as Docker container
+    images.
 
-  Analysis results are stored as a series of occurrences. An `Occurrence`
-  contains information about a specific analysis instance on a resource. An
-  occurrence refers to a `Note`. A note contains details describing the
-  analysis and is generally stored in a separate project, called a `Provider`.
-  Multiple occurrences can refer to the same note.
+    Analysis results are stored as a series of occurrences. An `Occurrence`
+    contains information about a specific analysis instance on a resource. An
+    occurrence refers to a `Note`. A note contains details describing the
+    analysis and is generally stored in a separate project, called a `Provider`.
+    Multiple occurrences can refer to the same note.
 
-  For example, an SSL vulnerability could affect multiple images. In this case,
-  there would be one note for the vulnerability and an occurrence for each
-  image with the vulnerability referring to that note.
-  """
+    For example, an SSL vulnerability could affect multiple images. In this case,
+    there would be one note for the vulnerability and an occurrence for each
+    image with the vulnerability referring to that note.
+    """
 
     def __init__(self, channel):
         """Constructor.
 
-    Args:
-      channel: A grpc.Channel.
-    """
+        Args:
+          channel: A grpc.Channel.
+        """
         self.GetOccurrence = channel.unary_unary(
             "/grafeas.v1.Grafeas/GetOccurrence",
             request_serializer=grafeas__v1_dot_proto_dot_grafeas__pb2.GetOccurrenceRequest.SerializeToString,
@@ -105,119 +105,108 @@ class GrafeasStub(object):
 class GrafeasServicer(object):
     """[Grafeas](https://grafeas.io) API.
 
-  Retrieves analysis results of Cloud components such as Docker container
-  images.
+    Retrieves analysis results of Cloud components such as Docker container
+    images.
 
-  Analysis results are stored as a series of occurrences. An `Occurrence`
-  contains information about a specific analysis instance on a resource. An
-  occurrence refers to a `Note`. A note contains details describing the
-  analysis and is generally stored in a separate project, called a `Provider`.
-  Multiple occurrences can refer to the same note.
+    Analysis results are stored as a series of occurrences. An `Occurrence`
+    contains information about a specific analysis instance on a resource. An
+    occurrence refers to a `Note`. A note contains details describing the
+    analysis and is generally stored in a separate project, called a `Provider`.
+    Multiple occurrences can refer to the same note.
 
-  For example, an SSL vulnerability could affect multiple images. In this case,
-  there would be one note for the vulnerability and an occurrence for each
-  image with the vulnerability referring to that note.
-  """
+    For example, an SSL vulnerability could affect multiple images. In this case,
+    there would be one note for the vulnerability and an occurrence for each
+    image with the vulnerability referring to that note.
+    """
 
     def GetOccurrence(self, request, context):
-        """Gets the specified occurrence.
-    """
+        """Gets the specified occurrence."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ListOccurrences(self, request, context):
-        """Lists occurrences for the specified project.
-    """
+        """Lists occurrences for the specified project."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def DeleteOccurrence(self, request, context):
         """Deletes the specified occurrence. For example, use this method to delete an
-    occurrence when the occurrence is no longer applicable for the given
-    resource.
-    """
+        occurrence when the occurrence is no longer applicable for the given
+        resource.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def CreateOccurrence(self, request, context):
-        """Creates a new occurrence.
-    """
+        """Creates a new occurrence."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def BatchCreateOccurrences(self, request, context):
-        """Creates new occurrences in batch.
-    """
+        """Creates new occurrences in batch."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def UpdateOccurrence(self, request, context):
-        """Updates the specified occurrence.
-    """
+        """Updates the specified occurrence."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetOccurrenceNote(self, request, context):
         """Gets the note attached to the specified occurrence. Consumer projects can
-    use this method to get a note that belongs to a provider project.
-    """
+        use this method to get a note that belongs to a provider project.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def GetNote(self, request, context):
-        """Gets the specified note.
-    """
+        """Gets the specified note."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ListNotes(self, request, context):
-        """Lists notes for the specified project.
-    """
+        """Lists notes for the specified project."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def DeleteNote(self, request, context):
-        """Deletes the specified note.
-    """
+        """Deletes the specified note."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def CreateNote(self, request, context):
-        """Creates a new note.
-    """
+        """Creates a new note."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def BatchCreateNotes(self, request, context):
-        """Creates new notes in batch.
-    """
+        """Creates new notes in batch."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def UpdateNote(self, request, context):
-        """Updates the specified note.
-    """
+        """Updates the specified note."""
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
 
     def ListNoteOccurrences(self, request, context):
         """Lists occurrences referencing the specified note. Provider projects can use
-    this method to get all occurrences across consumer projects referencing the
-    specified note.
-    """
+        this method to get all occurrences across consumer projects referencing the
+        specified note.
+        """
         context.set_code(grpc.StatusCode.UNIMPLEMENTED)
         context.set_details("Method not implemented!")
         raise NotImplementedError("Method not implemented!")
