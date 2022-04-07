@@ -1432,7 +1432,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         request: Union[grafeas.BatchCreateNotesRequest, dict] = None,
         *,
         parent: str = None,
-        notes: Sequence[grafeas.BatchCreateNotesRequest.NotesEntry] = None,
+        notes: Mapping[str, grafeas.Note] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
@@ -1469,7 +1469,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            notes (Sequence[grafeas.grafeas_v1.types.BatchCreateNotesRequest.NotesEntry]):
+            notes (Mapping[str, grafeas.grafeas_v1.types.Note]):
                 The notes to create. Max allowed
                 length is 1000.
 
