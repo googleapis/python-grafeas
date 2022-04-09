@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import os
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core import client_options as client_options_lib
@@ -328,7 +328,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_get_occurrence():
                 # Create a client
@@ -423,7 +423,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_list_occurrences():
                 # Create a client
@@ -539,7 +539,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_delete_occurrence():
                 # Create a client
@@ -622,7 +622,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_create_occurrence():
                 # Create a client
@@ -725,7 +725,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_batch_create_occurrences():
                 # Create a client
@@ -832,7 +832,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_update_occurrence():
                 # Create a client
@@ -943,7 +943,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_get_occurrence_note():
                 # Create a client
@@ -1038,7 +1038,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_get_note():
                 # Create a client
@@ -1133,7 +1133,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_list_notes():
                 # Create a client
@@ -1246,7 +1246,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_delete_note():
                 # Create a client
@@ -1330,7 +1330,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_create_note():
                 # Create a client
@@ -1432,7 +1432,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         request: Union[grafeas.BatchCreateNotesRequest, dict] = None,
         *,
         parent: str = None,
-        notes: Sequence[grafeas.BatchCreateNotesRequest.NotesEntry] = None,
+        notes: Mapping[str, grafeas.Note] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
@@ -1441,7 +1441,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_batch_create_notes():
                 # Create a client
@@ -1469,7 +1469,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            notes (Sequence[grafeas.grafeas_v1.types.BatchCreateNotesRequest.NotesEntry]):
+            notes (Mapping[str, grafeas.grafeas_v1.types.Note]):
                 The notes to create. Max allowed
                 length is 1000.
 
@@ -1545,7 +1545,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_update_note():
                 # Create a client
@@ -1658,7 +1658,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
 
         .. code-block:: python
 
-            from grafeas import grafeas_v1
+                    from grafeas import grafeas_v1
 
             def sample_list_note_occurrences():
                 # Create a client
