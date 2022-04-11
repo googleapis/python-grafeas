@@ -16,7 +16,7 @@
 from collections import OrderedDict
 import functools
 import re
-from typing import Dict, Optional, Sequence, Tuple, Type, Union
+from typing import Dict, Mapping, Optional, Sequence, Tuple, Type, Union
 import pkg_resources
 
 from google.api_core.client_options import ClientOptions
@@ -221,8 +221,7 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=30.0,
             ),
@@ -336,8 +335,7 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=30.0,
             ),
@@ -383,7 +381,6 @@ class GrafeasAsyncClient:
         r"""Deletes the specified occurrence. For example, use
         this method to delete an occurrence when the occurrence
         is no longer applicable for the given resource.
-
 
         .. code-block:: python
 
@@ -443,8 +440,7 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=30.0,
             ),
@@ -798,7 +794,6 @@ class GrafeasAsyncClient:
         Consumer projects can use this method to get a note that
         belongs to a provider project.
 
-
         .. code-block:: python
 
             from grafeas import grafeas_v1
@@ -867,8 +862,7 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=30.0,
             ),
@@ -971,8 +965,7 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=30.0,
             ),
@@ -1086,8 +1079,7 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=30.0,
             ),
@@ -1190,8 +1182,7 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=30.0,
             ),
@@ -1330,7 +1321,7 @@ class GrafeasAsyncClient:
         request: Union[grafeas.BatchCreateNotesRequest, dict] = None,
         *,
         parent: str = None,
-        notes: Sequence[grafeas.BatchCreateNotesRequest.NotesEntry] = None,
+        notes: Mapping[str, grafeas.Note] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
         timeout: float = None,
         metadata: Sequence[Tuple[str, str]] = (),
@@ -1367,7 +1358,7 @@ class GrafeasAsyncClient:
                 This corresponds to the ``parent`` field
                 on the ``request`` instance; if ``request`` is provided, this
                 should not be set.
-            notes (:class:`Sequence[grafeas.grafeas_v1.types.BatchCreateNotesRequest.NotesEntry]`):
+            notes (:class:`Mapping[str, grafeas.grafeas_v1.types.Note]`):
                 The notes to create. Max allowed
                 length is 1000.
 
@@ -1554,7 +1545,6 @@ class GrafeasAsyncClient:
         occurrences across consumer projects referencing the
         specified note.
 
-
         .. code-block:: python
 
             from grafeas import grafeas_v1
@@ -1634,8 +1624,7 @@ class GrafeasAsyncClient:
                 maximum=60.0,
                 multiplier=1.3,
                 predicate=retries.if_exception_type(
-                    core_exceptions.DeadlineExceeded,
-                    core_exceptions.ServiceUnavailable,
+                    core_exceptions.GoogleAPICallError,
                 ),
                 deadline=30.0,
             ),
