@@ -4166,13 +4166,6 @@ def test_grafeas_grpc_transport_client_cert_source_for_mtls(transport_class):
             )
 
 
-@pytest.mark.parametrize(
-    "transport_name",
-    [
-        "grpc",
-        "grpc_asyncio",
-    ],
-)
 def test_grafeas_grpc_transport_channel():
     channel = grpc.secure_channel("http://localhost/", grpc.local_channel_credentials())
 
