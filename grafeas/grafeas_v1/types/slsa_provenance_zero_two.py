@@ -20,9 +20,9 @@ from google.protobuf import timestamp_pb2  # type: ignore
 
 
 __protobuf__ = proto.module(
-    package='grafeas.v1',
+    package="grafeas.v1",
     manifest={
-        'SlsaProvenanceZeroTwo',
+        "SlsaProvenanceZeroTwo",
     },
 )
 
@@ -97,7 +97,7 @@ class SlsaProvenanceZeroTwo(proto.Message):
         config_source = proto.Field(
             proto.MESSAGE,
             number=1,
-            message='SlsaProvenanceZeroTwo.SlsaConfigSource',
+            message="SlsaProvenanceZeroTwo.SlsaConfigSource",
         )
         parameters = proto.Field(
             proto.MESSAGE,
@@ -171,7 +171,7 @@ class SlsaProvenanceZeroTwo(proto.Message):
         completeness = proto.Field(
             proto.MESSAGE,
             number=4,
-            message='SlsaProvenanceZeroTwo.SlsaCompleteness',
+            message="SlsaProvenanceZeroTwo.SlsaCompleteness",
         )
         reproducible = proto.Field(
             proto.BOOL,
