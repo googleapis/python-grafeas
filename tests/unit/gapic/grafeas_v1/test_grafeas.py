@@ -4102,7 +4102,6 @@ def test_grafeas_transport_auth_adc(transport_class):
     [
         transports.GrafeasGrpcTransport,
         transports.GrafeasGrpcAsyncIOTransport,
-        transports.GrafeasRestTransport,
     ],
 )
 def test_grafeas_transport_auth_gdch_credentials(transport_class):
