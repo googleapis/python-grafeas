@@ -1,40 +1,26 @@
 Python Client for Grafeas API
 =============================
 
-|stable| |pypi| |versions|
+|ga| |pypi| |versions|
 
-`Grafeas API`_: An implementation of the Grafeas API, which stores, and enables querying and retrieval of critical metadata about all of your software artifacts.
+`Grafeas API`_: An implementation of the Grafeas API, which stores, and enables querying and
+retrieval of critical metadata about all of your software artifacts.
 
 - `Client Library Documentation`_
 - `Product Documentation`_
 
-.. |stable| image:: https://img.shields.io/badge/support-stable-gold.svg
-   :target: https://github.com/googleapis/google-cloud-python/blob/main/README.rst#stability-levels
+.. |ga| image:: https://img.shields.io/badge/support-ga-gold.svg
+   :target: https://github.com/googleapis/google-cloud-python/blob/main/README.rst#general-availability
 .. |pypi| image:: https://img.shields.io/pypi/v/grafeas.svg
    :target: https://pypi.org/project/grafeas/
 .. |versions| image:: https://img.shields.io/pypi/pyversions/grafeas.svg
    :target: https://pypi.org/project/grafeas/
-.. _Grafeas API: https://grafeas.io
-.. _Client Library Documentation: https://cloud.google.com/python/docs/reference/containeranalysis/latest
-.. _Product Documentation:  https://grafeas.io
-
-Quick Start
------------
-
-In order to use this library, you first need to go through the following steps:
-
-1. `Select or create a Cloud Platform project.`_
-2. `Enable billing for your project.`_
-3. `Enable the Grafeas API.`_
-4. `Setup Authentication.`_
-
-.. _Select or create a Cloud Platform project.: https://console.cloud.google.com/project
-.. _Enable billing for your project.: https://cloud.google.com/billing/docs/how-to/modify-project#enable_billing_for_a_project
-.. _Enable the Grafeas API.:  https://grafeas.io
-.. _Setup Authentication.: https://googleapis.dev/python/google-api-core/latest/auth.html
+.. _Grafeas API: https://grafeas.io/
+.. _Client Library Documentation: https://googleapis.dev/python/grafeas/latest
+.. _Product Documentation:  https://grafeas.io/
 
 Installation
-~~~~~~~~~~~~
+--------------
 
 Install this library in a `virtualenv`_ using pip. `virtualenv`_ is a tool to
 create isolated Python environments. The basic problem it addresses is one of
@@ -47,26 +33,15 @@ dependencies.
 .. _`virtualenv`: https://virtualenv.pypa.io/en/latest/
 
 
-Code samples and snippets
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Code samples and snippets live in the `samples/` folder.
-
-
 Supported Python Versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^
-Our client libraries are compatible with all current [active](https://devguide.python.org/devcycle/#in-development-main-branch) and [maintenance](https://devguide.python.org/devcycle/#maintenance-branches) versions of
-Python.
-
 Python >= 3.7
 
-Unsupported Python Versions
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Python <= 3.6
+Deprecated Python Versions
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Python == 2.7, Python == 3.6.
 
-If you are using an [end-of-life](https://devguide.python.org/devcycle/#end-of-life-branches)
-version of Python, we recommend that you update as soon as possible to an actively supported version.
-
+The last version of this library compatible with Python 2.7 is grafeas==0.4.1.
 
 Mac/Linux
 ^^^^^^^^^
@@ -90,14 +65,14 @@ Windows
     <your-env>\Scripts\pip.exe install grafeas
 
 Next Steps
-~~~~~~~~~~
+--------------
 
 -  Read the `Client Library Documentation`_ for Grafeas API
-   to see other available methods on the client.
+   API to see other available methods on the client.
 -  Read the `Grafeas API Product documentation`_ to learn
    more about the product and see How-to Guides.
--  View this `README`_ to see the full list of Cloud
+-  View this `repository’s main README`_ to see the full list of Cloud
    APIs that we cover.
 
-.. _Grafeas API Product documentation:  https://grafeas.io
-.. _README: https://github.com/googleapis/google-cloud-python/blob/main/README.rst
+.. _Grafeas API Product documentation:  https://grafeas.io/
+.. _repository’s main README: https://github.com/googleapis/google-cloud-python/blob/main/README.rst
