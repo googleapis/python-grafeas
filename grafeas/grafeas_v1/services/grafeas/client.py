@@ -28,7 +28,8 @@ from typing import (
     Union,
     cast,
 )
-import pkg_resources
+
+from grafeas.grafeas_v1 import gapic_version as package_version
 
 from google.api_core import client_options as client_options_lib
 from google.api_core import exceptions as core_exceptions
@@ -332,7 +333,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Occurrence:
         r"""Gets the specified occurrence.
@@ -434,7 +435,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         parent: Optional[str] = None,
         filter: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListOccurrencesPager:
         r"""Lists occurrences for the specified project.
@@ -554,7 +555,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified occurrence. For example, use
@@ -646,7 +647,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         parent: Optional[str] = None,
         occurrence: Optional[grafeas.Occurrence] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Occurrence:
         r"""Creates a new occurrence.
@@ -756,7 +757,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         parent: Optional[str] = None,
         occurrences: Optional[MutableSequence[grafeas.Occurrence]] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.BatchCreateOccurrencesResponse:
         r"""Creates new occurrences in batch.
@@ -870,7 +871,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         occurrence: Optional[grafeas.Occurrence] = None,
         update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Occurrence:
         r"""Updates the specified occurrence.
@@ -985,7 +986,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Note:
         r"""Gets the note attached to the specified occurrence.
@@ -1089,7 +1090,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Note:
         r"""Gets the specified note.
@@ -1191,7 +1192,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         parent: Optional[str] = None,
         filter: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListNotesPager:
         r"""Lists notes for the specified project.
@@ -1311,7 +1312,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified note.
@@ -1402,7 +1403,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         note_id: Optional[str] = None,
         note: Optional[grafeas.Note] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Note:
         r"""Creates a new note.
@@ -1520,7 +1521,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         parent: Optional[str] = None,
         notes: Optional[MutableMapping[str, grafeas.Note]] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.BatchCreateNotesResponse:
         r"""Creates new notes in batch.
@@ -1631,7 +1632,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         note: Optional[grafeas.Note] = None,
         update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Note:
         r"""Updates the specified note.
@@ -1747,7 +1748,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         name: Optional[str] = None,
         filter: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListNoteOccurrencesPager:
         r"""Lists occurrences referencing the specified note.
@@ -1880,14 +1881,9 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         self.transport.close()
 
 
-try:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution(
-            "grafeas",
-        ).version,
-    )
-except pkg_resources.DistributionNotFound:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
+DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
+    gapic_version=package_version.__version__
+)
 
 
 __all__ = ("GrafeasClient",)

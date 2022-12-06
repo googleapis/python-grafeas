@@ -27,7 +27,8 @@ from typing import (
     Type,
     Union,
 )
-import pkg_resources
+
+from grafeas.grafeas_v1 import gapic_version as package_version
 
 from google.api_core.client_options import ClientOptions
 from google.api_core import exceptions as core_exceptions
@@ -159,7 +160,7 @@ class GrafeasAsyncClient:
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Occurrence:
         r"""Gets the specified occurrence.
@@ -271,7 +272,7 @@ class GrafeasAsyncClient:
         parent: Optional[str] = None,
         filter: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListOccurrencesAsyncPager:
         r"""Lists occurrences for the specified project.
@@ -401,7 +402,7 @@ class GrafeasAsyncClient:
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified occurrence. For example, use
@@ -503,7 +504,7 @@ class GrafeasAsyncClient:
         parent: Optional[str] = None,
         occurrence: Optional[grafeas.Occurrence] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Occurrence:
         r"""Creates a new occurrence.
@@ -613,7 +614,7 @@ class GrafeasAsyncClient:
         parent: Optional[str] = None,
         occurrences: Optional[MutableSequence[grafeas.Occurrence]] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.BatchCreateOccurrencesResponse:
         r"""Creates new occurrences in batch.
@@ -727,7 +728,7 @@ class GrafeasAsyncClient:
         occurrence: Optional[grafeas.Occurrence] = None,
         update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Occurrence:
         r"""Updates the specified occurrence.
@@ -842,7 +843,7 @@ class GrafeasAsyncClient:
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Note:
         r"""Gets the note attached to the specified occurrence.
@@ -956,7 +957,7 @@ class GrafeasAsyncClient:
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Note:
         r"""Gets the specified note.
@@ -1068,7 +1069,7 @@ class GrafeasAsyncClient:
         parent: Optional[str] = None,
         filter: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListNotesAsyncPager:
         r"""Lists notes for the specified project.
@@ -1198,7 +1199,7 @@ class GrafeasAsyncClient:
         *,
         name: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> None:
         r"""Deletes the specified note.
@@ -1299,7 +1300,7 @@ class GrafeasAsyncClient:
         note_id: Optional[str] = None,
         note: Optional[grafeas.Note] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Note:
         r"""Creates a new note.
@@ -1417,7 +1418,7 @@ class GrafeasAsyncClient:
         parent: Optional[str] = None,
         notes: Optional[MutableMapping[str, grafeas.Note]] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.BatchCreateNotesResponse:
         r"""Creates new notes in batch.
@@ -1529,7 +1530,7 @@ class GrafeasAsyncClient:
         note: Optional[grafeas.Note] = None,
         update_mask: Optional[field_mask_pb2.FieldMask] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> grafeas.Note:
         r"""Updates the specified note.
@@ -1645,7 +1646,7 @@ class GrafeasAsyncClient:
         name: Optional[str] = None,
         filter: Optional[str] = None,
         retry: OptionalRetry = gapic_v1.method.DEFAULT,
-        timeout: Optional[float] = None,
+        timeout: Union[float, object] = gapic_v1.method.DEFAULT,
         metadata: Sequence[Tuple[str, str]] = (),
     ) -> pagers.ListNoteOccurrencesAsyncPager:
         r"""Lists occurrences referencing the specified note.
@@ -1781,14 +1782,9 @@ class GrafeasAsyncClient:
         await self.transport.close()
 
 
-try:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
-        gapic_version=pkg_resources.get_distribution(
-            "grafeas",
-        ).version,
-    )
-except pkg_resources.DistributionNotFound:
-    DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo()
+DEFAULT_CLIENT_INFO = gapic_v1.client_info.ClientInfo(
+    gapic_version=package_version.__version__
+)
 
 
 __all__ = ("GrafeasAsyncClient",)
