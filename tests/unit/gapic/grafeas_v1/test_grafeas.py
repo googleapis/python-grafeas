@@ -24,10 +24,17 @@ except ImportError:  # pragma: NO COVER
 
 import grpc
 from grpc.experimental import aio
+from collections.abc import Iterable
+from google.protobuf import json_format
+import json
 import math
 import pytest
 from proto.marshal.rules.dates import DurationRule, TimestampRule
 from proto.marshal.rules import wrappers
+from requests import Response
+from requests import Request, PreparedRequest
+from requests.sessions import Session
+from google.protobuf import json_format
 
 from google.api_core import client_options
 from google.api_core import exceptions as core_exceptions
@@ -3938,6 +3945,5637 @@ async def test_list_note_occurrences_async_pages():
             assert page_.raw_page.next_page_token == token
 
 
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.GetOccurrenceRequest,
+        dict,
+    ],
+)
+def test_get_occurrence_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/occurrences/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Occurrence(
+            name="name_value",
+            resource_uri="resource_uri_value",
+            note_name="note_name_value",
+            kind=common.NoteKind.VULNERABILITY,
+            remediation="remediation_value",
+            vulnerability=vulnerability.VulnerabilityOccurrence(type_="type__value"),
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Occurrence.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.get_occurrence(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, grafeas.Occurrence)
+    assert response.name == "name_value"
+    assert response.resource_uri == "resource_uri_value"
+    assert response.note_name == "note_name_value"
+    assert response.kind == common.NoteKind.VULNERABILITY
+    assert response.remediation == "remediation_value"
+
+
+def test_get_occurrence_rest_required_fields(request_type=grafeas.GetOccurrenceRequest):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["name"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).get_occurrence._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["name"] = "name_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).get_occurrence._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "name" in jsonified_request
+    assert jsonified_request["name"] == "name_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.Occurrence()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "get",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.Occurrence.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.get_occurrence(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_get_occurrence_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.get_occurrence._get_unset_required_fields({})
+    assert set(unset_fields) == (set(()) & set(("name",)))
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_get_occurrence_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_get_occurrence"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_get_occurrence"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.GetOccurrenceRequest.pb(grafeas.GetOccurrenceRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.Occurrence.to_json(grafeas.Occurrence())
+
+        request = grafeas.GetOccurrenceRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.Occurrence()
+
+        client.get_occurrence(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_get_occurrence_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.GetOccurrenceRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/occurrences/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.get_occurrence(request)
+
+
+def test_get_occurrence_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Occurrence()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"name": "projects/sample1/occurrences/sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            name="name_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Occurrence.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.get_occurrence(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{name=projects/*/occurrences/*}" % client.transport._host, args[1]
+        )
+
+
+def test_get_occurrence_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.get_occurrence(
+            grafeas.GetOccurrenceRequest(),
+            name="name_value",
+        )
+
+
+def test_get_occurrence_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.ListOccurrencesRequest,
+        dict,
+    ],
+)
+def test_list_occurrences_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.ListOccurrencesResponse(
+            next_page_token="next_page_token_value",
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.ListOccurrencesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.list_occurrences(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, pagers.ListOccurrencesPager)
+    assert response.next_page_token == "next_page_token_value"
+
+
+def test_list_occurrences_rest_required_fields(
+    request_type=grafeas.ListOccurrencesRequest,
+):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["parent"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_occurrences._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["parent"] = "parent_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_occurrences._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(
+        (
+            "filter",
+            "page_size",
+            "page_token",
+        )
+    )
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "parent" in jsonified_request
+    assert jsonified_request["parent"] == "parent_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.ListOccurrencesResponse()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "get",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.ListOccurrencesResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.list_occurrences(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_list_occurrences_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.list_occurrences._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(
+            (
+                "filter",
+                "pageSize",
+                "pageToken",
+            )
+        )
+        & set(("parent",))
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_list_occurrences_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_list_occurrences"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_list_occurrences"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.ListOccurrencesRequest.pb(grafeas.ListOccurrencesRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.ListOccurrencesResponse.to_json(
+            grafeas.ListOccurrencesResponse()
+        )
+
+        request = grafeas.ListOccurrencesRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.ListOccurrencesResponse()
+
+        client.list_occurrences(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_list_occurrences_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.ListOccurrencesRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.list_occurrences(request)
+
+
+def test_list_occurrences_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.ListOccurrencesResponse()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"parent": "projects/sample1"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            parent="parent_value",
+            filter="filter_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.ListOccurrencesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.list_occurrences(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{parent=projects/*}/occurrences" % client.transport._host, args[1]
+        )
+
+
+def test_list_occurrences_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.list_occurrences(
+            grafeas.ListOccurrencesRequest(),
+            parent="parent_value",
+            filter="filter_value",
+        )
+
+
+def test_list_occurrences_rest_pager(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # TODO(kbandes): remove this mock unless there's a good reason for it.
+        # with mock.patch.object(path_template, 'transcode') as transcode:
+        # Set the response as a series of pages
+        response = (
+            grafeas.ListOccurrencesResponse(
+                occurrences=[
+                    grafeas.Occurrence(),
+                    grafeas.Occurrence(),
+                    grafeas.Occurrence(),
+                ],
+                next_page_token="abc",
+            ),
+            grafeas.ListOccurrencesResponse(
+                occurrences=[],
+                next_page_token="def",
+            ),
+            grafeas.ListOccurrencesResponse(
+                occurrences=[
+                    grafeas.Occurrence(),
+                ],
+                next_page_token="ghi",
+            ),
+            grafeas.ListOccurrencesResponse(
+                occurrences=[
+                    grafeas.Occurrence(),
+                    grafeas.Occurrence(),
+                ],
+            ),
+        )
+        # Two responses for two calls
+        response = response + response
+
+        # Wrap the values into proper Response objs
+        response = tuple(grafeas.ListOccurrencesResponse.to_json(x) for x in response)
+        return_values = tuple(Response() for i in response)
+        for return_val, response_val in zip(return_values, response):
+            return_val._content = response_val.encode("UTF-8")
+            return_val.status_code = 200
+        req.side_effect = return_values
+
+        sample_request = {"parent": "projects/sample1"}
+
+        pager = client.list_occurrences(request=sample_request)
+
+        results = list(pager)
+        assert len(results) == 6
+        assert all(isinstance(i, grafeas.Occurrence) for i in results)
+
+        pages = list(client.list_occurrences(request=sample_request).pages)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.DeleteOccurrenceRequest,
+        dict,
+    ],
+)
+def test_delete_occurrence_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/occurrences/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = None
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        json_return_value = ""
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.delete_occurrence(request)
+
+    # Establish that the response is the type that we expect.
+    assert response is None
+
+
+def test_delete_occurrence_rest_required_fields(
+    request_type=grafeas.DeleteOccurrenceRequest,
+):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["name"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).delete_occurrence._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["name"] = "name_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).delete_occurrence._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "name" in jsonified_request
+    assert jsonified_request["name"] == "name_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = None
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "delete",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+            json_return_value = ""
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.delete_occurrence(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_delete_occurrence_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.delete_occurrence._get_unset_required_fields({})
+    assert set(unset_fields) == (set(()) & set(("name",)))
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_delete_occurrence_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_delete_occurrence"
+    ) as pre:
+        pre.assert_not_called()
+        pb_message = grafeas.DeleteOccurrenceRequest.pb(
+            grafeas.DeleteOccurrenceRequest()
+        )
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+
+        request = grafeas.DeleteOccurrenceRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+
+        client.delete_occurrence(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+
+
+def test_delete_occurrence_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.DeleteOccurrenceRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/occurrences/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.delete_occurrence(request)
+
+
+def test_delete_occurrence_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = None
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"name": "projects/sample1/occurrences/sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            name="name_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        json_return_value = ""
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.delete_occurrence(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{name=projects/*/occurrences/*}" % client.transport._host, args[1]
+        )
+
+
+def test_delete_occurrence_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.delete_occurrence(
+            grafeas.DeleteOccurrenceRequest(),
+            name="name_value",
+        )
+
+
+def test_delete_occurrence_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.CreateOccurrenceRequest,
+        dict,
+    ],
+)
+def test_create_occurrence_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request_init["occurrence"] = {
+        "name": "name_value",
+        "resource_uri": "resource_uri_value",
+        "note_name": "note_name_value",
+        "kind": 1,
+        "remediation": "remediation_value",
+        "create_time": {"seconds": 751, "nanos": 543},
+        "update_time": {},
+        "vulnerability": {
+            "type_": "type__value",
+            "severity": 1,
+            "cvss_score": 0.1082,
+            "cvssv3": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "authentication": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
+            "package_issue": [
+                {
+                    "affected_cpe_uri": "affected_cpe_uri_value",
+                    "affected_package": "affected_package_value",
+                    "affected_version": {
+                        "epoch": 527,
+                        "name": "name_value",
+                        "revision": "revision_value",
+                        "inclusive": True,
+                        "kind": 1,
+                        "full_name": "full_name_value",
+                    },
+                    "fixed_cpe_uri": "fixed_cpe_uri_value",
+                    "fixed_package": "fixed_package_value",
+                    "fixed_version": {},
+                    "fix_available": True,
+                    "package_type": "package_type_value",
+                    "effective_severity": 1,
+                    "file_location": [{"file_path": "file_path_value"}],
+                }
+            ],
+            "short_description": "short_description_value",
+            "long_description": "long_description_value",
+            "related_urls": [{"url": "url_value", "label": "label_value"}],
+            "effective_severity": 1,
+            "fix_available": True,
+            "cvss_version": 1,
+        },
+        "build": {
+            "provenance": {
+                "id": "id_value",
+                "project_id": "project_id_value",
+                "commands": [
+                    {
+                        "name": "name_value",
+                        "env": ["env_value1", "env_value2"],
+                        "args": ["args_value1", "args_value2"],
+                        "dir_": "dir__value",
+                        "id": "id_value",
+                        "wait_for": ["wait_for_value1", "wait_for_value2"],
+                    }
+                ],
+                "built_artifacts": [
+                    {
+                        "checksum": "checksum_value",
+                        "id": "id_value",
+                        "names": ["names_value1", "names_value2"],
+                    }
+                ],
+                "create_time": {},
+                "start_time": {},
+                "end_time": {},
+                "creator": "creator_value",
+                "logs_uri": "logs_uri_value",
+                "source_provenance": {
+                    "artifact_storage_source_uri": "artifact_storage_source_uri_value",
+                    "file_hashes": {},
+                    "context": {
+                        "cloud_repo": {
+                            "repo_id": {
+                                "project_repo_id": {
+                                    "project_id": "project_id_value",
+                                    "repo_name": "repo_name_value",
+                                },
+                                "uid": "uid_value",
+                            },
+                            "revision_id": "revision_id_value",
+                            "alias_context": {"kind": 1, "name": "name_value"},
+                        },
+                        "gerrit": {
+                            "host_uri": "host_uri_value",
+                            "gerrit_project": "gerrit_project_value",
+                            "revision_id": "revision_id_value",
+                            "alias_context": {},
+                        },
+                        "git": {"url": "url_value", "revision_id": "revision_id_value"},
+                        "labels": {},
+                    },
+                    "additional_contexts": {},
+                },
+                "trigger_id": "trigger_id_value",
+                "build_options": {},
+                "builder_version": "builder_version_value",
+            },
+            "provenance_bytes": "provenance_bytes_value",
+            "intoto_provenance": {
+                "builder_config": {"id": "id_value"},
+                "recipe": {
+                    "type_": "type__value",
+                    "defined_in_material": 1971,
+                    "entry_point": "entry_point_value",
+                    "arguments": [
+                        {
+                            "type_url": "type.googleapis.com/google.protobuf.Duration",
+                            "value": b"\x08\x0c\x10\xdb\x07",
+                        }
+                    ],
+                    "environment": {},
+                },
+                "metadata": {
+                    "build_invocation_id": "build_invocation_id_value",
+                    "build_started_on": {},
+                    "build_finished_on": {},
+                    "completeness": {
+                        "arguments": True,
+                        "environment": True,
+                        "materials": True,
+                    },
+                    "reproducible": True,
+                },
+                "materials": ["materials_value1", "materials_value2"],
+            },
+            "intoto_statement": {
+                "type_": "type__value",
+                "subject": [{"name": "name_value", "digest": {}}],
+                "predicate_type": "predicate_type_value",
+                "provenance": {},
+                "slsa_provenance": {
+                    "builder": {"id": "id_value"},
+                    "recipe": {
+                        "type_": "type__value",
+                        "defined_in_material": 1971,
+                        "entry_point": "entry_point_value",
+                        "arguments": {},
+                        "environment": {},
+                    },
+                    "metadata": {
+                        "build_invocation_id": "build_invocation_id_value",
+                        "build_started_on": {},
+                        "build_finished_on": {},
+                        "completeness": {
+                            "arguments": True,
+                            "environment": True,
+                            "materials": True,
+                        },
+                        "reproducible": True,
+                    },
+                    "materials": [{"uri": "uri_value", "digest": {}}],
+                },
+                "slsa_provenance_zero_two": {
+                    "builder": {"id": "id_value"},
+                    "build_type": "build_type_value",
+                    "invocation": {
+                        "config_source": {
+                            "uri": "uri_value",
+                            "digest": {},
+                            "entry_point": "entry_point_value",
+                        },
+                        "parameters": {"fields": {}},
+                        "environment": {},
+                    },
+                    "build_config": {},
+                    "metadata": {
+                        "build_invocation_id": "build_invocation_id_value",
+                        "build_started_on": {},
+                        "build_finished_on": {},
+                        "completeness": {
+                            "parameters": True,
+                            "environment": True,
+                            "materials": True,
+                        },
+                        "reproducible": True,
+                    },
+                    "materials": [{"uri": "uri_value", "digest": {}}],
+                },
+            },
+        },
+        "image": {
+            "fingerprint": {
+                "v1_name": "v1_name_value",
+                "v2_blob": ["v2_blob_value1", "v2_blob_value2"],
+                "v2_name": "v2_name_value",
+            },
+            "distance": 843,
+            "layer_info": [
+                {"directive": "directive_value", "arguments": "arguments_value"}
+            ],
+            "base_resource_url": "base_resource_url_value",
+        },
+        "package": {
+            "name": "name_value",
+            "location": [
+                {"cpe_uri": "cpe_uri_value", "version": {}, "path": "path_value"}
+            ],
+            "package_type": "package_type_value",
+            "cpe_uri": "cpe_uri_value",
+            "architecture": 1,
+            "license_": {
+                "expression": "expression_value",
+                "comments": "comments_value",
+            },
+            "version": {},
+        },
+        "deployment": {
+            "user_email": "user_email_value",
+            "deploy_time": {},
+            "undeploy_time": {},
+            "config": "config_value",
+            "address": "address_value",
+            "resource_uri": ["resource_uri_value1", "resource_uri_value2"],
+            "platform": 1,
+        },
+        "discovery": {
+            "continuous_analysis": 1,
+            "analysis_status": 1,
+            "analysis_completed": {
+                "analysis_type": ["analysis_type_value1", "analysis_type_value2"]
+            },
+            "analysis_error": [
+                {"code": 411, "message": "message_value", "details": {}}
+            ],
+            "analysis_status_error": {},
+            "cpe": "cpe_value",
+            "last_scan_time": {},
+            "archive_time": {},
+        },
+        "attestation": {
+            "serialized_payload": b"serialized_payload_blob",
+            "signatures": [
+                {"signature": b"signature_blob", "public_key_id": "public_key_id_value"}
+            ],
+            "jwts": [{"compact_jwt": "compact_jwt_value"}],
+        },
+        "upgrade": {
+            "package": "package_value",
+            "parsed_version": {},
+            "distribution": {
+                "cpe_uri": "cpe_uri_value",
+                "classification": "classification_value",
+                "severity": "severity_value",
+                "cve": ["cve_value1", "cve_value2"],
+            },
+            "windows_update": {
+                "identity": {"update_id": "update_id_value", "revision": 879},
+                "title": "title_value",
+                "description": "description_value",
+                "categories": [
+                    {"category_id": "category_id_value", "name": "name_value"}
+                ],
+                "kb_article_ids": ["kb_article_ids_value1", "kb_article_ids_value2"],
+                "support_url": "support_url_value",
+                "last_published_timestamp": {},
+            },
+        },
+        "compliance": {
+            "non_compliant_files": [
+                {
+                    "path": "path_value",
+                    "display_command": "display_command_value",
+                    "reason": "reason_value",
+                }
+            ],
+            "non_compliance_reason": "non_compliance_reason_value",
+        },
+        "dsse_attestation": {
+            "envelope": {
+                "payload": b"payload_blob",
+                "payload_type": "payload_type_value",
+                "signatures": [{"sig": b"sig_blob", "keyid": "keyid_value"}],
+            },
+            "statement": {},
+        },
+        "envelope": {},
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Occurrence(
+            name="name_value",
+            resource_uri="resource_uri_value",
+            note_name="note_name_value",
+            kind=common.NoteKind.VULNERABILITY,
+            remediation="remediation_value",
+            vulnerability=vulnerability.VulnerabilityOccurrence(type_="type__value"),
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Occurrence.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.create_occurrence(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, grafeas.Occurrence)
+    assert response.name == "name_value"
+    assert response.resource_uri == "resource_uri_value"
+    assert response.note_name == "note_name_value"
+    assert response.kind == common.NoteKind.VULNERABILITY
+    assert response.remediation == "remediation_value"
+
+
+def test_create_occurrence_rest_required_fields(
+    request_type=grafeas.CreateOccurrenceRequest,
+):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["parent"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).create_occurrence._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["parent"] = "parent_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).create_occurrence._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "parent" in jsonified_request
+    assert jsonified_request["parent"] == "parent_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.Occurrence()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "post",
+                "query_params": pb_request,
+            }
+            transcode_result["body"] = pb_request
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.Occurrence.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.create_occurrence(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_create_occurrence_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.create_occurrence._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(())
+        & set(
+            (
+                "parent",
+                "occurrence",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_create_occurrence_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_create_occurrence"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_create_occurrence"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.CreateOccurrenceRequest.pb(
+            grafeas.CreateOccurrenceRequest()
+        )
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.Occurrence.to_json(grafeas.Occurrence())
+
+        request = grafeas.CreateOccurrenceRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.Occurrence()
+
+        client.create_occurrence(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_create_occurrence_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.CreateOccurrenceRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request_init["occurrence"] = {
+        "name": "name_value",
+        "resource_uri": "resource_uri_value",
+        "note_name": "note_name_value",
+        "kind": 1,
+        "remediation": "remediation_value",
+        "create_time": {"seconds": 751, "nanos": 543},
+        "update_time": {},
+        "vulnerability": {
+            "type_": "type__value",
+            "severity": 1,
+            "cvss_score": 0.1082,
+            "cvssv3": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "authentication": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
+            "package_issue": [
+                {
+                    "affected_cpe_uri": "affected_cpe_uri_value",
+                    "affected_package": "affected_package_value",
+                    "affected_version": {
+                        "epoch": 527,
+                        "name": "name_value",
+                        "revision": "revision_value",
+                        "inclusive": True,
+                        "kind": 1,
+                        "full_name": "full_name_value",
+                    },
+                    "fixed_cpe_uri": "fixed_cpe_uri_value",
+                    "fixed_package": "fixed_package_value",
+                    "fixed_version": {},
+                    "fix_available": True,
+                    "package_type": "package_type_value",
+                    "effective_severity": 1,
+                    "file_location": [{"file_path": "file_path_value"}],
+                }
+            ],
+            "short_description": "short_description_value",
+            "long_description": "long_description_value",
+            "related_urls": [{"url": "url_value", "label": "label_value"}],
+            "effective_severity": 1,
+            "fix_available": True,
+            "cvss_version": 1,
+        },
+        "build": {
+            "provenance": {
+                "id": "id_value",
+                "project_id": "project_id_value",
+                "commands": [
+                    {
+                        "name": "name_value",
+                        "env": ["env_value1", "env_value2"],
+                        "args": ["args_value1", "args_value2"],
+                        "dir_": "dir__value",
+                        "id": "id_value",
+                        "wait_for": ["wait_for_value1", "wait_for_value2"],
+                    }
+                ],
+                "built_artifacts": [
+                    {
+                        "checksum": "checksum_value",
+                        "id": "id_value",
+                        "names": ["names_value1", "names_value2"],
+                    }
+                ],
+                "create_time": {},
+                "start_time": {},
+                "end_time": {},
+                "creator": "creator_value",
+                "logs_uri": "logs_uri_value",
+                "source_provenance": {
+                    "artifact_storage_source_uri": "artifact_storage_source_uri_value",
+                    "file_hashes": {},
+                    "context": {
+                        "cloud_repo": {
+                            "repo_id": {
+                                "project_repo_id": {
+                                    "project_id": "project_id_value",
+                                    "repo_name": "repo_name_value",
+                                },
+                                "uid": "uid_value",
+                            },
+                            "revision_id": "revision_id_value",
+                            "alias_context": {"kind": 1, "name": "name_value"},
+                        },
+                        "gerrit": {
+                            "host_uri": "host_uri_value",
+                            "gerrit_project": "gerrit_project_value",
+                            "revision_id": "revision_id_value",
+                            "alias_context": {},
+                        },
+                        "git": {"url": "url_value", "revision_id": "revision_id_value"},
+                        "labels": {},
+                    },
+                    "additional_contexts": {},
+                },
+                "trigger_id": "trigger_id_value",
+                "build_options": {},
+                "builder_version": "builder_version_value",
+            },
+            "provenance_bytes": "provenance_bytes_value",
+            "intoto_provenance": {
+                "builder_config": {"id": "id_value"},
+                "recipe": {
+                    "type_": "type__value",
+                    "defined_in_material": 1971,
+                    "entry_point": "entry_point_value",
+                    "arguments": [
+                        {
+                            "type_url": "type.googleapis.com/google.protobuf.Duration",
+                            "value": b"\x08\x0c\x10\xdb\x07",
+                        }
+                    ],
+                    "environment": {},
+                },
+                "metadata": {
+                    "build_invocation_id": "build_invocation_id_value",
+                    "build_started_on": {},
+                    "build_finished_on": {},
+                    "completeness": {
+                        "arguments": True,
+                        "environment": True,
+                        "materials": True,
+                    },
+                    "reproducible": True,
+                },
+                "materials": ["materials_value1", "materials_value2"],
+            },
+            "intoto_statement": {
+                "type_": "type__value",
+                "subject": [{"name": "name_value", "digest": {}}],
+                "predicate_type": "predicate_type_value",
+                "provenance": {},
+                "slsa_provenance": {
+                    "builder": {"id": "id_value"},
+                    "recipe": {
+                        "type_": "type__value",
+                        "defined_in_material": 1971,
+                        "entry_point": "entry_point_value",
+                        "arguments": {},
+                        "environment": {},
+                    },
+                    "metadata": {
+                        "build_invocation_id": "build_invocation_id_value",
+                        "build_started_on": {},
+                        "build_finished_on": {},
+                        "completeness": {
+                            "arguments": True,
+                            "environment": True,
+                            "materials": True,
+                        },
+                        "reproducible": True,
+                    },
+                    "materials": [{"uri": "uri_value", "digest": {}}],
+                },
+                "slsa_provenance_zero_two": {
+                    "builder": {"id": "id_value"},
+                    "build_type": "build_type_value",
+                    "invocation": {
+                        "config_source": {
+                            "uri": "uri_value",
+                            "digest": {},
+                            "entry_point": "entry_point_value",
+                        },
+                        "parameters": {"fields": {}},
+                        "environment": {},
+                    },
+                    "build_config": {},
+                    "metadata": {
+                        "build_invocation_id": "build_invocation_id_value",
+                        "build_started_on": {},
+                        "build_finished_on": {},
+                        "completeness": {
+                            "parameters": True,
+                            "environment": True,
+                            "materials": True,
+                        },
+                        "reproducible": True,
+                    },
+                    "materials": [{"uri": "uri_value", "digest": {}}],
+                },
+            },
+        },
+        "image": {
+            "fingerprint": {
+                "v1_name": "v1_name_value",
+                "v2_blob": ["v2_blob_value1", "v2_blob_value2"],
+                "v2_name": "v2_name_value",
+            },
+            "distance": 843,
+            "layer_info": [
+                {"directive": "directive_value", "arguments": "arguments_value"}
+            ],
+            "base_resource_url": "base_resource_url_value",
+        },
+        "package": {
+            "name": "name_value",
+            "location": [
+                {"cpe_uri": "cpe_uri_value", "version": {}, "path": "path_value"}
+            ],
+            "package_type": "package_type_value",
+            "cpe_uri": "cpe_uri_value",
+            "architecture": 1,
+            "license_": {
+                "expression": "expression_value",
+                "comments": "comments_value",
+            },
+            "version": {},
+        },
+        "deployment": {
+            "user_email": "user_email_value",
+            "deploy_time": {},
+            "undeploy_time": {},
+            "config": "config_value",
+            "address": "address_value",
+            "resource_uri": ["resource_uri_value1", "resource_uri_value2"],
+            "platform": 1,
+        },
+        "discovery": {
+            "continuous_analysis": 1,
+            "analysis_status": 1,
+            "analysis_completed": {
+                "analysis_type": ["analysis_type_value1", "analysis_type_value2"]
+            },
+            "analysis_error": [
+                {"code": 411, "message": "message_value", "details": {}}
+            ],
+            "analysis_status_error": {},
+            "cpe": "cpe_value",
+            "last_scan_time": {},
+            "archive_time": {},
+        },
+        "attestation": {
+            "serialized_payload": b"serialized_payload_blob",
+            "signatures": [
+                {"signature": b"signature_blob", "public_key_id": "public_key_id_value"}
+            ],
+            "jwts": [{"compact_jwt": "compact_jwt_value"}],
+        },
+        "upgrade": {
+            "package": "package_value",
+            "parsed_version": {},
+            "distribution": {
+                "cpe_uri": "cpe_uri_value",
+                "classification": "classification_value",
+                "severity": "severity_value",
+                "cve": ["cve_value1", "cve_value2"],
+            },
+            "windows_update": {
+                "identity": {"update_id": "update_id_value", "revision": 879},
+                "title": "title_value",
+                "description": "description_value",
+                "categories": [
+                    {"category_id": "category_id_value", "name": "name_value"}
+                ],
+                "kb_article_ids": ["kb_article_ids_value1", "kb_article_ids_value2"],
+                "support_url": "support_url_value",
+                "last_published_timestamp": {},
+            },
+        },
+        "compliance": {
+            "non_compliant_files": [
+                {
+                    "path": "path_value",
+                    "display_command": "display_command_value",
+                    "reason": "reason_value",
+                }
+            ],
+            "non_compliance_reason": "non_compliance_reason_value",
+        },
+        "dsse_attestation": {
+            "envelope": {
+                "payload": b"payload_blob",
+                "payload_type": "payload_type_value",
+                "signatures": [{"sig": b"sig_blob", "keyid": "keyid_value"}],
+            },
+            "statement": {},
+        },
+        "envelope": {},
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.create_occurrence(request)
+
+
+def test_create_occurrence_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Occurrence()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"parent": "projects/sample1"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            parent="parent_value",
+            occurrence=grafeas.Occurrence(name="name_value"),
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Occurrence.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.create_occurrence(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{parent=projects/*}/occurrences" % client.transport._host, args[1]
+        )
+
+
+def test_create_occurrence_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.create_occurrence(
+            grafeas.CreateOccurrenceRequest(),
+            parent="parent_value",
+            occurrence=grafeas.Occurrence(name="name_value"),
+        )
+
+
+def test_create_occurrence_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.BatchCreateOccurrencesRequest,
+        dict,
+    ],
+)
+def test_batch_create_occurrences_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.BatchCreateOccurrencesResponse()
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.BatchCreateOccurrencesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.batch_create_occurrences(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, grafeas.BatchCreateOccurrencesResponse)
+
+
+def test_batch_create_occurrences_rest_required_fields(
+    request_type=grafeas.BatchCreateOccurrencesRequest,
+):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["parent"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).batch_create_occurrences._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["parent"] = "parent_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).batch_create_occurrences._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "parent" in jsonified_request
+    assert jsonified_request["parent"] == "parent_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.BatchCreateOccurrencesResponse()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "post",
+                "query_params": pb_request,
+            }
+            transcode_result["body"] = pb_request
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.BatchCreateOccurrencesResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.batch_create_occurrences(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_batch_create_occurrences_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.batch_create_occurrences._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(())
+        & set(
+            (
+                "parent",
+                "occurrences",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_batch_create_occurrences_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_batch_create_occurrences"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_batch_create_occurrences"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.BatchCreateOccurrencesRequest.pb(
+            grafeas.BatchCreateOccurrencesRequest()
+        )
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.BatchCreateOccurrencesResponse.to_json(
+            grafeas.BatchCreateOccurrencesResponse()
+        )
+
+        request = grafeas.BatchCreateOccurrencesRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.BatchCreateOccurrencesResponse()
+
+        client.batch_create_occurrences(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_batch_create_occurrences_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.BatchCreateOccurrencesRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.batch_create_occurrences(request)
+
+
+def test_batch_create_occurrences_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.BatchCreateOccurrencesResponse()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"parent": "projects/sample1"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            parent="parent_value",
+            occurrences=[grafeas.Occurrence(name="name_value")],
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.BatchCreateOccurrencesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.batch_create_occurrences(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{parent=projects/*}/occurrences:batchCreate"
+            % client.transport._host,
+            args[1],
+        )
+
+
+def test_batch_create_occurrences_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.batch_create_occurrences(
+            grafeas.BatchCreateOccurrencesRequest(),
+            parent="parent_value",
+            occurrences=[grafeas.Occurrence(name="name_value")],
+        )
+
+
+def test_batch_create_occurrences_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.UpdateOccurrenceRequest,
+        dict,
+    ],
+)
+def test_update_occurrence_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/occurrences/sample2"}
+    request_init["occurrence"] = {
+        "name": "name_value",
+        "resource_uri": "resource_uri_value",
+        "note_name": "note_name_value",
+        "kind": 1,
+        "remediation": "remediation_value",
+        "create_time": {"seconds": 751, "nanos": 543},
+        "update_time": {},
+        "vulnerability": {
+            "type_": "type__value",
+            "severity": 1,
+            "cvss_score": 0.1082,
+            "cvssv3": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "authentication": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
+            "package_issue": [
+                {
+                    "affected_cpe_uri": "affected_cpe_uri_value",
+                    "affected_package": "affected_package_value",
+                    "affected_version": {
+                        "epoch": 527,
+                        "name": "name_value",
+                        "revision": "revision_value",
+                        "inclusive": True,
+                        "kind": 1,
+                        "full_name": "full_name_value",
+                    },
+                    "fixed_cpe_uri": "fixed_cpe_uri_value",
+                    "fixed_package": "fixed_package_value",
+                    "fixed_version": {},
+                    "fix_available": True,
+                    "package_type": "package_type_value",
+                    "effective_severity": 1,
+                    "file_location": [{"file_path": "file_path_value"}],
+                }
+            ],
+            "short_description": "short_description_value",
+            "long_description": "long_description_value",
+            "related_urls": [{"url": "url_value", "label": "label_value"}],
+            "effective_severity": 1,
+            "fix_available": True,
+            "cvss_version": 1,
+        },
+        "build": {
+            "provenance": {
+                "id": "id_value",
+                "project_id": "project_id_value",
+                "commands": [
+                    {
+                        "name": "name_value",
+                        "env": ["env_value1", "env_value2"],
+                        "args": ["args_value1", "args_value2"],
+                        "dir_": "dir__value",
+                        "id": "id_value",
+                        "wait_for": ["wait_for_value1", "wait_for_value2"],
+                    }
+                ],
+                "built_artifacts": [
+                    {
+                        "checksum": "checksum_value",
+                        "id": "id_value",
+                        "names": ["names_value1", "names_value2"],
+                    }
+                ],
+                "create_time": {},
+                "start_time": {},
+                "end_time": {},
+                "creator": "creator_value",
+                "logs_uri": "logs_uri_value",
+                "source_provenance": {
+                    "artifact_storage_source_uri": "artifact_storage_source_uri_value",
+                    "file_hashes": {},
+                    "context": {
+                        "cloud_repo": {
+                            "repo_id": {
+                                "project_repo_id": {
+                                    "project_id": "project_id_value",
+                                    "repo_name": "repo_name_value",
+                                },
+                                "uid": "uid_value",
+                            },
+                            "revision_id": "revision_id_value",
+                            "alias_context": {"kind": 1, "name": "name_value"},
+                        },
+                        "gerrit": {
+                            "host_uri": "host_uri_value",
+                            "gerrit_project": "gerrit_project_value",
+                            "revision_id": "revision_id_value",
+                            "alias_context": {},
+                        },
+                        "git": {"url": "url_value", "revision_id": "revision_id_value"},
+                        "labels": {},
+                    },
+                    "additional_contexts": {},
+                },
+                "trigger_id": "trigger_id_value",
+                "build_options": {},
+                "builder_version": "builder_version_value",
+            },
+            "provenance_bytes": "provenance_bytes_value",
+            "intoto_provenance": {
+                "builder_config": {"id": "id_value"},
+                "recipe": {
+                    "type_": "type__value",
+                    "defined_in_material": 1971,
+                    "entry_point": "entry_point_value",
+                    "arguments": [
+                        {
+                            "type_url": "type.googleapis.com/google.protobuf.Duration",
+                            "value": b"\x08\x0c\x10\xdb\x07",
+                        }
+                    ],
+                    "environment": {},
+                },
+                "metadata": {
+                    "build_invocation_id": "build_invocation_id_value",
+                    "build_started_on": {},
+                    "build_finished_on": {},
+                    "completeness": {
+                        "arguments": True,
+                        "environment": True,
+                        "materials": True,
+                    },
+                    "reproducible": True,
+                },
+                "materials": ["materials_value1", "materials_value2"],
+            },
+            "intoto_statement": {
+                "type_": "type__value",
+                "subject": [{"name": "name_value", "digest": {}}],
+                "predicate_type": "predicate_type_value",
+                "provenance": {},
+                "slsa_provenance": {
+                    "builder": {"id": "id_value"},
+                    "recipe": {
+                        "type_": "type__value",
+                        "defined_in_material": 1971,
+                        "entry_point": "entry_point_value",
+                        "arguments": {},
+                        "environment": {},
+                    },
+                    "metadata": {
+                        "build_invocation_id": "build_invocation_id_value",
+                        "build_started_on": {},
+                        "build_finished_on": {},
+                        "completeness": {
+                            "arguments": True,
+                            "environment": True,
+                            "materials": True,
+                        },
+                        "reproducible": True,
+                    },
+                    "materials": [{"uri": "uri_value", "digest": {}}],
+                },
+                "slsa_provenance_zero_two": {
+                    "builder": {"id": "id_value"},
+                    "build_type": "build_type_value",
+                    "invocation": {
+                        "config_source": {
+                            "uri": "uri_value",
+                            "digest": {},
+                            "entry_point": "entry_point_value",
+                        },
+                        "parameters": {"fields": {}},
+                        "environment": {},
+                    },
+                    "build_config": {},
+                    "metadata": {
+                        "build_invocation_id": "build_invocation_id_value",
+                        "build_started_on": {},
+                        "build_finished_on": {},
+                        "completeness": {
+                            "parameters": True,
+                            "environment": True,
+                            "materials": True,
+                        },
+                        "reproducible": True,
+                    },
+                    "materials": [{"uri": "uri_value", "digest": {}}],
+                },
+            },
+        },
+        "image": {
+            "fingerprint": {
+                "v1_name": "v1_name_value",
+                "v2_blob": ["v2_blob_value1", "v2_blob_value2"],
+                "v2_name": "v2_name_value",
+            },
+            "distance": 843,
+            "layer_info": [
+                {"directive": "directive_value", "arguments": "arguments_value"}
+            ],
+            "base_resource_url": "base_resource_url_value",
+        },
+        "package": {
+            "name": "name_value",
+            "location": [
+                {"cpe_uri": "cpe_uri_value", "version": {}, "path": "path_value"}
+            ],
+            "package_type": "package_type_value",
+            "cpe_uri": "cpe_uri_value",
+            "architecture": 1,
+            "license_": {
+                "expression": "expression_value",
+                "comments": "comments_value",
+            },
+            "version": {},
+        },
+        "deployment": {
+            "user_email": "user_email_value",
+            "deploy_time": {},
+            "undeploy_time": {},
+            "config": "config_value",
+            "address": "address_value",
+            "resource_uri": ["resource_uri_value1", "resource_uri_value2"],
+            "platform": 1,
+        },
+        "discovery": {
+            "continuous_analysis": 1,
+            "analysis_status": 1,
+            "analysis_completed": {
+                "analysis_type": ["analysis_type_value1", "analysis_type_value2"]
+            },
+            "analysis_error": [
+                {"code": 411, "message": "message_value", "details": {}}
+            ],
+            "analysis_status_error": {},
+            "cpe": "cpe_value",
+            "last_scan_time": {},
+            "archive_time": {},
+        },
+        "attestation": {
+            "serialized_payload": b"serialized_payload_blob",
+            "signatures": [
+                {"signature": b"signature_blob", "public_key_id": "public_key_id_value"}
+            ],
+            "jwts": [{"compact_jwt": "compact_jwt_value"}],
+        },
+        "upgrade": {
+            "package": "package_value",
+            "parsed_version": {},
+            "distribution": {
+                "cpe_uri": "cpe_uri_value",
+                "classification": "classification_value",
+                "severity": "severity_value",
+                "cve": ["cve_value1", "cve_value2"],
+            },
+            "windows_update": {
+                "identity": {"update_id": "update_id_value", "revision": 879},
+                "title": "title_value",
+                "description": "description_value",
+                "categories": [
+                    {"category_id": "category_id_value", "name": "name_value"}
+                ],
+                "kb_article_ids": ["kb_article_ids_value1", "kb_article_ids_value2"],
+                "support_url": "support_url_value",
+                "last_published_timestamp": {},
+            },
+        },
+        "compliance": {
+            "non_compliant_files": [
+                {
+                    "path": "path_value",
+                    "display_command": "display_command_value",
+                    "reason": "reason_value",
+                }
+            ],
+            "non_compliance_reason": "non_compliance_reason_value",
+        },
+        "dsse_attestation": {
+            "envelope": {
+                "payload": b"payload_blob",
+                "payload_type": "payload_type_value",
+                "signatures": [{"sig": b"sig_blob", "keyid": "keyid_value"}],
+            },
+            "statement": {},
+        },
+        "envelope": {},
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Occurrence(
+            name="name_value",
+            resource_uri="resource_uri_value",
+            note_name="note_name_value",
+            kind=common.NoteKind.VULNERABILITY,
+            remediation="remediation_value",
+            vulnerability=vulnerability.VulnerabilityOccurrence(type_="type__value"),
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Occurrence.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.update_occurrence(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, grafeas.Occurrence)
+    assert response.name == "name_value"
+    assert response.resource_uri == "resource_uri_value"
+    assert response.note_name == "note_name_value"
+    assert response.kind == common.NoteKind.VULNERABILITY
+    assert response.remediation == "remediation_value"
+
+
+def test_update_occurrence_rest_required_fields(
+    request_type=grafeas.UpdateOccurrenceRequest,
+):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["name"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).update_occurrence._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["name"] = "name_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).update_occurrence._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(("update_mask",))
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "name" in jsonified_request
+    assert jsonified_request["name"] == "name_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.Occurrence()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "patch",
+                "query_params": pb_request,
+            }
+            transcode_result["body"] = pb_request
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.Occurrence.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.update_occurrence(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_update_occurrence_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.update_occurrence._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(("updateMask",))
+        & set(
+            (
+                "name",
+                "occurrence",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_update_occurrence_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_update_occurrence"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_update_occurrence"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.UpdateOccurrenceRequest.pb(
+            grafeas.UpdateOccurrenceRequest()
+        )
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.Occurrence.to_json(grafeas.Occurrence())
+
+        request = grafeas.UpdateOccurrenceRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.Occurrence()
+
+        client.update_occurrence(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_update_occurrence_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.UpdateOccurrenceRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/occurrences/sample2"}
+    request_init["occurrence"] = {
+        "name": "name_value",
+        "resource_uri": "resource_uri_value",
+        "note_name": "note_name_value",
+        "kind": 1,
+        "remediation": "remediation_value",
+        "create_time": {"seconds": 751, "nanos": 543},
+        "update_time": {},
+        "vulnerability": {
+            "type_": "type__value",
+            "severity": 1,
+            "cvss_score": 0.1082,
+            "cvssv3": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "authentication": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
+            "package_issue": [
+                {
+                    "affected_cpe_uri": "affected_cpe_uri_value",
+                    "affected_package": "affected_package_value",
+                    "affected_version": {
+                        "epoch": 527,
+                        "name": "name_value",
+                        "revision": "revision_value",
+                        "inclusive": True,
+                        "kind": 1,
+                        "full_name": "full_name_value",
+                    },
+                    "fixed_cpe_uri": "fixed_cpe_uri_value",
+                    "fixed_package": "fixed_package_value",
+                    "fixed_version": {},
+                    "fix_available": True,
+                    "package_type": "package_type_value",
+                    "effective_severity": 1,
+                    "file_location": [{"file_path": "file_path_value"}],
+                }
+            ],
+            "short_description": "short_description_value",
+            "long_description": "long_description_value",
+            "related_urls": [{"url": "url_value", "label": "label_value"}],
+            "effective_severity": 1,
+            "fix_available": True,
+            "cvss_version": 1,
+        },
+        "build": {
+            "provenance": {
+                "id": "id_value",
+                "project_id": "project_id_value",
+                "commands": [
+                    {
+                        "name": "name_value",
+                        "env": ["env_value1", "env_value2"],
+                        "args": ["args_value1", "args_value2"],
+                        "dir_": "dir__value",
+                        "id": "id_value",
+                        "wait_for": ["wait_for_value1", "wait_for_value2"],
+                    }
+                ],
+                "built_artifacts": [
+                    {
+                        "checksum": "checksum_value",
+                        "id": "id_value",
+                        "names": ["names_value1", "names_value2"],
+                    }
+                ],
+                "create_time": {},
+                "start_time": {},
+                "end_time": {},
+                "creator": "creator_value",
+                "logs_uri": "logs_uri_value",
+                "source_provenance": {
+                    "artifact_storage_source_uri": "artifact_storage_source_uri_value",
+                    "file_hashes": {},
+                    "context": {
+                        "cloud_repo": {
+                            "repo_id": {
+                                "project_repo_id": {
+                                    "project_id": "project_id_value",
+                                    "repo_name": "repo_name_value",
+                                },
+                                "uid": "uid_value",
+                            },
+                            "revision_id": "revision_id_value",
+                            "alias_context": {"kind": 1, "name": "name_value"},
+                        },
+                        "gerrit": {
+                            "host_uri": "host_uri_value",
+                            "gerrit_project": "gerrit_project_value",
+                            "revision_id": "revision_id_value",
+                            "alias_context": {},
+                        },
+                        "git": {"url": "url_value", "revision_id": "revision_id_value"},
+                        "labels": {},
+                    },
+                    "additional_contexts": {},
+                },
+                "trigger_id": "trigger_id_value",
+                "build_options": {},
+                "builder_version": "builder_version_value",
+            },
+            "provenance_bytes": "provenance_bytes_value",
+            "intoto_provenance": {
+                "builder_config": {"id": "id_value"},
+                "recipe": {
+                    "type_": "type__value",
+                    "defined_in_material": 1971,
+                    "entry_point": "entry_point_value",
+                    "arguments": [
+                        {
+                            "type_url": "type.googleapis.com/google.protobuf.Duration",
+                            "value": b"\x08\x0c\x10\xdb\x07",
+                        }
+                    ],
+                    "environment": {},
+                },
+                "metadata": {
+                    "build_invocation_id": "build_invocation_id_value",
+                    "build_started_on": {},
+                    "build_finished_on": {},
+                    "completeness": {
+                        "arguments": True,
+                        "environment": True,
+                        "materials": True,
+                    },
+                    "reproducible": True,
+                },
+                "materials": ["materials_value1", "materials_value2"],
+            },
+            "intoto_statement": {
+                "type_": "type__value",
+                "subject": [{"name": "name_value", "digest": {}}],
+                "predicate_type": "predicate_type_value",
+                "provenance": {},
+                "slsa_provenance": {
+                    "builder": {"id": "id_value"},
+                    "recipe": {
+                        "type_": "type__value",
+                        "defined_in_material": 1971,
+                        "entry_point": "entry_point_value",
+                        "arguments": {},
+                        "environment": {},
+                    },
+                    "metadata": {
+                        "build_invocation_id": "build_invocation_id_value",
+                        "build_started_on": {},
+                        "build_finished_on": {},
+                        "completeness": {
+                            "arguments": True,
+                            "environment": True,
+                            "materials": True,
+                        },
+                        "reproducible": True,
+                    },
+                    "materials": [{"uri": "uri_value", "digest": {}}],
+                },
+                "slsa_provenance_zero_two": {
+                    "builder": {"id": "id_value"},
+                    "build_type": "build_type_value",
+                    "invocation": {
+                        "config_source": {
+                            "uri": "uri_value",
+                            "digest": {},
+                            "entry_point": "entry_point_value",
+                        },
+                        "parameters": {"fields": {}},
+                        "environment": {},
+                    },
+                    "build_config": {},
+                    "metadata": {
+                        "build_invocation_id": "build_invocation_id_value",
+                        "build_started_on": {},
+                        "build_finished_on": {},
+                        "completeness": {
+                            "parameters": True,
+                            "environment": True,
+                            "materials": True,
+                        },
+                        "reproducible": True,
+                    },
+                    "materials": [{"uri": "uri_value", "digest": {}}],
+                },
+            },
+        },
+        "image": {
+            "fingerprint": {
+                "v1_name": "v1_name_value",
+                "v2_blob": ["v2_blob_value1", "v2_blob_value2"],
+                "v2_name": "v2_name_value",
+            },
+            "distance": 843,
+            "layer_info": [
+                {"directive": "directive_value", "arguments": "arguments_value"}
+            ],
+            "base_resource_url": "base_resource_url_value",
+        },
+        "package": {
+            "name": "name_value",
+            "location": [
+                {"cpe_uri": "cpe_uri_value", "version": {}, "path": "path_value"}
+            ],
+            "package_type": "package_type_value",
+            "cpe_uri": "cpe_uri_value",
+            "architecture": 1,
+            "license_": {
+                "expression": "expression_value",
+                "comments": "comments_value",
+            },
+            "version": {},
+        },
+        "deployment": {
+            "user_email": "user_email_value",
+            "deploy_time": {},
+            "undeploy_time": {},
+            "config": "config_value",
+            "address": "address_value",
+            "resource_uri": ["resource_uri_value1", "resource_uri_value2"],
+            "platform": 1,
+        },
+        "discovery": {
+            "continuous_analysis": 1,
+            "analysis_status": 1,
+            "analysis_completed": {
+                "analysis_type": ["analysis_type_value1", "analysis_type_value2"]
+            },
+            "analysis_error": [
+                {"code": 411, "message": "message_value", "details": {}}
+            ],
+            "analysis_status_error": {},
+            "cpe": "cpe_value",
+            "last_scan_time": {},
+            "archive_time": {},
+        },
+        "attestation": {
+            "serialized_payload": b"serialized_payload_blob",
+            "signatures": [
+                {"signature": b"signature_blob", "public_key_id": "public_key_id_value"}
+            ],
+            "jwts": [{"compact_jwt": "compact_jwt_value"}],
+        },
+        "upgrade": {
+            "package": "package_value",
+            "parsed_version": {},
+            "distribution": {
+                "cpe_uri": "cpe_uri_value",
+                "classification": "classification_value",
+                "severity": "severity_value",
+                "cve": ["cve_value1", "cve_value2"],
+            },
+            "windows_update": {
+                "identity": {"update_id": "update_id_value", "revision": 879},
+                "title": "title_value",
+                "description": "description_value",
+                "categories": [
+                    {"category_id": "category_id_value", "name": "name_value"}
+                ],
+                "kb_article_ids": ["kb_article_ids_value1", "kb_article_ids_value2"],
+                "support_url": "support_url_value",
+                "last_published_timestamp": {},
+            },
+        },
+        "compliance": {
+            "non_compliant_files": [
+                {
+                    "path": "path_value",
+                    "display_command": "display_command_value",
+                    "reason": "reason_value",
+                }
+            ],
+            "non_compliance_reason": "non_compliance_reason_value",
+        },
+        "dsse_attestation": {
+            "envelope": {
+                "payload": b"payload_blob",
+                "payload_type": "payload_type_value",
+                "signatures": [{"sig": b"sig_blob", "keyid": "keyid_value"}],
+            },
+            "statement": {},
+        },
+        "envelope": {},
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.update_occurrence(request)
+
+
+def test_update_occurrence_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Occurrence()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"name": "projects/sample1/occurrences/sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            name="name_value",
+            occurrence=grafeas.Occurrence(name="name_value"),
+            update_mask=field_mask_pb2.FieldMask(paths=["paths_value"]),
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Occurrence.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.update_occurrence(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{name=projects/*/occurrences/*}" % client.transport._host, args[1]
+        )
+
+
+def test_update_occurrence_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.update_occurrence(
+            grafeas.UpdateOccurrenceRequest(),
+            name="name_value",
+            occurrence=grafeas.Occurrence(name="name_value"),
+            update_mask=field_mask_pb2.FieldMask(paths=["paths_value"]),
+        )
+
+
+def test_update_occurrence_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.GetOccurrenceNoteRequest,
+        dict,
+    ],
+)
+def test_get_occurrence_note_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/occurrences/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Note(
+            name="name_value",
+            short_description="short_description_value",
+            long_description="long_description_value",
+            kind=common.NoteKind.VULNERABILITY,
+            related_note_names=["related_note_names_value"],
+            vulnerability=vulnerability.VulnerabilityNote(cvss_score=0.1082),
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Note.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.get_occurrence_note(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, grafeas.Note)
+    assert response.name == "name_value"
+    assert response.short_description == "short_description_value"
+    assert response.long_description == "long_description_value"
+    assert response.kind == common.NoteKind.VULNERABILITY
+    assert response.related_note_names == ["related_note_names_value"]
+
+
+def test_get_occurrence_note_rest_required_fields(
+    request_type=grafeas.GetOccurrenceNoteRequest,
+):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["name"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).get_occurrence_note._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["name"] = "name_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).get_occurrence_note._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "name" in jsonified_request
+    assert jsonified_request["name"] == "name_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.Note()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "get",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.Note.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.get_occurrence_note(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_get_occurrence_note_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.get_occurrence_note._get_unset_required_fields({})
+    assert set(unset_fields) == (set(()) & set(("name",)))
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_get_occurrence_note_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_get_occurrence_note"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_get_occurrence_note"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.GetOccurrenceNoteRequest.pb(
+            grafeas.GetOccurrenceNoteRequest()
+        )
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.Note.to_json(grafeas.Note())
+
+        request = grafeas.GetOccurrenceNoteRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.Note()
+
+        client.get_occurrence_note(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_get_occurrence_note_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.GetOccurrenceNoteRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/occurrences/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.get_occurrence_note(request)
+
+
+def test_get_occurrence_note_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Note()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"name": "projects/sample1/occurrences/sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            name="name_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Note.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.get_occurrence_note(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{name=projects/*/occurrences/*}/notes" % client.transport._host,
+            args[1],
+        )
+
+
+def test_get_occurrence_note_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.get_occurrence_note(
+            grafeas.GetOccurrenceNoteRequest(),
+            name="name_value",
+        )
+
+
+def test_get_occurrence_note_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.GetNoteRequest,
+        dict,
+    ],
+)
+def test_get_note_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/notes/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Note(
+            name="name_value",
+            short_description="short_description_value",
+            long_description="long_description_value",
+            kind=common.NoteKind.VULNERABILITY,
+            related_note_names=["related_note_names_value"],
+            vulnerability=vulnerability.VulnerabilityNote(cvss_score=0.1082),
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Note.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.get_note(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, grafeas.Note)
+    assert response.name == "name_value"
+    assert response.short_description == "short_description_value"
+    assert response.long_description == "long_description_value"
+    assert response.kind == common.NoteKind.VULNERABILITY
+    assert response.related_note_names == ["related_note_names_value"]
+
+
+def test_get_note_rest_required_fields(request_type=grafeas.GetNoteRequest):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["name"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).get_note._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["name"] = "name_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).get_note._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "name" in jsonified_request
+    assert jsonified_request["name"] == "name_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.Note()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "get",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.Note.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.get_note(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_get_note_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.get_note._get_unset_required_fields({})
+    assert set(unset_fields) == (set(()) & set(("name",)))
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_get_note_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_get_note"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_get_note"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.GetNoteRequest.pb(grafeas.GetNoteRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.Note.to_json(grafeas.Note())
+
+        request = grafeas.GetNoteRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.Note()
+
+        client.get_note(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_get_note_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.GetNoteRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/notes/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.get_note(request)
+
+
+def test_get_note_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Note()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"name": "projects/sample1/notes/sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            name="name_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Note.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.get_note(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{name=projects/*/notes/*}" % client.transport._host, args[1]
+        )
+
+
+def test_get_note_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.get_note(
+            grafeas.GetNoteRequest(),
+            name="name_value",
+        )
+
+
+def test_get_note_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.ListNotesRequest,
+        dict,
+    ],
+)
+def test_list_notes_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.ListNotesResponse(
+            next_page_token="next_page_token_value",
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.ListNotesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.list_notes(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, pagers.ListNotesPager)
+    assert response.next_page_token == "next_page_token_value"
+
+
+def test_list_notes_rest_required_fields(request_type=grafeas.ListNotesRequest):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["parent"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_notes._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["parent"] = "parent_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_notes._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(
+        (
+            "filter",
+            "page_size",
+            "page_token",
+        )
+    )
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "parent" in jsonified_request
+    assert jsonified_request["parent"] == "parent_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.ListNotesResponse()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "get",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.ListNotesResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.list_notes(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_list_notes_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.list_notes._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(
+            (
+                "filter",
+                "pageSize",
+                "pageToken",
+            )
+        )
+        & set(("parent",))
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_list_notes_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_list_notes"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_list_notes"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.ListNotesRequest.pb(grafeas.ListNotesRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.ListNotesResponse.to_json(
+            grafeas.ListNotesResponse()
+        )
+
+        request = grafeas.ListNotesRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.ListNotesResponse()
+
+        client.list_notes(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_list_notes_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.ListNotesRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.list_notes(request)
+
+
+def test_list_notes_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.ListNotesResponse()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"parent": "projects/sample1"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            parent="parent_value",
+            filter="filter_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.ListNotesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.list_notes(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{parent=projects/*}/notes" % client.transport._host, args[1]
+        )
+
+
+def test_list_notes_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.list_notes(
+            grafeas.ListNotesRequest(),
+            parent="parent_value",
+            filter="filter_value",
+        )
+
+
+def test_list_notes_rest_pager(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # TODO(kbandes): remove this mock unless there's a good reason for it.
+        # with mock.patch.object(path_template, 'transcode') as transcode:
+        # Set the response as a series of pages
+        response = (
+            grafeas.ListNotesResponse(
+                notes=[
+                    grafeas.Note(),
+                    grafeas.Note(),
+                    grafeas.Note(),
+                ],
+                next_page_token="abc",
+            ),
+            grafeas.ListNotesResponse(
+                notes=[],
+                next_page_token="def",
+            ),
+            grafeas.ListNotesResponse(
+                notes=[
+                    grafeas.Note(),
+                ],
+                next_page_token="ghi",
+            ),
+            grafeas.ListNotesResponse(
+                notes=[
+                    grafeas.Note(),
+                    grafeas.Note(),
+                ],
+            ),
+        )
+        # Two responses for two calls
+        response = response + response
+
+        # Wrap the values into proper Response objs
+        response = tuple(grafeas.ListNotesResponse.to_json(x) for x in response)
+        return_values = tuple(Response() for i in response)
+        for return_val, response_val in zip(return_values, response):
+            return_val._content = response_val.encode("UTF-8")
+            return_val.status_code = 200
+        req.side_effect = return_values
+
+        sample_request = {"parent": "projects/sample1"}
+
+        pager = client.list_notes(request=sample_request)
+
+        results = list(pager)
+        assert len(results) == 6
+        assert all(isinstance(i, grafeas.Note) for i in results)
+
+        pages = list(client.list_notes(request=sample_request).pages)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.DeleteNoteRequest,
+        dict,
+    ],
+)
+def test_delete_note_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/notes/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = None
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        json_return_value = ""
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.delete_note(request)
+
+    # Establish that the response is the type that we expect.
+    assert response is None
+
+
+def test_delete_note_rest_required_fields(request_type=grafeas.DeleteNoteRequest):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["name"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).delete_note._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["name"] = "name_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).delete_note._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "name" in jsonified_request
+    assert jsonified_request["name"] == "name_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = None
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "delete",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+            json_return_value = ""
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.delete_note(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_delete_note_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.delete_note._get_unset_required_fields({})
+    assert set(unset_fields) == (set(()) & set(("name",)))
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_delete_note_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_delete_note"
+    ) as pre:
+        pre.assert_not_called()
+        pb_message = grafeas.DeleteNoteRequest.pb(grafeas.DeleteNoteRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+
+        request = grafeas.DeleteNoteRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+
+        client.delete_note(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+
+
+def test_delete_note_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.DeleteNoteRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/notes/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.delete_note(request)
+
+
+def test_delete_note_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = None
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"name": "projects/sample1/notes/sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            name="name_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        json_return_value = ""
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.delete_note(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{name=projects/*/notes/*}" % client.transport._host, args[1]
+        )
+
+
+def test_delete_note_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.delete_note(
+            grafeas.DeleteNoteRequest(),
+            name="name_value",
+        )
+
+
+def test_delete_note_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.CreateNoteRequest,
+        dict,
+    ],
+)
+def test_create_note_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request_init["note"] = {
+        "name": "name_value",
+        "short_description": "short_description_value",
+        "long_description": "long_description_value",
+        "kind": 1,
+        "related_url": [{"url": "url_value", "label": "label_value"}],
+        "expiration_time": {"seconds": 751, "nanos": 543},
+        "create_time": {},
+        "update_time": {},
+        "related_note_names": [
+            "related_note_names_value1",
+            "related_note_names_value2",
+        ],
+        "vulnerability": {
+            "cvss_score": 0.1082,
+            "severity": 1,
+            "details": [
+                {
+                    "severity_name": "severity_name_value",
+                    "description": "description_value",
+                    "package_type": "package_type_value",
+                    "affected_cpe_uri": "affected_cpe_uri_value",
+                    "affected_package": "affected_package_value",
+                    "affected_version_start": {
+                        "epoch": 527,
+                        "name": "name_value",
+                        "revision": "revision_value",
+                        "inclusive": True,
+                        "kind": 1,
+                        "full_name": "full_name_value",
+                    },
+                    "affected_version_end": {},
+                    "fixed_cpe_uri": "fixed_cpe_uri_value",
+                    "fixed_package": "fixed_package_value",
+                    "fixed_version": {},
+                    "is_obsolete": True,
+                    "source_update_time": {},
+                    "source": "source_value",
+                    "vendor": "vendor_value",
+                }
+            ],
+            "cvss_v3": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
+            "windows_details": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "name": "name_value",
+                    "description": "description_value",
+                    "fixing_kbs": [{"name": "name_value", "url": "url_value"}],
+                }
+            ],
+            "source_update_time": {},
+            "cvss_version": 1,
+        },
+        "build": {"builder_version": "builder_version_value"},
+        "image": {
+            "resource_url": "resource_url_value",
+            "fingerprint": {
+                "v1_name": "v1_name_value",
+                "v2_blob": ["v2_blob_value1", "v2_blob_value2"],
+                "v2_name": "v2_name_value",
+            },
+        },
+        "package": {
+            "name": "name_value",
+            "distribution": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "architecture": 1,
+                    "latest_version": {},
+                    "maintainer": "maintainer_value",
+                    "url": "url_value",
+                    "description": "description_value",
+                }
+            ],
+            "package_type": "package_type_value",
+            "cpe_uri": "cpe_uri_value",
+            "architecture": 1,
+            "version": {},
+            "maintainer": "maintainer_value",
+            "url": "url_value",
+            "description": "description_value",
+            "license_": {
+                "expression": "expression_value",
+                "comments": "comments_value",
+            },
+            "digest": [{"algo": "algo_value", "digest_bytes": b"digest_bytes_blob"}],
+        },
+        "deployment": {"resource_uri": ["resource_uri_value1", "resource_uri_value2"]},
+        "discovery": {"analysis_kind": 1},
+        "attestation": {"hint": {"human_readable_name": "human_readable_name_value"}},
+        "upgrade": {
+            "package": "package_value",
+            "version": {},
+            "distributions": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "classification": "classification_value",
+                    "severity": "severity_value",
+                    "cve": ["cve_value1", "cve_value2"],
+                }
+            ],
+            "windows_update": {
+                "identity": {"update_id": "update_id_value", "revision": 879},
+                "title": "title_value",
+                "description": "description_value",
+                "categories": [
+                    {"category_id": "category_id_value", "name": "name_value"}
+                ],
+                "kb_article_ids": ["kb_article_ids_value1", "kb_article_ids_value2"],
+                "support_url": "support_url_value",
+                "last_published_timestamp": {},
+            },
+        },
+        "compliance": {
+            "title": "title_value",
+            "description": "description_value",
+            "version": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "benchmark_document": "benchmark_document_value",
+                    "version": "version_value",
+                }
+            ],
+            "rationale": "rationale_value",
+            "remediation": "remediation_value",
+            "cis_benchmark": {"profile_level": 1384, "severity": 1},
+            "scan_instructions": b"scan_instructions_blob",
+        },
+        "dsse_attestation": {
+            "hint": {"human_readable_name": "human_readable_name_value"}
+        },
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Note(
+            name="name_value",
+            short_description="short_description_value",
+            long_description="long_description_value",
+            kind=common.NoteKind.VULNERABILITY,
+            related_note_names=["related_note_names_value"],
+            vulnerability=vulnerability.VulnerabilityNote(cvss_score=0.1082),
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Note.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.create_note(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, grafeas.Note)
+    assert response.name == "name_value"
+    assert response.short_description == "short_description_value"
+    assert response.long_description == "long_description_value"
+    assert response.kind == common.NoteKind.VULNERABILITY
+    assert response.related_note_names == ["related_note_names_value"]
+
+
+def test_create_note_rest_required_fields(request_type=grafeas.CreateNoteRequest):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["parent"] = ""
+    request_init["note_id"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+    assert "noteId" not in jsonified_request
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).create_note._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+    assert "noteId" in jsonified_request
+    assert jsonified_request["noteId"] == request_init["note_id"]
+
+    jsonified_request["parent"] = "parent_value"
+    jsonified_request["noteId"] = "note_id_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).create_note._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(("note_id",))
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "parent" in jsonified_request
+    assert jsonified_request["parent"] == "parent_value"
+    assert "noteId" in jsonified_request
+    assert jsonified_request["noteId"] == "note_id_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.Note()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "post",
+                "query_params": pb_request,
+            }
+            transcode_result["body"] = pb_request
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.Note.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.create_note(request)
+
+            expected_params = [
+                (
+                    "noteId",
+                    "",
+                ),
+                ("$alt", "json;enum-encoding=int"),
+            ]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_create_note_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.create_note._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(("noteId",))
+        & set(
+            (
+                "parent",
+                "noteId",
+                "note",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_create_note_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_create_note"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_create_note"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.CreateNoteRequest.pb(grafeas.CreateNoteRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.Note.to_json(grafeas.Note())
+
+        request = grafeas.CreateNoteRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.Note()
+
+        client.create_note(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_create_note_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.CreateNoteRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request_init["note"] = {
+        "name": "name_value",
+        "short_description": "short_description_value",
+        "long_description": "long_description_value",
+        "kind": 1,
+        "related_url": [{"url": "url_value", "label": "label_value"}],
+        "expiration_time": {"seconds": 751, "nanos": 543},
+        "create_time": {},
+        "update_time": {},
+        "related_note_names": [
+            "related_note_names_value1",
+            "related_note_names_value2",
+        ],
+        "vulnerability": {
+            "cvss_score": 0.1082,
+            "severity": 1,
+            "details": [
+                {
+                    "severity_name": "severity_name_value",
+                    "description": "description_value",
+                    "package_type": "package_type_value",
+                    "affected_cpe_uri": "affected_cpe_uri_value",
+                    "affected_package": "affected_package_value",
+                    "affected_version_start": {
+                        "epoch": 527,
+                        "name": "name_value",
+                        "revision": "revision_value",
+                        "inclusive": True,
+                        "kind": 1,
+                        "full_name": "full_name_value",
+                    },
+                    "affected_version_end": {},
+                    "fixed_cpe_uri": "fixed_cpe_uri_value",
+                    "fixed_package": "fixed_package_value",
+                    "fixed_version": {},
+                    "is_obsolete": True,
+                    "source_update_time": {},
+                    "source": "source_value",
+                    "vendor": "vendor_value",
+                }
+            ],
+            "cvss_v3": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
+            "windows_details": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "name": "name_value",
+                    "description": "description_value",
+                    "fixing_kbs": [{"name": "name_value", "url": "url_value"}],
+                }
+            ],
+            "source_update_time": {},
+            "cvss_version": 1,
+        },
+        "build": {"builder_version": "builder_version_value"},
+        "image": {
+            "resource_url": "resource_url_value",
+            "fingerprint": {
+                "v1_name": "v1_name_value",
+                "v2_blob": ["v2_blob_value1", "v2_blob_value2"],
+                "v2_name": "v2_name_value",
+            },
+        },
+        "package": {
+            "name": "name_value",
+            "distribution": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "architecture": 1,
+                    "latest_version": {},
+                    "maintainer": "maintainer_value",
+                    "url": "url_value",
+                    "description": "description_value",
+                }
+            ],
+            "package_type": "package_type_value",
+            "cpe_uri": "cpe_uri_value",
+            "architecture": 1,
+            "version": {},
+            "maintainer": "maintainer_value",
+            "url": "url_value",
+            "description": "description_value",
+            "license_": {
+                "expression": "expression_value",
+                "comments": "comments_value",
+            },
+            "digest": [{"algo": "algo_value", "digest_bytes": b"digest_bytes_blob"}],
+        },
+        "deployment": {"resource_uri": ["resource_uri_value1", "resource_uri_value2"]},
+        "discovery": {"analysis_kind": 1},
+        "attestation": {"hint": {"human_readable_name": "human_readable_name_value"}},
+        "upgrade": {
+            "package": "package_value",
+            "version": {},
+            "distributions": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "classification": "classification_value",
+                    "severity": "severity_value",
+                    "cve": ["cve_value1", "cve_value2"],
+                }
+            ],
+            "windows_update": {
+                "identity": {"update_id": "update_id_value", "revision": 879},
+                "title": "title_value",
+                "description": "description_value",
+                "categories": [
+                    {"category_id": "category_id_value", "name": "name_value"}
+                ],
+                "kb_article_ids": ["kb_article_ids_value1", "kb_article_ids_value2"],
+                "support_url": "support_url_value",
+                "last_published_timestamp": {},
+            },
+        },
+        "compliance": {
+            "title": "title_value",
+            "description": "description_value",
+            "version": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "benchmark_document": "benchmark_document_value",
+                    "version": "version_value",
+                }
+            ],
+            "rationale": "rationale_value",
+            "remediation": "remediation_value",
+            "cis_benchmark": {"profile_level": 1384, "severity": 1},
+            "scan_instructions": b"scan_instructions_blob",
+        },
+        "dsse_attestation": {
+            "hint": {"human_readable_name": "human_readable_name_value"}
+        },
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.create_note(request)
+
+
+def test_create_note_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Note()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"parent": "projects/sample1"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            parent="parent_value",
+            note_id="note_id_value",
+            note=grafeas.Note(name="name_value"),
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Note.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.create_note(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{parent=projects/*}/notes" % client.transport._host, args[1]
+        )
+
+
+def test_create_note_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.create_note(
+            grafeas.CreateNoteRequest(),
+            parent="parent_value",
+            note_id="note_id_value",
+            note=grafeas.Note(name="name_value"),
+        )
+
+
+def test_create_note_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.BatchCreateNotesRequest,
+        dict,
+    ],
+)
+def test_batch_create_notes_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.BatchCreateNotesResponse()
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.BatchCreateNotesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.batch_create_notes(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, grafeas.BatchCreateNotesResponse)
+
+
+def test_batch_create_notes_rest_required_fields(
+    request_type=grafeas.BatchCreateNotesRequest,
+):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["parent"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).batch_create_notes._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["parent"] = "parent_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).batch_create_notes._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "parent" in jsonified_request
+    assert jsonified_request["parent"] == "parent_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.BatchCreateNotesResponse()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "post",
+                "query_params": pb_request,
+            }
+            transcode_result["body"] = pb_request
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.BatchCreateNotesResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.batch_create_notes(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_batch_create_notes_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.batch_create_notes._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(())
+        & set(
+            (
+                "parent",
+                "notes",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_batch_create_notes_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_batch_create_notes"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_batch_create_notes"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.BatchCreateNotesRequest.pb(
+            grafeas.BatchCreateNotesRequest()
+        )
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.BatchCreateNotesResponse.to_json(
+            grafeas.BatchCreateNotesResponse()
+        )
+
+        request = grafeas.BatchCreateNotesRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.BatchCreateNotesResponse()
+
+        client.batch_create_notes(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_batch_create_notes_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.BatchCreateNotesRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"parent": "projects/sample1"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.batch_create_notes(request)
+
+
+def test_batch_create_notes_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.BatchCreateNotesResponse()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"parent": "projects/sample1"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            parent="parent_value",
+            notes={"key_value": grafeas.Note(name="name_value")},
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.BatchCreateNotesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.batch_create_notes(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{parent=projects/*}/notes:batchCreate" % client.transport._host,
+            args[1],
+        )
+
+
+def test_batch_create_notes_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.batch_create_notes(
+            grafeas.BatchCreateNotesRequest(),
+            parent="parent_value",
+            notes={"key_value": grafeas.Note(name="name_value")},
+        )
+
+
+def test_batch_create_notes_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.UpdateNoteRequest,
+        dict,
+    ],
+)
+def test_update_note_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/notes/sample2"}
+    request_init["note"] = {
+        "name": "name_value",
+        "short_description": "short_description_value",
+        "long_description": "long_description_value",
+        "kind": 1,
+        "related_url": [{"url": "url_value", "label": "label_value"}],
+        "expiration_time": {"seconds": 751, "nanos": 543},
+        "create_time": {},
+        "update_time": {},
+        "related_note_names": [
+            "related_note_names_value1",
+            "related_note_names_value2",
+        ],
+        "vulnerability": {
+            "cvss_score": 0.1082,
+            "severity": 1,
+            "details": [
+                {
+                    "severity_name": "severity_name_value",
+                    "description": "description_value",
+                    "package_type": "package_type_value",
+                    "affected_cpe_uri": "affected_cpe_uri_value",
+                    "affected_package": "affected_package_value",
+                    "affected_version_start": {
+                        "epoch": 527,
+                        "name": "name_value",
+                        "revision": "revision_value",
+                        "inclusive": True,
+                        "kind": 1,
+                        "full_name": "full_name_value",
+                    },
+                    "affected_version_end": {},
+                    "fixed_cpe_uri": "fixed_cpe_uri_value",
+                    "fixed_package": "fixed_package_value",
+                    "fixed_version": {},
+                    "is_obsolete": True,
+                    "source_update_time": {},
+                    "source": "source_value",
+                    "vendor": "vendor_value",
+                }
+            ],
+            "cvss_v3": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
+            "windows_details": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "name": "name_value",
+                    "description": "description_value",
+                    "fixing_kbs": [{"name": "name_value", "url": "url_value"}],
+                }
+            ],
+            "source_update_time": {},
+            "cvss_version": 1,
+        },
+        "build": {"builder_version": "builder_version_value"},
+        "image": {
+            "resource_url": "resource_url_value",
+            "fingerprint": {
+                "v1_name": "v1_name_value",
+                "v2_blob": ["v2_blob_value1", "v2_blob_value2"],
+                "v2_name": "v2_name_value",
+            },
+        },
+        "package": {
+            "name": "name_value",
+            "distribution": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "architecture": 1,
+                    "latest_version": {},
+                    "maintainer": "maintainer_value",
+                    "url": "url_value",
+                    "description": "description_value",
+                }
+            ],
+            "package_type": "package_type_value",
+            "cpe_uri": "cpe_uri_value",
+            "architecture": 1,
+            "version": {},
+            "maintainer": "maintainer_value",
+            "url": "url_value",
+            "description": "description_value",
+            "license_": {
+                "expression": "expression_value",
+                "comments": "comments_value",
+            },
+            "digest": [{"algo": "algo_value", "digest_bytes": b"digest_bytes_blob"}],
+        },
+        "deployment": {"resource_uri": ["resource_uri_value1", "resource_uri_value2"]},
+        "discovery": {"analysis_kind": 1},
+        "attestation": {"hint": {"human_readable_name": "human_readable_name_value"}},
+        "upgrade": {
+            "package": "package_value",
+            "version": {},
+            "distributions": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "classification": "classification_value",
+                    "severity": "severity_value",
+                    "cve": ["cve_value1", "cve_value2"],
+                }
+            ],
+            "windows_update": {
+                "identity": {"update_id": "update_id_value", "revision": 879},
+                "title": "title_value",
+                "description": "description_value",
+                "categories": [
+                    {"category_id": "category_id_value", "name": "name_value"}
+                ],
+                "kb_article_ids": ["kb_article_ids_value1", "kb_article_ids_value2"],
+                "support_url": "support_url_value",
+                "last_published_timestamp": {},
+            },
+        },
+        "compliance": {
+            "title": "title_value",
+            "description": "description_value",
+            "version": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "benchmark_document": "benchmark_document_value",
+                    "version": "version_value",
+                }
+            ],
+            "rationale": "rationale_value",
+            "remediation": "remediation_value",
+            "cis_benchmark": {"profile_level": 1384, "severity": 1},
+            "scan_instructions": b"scan_instructions_blob",
+        },
+        "dsse_attestation": {
+            "hint": {"human_readable_name": "human_readable_name_value"}
+        },
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Note(
+            name="name_value",
+            short_description="short_description_value",
+            long_description="long_description_value",
+            kind=common.NoteKind.VULNERABILITY,
+            related_note_names=["related_note_names_value"],
+            vulnerability=vulnerability.VulnerabilityNote(cvss_score=0.1082),
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Note.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.update_note(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, grafeas.Note)
+    assert response.name == "name_value"
+    assert response.short_description == "short_description_value"
+    assert response.long_description == "long_description_value"
+    assert response.kind == common.NoteKind.VULNERABILITY
+    assert response.related_note_names == ["related_note_names_value"]
+
+
+def test_update_note_rest_required_fields(request_type=grafeas.UpdateNoteRequest):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["name"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).update_note._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["name"] = "name_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).update_note._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(("update_mask",))
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "name" in jsonified_request
+    assert jsonified_request["name"] == "name_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.Note()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "patch",
+                "query_params": pb_request,
+            }
+            transcode_result["body"] = pb_request
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.Note.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.update_note(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_update_note_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.update_note._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(("updateMask",))
+        & set(
+            (
+                "name",
+                "note",
+            )
+        )
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_update_note_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_update_note"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_update_note"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.UpdateNoteRequest.pb(grafeas.UpdateNoteRequest())
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.Note.to_json(grafeas.Note())
+
+        request = grafeas.UpdateNoteRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.Note()
+
+        client.update_note(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_update_note_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.UpdateNoteRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/notes/sample2"}
+    request_init["note"] = {
+        "name": "name_value",
+        "short_description": "short_description_value",
+        "long_description": "long_description_value",
+        "kind": 1,
+        "related_url": [{"url": "url_value", "label": "label_value"}],
+        "expiration_time": {"seconds": 751, "nanos": 543},
+        "create_time": {},
+        "update_time": {},
+        "related_note_names": [
+            "related_note_names_value1",
+            "related_note_names_value2",
+        ],
+        "vulnerability": {
+            "cvss_score": 0.1082,
+            "severity": 1,
+            "details": [
+                {
+                    "severity_name": "severity_name_value",
+                    "description": "description_value",
+                    "package_type": "package_type_value",
+                    "affected_cpe_uri": "affected_cpe_uri_value",
+                    "affected_package": "affected_package_value",
+                    "affected_version_start": {
+                        "epoch": 527,
+                        "name": "name_value",
+                        "revision": "revision_value",
+                        "inclusive": True,
+                        "kind": 1,
+                        "full_name": "full_name_value",
+                    },
+                    "affected_version_end": {},
+                    "fixed_cpe_uri": "fixed_cpe_uri_value",
+                    "fixed_package": "fixed_package_value",
+                    "fixed_version": {},
+                    "is_obsolete": True,
+                    "source_update_time": {},
+                    "source": "source_value",
+                    "vendor": "vendor_value",
+                }
+            ],
+            "cvss_v3": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
+            "windows_details": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "name": "name_value",
+                    "description": "description_value",
+                    "fixing_kbs": [{"name": "name_value", "url": "url_value"}],
+                }
+            ],
+            "source_update_time": {},
+            "cvss_version": 1,
+        },
+        "build": {"builder_version": "builder_version_value"},
+        "image": {
+            "resource_url": "resource_url_value",
+            "fingerprint": {
+                "v1_name": "v1_name_value",
+                "v2_blob": ["v2_blob_value1", "v2_blob_value2"],
+                "v2_name": "v2_name_value",
+            },
+        },
+        "package": {
+            "name": "name_value",
+            "distribution": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "architecture": 1,
+                    "latest_version": {},
+                    "maintainer": "maintainer_value",
+                    "url": "url_value",
+                    "description": "description_value",
+                }
+            ],
+            "package_type": "package_type_value",
+            "cpe_uri": "cpe_uri_value",
+            "architecture": 1,
+            "version": {},
+            "maintainer": "maintainer_value",
+            "url": "url_value",
+            "description": "description_value",
+            "license_": {
+                "expression": "expression_value",
+                "comments": "comments_value",
+            },
+            "digest": [{"algo": "algo_value", "digest_bytes": b"digest_bytes_blob"}],
+        },
+        "deployment": {"resource_uri": ["resource_uri_value1", "resource_uri_value2"]},
+        "discovery": {"analysis_kind": 1},
+        "attestation": {"hint": {"human_readable_name": "human_readable_name_value"}},
+        "upgrade": {
+            "package": "package_value",
+            "version": {},
+            "distributions": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "classification": "classification_value",
+                    "severity": "severity_value",
+                    "cve": ["cve_value1", "cve_value2"],
+                }
+            ],
+            "windows_update": {
+                "identity": {"update_id": "update_id_value", "revision": 879},
+                "title": "title_value",
+                "description": "description_value",
+                "categories": [
+                    {"category_id": "category_id_value", "name": "name_value"}
+                ],
+                "kb_article_ids": ["kb_article_ids_value1", "kb_article_ids_value2"],
+                "support_url": "support_url_value",
+                "last_published_timestamp": {},
+            },
+        },
+        "compliance": {
+            "title": "title_value",
+            "description": "description_value",
+            "version": [
+                {
+                    "cpe_uri": "cpe_uri_value",
+                    "benchmark_document": "benchmark_document_value",
+                    "version": "version_value",
+                }
+            ],
+            "rationale": "rationale_value",
+            "remediation": "remediation_value",
+            "cis_benchmark": {"profile_level": 1384, "severity": 1},
+            "scan_instructions": b"scan_instructions_blob",
+        },
+        "dsse_attestation": {
+            "hint": {"human_readable_name": "human_readable_name_value"}
+        },
+    }
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.update_note(request)
+
+
+def test_update_note_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.Note()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"name": "projects/sample1/notes/sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            name="name_value",
+            note=grafeas.Note(name="name_value"),
+            update_mask=field_mask_pb2.FieldMask(paths=["paths_value"]),
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.Note.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.update_note(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{name=projects/*/notes/*}" % client.transport._host, args[1]
+        )
+
+
+def test_update_note_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.update_note(
+            grafeas.UpdateNoteRequest(),
+            name="name_value",
+            note=grafeas.Note(name="name_value"),
+            update_mask=field_mask_pb2.FieldMask(paths=["paths_value"]),
+        )
+
+
+def test_update_note_rest_error():
+    client = GrafeasClient(transport="rest")
+
+
+@pytest.mark.parametrize(
+    "request_type",
+    [
+        grafeas.ListNoteOccurrencesRequest,
+        dict,
+    ],
+)
+def test_list_note_occurrences_rest(request_type):
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/notes/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.ListNoteOccurrencesResponse(
+            next_page_token="next_page_token_value",
+        )
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.ListNoteOccurrencesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+        response = client.list_note_occurrences(request)
+
+    # Establish that the response is the type that we expect.
+    assert isinstance(response, pagers.ListNoteOccurrencesPager)
+    assert response.next_page_token == "next_page_token_value"
+
+
+def test_list_note_occurrences_rest_required_fields(
+    request_type=grafeas.ListNoteOccurrencesRequest,
+):
+    transport_class = transports.GrafeasRestTransport
+
+    request_init = {}
+    request_init["name"] = ""
+    request = request_type(**request_init)
+    pb_request = request_type.pb(request)
+    jsonified_request = json.loads(
+        json_format.MessageToJson(
+            pb_request,
+            including_default_value_fields=False,
+            use_integers_for_enums=False,
+        )
+    )
+
+    # verify fields with default values are dropped
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_note_occurrences._get_unset_required_fields(jsonified_request)
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with default values are now present
+
+    jsonified_request["name"] = "name_value"
+
+    unset_fields = transport_class(
+        credentials=ga_credentials.AnonymousCredentials()
+    ).list_note_occurrences._get_unset_required_fields(jsonified_request)
+    # Check that path parameters and body parameters are not mixing in.
+    assert not set(unset_fields) - set(
+        (
+            "filter",
+            "page_size",
+            "page_token",
+        )
+    )
+    jsonified_request.update(unset_fields)
+
+    # verify required fields with non-default values are left alone
+    assert "name" in jsonified_request
+    assert jsonified_request["name"] == "name_value"
+
+    client = GrafeasClient(
+        transport="rest",
+    )
+    request = request_type(**request_init)
+
+    # Designate an appropriate value for the returned response.
+    return_value = grafeas.ListNoteOccurrencesResponse()
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # We need to mock transcode() because providing default values
+        # for required fields will fail the real version if the http_options
+        # expect actual values for those fields.
+        with mock.patch.object(path_template, "transcode") as transcode:
+            # A uri without fields and an empty body will force all the
+            # request fields to show up in the query_params.
+            pb_request = request_type.pb(request)
+            transcode_result = {
+                "uri": "v1/sample_method",
+                "method": "get",
+                "query_params": pb_request,
+            }
+            transcode.return_value = transcode_result
+
+            response_value = Response()
+            response_value.status_code = 200
+
+            pb_return_value = grafeas.ListNoteOccurrencesResponse.pb(return_value)
+            json_return_value = json_format.MessageToJson(pb_return_value)
+
+            response_value._content = json_return_value.encode("UTF-8")
+            req.return_value = response_value
+
+            response = client.list_note_occurrences(request)
+
+            expected_params = [("$alt", "json;enum-encoding=int")]
+            actual_params = req.call_args.kwargs["params"]
+            assert expected_params == actual_params
+
+
+def test_list_note_occurrences_rest_unset_required_fields():
+    transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials
+    )
+
+    unset_fields = transport.list_note_occurrences._get_unset_required_fields({})
+    assert set(unset_fields) == (
+        set(
+            (
+                "filter",
+                "pageSize",
+                "pageToken",
+            )
+        )
+        & set(("name",))
+    )
+
+
+@pytest.mark.parametrize("null_interceptor", [True, False])
+def test_list_note_occurrences_rest_interceptors(null_interceptor):
+    transport = transports.GrafeasRestTransport(
+        interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
+    )
+    client = GrafeasClient(transport=transport)
+    with mock.patch.object(
+        type(client.transport._session), "request"
+    ) as req, mock.patch.object(
+        path_template, "transcode"
+    ) as transcode, mock.patch.object(
+        transports.GrafeasRestInterceptor, "post_list_note_occurrences"
+    ) as post, mock.patch.object(
+        transports.GrafeasRestInterceptor, "pre_list_note_occurrences"
+    ) as pre:
+        pre.assert_not_called()
+        post.assert_not_called()
+        pb_message = grafeas.ListNoteOccurrencesRequest.pb(
+            grafeas.ListNoteOccurrencesRequest()
+        )
+        transcode.return_value = {
+            "method": "post",
+            "uri": "my_uri",
+            "body": pb_message,
+            "query_params": pb_message,
+        }
+
+        req.return_value = Response()
+        req.return_value.status_code = 200
+        req.return_value.request = PreparedRequest()
+        req.return_value._content = grafeas.ListNoteOccurrencesResponse.to_json(
+            grafeas.ListNoteOccurrencesResponse()
+        )
+
+        request = grafeas.ListNoteOccurrencesRequest()
+        metadata = [
+            ("key", "val"),
+            ("cephalopod", "squid"),
+        ]
+        pre.return_value = request, metadata
+        post.return_value = grafeas.ListNoteOccurrencesResponse()
+
+        client.list_note_occurrences(
+            request,
+            metadata=[
+                ("key", "val"),
+                ("cephalopod", "squid"),
+            ],
+        )
+
+        pre.assert_called_once()
+        post.assert_called_once()
+
+
+def test_list_note_occurrences_rest_bad_request(
+    transport: str = "rest", request_type=grafeas.ListNoteOccurrencesRequest
+):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # send a request that will satisfy transcoding
+    request_init = {"name": "projects/sample1/notes/sample2"}
+    request = request_type(**request_init)
+
+    # Mock the http request call within the method and fake a BadRequest error.
+    with mock.patch.object(Session, "request") as req, pytest.raises(
+        core_exceptions.BadRequest
+    ):
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 400
+        response_value.request = Request()
+        req.return_value = response_value
+        client.list_note_occurrences(request)
+
+
+def test_list_note_occurrences_rest_flattened():
+    client = GrafeasClient(
+        transport="rest",
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(type(client.transport._session), "request") as req:
+        # Designate an appropriate value for the returned response.
+        return_value = grafeas.ListNoteOccurrencesResponse()
+
+        # get arguments that satisfy an http rule for this method
+        sample_request = {"name": "projects/sample1/notes/sample2"}
+
+        # get truthy value for each flattened field
+        mock_args = dict(
+            name="name_value",
+            filter="filter_value",
+        )
+        mock_args.update(sample_request)
+
+        # Wrap the value into a proper Response obj
+        response_value = Response()
+        response_value.status_code = 200
+        pb_return_value = grafeas.ListNoteOccurrencesResponse.pb(return_value)
+        json_return_value = json_format.MessageToJson(pb_return_value)
+        response_value._content = json_return_value.encode("UTF-8")
+        req.return_value = response_value
+
+        client.list_note_occurrences(**mock_args)
+
+        # Establish that the underlying call was made with the expected
+        # request object values.
+        assert len(req.mock_calls) == 1
+        _, args, _ = req.mock_calls[0]
+        assert path_template.validate(
+            "%s/v1/{name=projects/*/notes/*}/occurrences" % client.transport._host,
+            args[1],
+        )
+
+
+def test_list_note_occurrences_rest_flattened_error(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Attempting to call a method with both a request object and flattened
+    # fields is an error.
+    with pytest.raises(ValueError):
+        client.list_note_occurrences(
+            grafeas.ListNoteOccurrencesRequest(),
+            name="name_value",
+            filter="filter_value",
+        )
+
+
+def test_list_note_occurrences_rest_pager(transport: str = "rest"):
+    client = GrafeasClient(
+        transport=transport,
+    )
+
+    # Mock the http request call within the method and fake a response.
+    with mock.patch.object(Session, "request") as req:
+        # TODO(kbandes): remove this mock unless there's a good reason for it.
+        # with mock.patch.object(path_template, 'transcode') as transcode:
+        # Set the response as a series of pages
+        response = (
+            grafeas.ListNoteOccurrencesResponse(
+                occurrences=[
+                    grafeas.Occurrence(),
+                    grafeas.Occurrence(),
+                    grafeas.Occurrence(),
+                ],
+                next_page_token="abc",
+            ),
+            grafeas.ListNoteOccurrencesResponse(
+                occurrences=[],
+                next_page_token="def",
+            ),
+            grafeas.ListNoteOccurrencesResponse(
+                occurrences=[
+                    grafeas.Occurrence(),
+                ],
+                next_page_token="ghi",
+            ),
+            grafeas.ListNoteOccurrencesResponse(
+                occurrences=[
+                    grafeas.Occurrence(),
+                    grafeas.Occurrence(),
+                ],
+            ),
+        )
+        # Two responses for two calls
+        response = response + response
+
+        # Wrap the values into proper Response objs
+        response = tuple(
+            grafeas.ListNoteOccurrencesResponse.to_json(x) for x in response
+        )
+        return_values = tuple(Response() for i in response)
+        for return_val, response_val in zip(return_values, response):
+            return_val._content = response_val.encode("UTF-8")
+            return_val.status_code = 200
+        req.side_effect = return_values
+
+        sample_request = {"name": "projects/sample1/notes/sample2"}
+
+        pager = client.list_note_occurrences(request=sample_request)
+
+        results = list(pager)
+        assert len(results) == 6
+        assert all(isinstance(i, grafeas.Occurrence) for i in results)
+
+        pages = list(client.list_note_occurrences(request=sample_request).pages)
+        for page_, token in zip(pages, ["abc", "def", "ghi", ""]):
+            assert page_.raw_page.next_page_token == token
+
+
 def test_transport_instance():
     # A client may be instantiated with a custom transport instance.
     transport = transports.GrafeasGrpcTransport()
@@ -3961,6 +9599,7 @@ def test_transport_get_channel():
     [
         transports.GrafeasGrpcTransport,
         transports.GrafeasGrpcAsyncIOTransport,
+        transports.GrafeasRestTransport,
     ],
 )
 def test_transport_adc(transport_class):
@@ -3975,6 +9614,7 @@ def test_transport_adc(transport_class):
     "transport_name",
     [
         "grpc",
+        "rest",
     ],
 )
 def test_transport_kind(transport_name):
@@ -4102,6 +9742,7 @@ def test_grafeas_transport_auth_adc(transport_class):
     [
         transports.GrafeasGrpcTransport,
         transports.GrafeasGrpcAsyncIOTransport,
+        transports.GrafeasRestTransport,
     ],
 )
 def test_grafeas_transport_auth_gdch_credentials(transport_class):
@@ -4194,6 +9835,114 @@ def test_grafeas_grpc_transport_client_cert_source_for_mtls(transport_class):
             mock_ssl_cred.assert_called_once_with(
                 certificate_chain=expected_cert, private_key=expected_key
             )
+
+
+def test_grafeas_http_transport_client_cert_source_for_mtls():
+    cred = ga_credentials.AnonymousCredentials()
+    with mock.patch(
+        "google.auth.transport.requests.AuthorizedSession.configure_mtls_channel"
+    ) as mock_configure_mtls_channel:
+        transports.GrafeasRestTransport(
+            credentials=cred, client_cert_source_for_mtls=client_cert_source_callback
+        )
+        mock_configure_mtls_channel.assert_called_once_with(client_cert_source_callback)
+
+
+@pytest.mark.parametrize(
+    "transport_name",
+    [
+        "grpc",
+        "grpc_asyncio",
+        "rest",
+    ],
+)
+def test_grafeas_host_no_port(transport_name):
+    client = GrafeasClient(
+        client_options=client_options.ClientOptions(api_endpoint=""),
+        transport=transport_name,
+    )
+    assert client.transport._host == (
+        ":443" if transport_name in ["grpc", "grpc_asyncio"] else "https://"
+    )
+
+
+@pytest.mark.parametrize(
+    "transport_name",
+    [
+        "grpc",
+        "grpc_asyncio",
+        "rest",
+    ],
+)
+def test_grafeas_host_with_port(transport_name):
+    client = GrafeasClient(
+        client_options=client_options.ClientOptions(api_endpoint=":8000"),
+        transport=transport_name,
+    )
+    assert client.transport._host == (
+        ":8000" if transport_name in ["grpc", "grpc_asyncio"] else "https://:8000"
+    )
+
+
+@pytest.mark.parametrize(
+    "transport_name",
+    [
+        "rest",
+    ],
+)
+def test_grafeas_client_transport_session_collision(transport_name):
+    creds1 = ga_credentials.AnonymousCredentials()
+    creds2 = ga_credentials.AnonymousCredentials()
+    client1 = GrafeasClient(
+        credentials=creds1,
+        transport=transport_name,
+    )
+    client2 = GrafeasClient(
+        credentials=creds2,
+        transport=transport_name,
+    )
+    session1 = client1.transport.get_occurrence._session
+    session2 = client2.transport.get_occurrence._session
+    assert session1 != session2
+    session1 = client1.transport.list_occurrences._session
+    session2 = client2.transport.list_occurrences._session
+    assert session1 != session2
+    session1 = client1.transport.delete_occurrence._session
+    session2 = client2.transport.delete_occurrence._session
+    assert session1 != session2
+    session1 = client1.transport.create_occurrence._session
+    session2 = client2.transport.create_occurrence._session
+    assert session1 != session2
+    session1 = client1.transport.batch_create_occurrences._session
+    session2 = client2.transport.batch_create_occurrences._session
+    assert session1 != session2
+    session1 = client1.transport.update_occurrence._session
+    session2 = client2.transport.update_occurrence._session
+    assert session1 != session2
+    session1 = client1.transport.get_occurrence_note._session
+    session2 = client2.transport.get_occurrence_note._session
+    assert session1 != session2
+    session1 = client1.transport.get_note._session
+    session2 = client2.transport.get_note._session
+    assert session1 != session2
+    session1 = client1.transport.list_notes._session
+    session2 = client2.transport.list_notes._session
+    assert session1 != session2
+    session1 = client1.transport.delete_note._session
+    session2 = client2.transport.delete_note._session
+    assert session1 != session2
+    session1 = client1.transport.create_note._session
+    session2 = client2.transport.create_note._session
+    assert session1 != session2
+    session1 = client1.transport.batch_create_notes._session
+    session2 = client2.transport.batch_create_notes._session
+    assert session1 != session2
+    session1 = client1.transport.update_note._session
+    session2 = client2.transport.update_note._session
+    assert session1 != session2
+    session1 = client1.transport.list_note_occurrences._session
+    session2 = client2.transport.list_note_occurrences._session
+    assert session1 != session2
 
 
 def test_grafeas_grpc_transport_channel():
@@ -4498,6 +10247,7 @@ async def test_transport_close_async():
 
 def test_transport_close():
     transports = {
+        "rest": "_session",
         "grpc": "_grpc_channel",
     }
 
@@ -4513,6 +10263,7 @@ def test_transport_close():
 
 def test_client_ctx():
     transports = [
+        "rest",
         "grpc",
     ]
     for transport in transports:

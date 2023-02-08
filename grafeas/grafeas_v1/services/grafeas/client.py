@@ -64,6 +64,7 @@ from grafeas.grafeas_v1.types import vulnerability
 from .transports.base import GrafeasTransport, DEFAULT_CLIENT_INFO
 from .transports.grpc import GrafeasGrpcTransport
 from .transports.grpc_asyncio import GrafeasGrpcAsyncIOTransport
+from .transports.rest import GrafeasRestTransport
 
 
 class GrafeasClientMeta(type):
@@ -77,6 +78,7 @@ class GrafeasClientMeta(type):
     _transport_registry = OrderedDict()  # type: Dict[str, Type[GrafeasTransport]]
     _transport_registry["grpc"] = GrafeasGrpcTransport
     _transport_registry["grpc_asyncio"] = GrafeasGrpcAsyncIOTransport
+    _transport_registry["rest"] = GrafeasRestTransport
 
     def get_transport_class(
         cls,

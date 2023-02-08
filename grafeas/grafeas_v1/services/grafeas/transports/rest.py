@@ -176,7 +176,12 @@ class GrafeasRestInterceptor:
 
 
     """
-    def pre_batch_create_notes(self, request: grafeas.BatchCreateNotesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.BatchCreateNotesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_batch_create_notes(
+        self,
+        request: grafeas.BatchCreateNotesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[grafeas.BatchCreateNotesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for batch_create_notes
 
         Override in a subclass to manipulate the request or metadata
@@ -184,7 +189,9 @@ class GrafeasRestInterceptor:
         """
         return request, metadata
 
-    def post_batch_create_notes(self, response: grafeas.BatchCreateNotesResponse) -> grafeas.BatchCreateNotesResponse:
+    def post_batch_create_notes(
+        self, response: grafeas.BatchCreateNotesResponse
+    ) -> grafeas.BatchCreateNotesResponse:
         """Post-rpc interceptor for batch_create_notes
 
         Override in a subclass to manipulate the response
@@ -192,7 +199,12 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_batch_create_occurrences(self, request: grafeas.BatchCreateOccurrencesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.BatchCreateOccurrencesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_batch_create_occurrences(
+        self,
+        request: grafeas.BatchCreateOccurrencesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[grafeas.BatchCreateOccurrencesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for batch_create_occurrences
 
         Override in a subclass to manipulate the request or metadata
@@ -200,7 +212,9 @@ class GrafeasRestInterceptor:
         """
         return request, metadata
 
-    def post_batch_create_occurrences(self, response: grafeas.BatchCreateOccurrencesResponse) -> grafeas.BatchCreateOccurrencesResponse:
+    def post_batch_create_occurrences(
+        self, response: grafeas.BatchCreateOccurrencesResponse
+    ) -> grafeas.BatchCreateOccurrencesResponse:
         """Post-rpc interceptor for batch_create_occurrences
 
         Override in a subclass to manipulate the response
@@ -208,7 +222,10 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_create_note(self, request: grafeas.CreateNoteRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.CreateNoteRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_note(
+        self, request: grafeas.CreateNoteRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[grafeas.CreateNoteRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_note
 
         Override in a subclass to manipulate the request or metadata
@@ -224,7 +241,12 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_create_occurrence(self, request: grafeas.CreateOccurrenceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.CreateOccurrenceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_create_occurrence(
+        self,
+        request: grafeas.CreateOccurrenceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[grafeas.CreateOccurrenceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for create_occurrence
 
         Override in a subclass to manipulate the request or metadata
@@ -232,7 +254,9 @@ class GrafeasRestInterceptor:
         """
         return request, metadata
 
-    def post_create_occurrence(self, response: grafeas.Occurrence) -> grafeas.Occurrence:
+    def post_create_occurrence(
+        self, response: grafeas.Occurrence
+    ) -> grafeas.Occurrence:
         """Post-rpc interceptor for create_occurrence
 
         Override in a subclass to manipulate the response
@@ -240,7 +264,10 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_delete_note(self, request: grafeas.DeleteNoteRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.DeleteNoteRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_delete_note(
+        self, request: grafeas.DeleteNoteRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[grafeas.DeleteNoteRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_note
 
         Override in a subclass to manipulate the request or metadata
@@ -248,7 +275,11 @@ class GrafeasRestInterceptor:
         """
         return request, metadata
 
-    def pre_delete_occurrence(self, request: grafeas.DeleteOccurrenceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.DeleteOccurrenceRequest, Sequence[Tuple[str, str]]]:
+    def pre_delete_occurrence(
+        self,
+        request: grafeas.DeleteOccurrenceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[grafeas.DeleteOccurrenceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for delete_occurrence
 
         Override in a subclass to manipulate the request or metadata
@@ -256,7 +287,9 @@ class GrafeasRestInterceptor:
         """
         return request, metadata
 
-    def pre_get_note(self, request: grafeas.GetNoteRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.GetNoteRequest, Sequence[Tuple[str, str]]]:
+    def pre_get_note(
+        self, request: grafeas.GetNoteRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[grafeas.GetNoteRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_note
 
         Override in a subclass to manipulate the request or metadata
@@ -272,7 +305,10 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_occurrence(self, request: grafeas.GetOccurrenceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.GetOccurrenceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_occurrence(
+        self, request: grafeas.GetOccurrenceRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[grafeas.GetOccurrenceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_occurrence
 
         Override in a subclass to manipulate the request or metadata
@@ -288,7 +324,12 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_get_occurrence_note(self, request: grafeas.GetOccurrenceNoteRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.GetOccurrenceNoteRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_get_occurrence_note(
+        self,
+        request: grafeas.GetOccurrenceNoteRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[grafeas.GetOccurrenceNoteRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for get_occurrence_note
 
         Override in a subclass to manipulate the request or metadata
@@ -304,7 +345,12 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_note_occurrences(self, request: grafeas.ListNoteOccurrencesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.ListNoteOccurrencesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_note_occurrences(
+        self,
+        request: grafeas.ListNoteOccurrencesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[grafeas.ListNoteOccurrencesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_note_occurrences
 
         Override in a subclass to manipulate the request or metadata
@@ -312,7 +358,9 @@ class GrafeasRestInterceptor:
         """
         return request, metadata
 
-    def post_list_note_occurrences(self, response: grafeas.ListNoteOccurrencesResponse) -> grafeas.ListNoteOccurrencesResponse:
+    def post_list_note_occurrences(
+        self, response: grafeas.ListNoteOccurrencesResponse
+    ) -> grafeas.ListNoteOccurrencesResponse:
         """Post-rpc interceptor for list_note_occurrences
 
         Override in a subclass to manipulate the response
@@ -320,7 +368,10 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_notes(self, request: grafeas.ListNotesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.ListNotesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_notes(
+        self, request: grafeas.ListNotesRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[grafeas.ListNotesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_notes
 
         Override in a subclass to manipulate the request or metadata
@@ -328,7 +379,9 @@ class GrafeasRestInterceptor:
         """
         return request, metadata
 
-    def post_list_notes(self, response: grafeas.ListNotesResponse) -> grafeas.ListNotesResponse:
+    def post_list_notes(
+        self, response: grafeas.ListNotesResponse
+    ) -> grafeas.ListNotesResponse:
         """Post-rpc interceptor for list_notes
 
         Override in a subclass to manipulate the response
@@ -336,7 +389,12 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_list_occurrences(self, request: grafeas.ListOccurrencesRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.ListOccurrencesRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_list_occurrences(
+        self,
+        request: grafeas.ListOccurrencesRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[grafeas.ListOccurrencesRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for list_occurrences
 
         Override in a subclass to manipulate the request or metadata
@@ -344,7 +402,9 @@ class GrafeasRestInterceptor:
         """
         return request, metadata
 
-    def post_list_occurrences(self, response: grafeas.ListOccurrencesResponse) -> grafeas.ListOccurrencesResponse:
+    def post_list_occurrences(
+        self, response: grafeas.ListOccurrencesResponse
+    ) -> grafeas.ListOccurrencesResponse:
         """Post-rpc interceptor for list_occurrences
 
         Override in a subclass to manipulate the response
@@ -352,7 +412,10 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_note(self, request: grafeas.UpdateNoteRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.UpdateNoteRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_note(
+        self, request: grafeas.UpdateNoteRequest, metadata: Sequence[Tuple[str, str]]
+    ) -> Tuple[grafeas.UpdateNoteRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_note
 
         Override in a subclass to manipulate the request or metadata
@@ -368,7 +431,12 @@ class GrafeasRestInterceptor:
         it is returned to user code.
         """
         return response
-    def pre_update_occurrence(self, request: grafeas.UpdateOccurrenceRequest, metadata: Sequence[Tuple[str, str]]) -> Tuple[grafeas.UpdateOccurrenceRequest, Sequence[Tuple[str, str]]]:
+
+    def pre_update_occurrence(
+        self,
+        request: grafeas.UpdateOccurrenceRequest,
+        metadata: Sequence[Tuple[str, str]],
+    ) -> Tuple[grafeas.UpdateOccurrenceRequest, Sequence[Tuple[str, str]]]:
         """Pre-rpc interceptor for update_occurrence
 
         Override in a subclass to manipulate the request or metadata
@@ -376,7 +444,9 @@ class GrafeasRestInterceptor:
         """
         return request, metadata
 
-    def post_update_occurrence(self, response: grafeas.Occurrence) -> grafeas.Occurrence:
+    def post_update_occurrence(
+        self, response: grafeas.Occurrence
+    ) -> grafeas.Occurrence:
         """Post-rpc interceptor for update_occurrence
 
         Override in a subclass to manipulate the response
@@ -421,20 +491,21 @@ class GrafeasRestTransport(GrafeasTransport):
 
     """
 
-    def __init__(self, *,
-            host: str = 'containeranalysis.googleapis.com',
-            credentials: Optional[ga_credentials.Credentials] = None,
-            credentials_file: Optional[str] = None,
-            scopes: Optional[Sequence[str]] = None,
-            client_cert_source_for_mtls: Optional[Callable[[
-                ], Tuple[bytes, bytes]]] = None,
-            quota_project_id: Optional[str] = None,
-            client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
-            always_use_jwt_access: Optional[bool] = False,
-            url_scheme: str = 'https',
-            interceptor: Optional[GrafeasRestInterceptor] = None,
-            api_audience: Optional[str] = None,
-            ) -> None:
+    def __init__(
+        self,
+        *,
+        host: str = "",
+        credentials: Optional[ga_credentials.Credentials] = None,
+        credentials_file: Optional[str] = None,
+        scopes: Optional[Sequence[str]] = None,
+        client_cert_source_for_mtls: Optional[Callable[[], Tuple[bytes, bytes]]] = None,
+        quota_project_id: Optional[str] = None,
+        client_info: gapic_v1.client_info.ClientInfo = DEFAULT_CLIENT_INFO,
+        always_use_jwt_access: Optional[bool] = False,
+        url_scheme: str = "https",
+        interceptor: Optional[GrafeasRestInterceptor] = None,
+        api_audience: Optional[str] = None,
+    ) -> None:
         """Instantiate the transport.
 
         Args:
@@ -473,7 +544,9 @@ class GrafeasRestTransport(GrafeasTransport):
         # credentials object
         maybe_url_match = re.match("^(?P<scheme>http(?:s)?://)?(?P<host>.*)$", host)
         if maybe_url_match is None:
-            raise ValueError(f"Unexpected hostname structure: {host}")  # pragma: NO COVER
+            raise ValueError(
+                f"Unexpected hostname structure: {host}"
+            )  # pragma: NO COVER
 
         url_match_items = maybe_url_match.groupdict()
 
@@ -484,10 +557,11 @@ class GrafeasRestTransport(GrafeasTransport):
             credentials=credentials,
             client_info=client_info,
             always_use_jwt_access=always_use_jwt_access,
-            api_audience=api_audience
+            api_audience=api_audience,
         )
         self._session = AuthorizedSession(
-            self._credentials, default_host=self.DEFAULT_HOST)
+            self._credentials, default_host=self.DEFAULT_HOST
+        )
         if client_cert_source_for_mtls:
             self._session.configure_mtls_channel(client_cert_source_for_mtls)
         self._interceptor = interceptor or GrafeasRestInterceptor()
@@ -497,19 +571,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("BatchCreateNotes")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.BatchCreateNotesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.BatchCreateNotesResponse:
+        def __call__(
+            self,
+            request: grafeas.BatchCreateNotesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.BatchCreateNotesResponse:
             r"""Call the batch create notes method over HTTP.
 
             Args:
@@ -526,46 +605,51 @@ class GrafeasRestTransport(GrafeasTransport):
                     Response for creating notes in batch.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*}/notes:batchCreate',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*}/notes:batchCreate",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_batch_create_notes(request, metadata)
+            request, metadata = self._interceptor.pre_batch_create_notes(
+                request, metadata
+            )
             pb_request = grafeas.BatchCreateNotesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -584,19 +668,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("BatchCreateOccurrences")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.BatchCreateOccurrencesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.BatchCreateOccurrencesResponse:
+        def __call__(
+            self,
+            request: grafeas.BatchCreateOccurrencesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.BatchCreateOccurrencesResponse:
             r"""Call the batch create occurrences method over HTTP.
 
             Args:
@@ -617,46 +706,51 @@ class GrafeasRestTransport(GrafeasTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*}/occurrences:batchCreate',
-                'body': '*',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*}/occurrences:batchCreate",
+                    "body": "*",
+                },
             ]
-            request, metadata = self._interceptor.pre_batch_create_occurrences(request, metadata)
+            request, metadata = self._interceptor.pre_batch_create_occurrences(
+                request, metadata
+            )
             pb_request = grafeas.BatchCreateOccurrencesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -675,19 +769,26 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("CreateNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-            "noteId" : "",        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+            "noteId": "",
+        }
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.CreateNoteRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.Note:
+        def __call__(
+            self,
+            request: grafeas.CreateNoteRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.Note:
             r"""Call the create note method over HTTP.
 
             Args:
@@ -706,11 +807,12 @@ class GrafeasRestTransport(GrafeasTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*}/notes',
-                'body': 'note',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*}/notes",
+                    "body": "note",
+                },
             ]
             request, metadata = self._interceptor.pre_create_note(request, metadata)
             pb_request = grafeas.CreateNoteRequest.pb(request)
@@ -719,33 +821,35 @@ class GrafeasRestTransport(GrafeasTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -764,19 +868,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("CreateOccurrence")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.CreateOccurrenceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.Occurrence:
+        def __call__(
+            self,
+            request: grafeas.CreateOccurrenceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.Occurrence:
             r"""Call the create occurrence method over HTTP.
 
             Args:
@@ -795,46 +904,51 @@ class GrafeasRestTransport(GrafeasTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'post',
-                'uri': '/v1/{parent=projects/*}/occurrences',
-                'body': 'occurrence',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "post",
+                    "uri": "/v1/{parent=projects/*}/occurrences",
+                    "body": "occurrence",
+                },
             ]
-            request, metadata = self._interceptor.pre_create_occurrence(request, metadata)
+            request, metadata = self._interceptor.pre_create_occurrence(
+                request, metadata
+            )
             pb_request = grafeas.CreateOccurrenceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -853,19 +967,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("DeleteNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.DeleteNoteRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ):
+        def __call__(
+            self,
+            request: grafeas.DeleteNoteRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ):
             r"""Call the delete note method over HTTP.
 
             Args:
@@ -878,37 +997,40 @@ class GrafeasRestTransport(GrafeasTransport):
                     sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1/{name=projects/*/notes/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/notes/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_delete_note(request, metadata)
             pb_request = grafeas.DeleteNoteRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -919,19 +1041,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("DeleteOccurrence")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.DeleteOccurrenceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ):
+        def __call__(
+            self,
+            request: grafeas.DeleteOccurrenceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ):
             r"""Call the delete occurrence method over HTTP.
 
             Args:
@@ -944,37 +1071,42 @@ class GrafeasRestTransport(GrafeasTransport):
                     sent along with the request as metadata.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'delete',
-                'uri': '/v1/{name=projects/*/occurrences/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "delete",
+                    "uri": "/v1/{name=projects/*/occurrences/*}",
+                },
             ]
-            request, metadata = self._interceptor.pre_delete_occurrence(request, metadata)
+            request, metadata = self._interceptor.pre_delete_occurrence(
+                request, metadata
+            )
             pb_request = grafeas.DeleteOccurrenceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -985,19 +1117,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("GetNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.GetNoteRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.Note:
+        def __call__(
+            self,
+            request: grafeas.GetNoteRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.Note:
             r"""Call the get note method over HTTP.
 
             Args:
@@ -1016,37 +1153,40 @@ class GrafeasRestTransport(GrafeasTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/notes/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/notes/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_note(request, metadata)
             pb_request = grafeas.GetNoteRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1065,19 +1205,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("GetOccurrence")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.GetOccurrenceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.Occurrence:
+        def __call__(
+            self,
+            request: grafeas.GetOccurrenceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.Occurrence:
             r"""Call the get occurrence method over HTTP.
 
             Args:
@@ -1096,37 +1241,40 @@ class GrafeasRestTransport(GrafeasTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/occurrences/*}',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/occurrences/*}",
+                },
             ]
             request, metadata = self._interceptor.pre_get_occurrence(request, metadata)
             pb_request = grafeas.GetOccurrenceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1145,19 +1293,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("GetOccurrenceNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.GetOccurrenceNoteRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.Note:
+        def __call__(
+            self,
+            request: grafeas.GetOccurrenceNoteRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.Note:
             r"""Call the get occurrence note method over HTTP.
 
             Args:
@@ -1178,37 +1331,42 @@ class GrafeasRestTransport(GrafeasTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/occurrences/*}/notes',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/occurrences/*}/notes",
+                },
             ]
-            request, metadata = self._interceptor.pre_get_occurrence_note(request, metadata)
+            request, metadata = self._interceptor.pre_get_occurrence_note(
+                request, metadata
+            )
             pb_request = grafeas.GetOccurrenceNoteRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1227,19 +1385,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("ListNoteOccurrences")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.ListNoteOccurrencesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.ListNoteOccurrencesResponse:
+        def __call__(
+            self,
+            request: grafeas.ListNoteOccurrencesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.ListNoteOccurrencesResponse:
             r"""Call the list note occurrences method over HTTP.
 
             Args:
@@ -1260,37 +1423,42 @@ class GrafeasRestTransport(GrafeasTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{name=projects/*/notes/*}/occurrences',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{name=projects/*/notes/*}/occurrences",
+                },
             ]
-            request, metadata = self._interceptor.pre_list_note_occurrences(request, metadata)
+            request, metadata = self._interceptor.pre_list_note_occurrences(
+                request, metadata
+            )
             pb_request = grafeas.ListNoteOccurrencesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1309,19 +1477,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("ListNotes")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.ListNotesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.ListNotesResponse:
+        def __call__(
+            self,
+            request: grafeas.ListNotesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.ListNotesResponse:
             r"""Call the list notes method over HTTP.
 
             Args:
@@ -1338,37 +1511,40 @@ class GrafeasRestTransport(GrafeasTransport):
                     Response for listing notes.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*}/notes',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*}/notes",
+                },
             ]
             request, metadata = self._interceptor.pre_list_notes(request, metadata)
             pb_request = grafeas.ListNotesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1387,19 +1563,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("ListOccurrences")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.ListOccurrencesRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.ListOccurrencesResponse:
+        def __call__(
+            self,
+            request: grafeas.ListOccurrencesRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.ListOccurrencesResponse:
             r"""Call the list occurrences method over HTTP.
 
             Args:
@@ -1416,37 +1597,42 @@ class GrafeasRestTransport(GrafeasTransport):
                     Response for listing occurrences.
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'get',
-                'uri': '/v1/{parent=projects/*}/occurrences',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "get",
+                    "uri": "/v1/{parent=projects/*}/occurrences",
+                },
             ]
-            request, metadata = self._interceptor.pre_list_occurrences(request, metadata)
+            request, metadata = self._interceptor.pre_list_occurrences(
+                request, metadata
+            )
             pb_request = grafeas.ListOccurrencesRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
 
             # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True,
-            ))
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1465,19 +1651,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("UpdateNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.UpdateNoteRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.Note:
+        def __call__(
+            self,
+            request: grafeas.UpdateNoteRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.Note:
             r"""Call the update note method over HTTP.
 
             Args:
@@ -1496,11 +1687,12 @@ class GrafeasRestTransport(GrafeasTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{name=projects/*/notes/*}',
-                'body': 'note',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{name=projects/*/notes/*}",
+                    "body": "note",
+                },
             ]
             request, metadata = self._interceptor.pre_update_note(request, metadata)
             pb_request = grafeas.UpdateNoteRequest.pb(request)
@@ -1509,33 +1701,35 @@ class GrafeasRestTransport(GrafeasTransport):
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1554,19 +1748,24 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("UpdateOccurrence")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] =  {
-        }
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
-            return {k: v for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items() if k not in message_dict}
+            return {
+                k: v
+                for k, v in cls.__REQUIRED_FIELDS_DEFAULT_VALUES.items()
+                if k not in message_dict
+            }
 
-        def __call__(self,
-                request: grafeas.UpdateOccurrenceRequest, *,
-                retry: OptionalRetry=gapic_v1.method.DEFAULT,
-                timeout: Optional[float]=None,
-                metadata: Sequence[Tuple[str, str]]=(),
-                ) -> grafeas.Occurrence:
+        def __call__(
+            self,
+            request: grafeas.UpdateOccurrenceRequest,
+            *,
+            retry: OptionalRetry = gapic_v1.method.DEFAULT,
+            timeout: Optional[float] = None,
+            metadata: Sequence[Tuple[str, str]] = (),
+        ) -> grafeas.Occurrence:
             r"""Call the update occurrence method over HTTP.
 
             Args:
@@ -1585,46 +1784,51 @@ class GrafeasRestTransport(GrafeasTransport):
 
             """
 
-            http_options: List[Dict[str, str]] = [{
-                'method': 'patch',
-                'uri': '/v1/{name=projects/*/occurrences/*}',
-                'body': 'occurrence',
-            },
+            http_options: List[Dict[str, str]] = [
+                {
+                    "method": "patch",
+                    "uri": "/v1/{name=projects/*/occurrences/*}",
+                    "body": "occurrence",
+                },
             ]
-            request, metadata = self._interceptor.pre_update_occurrence(request, metadata)
+            request, metadata = self._interceptor.pre_update_occurrence(
+                request, metadata
+            )
             pb_request = grafeas.UpdateOccurrenceRequest.pb(request)
             transcoded_request = path_template.transcode(http_options, pb_request)
 
             # Jsonify the request body
 
             body = json_format.MessageToJson(
-                transcoded_request['body'],
-                including_default_value_fields=False,
-                use_integers_for_enums=True
-            )
-            uri = transcoded_request['uri']
-            method = transcoded_request['method']
-
-            # Jsonify the query params
-            query_params = json.loads(json_format.MessageToJson(
-                transcoded_request['query_params'],
+                transcoded_request["body"],
                 including_default_value_fields=False,
                 use_integers_for_enums=True,
-            ))
+            )
+            uri = transcoded_request["uri"]
+            method = transcoded_request["method"]
+
+            # Jsonify the query params
+            query_params = json.loads(
+                json_format.MessageToJson(
+                    transcoded_request["query_params"],
+                    including_default_value_fields=False,
+                    use_integers_for_enums=True,
+                )
+            )
             query_params.update(self._get_unset_required_fields(query_params))
 
             query_params["$alt"] = "json;enum-encoding=int"
 
             # Send the request
             headers = dict(metadata)
-            headers['Content-Type'] = 'application/json'
+            headers["Content-Type"] = "application/json"
             response = getattr(self._session, method)(
                 "{host}{uri}".format(host=self._host, uri=uri),
                 timeout=timeout,
                 headers=headers,
                 params=rest_helpers.flatten_query_params(query_params, strict=True),
                 data=body,
-                )
+            )
 
             # In case of error, raise the appropriate core_exceptions.GoogleAPICallError exception
             # subclass.
@@ -1640,116 +1844,112 @@ class GrafeasRestTransport(GrafeasTransport):
             return resp
 
     @property
-    def batch_create_notes(self) -> Callable[
-            [grafeas.BatchCreateNotesRequest],
-            grafeas.BatchCreateNotesResponse]:
+    def batch_create_notes(
+        self,
+    ) -> Callable[[grafeas.BatchCreateNotesRequest], grafeas.BatchCreateNotesResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._BatchCreateNotes(self._session, self._host, self._interceptor) # type: ignore
+        return self._BatchCreateNotes(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def batch_create_occurrences(self) -> Callable[
-            [grafeas.BatchCreateOccurrencesRequest],
-            grafeas.BatchCreateOccurrencesResponse]:
+    def batch_create_occurrences(
+        self,
+    ) -> Callable[
+        [grafeas.BatchCreateOccurrencesRequest], grafeas.BatchCreateOccurrencesResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._BatchCreateOccurrences(self._session, self._host, self._interceptor) # type: ignore
+        return self._BatchCreateOccurrences(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def create_note(self) -> Callable[
-            [grafeas.CreateNoteRequest],
-            grafeas.Note]:
+    def create_note(self) -> Callable[[grafeas.CreateNoteRequest], grafeas.Note]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateNote(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateNote(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def create_occurrence(self) -> Callable[
-            [grafeas.CreateOccurrenceRequest],
-            grafeas.Occurrence]:
+    def create_occurrence(
+        self,
+    ) -> Callable[[grafeas.CreateOccurrenceRequest], grafeas.Occurrence]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._CreateOccurrence(self._session, self._host, self._interceptor) # type: ignore
+        return self._CreateOccurrence(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_note(self) -> Callable[
-            [grafeas.DeleteNoteRequest],
-            empty_pb2.Empty]:
+    def delete_note(self) -> Callable[[grafeas.DeleteNoteRequest], empty_pb2.Empty]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteNote(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteNote(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def delete_occurrence(self) -> Callable[
-            [grafeas.DeleteOccurrenceRequest],
-            empty_pb2.Empty]:
+    def delete_occurrence(
+        self,
+    ) -> Callable[[grafeas.DeleteOccurrenceRequest], empty_pb2.Empty]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._DeleteOccurrence(self._session, self._host, self._interceptor) # type: ignore
+        return self._DeleteOccurrence(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_note(self) -> Callable[
-            [grafeas.GetNoteRequest],
-            grafeas.Note]:
+    def get_note(self) -> Callable[[grafeas.GetNoteRequest], grafeas.Note]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetNote(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetNote(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_occurrence(self) -> Callable[
-            [grafeas.GetOccurrenceRequest],
-            grafeas.Occurrence]:
+    def get_occurrence(
+        self,
+    ) -> Callable[[grafeas.GetOccurrenceRequest], grafeas.Occurrence]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetOccurrence(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetOccurrence(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def get_occurrence_note(self) -> Callable[
-            [grafeas.GetOccurrenceNoteRequest],
-            grafeas.Note]:
+    def get_occurrence_note(
+        self,
+    ) -> Callable[[grafeas.GetOccurrenceNoteRequest], grafeas.Note]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._GetOccurrenceNote(self._session, self._host, self._interceptor) # type: ignore
+        return self._GetOccurrenceNote(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_note_occurrences(self) -> Callable[
-            [grafeas.ListNoteOccurrencesRequest],
-            grafeas.ListNoteOccurrencesResponse]:
+    def list_note_occurrences(
+        self,
+    ) -> Callable[
+        [grafeas.ListNoteOccurrencesRequest], grafeas.ListNoteOccurrencesResponse
+    ]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListNoteOccurrences(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListNoteOccurrences(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_notes(self) -> Callable[
-            [grafeas.ListNotesRequest],
-            grafeas.ListNotesResponse]:
+    def list_notes(
+        self,
+    ) -> Callable[[grafeas.ListNotesRequest], grafeas.ListNotesResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListNotes(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListNotes(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def list_occurrences(self) -> Callable[
-            [grafeas.ListOccurrencesRequest],
-            grafeas.ListOccurrencesResponse]:
+    def list_occurrences(
+        self,
+    ) -> Callable[[grafeas.ListOccurrencesRequest], grafeas.ListOccurrencesResponse]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._ListOccurrences(self._session, self._host, self._interceptor) # type: ignore
+        return self._ListOccurrences(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_note(self) -> Callable[
-            [grafeas.UpdateNoteRequest],
-            grafeas.Note]:
+    def update_note(self) -> Callable[[grafeas.UpdateNoteRequest], grafeas.Note]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateNote(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateNote(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
-    def update_occurrence(self) -> Callable[
-            [grafeas.UpdateOccurrenceRequest],
-            grafeas.Occurrence]:
+    def update_occurrence(
+        self,
+    ) -> Callable[[grafeas.UpdateOccurrenceRequest], grafeas.Occurrence]:
         # The return type is fine, but mypy isn't sophisticated enough to determine what's going on here.
         # In C++ this would require a dynamic_cast
-        return self._UpdateOccurrence(self._session, self._host, self._interceptor) # type: ignore
+        return self._UpdateOccurrence(self._session, self._host, self._interceptor)  # type: ignore
 
     @property
     def kind(self) -> str:
@@ -1759,6 +1959,4 @@ class GrafeasRestTransport(GrafeasTransport):
         self._session.close()
 
 
-__all__=(
-    'GrafeasRestTransport',
-)
+__all__ = ("GrafeasRestTransport",)
