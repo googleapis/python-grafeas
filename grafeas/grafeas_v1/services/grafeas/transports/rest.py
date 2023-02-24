@@ -30,7 +30,7 @@ from google.protobuf import json_format
 from requests import __version__ as requests_version
 import dataclasses
 import re
-from typing import Callable, Dict, List, Optional, Sequence, Tuple, Union
+from typing import Any, Callable, Dict, List, Optional, Sequence, Tuple, Union
 import warnings
 
 try:
@@ -571,7 +571,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("BatchCreateNotes")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -668,7 +668,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("BatchCreateOccurrences")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -769,7 +769,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("CreateNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {
             "noteId": "",
         }
 
@@ -868,7 +868,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("CreateOccurrence")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -967,7 +967,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("DeleteNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1041,7 +1041,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("DeleteOccurrence")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1117,7 +1117,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("GetNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1205,7 +1205,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("GetOccurrence")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1293,7 +1293,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("GetOccurrenceNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1385,7 +1385,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("ListNoteOccurrences")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1477,7 +1477,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("ListNotes")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1563,7 +1563,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("ListOccurrences")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1651,7 +1651,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("UpdateNote")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
@@ -1748,7 +1748,7 @@ class GrafeasRestTransport(GrafeasTransport):
         def __hash__(self):
             return hash("UpdateOccurrence")
 
-        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, str] = {}
+        __REQUIRED_FIELDS_DEFAULT_VALUES: Dict[str, Any] = {}
 
         @classmethod
         def _get_unset_required_fields(cls, message_dict):
