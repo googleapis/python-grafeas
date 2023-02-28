@@ -190,6 +190,7 @@ def test_get_occurrence""",
     """@pytest.mark.parametrize\("transport_name", \[
     "grpc",
     "grpc_asyncio",
+    "rest",
 \]\)
 def test_grafeas_host_no_port.*?def test_grafeas_grpc_transport_channel""",
     """def test_grafeas_grpc_transport_channel""",
