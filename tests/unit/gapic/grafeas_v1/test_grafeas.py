@@ -4841,6 +4841,7 @@ def test_create_occurrence_rest(request_type):
             "effective_severity": 1,
             "fix_available": True,
             "cvss_version": 1,
+            "cvss_v2": {},
         },
         "build": {
             "provenance": {
@@ -5319,6 +5320,7 @@ def test_create_occurrence_rest_bad_request(
             "effective_severity": 1,
             "fix_available": True,
             "cvss_version": 1,
+            "cvss_v2": {},
         },
         "build": {
             "provenance": {
@@ -5961,6 +5963,7 @@ def test_update_occurrence_rest(request_type):
             "effective_severity": 1,
             "fix_available": True,
             "cvss_version": 1,
+            "cvss_v2": {},
         },
         "build": {
             "provenance": {
@@ -6441,6 +6444,7 @@ def test_update_occurrence_rest_bad_request(
             "effective_severity": 1,
             "fix_available": True,
             "cvss_version": 1,
+            "cvss_v2": {},
         },
         "build": {
             "provenance": {
@@ -7917,6 +7921,20 @@ def test_create_note_rest(request_type):
             ],
             "source_update_time": {},
             "cvss_version": 1,
+            "cvss_v2": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "authentication": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
         },
         "build": {"builder_version": "builder_version_value"},
         "image": {
@@ -8261,6 +8279,20 @@ def test_create_note_rest_bad_request(
             ],
             "source_update_time": {},
             "cvss_version": 1,
+            "cvss_v2": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "authentication": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
         },
         "build": {"builder_version": "builder_version_value"},
         "image": {
@@ -8758,6 +8790,20 @@ def test_update_note_rest(request_type):
             ],
             "source_update_time": {},
             "cvss_version": 1,
+            "cvss_v2": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "authentication": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
         },
         "build": {"builder_version": "builder_version_value"},
         "image": {
@@ -9088,6 +9134,20 @@ def test_update_note_rest_bad_request(
             ],
             "source_update_time": {},
             "cvss_version": 1,
+            "cvss_v2": {
+                "base_score": 0.1046,
+                "exploitability_score": 0.21580000000000002,
+                "impact_score": 0.1273,
+                "attack_vector": 1,
+                "attack_complexity": 1,
+                "authentication": 1,
+                "privileges_required": 1,
+                "user_interaction": 1,
+                "scope": 1,
+                "confidentiality_impact": 1,
+                "integrity_impact": 1,
+                "availability_impact": 1,
+            },
         },
         "build": {"builder_version": "builder_version_value"},
         "image": {
