@@ -310,13 +310,18 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
         self,
         *,
         transport: Union[str, GrafeasTransport] = None,
+        credentials: Optional[ga_credentials.Credentials] = None,
     ) -> None:
         """Instantiate the grafeas client.
 
         Args:
             transport (Union[str, ~.GrafeasTransport]): The
                 transport to use.
-
+            credentials (Optional[google.auth.credentials.Credentials]): The
+                authorization credentials to attach to requests. These
+                credentials identify the application to the service; if none
+                are specified, the client will attempt to ascertain the
+                credentials from the environment.
 
         Raises:
             google.auth.exceptions.MutualTLSChannelError: If mutual TLS transport
@@ -327,7 +332,7 @@ class GrafeasClient(metaclass=GrafeasClientMeta):
             self._transport = transport
         else:
             Transport = type(self).get_transport_class(transport)
-            self._transport = Transport()
+            self._transport = Transport(credentials=credentials)
 
     def get_occurrence(
         self,

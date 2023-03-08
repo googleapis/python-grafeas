@@ -89,6 +89,7 @@ def client_cert_source_callback():
 )
 def test_get_occurrence(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -127,6 +128,7 @@ def test_get_occurrence_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -143,6 +145,7 @@ async def test_get_occurrence_async(
     transport: str = "grpc_asyncio", request_type=grafeas.GetOccurrenceRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -184,7 +187,9 @@ async def test_get_occurrence_async_from_dict():
 
 
 def test_get_occurrence_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -212,7 +217,9 @@ def test_get_occurrence_field_headers():
 
 @pytest.mark.asyncio
 async def test_get_occurrence_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -239,7 +246,9 @@ async def test_get_occurrence_field_headers_async():
 
 
 def test_get_occurrence_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.get_occurrence), "__call__") as call:
@@ -261,7 +270,9 @@ def test_get_occurrence_flattened():
 
 
 def test_get_occurrence_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -274,7 +285,9 @@ def test_get_occurrence_flattened_error():
 
 @pytest.mark.asyncio
 async def test_get_occurrence_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.get_occurrence), "__call__") as call:
@@ -299,7 +312,9 @@ async def test_get_occurrence_flattened_async():
 
 @pytest.mark.asyncio
 async def test_get_occurrence_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -319,6 +334,7 @@ async def test_get_occurrence_flattened_error_async():
 )
 def test_list_occurrences(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -348,6 +364,7 @@ def test_list_occurrences_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -364,6 +381,7 @@ async def test_list_occurrences_async(
     transport: str = "grpc_asyncio", request_type=grafeas.ListOccurrencesRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -397,7 +415,9 @@ async def test_list_occurrences_async_from_dict():
 
 
 def test_list_occurrences_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -425,7 +445,9 @@ def test_list_occurrences_field_headers():
 
 @pytest.mark.asyncio
 async def test_list_occurrences_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -454,7 +476,9 @@ async def test_list_occurrences_field_headers_async():
 
 
 def test_list_occurrences_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.list_occurrences), "__call__") as call:
@@ -480,7 +504,9 @@ def test_list_occurrences_flattened():
 
 
 def test_list_occurrences_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -494,7 +520,9 @@ def test_list_occurrences_flattened_error():
 
 @pytest.mark.asyncio
 async def test_list_occurrences_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.list_occurrences), "__call__") as call:
@@ -525,7 +553,9 @@ async def test_list_occurrences_flattened_async():
 
 @pytest.mark.asyncio
 async def test_list_occurrences_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -539,6 +569,7 @@ async def test_list_occurrences_flattened_error_async():
 
 def test_list_occurrences_pager(transport_name: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials,
         transport=transport_name,
     )
 
@@ -588,6 +619,7 @@ def test_list_occurrences_pager(transport_name: str = "grpc"):
 
 def test_list_occurrences_pages(transport_name: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials,
         transport=transport_name,
     )
 
@@ -628,7 +660,9 @@ def test_list_occurrences_pages(transport_name: str = "grpc"):
 
 @pytest.mark.asyncio
 async def test_list_occurrences_async_pager():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials,
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -676,7 +710,9 @@ async def test_list_occurrences_async_pager():
 
 @pytest.mark.asyncio
 async def test_list_occurrences_async_pages():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials,
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -728,6 +764,7 @@ async def test_list_occurrences_async_pages():
 )
 def test_delete_occurrence(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -756,6 +793,7 @@ def test_delete_occurrence_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -774,6 +812,7 @@ async def test_delete_occurrence_async(
     transport: str = "grpc_asyncio", request_type=grafeas.DeleteOccurrenceRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -804,7 +843,9 @@ async def test_delete_occurrence_async_from_dict():
 
 
 def test_delete_occurrence_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -834,7 +875,9 @@ def test_delete_occurrence_field_headers():
 
 @pytest.mark.asyncio
 async def test_delete_occurrence_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -863,7 +906,9 @@ async def test_delete_occurrence_field_headers_async():
 
 
 def test_delete_occurrence_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -887,7 +932,9 @@ def test_delete_occurrence_flattened():
 
 
 def test_delete_occurrence_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -900,7 +947,9 @@ def test_delete_occurrence_flattened_error():
 
 @pytest.mark.asyncio
 async def test_delete_occurrence_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -927,7 +976,9 @@ async def test_delete_occurrence_flattened_async():
 
 @pytest.mark.asyncio
 async def test_delete_occurrence_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -947,6 +998,7 @@ async def test_delete_occurrence_flattened_error_async():
 )
 def test_create_occurrence(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -987,6 +1039,7 @@ def test_create_occurrence_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -1005,6 +1058,7 @@ async def test_create_occurrence_async(
     transport: str = "grpc_asyncio", request_type=grafeas.CreateOccurrenceRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -1048,7 +1102,9 @@ async def test_create_occurrence_async_from_dict():
 
 
 def test_create_occurrence_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -1078,7 +1134,9 @@ def test_create_occurrence_field_headers():
 
 @pytest.mark.asyncio
 async def test_create_occurrence_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -1107,7 +1165,9 @@ async def test_create_occurrence_field_headers_async():
 
 
 def test_create_occurrence_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1135,7 +1195,9 @@ def test_create_occurrence_flattened():
 
 
 def test_create_occurrence_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1149,7 +1211,9 @@ def test_create_occurrence_flattened_error():
 
 @pytest.mark.asyncio
 async def test_create_occurrence_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1180,7 +1244,9 @@ async def test_create_occurrence_flattened_async():
 
 @pytest.mark.asyncio
 async def test_create_occurrence_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1201,6 +1267,7 @@ async def test_create_occurrence_flattened_error_async():
 )
 def test_batch_create_occurrences(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -1229,6 +1296,7 @@ def test_batch_create_occurrences_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -1247,6 +1315,7 @@ async def test_batch_create_occurrences_async(
     transport: str = "grpc_asyncio", request_type=grafeas.BatchCreateOccurrencesRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -1279,7 +1348,9 @@ async def test_batch_create_occurrences_async_from_dict():
 
 
 def test_batch_create_occurrences_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -1309,7 +1380,9 @@ def test_batch_create_occurrences_field_headers():
 
 @pytest.mark.asyncio
 async def test_batch_create_occurrences_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -1340,7 +1413,9 @@ async def test_batch_create_occurrences_field_headers_async():
 
 
 def test_batch_create_occurrences_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1368,7 +1443,9 @@ def test_batch_create_occurrences_flattened():
 
 
 def test_batch_create_occurrences_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1382,7 +1459,9 @@ def test_batch_create_occurrences_flattened_error():
 
 @pytest.mark.asyncio
 async def test_batch_create_occurrences_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1415,7 +1494,9 @@ async def test_batch_create_occurrences_flattened_async():
 
 @pytest.mark.asyncio
 async def test_batch_create_occurrences_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1436,6 +1517,7 @@ async def test_batch_create_occurrences_flattened_error_async():
 )
 def test_update_occurrence(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -1476,6 +1558,7 @@ def test_update_occurrence_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -1494,6 +1577,7 @@ async def test_update_occurrence_async(
     transport: str = "grpc_asyncio", request_type=grafeas.UpdateOccurrenceRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -1537,7 +1621,9 @@ async def test_update_occurrence_async_from_dict():
 
 
 def test_update_occurrence_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -1567,7 +1653,9 @@ def test_update_occurrence_field_headers():
 
 @pytest.mark.asyncio
 async def test_update_occurrence_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -1596,7 +1684,9 @@ async def test_update_occurrence_field_headers_async():
 
 
 def test_update_occurrence_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1628,7 +1718,9 @@ def test_update_occurrence_flattened():
 
 
 def test_update_occurrence_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1643,7 +1735,9 @@ def test_update_occurrence_flattened_error():
 
 @pytest.mark.asyncio
 async def test_update_occurrence_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1678,7 +1772,9 @@ async def test_update_occurrence_flattened_async():
 
 @pytest.mark.asyncio
 async def test_update_occurrence_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1700,6 +1796,7 @@ async def test_update_occurrence_flattened_error_async():
 )
 def test_get_occurrence_note(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -1740,6 +1837,7 @@ def test_get_occurrence_note_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -1758,6 +1856,7 @@ async def test_get_occurrence_note_async(
     transport: str = "grpc_asyncio", request_type=grafeas.GetOccurrenceNoteRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -1801,7 +1900,9 @@ async def test_get_occurrence_note_async_from_dict():
 
 
 def test_get_occurrence_note_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -1831,7 +1932,9 @@ def test_get_occurrence_note_field_headers():
 
 @pytest.mark.asyncio
 async def test_get_occurrence_note_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -1860,7 +1963,9 @@ async def test_get_occurrence_note_field_headers_async():
 
 
 def test_get_occurrence_note_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1884,7 +1989,9 @@ def test_get_occurrence_note_flattened():
 
 
 def test_get_occurrence_note_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1897,7 +2004,9 @@ def test_get_occurrence_note_flattened_error():
 
 @pytest.mark.asyncio
 async def test_get_occurrence_note_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -1924,7 +2033,9 @@ async def test_get_occurrence_note_flattened_async():
 
 @pytest.mark.asyncio
 async def test_get_occurrence_note_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -1944,6 +2055,7 @@ async def test_get_occurrence_note_flattened_error_async():
 )
 def test_get_note(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -1982,6 +2094,7 @@ def test_get_note_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -1998,6 +2111,7 @@ async def test_get_note_async(
     transport: str = "grpc_asyncio", request_type=grafeas.GetNoteRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -2039,7 +2153,9 @@ async def test_get_note_async_from_dict():
 
 
 def test_get_note_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -2067,7 +2183,9 @@ def test_get_note_field_headers():
 
 @pytest.mark.asyncio
 async def test_get_note_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -2094,7 +2212,9 @@ async def test_get_note_field_headers_async():
 
 
 def test_get_note_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.get_note), "__call__") as call:
@@ -2116,7 +2236,9 @@ def test_get_note_flattened():
 
 
 def test_get_note_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -2129,7 +2251,9 @@ def test_get_note_flattened_error():
 
 @pytest.mark.asyncio
 async def test_get_note_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.get_note), "__call__") as call:
@@ -2154,7 +2278,9 @@ async def test_get_note_flattened_async():
 
 @pytest.mark.asyncio
 async def test_get_note_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -2174,6 +2300,7 @@ async def test_get_note_flattened_error_async():
 )
 def test_list_notes(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -2203,6 +2330,7 @@ def test_list_notes_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -2219,6 +2347,7 @@ async def test_list_notes_async(
     transport: str = "grpc_asyncio", request_type=grafeas.ListNotesRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -2252,7 +2381,9 @@ async def test_list_notes_async_from_dict():
 
 
 def test_list_notes_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -2280,7 +2411,9 @@ def test_list_notes_field_headers():
 
 @pytest.mark.asyncio
 async def test_list_notes_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -2309,7 +2442,9 @@ async def test_list_notes_field_headers_async():
 
 
 def test_list_notes_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.list_notes), "__call__") as call:
@@ -2335,7 +2470,9 @@ def test_list_notes_flattened():
 
 
 def test_list_notes_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -2349,7 +2486,9 @@ def test_list_notes_flattened_error():
 
 @pytest.mark.asyncio
 async def test_list_notes_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.list_notes), "__call__") as call:
@@ -2380,7 +2519,9 @@ async def test_list_notes_flattened_async():
 
 @pytest.mark.asyncio
 async def test_list_notes_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -2394,6 +2535,7 @@ async def test_list_notes_flattened_error_async():
 
 def test_list_notes_pager(transport_name: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials,
         transport=transport_name,
     )
 
@@ -2443,6 +2585,7 @@ def test_list_notes_pager(transport_name: str = "grpc"):
 
 def test_list_notes_pages(transport_name: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials,
         transport=transport_name,
     )
 
@@ -2483,7 +2626,9 @@ def test_list_notes_pages(transport_name: str = "grpc"):
 
 @pytest.mark.asyncio
 async def test_list_notes_async_pager():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials,
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -2531,7 +2676,9 @@ async def test_list_notes_async_pager():
 
 @pytest.mark.asyncio
 async def test_list_notes_async_pages():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials,
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -2583,6 +2730,7 @@ async def test_list_notes_async_pages():
 )
 def test_delete_note(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -2609,6 +2757,7 @@ def test_delete_note_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -2625,6 +2774,7 @@ async def test_delete_note_async(
     transport: str = "grpc_asyncio", request_type=grafeas.DeleteNoteRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -2653,7 +2803,9 @@ async def test_delete_note_async_from_dict():
 
 
 def test_delete_note_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -2681,7 +2833,9 @@ def test_delete_note_field_headers():
 
 @pytest.mark.asyncio
 async def test_delete_note_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -2708,7 +2862,9 @@ async def test_delete_note_field_headers_async():
 
 
 def test_delete_note_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.delete_note), "__call__") as call:
@@ -2730,7 +2886,9 @@ def test_delete_note_flattened():
 
 
 def test_delete_note_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -2743,7 +2901,9 @@ def test_delete_note_flattened_error():
 
 @pytest.mark.asyncio
 async def test_delete_note_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.delete_note), "__call__") as call:
@@ -2768,7 +2928,9 @@ async def test_delete_note_flattened_async():
 
 @pytest.mark.asyncio
 async def test_delete_note_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -2788,6 +2950,7 @@ async def test_delete_note_flattened_error_async():
 )
 def test_create_note(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -2826,6 +2989,7 @@ def test_create_note_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -2842,6 +3006,7 @@ async def test_create_note_async(
     transport: str = "grpc_asyncio", request_type=grafeas.CreateNoteRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -2883,7 +3048,9 @@ async def test_create_note_async_from_dict():
 
 
 def test_create_note_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -2911,7 +3078,9 @@ def test_create_note_field_headers():
 
 @pytest.mark.asyncio
 async def test_create_note_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -2938,7 +3107,9 @@ async def test_create_note_field_headers_async():
 
 
 def test_create_note_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.create_note), "__call__") as call:
@@ -2968,7 +3139,9 @@ def test_create_note_flattened():
 
 
 def test_create_note_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -2983,7 +3156,9 @@ def test_create_note_flattened_error():
 
 @pytest.mark.asyncio
 async def test_create_note_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.create_note), "__call__") as call:
@@ -3016,7 +3191,9 @@ async def test_create_note_flattened_async():
 
 @pytest.mark.asyncio
 async def test_create_note_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -3038,6 +3215,7 @@ async def test_create_note_flattened_error_async():
 )
 def test_batch_create_notes(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -3066,6 +3244,7 @@ def test_batch_create_notes_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -3084,6 +3263,7 @@ async def test_batch_create_notes_async(
     transport: str = "grpc_asyncio", request_type=grafeas.BatchCreateNotesRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -3116,7 +3296,9 @@ async def test_batch_create_notes_async_from_dict():
 
 
 def test_batch_create_notes_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -3146,7 +3328,9 @@ def test_batch_create_notes_field_headers():
 
 @pytest.mark.asyncio
 async def test_batch_create_notes_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -3177,7 +3361,9 @@ async def test_batch_create_notes_field_headers_async():
 
 
 def test_batch_create_notes_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -3205,7 +3391,9 @@ def test_batch_create_notes_flattened():
 
 
 def test_batch_create_notes_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -3219,7 +3407,9 @@ def test_batch_create_notes_flattened_error():
 
 @pytest.mark.asyncio
 async def test_batch_create_notes_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -3252,7 +3442,9 @@ async def test_batch_create_notes_flattened_async():
 
 @pytest.mark.asyncio
 async def test_batch_create_notes_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -3273,6 +3465,7 @@ async def test_batch_create_notes_flattened_error_async():
 )
 def test_update_note(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -3311,6 +3504,7 @@ def test_update_note_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -3327,6 +3521,7 @@ async def test_update_note_async(
     transport: str = "grpc_asyncio", request_type=grafeas.UpdateNoteRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -3368,7 +3563,9 @@ async def test_update_note_async_from_dict():
 
 
 def test_update_note_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -3396,7 +3593,9 @@ def test_update_note_field_headers():
 
 @pytest.mark.asyncio
 async def test_update_note_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -3423,7 +3622,9 @@ async def test_update_note_field_headers_async():
 
 
 def test_update_note_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.update_note), "__call__") as call:
@@ -3453,7 +3654,9 @@ def test_update_note_flattened():
 
 
 def test_update_note_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -3468,7 +3671,9 @@ def test_update_note_flattened_error():
 
 @pytest.mark.asyncio
 async def test_update_note_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(type(client.transport.update_note), "__call__") as call:
@@ -3501,7 +3706,9 @@ async def test_update_note_flattened_async():
 
 @pytest.mark.asyncio
 async def test_update_note_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -3523,6 +3730,7 @@ async def test_update_note_flattened_error_async():
 )
 def test_list_note_occurrences(request_type, transport: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -3554,6 +3762,7 @@ def test_list_note_occurrences_empty_call():
     # This test is a coverage failsafe to make sure that totally empty calls,
     # i.e. request == None and no flattened fields passed, work.
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc",
     )
 
@@ -3572,6 +3781,7 @@ async def test_list_note_occurrences_async(
     transport: str = "grpc_asyncio", request_type=grafeas.ListNoteOccurrencesRequest
 ):
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -3607,7 +3817,9 @@ async def test_list_note_occurrences_async_from_dict():
 
 
 def test_list_note_occurrences_field_headers():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -3637,7 +3849,9 @@ def test_list_note_occurrences_field_headers():
 
 @pytest.mark.asyncio
 async def test_list_note_occurrences_field_headers_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Any value that is part of the HTTP/1.1 URI should be sent as
     # a field header. Set these to a non-empty value.
@@ -3668,7 +3882,9 @@ async def test_list_note_occurrences_field_headers_async():
 
 
 def test_list_note_occurrences_flattened():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -3696,7 +3912,9 @@ def test_list_note_occurrences_flattened():
 
 
 def test_list_note_occurrences_flattened_error():
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -3710,7 +3928,9 @@ def test_list_note_occurrences_flattened_error():
 
 @pytest.mark.asyncio
 async def test_list_note_occurrences_flattened_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -3743,7 +3963,9 @@ async def test_list_note_occurrences_flattened_async():
 
 @pytest.mark.asyncio
 async def test_list_note_occurrences_flattened_error_async():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
 
     # Attempting to call a method with both a request object and flattened
     # fields is an error.
@@ -3757,6 +3979,7 @@ async def test_list_note_occurrences_flattened_error_async():
 
 def test_list_note_occurrences_pager(transport_name: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials,
         transport=transport_name,
     )
 
@@ -3808,6 +4031,7 @@ def test_list_note_occurrences_pager(transport_name: str = "grpc"):
 
 def test_list_note_occurrences_pages(transport_name: str = "grpc"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials,
         transport=transport_name,
     )
 
@@ -3850,7 +4074,9 @@ def test_list_note_occurrences_pages(transport_name: str = "grpc"):
 
 @pytest.mark.asyncio
 async def test_list_note_occurrences_async_pager():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials,
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -3900,7 +4126,9 @@ async def test_list_note_occurrences_async_pager():
 
 @pytest.mark.asyncio
 async def test_list_note_occurrences_async_pages():
-    client = GrafeasAsyncClient()
+    client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials,
+    )
 
     # Mock the actual call within the gRPC stub, and fake the request.
     with mock.patch.object(
@@ -3954,6 +4182,7 @@ async def test_list_note_occurrences_async_pages():
 )
 def test_get_occurrence_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -4028,6 +4257,7 @@ def test_get_occurrence_rest_required_fields(request_type=grafeas.GetOccurrenceR
     assert jsonified_request["name"] == "name_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -4078,6 +4308,7 @@ def test_get_occurrence_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_get_occurrence_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -4129,6 +4360,7 @@ def test_get_occurrence_rest_bad_request(
     transport: str = "rest", request_type=grafeas.GetOccurrenceRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -4150,6 +4382,7 @@ def test_get_occurrence_rest_bad_request(
 
 def test_get_occurrence_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -4188,6 +4421,7 @@ def test_get_occurrence_rest_flattened():
 
 def test_get_occurrence_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -4201,7 +4435,9 @@ def test_get_occurrence_rest_flattened_error(transport: str = "rest"):
 
 
 def test_get_occurrence_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -4213,6 +4449,7 @@ def test_get_occurrence_rest_error():
 )
 def test_list_occurrences_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -4288,6 +4525,7 @@ def test_list_occurrences_rest_required_fields(
     assert jsonified_request["parent"] == "parent_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -4347,6 +4585,7 @@ def test_list_occurrences_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_list_occurrences_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -4400,6 +4639,7 @@ def test_list_occurrences_rest_bad_request(
     transport: str = "rest", request_type=grafeas.ListOccurrencesRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -4421,6 +4661,7 @@ def test_list_occurrences_rest_bad_request(
 
 def test_list_occurrences_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -4460,6 +4701,7 @@ def test_list_occurrences_rest_flattened():
 
 def test_list_occurrences_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -4475,6 +4717,7 @@ def test_list_occurrences_rest_flattened_error(transport: str = "rest"):
 
 def test_list_occurrences_rest_pager(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -4542,6 +4785,7 @@ def test_list_occurrences_rest_pager(transport: str = "rest"):
 )
 def test_delete_occurrence_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -4605,6 +4849,7 @@ def test_delete_occurrence_rest_required_fields(
     assert jsonified_request["name"] == "name_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -4653,6 +4898,7 @@ def test_delete_occurrence_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_delete_occurrence_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -4700,6 +4946,7 @@ def test_delete_occurrence_rest_bad_request(
     transport: str = "rest", request_type=grafeas.DeleteOccurrenceRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -4721,6 +4968,7 @@ def test_delete_occurrence_rest_bad_request(
 
 def test_delete_occurrence_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -4758,6 +5006,7 @@ def test_delete_occurrence_rest_flattened():
 
 def test_delete_occurrence_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -4771,7 +5020,9 @@ def test_delete_occurrence_rest_flattened_error(transport: str = "rest"):
 
 
 def test_delete_occurrence_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -4783,6 +5034,7 @@ def test_delete_occurrence_rest_error():
 )
 def test_create_occurrence_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -5150,6 +5402,7 @@ def test_create_occurrence_rest_required_fields(
     assert jsonified_request["parent"] == "parent_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -5209,6 +5462,7 @@ def test_create_occurrence_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_create_occurrence_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -5262,6 +5516,7 @@ def test_create_occurrence_rest_bad_request(
     transport: str = "rest", request_type=grafeas.CreateOccurrenceRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -5574,6 +5829,7 @@ def test_create_occurrence_rest_bad_request(
 
 def test_create_occurrence_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -5613,6 +5869,7 @@ def test_create_occurrence_rest_flattened():
 
 def test_create_occurrence_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -5627,7 +5884,9 @@ def test_create_occurrence_rest_flattened_error(transport: str = "rest"):
 
 
 def test_create_occurrence_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -5639,6 +5898,7 @@ def test_create_occurrence_rest_error():
 )
 def test_batch_create_occurrences_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -5703,6 +5963,7 @@ def test_batch_create_occurrences_rest_required_fields(
     assert jsonified_request["parent"] == "parent_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -5762,6 +6023,7 @@ def test_batch_create_occurrences_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_batch_create_occurrences_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -5817,6 +6079,7 @@ def test_batch_create_occurrences_rest_bad_request(
     transport: str = "rest", request_type=grafeas.BatchCreateOccurrencesRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -5838,6 +6101,7 @@ def test_batch_create_occurrences_rest_bad_request(
 
 def test_batch_create_occurrences_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -5879,6 +6143,7 @@ def test_batch_create_occurrences_rest_flattened():
 
 def test_batch_create_occurrences_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -5893,7 +6158,9 @@ def test_batch_create_occurrences_rest_flattened_error(transport: str = "rest"):
 
 
 def test_batch_create_occurrences_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -5905,6 +6172,7 @@ def test_batch_create_occurrences_rest_error():
 )
 def test_update_occurrence_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -6274,6 +6542,7 @@ def test_update_occurrence_rest_required_fields(
     assert jsonified_request["name"] == "name_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -6333,6 +6602,7 @@ def test_update_occurrence_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_update_occurrence_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -6386,6 +6656,7 @@ def test_update_occurrence_rest_bad_request(
     transport: str = "rest", request_type=grafeas.UpdateOccurrenceRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -6698,6 +6969,7 @@ def test_update_occurrence_rest_bad_request(
 
 def test_update_occurrence_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -6738,6 +7010,7 @@ def test_update_occurrence_rest_flattened():
 
 def test_update_occurrence_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -6753,7 +7026,9 @@ def test_update_occurrence_rest_flattened_error(transport: str = "rest"):
 
 
 def test_update_occurrence_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -6765,6 +7040,7 @@ def test_update_occurrence_rest_error():
 )
 def test_get_occurrence_note_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -6841,6 +7117,7 @@ def test_get_occurrence_note_rest_required_fields(
     assert jsonified_request["name"] == "name_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -6891,6 +7168,7 @@ def test_get_occurrence_note_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_get_occurrence_note_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -6944,6 +7222,7 @@ def test_get_occurrence_note_rest_bad_request(
     transport: str = "rest", request_type=grafeas.GetOccurrenceNoteRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -6965,6 +7244,7 @@ def test_get_occurrence_note_rest_bad_request(
 
 def test_get_occurrence_note_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -7004,6 +7284,7 @@ def test_get_occurrence_note_rest_flattened():
 
 def test_get_occurrence_note_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -7017,7 +7298,9 @@ def test_get_occurrence_note_rest_flattened_error(transport: str = "rest"):
 
 
 def test_get_occurrence_note_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -7029,6 +7312,7 @@ def test_get_occurrence_note_rest_error():
 )
 def test_get_note_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -7103,6 +7387,7 @@ def test_get_note_rest_required_fields(request_type=grafeas.GetNoteRequest):
     assert jsonified_request["name"] == "name_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -7153,6 +7438,7 @@ def test_get_note_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_get_note_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -7204,6 +7490,7 @@ def test_get_note_rest_bad_request(
     transport: str = "rest", request_type=grafeas.GetNoteRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -7225,6 +7512,7 @@ def test_get_note_rest_bad_request(
 
 def test_get_note_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -7263,6 +7551,7 @@ def test_get_note_rest_flattened():
 
 def test_get_note_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -7276,7 +7565,9 @@ def test_get_note_rest_flattened_error(transport: str = "rest"):
 
 
 def test_get_note_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -7288,6 +7579,7 @@ def test_get_note_rest_error():
 )
 def test_list_notes_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -7361,6 +7653,7 @@ def test_list_notes_rest_required_fields(request_type=grafeas.ListNotesRequest):
     assert jsonified_request["parent"] == "parent_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -7420,6 +7713,7 @@ def test_list_notes_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_list_notes_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -7473,6 +7767,7 @@ def test_list_notes_rest_bad_request(
     transport: str = "rest", request_type=grafeas.ListNotesRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -7494,6 +7789,7 @@ def test_list_notes_rest_bad_request(
 
 def test_list_notes_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -7533,6 +7829,7 @@ def test_list_notes_rest_flattened():
 
 def test_list_notes_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -7548,6 +7845,7 @@ def test_list_notes_rest_flattened_error(transport: str = "rest"):
 
 def test_list_notes_rest_pager(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -7615,6 +7913,7 @@ def test_list_notes_rest_pager(transport: str = "rest"):
 )
 def test_delete_note_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -7676,6 +7975,7 @@ def test_delete_note_rest_required_fields(request_type=grafeas.DeleteNoteRequest
     assert jsonified_request["name"] == "name_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -7724,6 +8024,7 @@ def test_delete_note_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_delete_note_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -7769,6 +8070,7 @@ def test_delete_note_rest_bad_request(
     transport: str = "rest", request_type=grafeas.DeleteNoteRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -7790,6 +8092,7 @@ def test_delete_note_rest_bad_request(
 
 def test_delete_note_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -7827,6 +8130,7 @@ def test_delete_note_rest_flattened():
 
 def test_delete_note_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -7840,7 +8144,9 @@ def test_delete_note_rest_flattened_error(transport: str = "rest"):
 
 
 def test_delete_note_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -7852,6 +8158,7 @@ def test_delete_note_rest_error():
 )
 def test_create_note_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -8093,6 +8400,7 @@ def test_create_note_rest_required_fields(request_type=grafeas.CreateNoteRequest
     assert jsonified_request["noteId"] == "note_id_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -8159,6 +8467,7 @@ def test_create_note_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_create_note_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -8210,6 +8519,7 @@ def test_create_note_rest_bad_request(
     transport: str = "rest", request_type=grafeas.CreateNoteRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -8389,6 +8699,7 @@ def test_create_note_rest_bad_request(
 
 def test_create_note_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -8429,6 +8740,7 @@ def test_create_note_rest_flattened():
 
 def test_create_note_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -8444,7 +8756,9 @@ def test_create_note_rest_flattened_error(transport: str = "rest"):
 
 
 def test_create_note_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -8456,6 +8770,7 @@ def test_create_note_rest_error():
 )
 def test_batch_create_notes_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -8520,6 +8835,7 @@ def test_batch_create_notes_rest_required_fields(
     assert jsonified_request["parent"] == "parent_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -8579,6 +8895,7 @@ def test_batch_create_notes_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_batch_create_notes_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -8634,6 +8951,7 @@ def test_batch_create_notes_rest_bad_request(
     transport: str = "rest", request_type=grafeas.BatchCreateNotesRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -8655,6 +8973,7 @@ def test_batch_create_notes_rest_bad_request(
 
 def test_batch_create_notes_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -8695,6 +9014,7 @@ def test_batch_create_notes_rest_flattened():
 
 def test_batch_create_notes_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -8709,7 +9029,9 @@ def test_batch_create_notes_rest_flattened_error(transport: str = "rest"):
 
 
 def test_batch_create_notes_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -8721,6 +9043,7 @@ def test_batch_create_notes_rest_error():
 )
 def test_update_note_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -8955,6 +9278,7 @@ def test_update_note_rest_required_fields(request_type=grafeas.UpdateNoteRequest
     assert jsonified_request["name"] == "name_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -9014,6 +9338,7 @@ def test_update_note_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_update_note_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -9065,6 +9390,7 @@ def test_update_note_rest_bad_request(
     transport: str = "rest", request_type=grafeas.UpdateNoteRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -9244,6 +9570,7 @@ def test_update_note_rest_bad_request(
 
 def test_update_note_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -9284,6 +9611,7 @@ def test_update_note_rest_flattened():
 
 def test_update_note_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -9299,7 +9627,9 @@ def test_update_note_rest_flattened_error(transport: str = "rest"):
 
 
 def test_update_note_rest_error():
-    client = GrafeasClient(transport="rest")
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(), transport="rest"
+    )
 
 
 @pytest.mark.parametrize(
@@ -9311,6 +9641,7 @@ def test_update_note_rest_error():
 )
 def test_list_note_occurrences_rest(request_type):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -9386,6 +9717,7 @@ def test_list_note_occurrences_rest_required_fields(
     assert jsonified_request["name"] == "name_value"
 
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
     request = request_type(**request_init)
@@ -9445,6 +9777,7 @@ def test_list_note_occurrences_rest_unset_required_fields():
 @pytest.mark.parametrize("null_interceptor", [True, False])
 def test_list_note_occurrences_rest_interceptors(null_interceptor):
     transport = transports.GrafeasRestTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
         interceptor=None if null_interceptor else transports.GrafeasRestInterceptor(),
     )
     client = GrafeasClient(transport=transport)
@@ -9500,6 +9833,7 @@ def test_list_note_occurrences_rest_bad_request(
     transport: str = "rest", request_type=grafeas.ListNoteOccurrencesRequest
 ):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -9521,6 +9855,7 @@ def test_list_note_occurrences_rest_bad_request(
 
 def test_list_note_occurrences_rest_flattened():
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="rest",
     )
 
@@ -9561,6 +9896,7 @@ def test_list_note_occurrences_rest_flattened():
 
 def test_list_note_occurrences_rest_flattened_error(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -9576,6 +9912,7 @@ def test_list_note_occurrences_rest_flattened_error(transport: str = "rest"):
 
 def test_list_note_occurrences_rest_pager(transport: str = "rest"):
     client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport=transport,
     )
 
@@ -9638,18 +9975,24 @@ def test_list_note_occurrences_rest_pager(transport: str = "rest"):
 
 def test_transport_instance():
     # A client may be instantiated with a custom transport instance.
-    transport = transports.GrafeasGrpcTransport()
+    transport = transports.GrafeasGrpcTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
     client = GrafeasClient(transport=transport)
     assert client.transport is transport
 
 
 def test_transport_get_channel():
     # A client may be instantiated with a custom transport instance.
-    transport = transports.GrafeasGrpcTransport()
+    transport = transports.GrafeasGrpcTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
     channel = transport.grpc_channel
     assert channel
 
-    transport = transports.GrafeasGrpcAsyncIOTransport()
+    transport = transports.GrafeasGrpcAsyncIOTransport(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
     channel = transport.grpc_channel
     assert channel
 
@@ -9678,13 +10021,17 @@ def test_transport_adc(transport_class):
     ],
 )
 def test_transport_kind(transport_name):
-    transport = GrafeasClient.get_transport_class(transport_name)()
+    transport = GrafeasClient.get_transport_class(transport_name)(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
     assert transport.kind == transport_name
 
 
 def test_transport_grpc_default():
     # A client should use the gRPC transport by default.
-    client = GrafeasClient()
+    client = GrafeasClient(
+        credentials=ga_credentials.AnonymousCredentials(),
+    )
     assert isinstance(
         client.transport,
         transports.GrafeasGrpcTransport,
@@ -9697,7 +10044,9 @@ def test_grafeas_base_transport():
         "grafeas.grafeas_v1.services.grafeas.transports.GrafeasTransport.__init__"
     ) as Transport:
         Transport.return_value = None
-        transport = transports.GrafeasTransport()
+        transport = transports.GrafeasTransport(
+            credentials=ga_credentials.AnonymousCredentials(),
+        )
 
     # Every method on the transport should just blindly
     # raise NotImplementedError.
@@ -10198,6 +10547,7 @@ def test_parse_common_location_path():
 @pytest.mark.asyncio
 async def test_transport_close_async():
     client = GrafeasAsyncClient(
+        credentials=ga_credentials.AnonymousCredentials(),
         transport="grpc_asyncio",
     )
     with mock.patch.object(
@@ -10215,7 +10565,9 @@ def test_transport_close():
     }
 
     for transport, close_name in transports.items():
-        client = GrafeasClient(transport=transport)
+        client = GrafeasClient(
+            credentials=ga_credentials.AnonymousCredentials(), transport=transport
+        )
         with mock.patch.object(
             type(getattr(client.transport, close_name)), "close"
         ) as close:
@@ -10230,7 +10582,9 @@ def test_client_ctx():
         "grpc",
     ]
     for transport in transports:
-        client = GrafeasClient(transport=transport)
+        client = GrafeasClient(
+            credentials=ga_credentials.AnonymousCredentials(), transport=transport
+        )
         # Test client calls underlying transport.
         with mock.patch.object(type(client.transport), "close") as close:
             close.assert_not_called()
