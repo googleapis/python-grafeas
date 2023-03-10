@@ -23,9 +23,9 @@ from grafeas.grafeas_v1.types import common
 
 
 __protobuf__ = proto.module(
-    package='grafeas.v1',
+    package="grafeas.v1",
     manifest={
-        'VulnerabilityAssessmentNote',
+        "VulnerabilityAssessmentNote",
     },
 )
 
@@ -127,7 +127,7 @@ class VulnerabilityAssessmentNote(proto.Message):
         generic_uri: str = proto.Field(
             proto.STRING,
             number=3,
-            oneof='identifier',
+            oneof="identifier",
         )
 
     class Assessment(proto.Message):
@@ -164,6 +164,7 @@ class VulnerabilityAssessmentNote(proto.Message):
                 Specifies details on how to handle (and
                 presumably, fix) a vulnerability.
         """
+
         class State(proto.Enum):
             r"""Provides the state of this Vulnerability assessment.
 
@@ -202,6 +203,7 @@ class VulnerabilityAssessmentNote(proto.Message):
                     Additional details on why this justification
                     was chosen.
             """
+
             class JustificationType(proto.Enum):
                 r"""Provides the type of justification.
 
@@ -240,10 +242,10 @@ class VulnerabilityAssessmentNote(proto.Message):
                 VULNERABLE_CODE_CANNOT_BE_CONTROLLED_BY_ADVERSARY = 4
                 INLINE_MITIGATIONS_ALREADY_EXIST = 5
 
-            justification_type: 'VulnerabilityAssessmentNote.Assessment.Justification.JustificationType' = proto.Field(
+            justification_type: "VulnerabilityAssessmentNote.Assessment.Justification.JustificationType" = proto.Field(
                 proto.ENUM,
                 number=1,
-                enum='VulnerabilityAssessmentNote.Assessment.Justification.JustificationType',
+                enum="VulnerabilityAssessmentNote.Assessment.Justification.JustificationType",
             )
             details: str = proto.Field(
                 proto.STRING,
@@ -264,6 +266,7 @@ class VulnerabilityAssessmentNote(proto.Message):
                     Contains the URL where to obtain the
                     remediation.
             """
+
             class RemediationType(proto.Enum):
                 r"""The type of remediation that can be applied.
 
@@ -288,10 +291,10 @@ class VulnerabilityAssessmentNote(proto.Message):
                 VENDOR_FIX = 4
                 WORKAROUND = 5
 
-            remediation_type: 'VulnerabilityAssessmentNote.Assessment.Remediation.RemediationType' = proto.Field(
+            remediation_type: "VulnerabilityAssessmentNote.Assessment.Remediation.RemediationType" = proto.Field(
                 proto.ENUM,
                 number=1,
-                enum='VulnerabilityAssessmentNote.Assessment.Remediation.RemediationType',
+                enum="VulnerabilityAssessmentNote.Assessment.Remediation.RemediationType",
             )
             details: str = proto.Field(
                 proto.STRING,
@@ -320,24 +323,28 @@ class VulnerabilityAssessmentNote(proto.Message):
             number=4,
             message=common.RelatedUrl,
         )
-        state: 'VulnerabilityAssessmentNote.Assessment.State' = proto.Field(
+        state: "VulnerabilityAssessmentNote.Assessment.State" = proto.Field(
             proto.ENUM,
             number=5,
-            enum='VulnerabilityAssessmentNote.Assessment.State',
+            enum="VulnerabilityAssessmentNote.Assessment.State",
         )
         impacts: MutableSequence[str] = proto.RepeatedField(
             proto.STRING,
             number=6,
         )
-        justification: 'VulnerabilityAssessmentNote.Assessment.Justification' = proto.Field(
-            proto.MESSAGE,
-            number=7,
-            message='VulnerabilityAssessmentNote.Assessment.Justification',
+        justification: "VulnerabilityAssessmentNote.Assessment.Justification" = (
+            proto.Field(
+                proto.MESSAGE,
+                number=7,
+                message="VulnerabilityAssessmentNote.Assessment.Justification",
+            )
         )
-        remediations: MutableSequence['VulnerabilityAssessmentNote.Assessment.Remediation'] = proto.RepeatedField(
+        remediations: MutableSequence[
+            "VulnerabilityAssessmentNote.Assessment.Remediation"
+        ] = proto.RepeatedField(
             proto.MESSAGE,
             number=8,
-            message='VulnerabilityAssessmentNote.Assessment.Remediation',
+            message="VulnerabilityAssessmentNote.Assessment.Remediation",
         )
 
     title: str = proto.Field(
