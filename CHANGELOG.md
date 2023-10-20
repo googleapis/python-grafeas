@@ -4,6 +4,29 @@
 
 [1]: https://pypi.org/project/grafeas/#history
 
+## [1.9.0](https://github.com/googleapis/python-grafeas/compare/v1.8.1...v1.9.0) (2023-10-20)
+
+
+### Features
+
+* Add enum for grafeas v1 cvss to support both cvss v2 and v3 ([#241](https://github.com/googleapis/python-grafeas/issues/241)) ([a44411d](https://github.com/googleapis/python-grafeas/commit/a44411d7719d4870da7b8444652abb515ab13268))
+* Add VULNERABILITY_ASSESSMENT Note type ([16848a7](https://github.com/googleapis/python-grafeas/commit/16848a7041efd25ddb209e242e6bf3af3a5c0936))
+* Adds Vex_Assessment derived from the Note to resources' occurrences ([16848a7](https://github.com/googleapis/python-grafeas/commit/16848a7041efd25ddb209e242e6bf3af3a5c0936))
+* Enable "rest" transport in Python for services supporting numeric enums ([c1c2e7c](https://github.com/googleapis/python-grafeas/commit/c1c2e7c8ef77d4b4d4c8452feb7ae4b8055957ed))
+* Import of Grafeas from Github ([c1c2e7c](https://github.com/googleapis/python-grafeas/commit/c1c2e7c8ef77d4b4d4c8452feb7ae4b8055957ed))
+* VEX notes can now be written to add CVE assessments ([16848a7](https://github.com/googleapis/python-grafeas/commit/16848a7041efd25ddb209e242e6bf3af3a5c0936))
+
+
+### Bug Fixes
+
+* Add async context manager return types ([#248](https://github.com/googleapis/python-grafeas/issues/248)) ([34fc787](https://github.com/googleapis/python-grafeas/commit/34fc78784aab13b12a1012c9881485ba9956c4c5))
+
+
+### Documentation
+
+* Fix formatting of request arg in docstring ([#240](https://github.com/googleapis/python-grafeas/issues/240)) ([05a0571](https://github.com/googleapis/python-grafeas/commit/05a0571e39691e677a53ceda7eae7ac915524cba))
+* Minor formatting ([#260](https://github.com/googleapis/python-grafeas/issues/260)) ([8eebac7](https://github.com/googleapis/python-grafeas/commit/8eebac71084cb8339155484f7b269b5c784cea2d))
+
 ## [1.8.1](https://github.com/googleapis/python-grafeas/compare/v1.8.0...v1.8.1) (2023-01-20)
 
 
